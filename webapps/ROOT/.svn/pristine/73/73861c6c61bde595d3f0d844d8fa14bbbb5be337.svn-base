@@ -1,0 +1,295 @@
+/*
+* @Author: Administrator
+* @Date:   2016-06-06 17:36:40
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-06-30 13:45:32
+*/
+$(function(){
+
+	var driverLicensePicId = "";
+	var bizLicensePicId = "";
+	var usuallyPath = new Array();
+	window.value0 = "请选择";
+	window.value1 = "请选择";
+	window.removePath = function(obj)
+	{
+        var p0 = $(obj).parent().children().find(".origin").text();
+        var p1 = $(obj).parent().children().find(".destination").text();
+
+		var p = p0 + "_" + p1;
+		var i = usuallyPath.indexOf(p);
+		console.log("to remove:" + p + ", i=" + i);
+
+		if(i >= 0)
+		{
+			usuallyPath.splice(i, 1);
+			$(obj).parent().remove();
+			console.log(usuallyPath);
+		}
+	}
+
+	getUsuallyPath();
+	initPage();
+
+	function initPage()
+	{
+		$("#driver_name").val($.cookie("driver_name"));
+		$("#id_card_number").val($.cookie("id_card_number"));
+		$("#driver_license_date").val($.cookie("driver_license_date"));
+        $("#biz_license_number").val($.cookie("biz_license_number"));
+		$("#biz_license_date").val($.cookie("biz_license_date"));
+        $("#car_length").val("111");
+
+        var w = $("#imgDriverLicense")[0].width;
+        var h = $("#imgDriverLicense")[0].height;
+
+        if(w <=0) w= 178;
+        if(h <=0) h = 178;
+
+		$("#imgDriverLicense")[0].src = "img/add_jsz.png";
+		$("#imgBizLicense")[0].src = "img/add_cyzg.png";
+
+		driverLicensePicId = $.cookie("driverLicensePicId_driver");
+		bizLicensePicId = $.cookie("bizLicensePicId_driver");
+
+		if (typeof(driverLicensePicId)!="undefined")
+		{
+			$("#imgDriverLicense")[0].src = global.imageServer + driverLicensePicId;
+			$("#imgDriverLicense")[0].width = w;
+			$("#imgDriverLicense")[0].height = h;
+		}
+
+		if(typeof(bizLicensePicId) != "undefined")
+		{
+			$("#imgBizLicense")[0].src = global.imageServer + bizLicensePicId;
+			$("#imgBizLicense")[0].width = w;
+			$("#imgBizLicense")[0].height = h;
+		}
+	}
+
+	//获取常跑线路路线
+	function getUsuallyPath() {
+		$.ajax({
+			type: "get",
+			url: global.server + '/api/region/findById',
+			data: {parentId:1},
+			async: true,
+			success: function(msg) {
+				if (msg && msg.status && msg.status.statusCode == global.status.success)
+				{
+					var data = msg.data;
+					//console.log(data);
+					var opt = "";
+					for(var i=0; i < data.length; i++)
+					{
+						var regionName = data[i].regionName;
+						opt =  opt + "<option  class='first' value='"+ regionName+"' >"+ regionName +"</option>";
+					}
+
+					$("#origin").append(opt);
+					$("#destination").append(opt);
+					$("#destination").styleSelect({styleClass: "selectDark", valueId: 1});
+					$("#origin").styleSelect({styleClass: "selectDark", valueId: 0});
+				}
+				else if(msg.status.statusCode != global.status.success)
+				{
+					//return false;
+					console.error(msg.status.statusCode + ":" + msg.status.errorMsg);
+				}
+			}
+		});
+	}
+
+	//请求添加车辆信息
+	function addDriver()
+	{
+		var interfaceUrl = global.server + '/api/driver/addDriverAndVehicle';
+		var nextPage = "center_basicinfo.htm";
+		
+		var data = {
+            Authorization:$.cookie("accountId") + ":" + $.cookie("token"),
+            realName:$.cookie("driver_name"),
+			idno:$.cookie("id_card_number"),
+			dlEndDate:$.cookie("driver_license_date"),
+			qcNo:$.cookie("biz_license_number"),
+			qcEndDate:$.cookie("biz_license_date"),
+			plateNumber:$.cookie("car_no"),
+			type:$.cookie("car_no"),
+			length:$.cookie("car_length"),
+			brand:$.cookie("car_band"),
+			regDate:$.cookie("car_register_date"),
+			regCertCode:$.cookie("register_cer_no"),
+			ciEffectDate:$.cookie("assure_date"),
+			ciName:$.cookie("assure_name"),
+			viEffectDate:$.cookie("assure_date"),
+			viName:$.cookie("biz_assure_name"),
+			licenseValidDate:$.cookie("license_date"),
+			loadWeight:$.cookie("car_max_load"),
+			operatingCertIssueDate:$.cookie("biz_license_date"),
+
+			idFImageRefId:$.cookie("driverLicensePicId_driver"), //身份证正面
+			idBImageRefId:$.cookie("driverLicensePicId_driver"), //身份证反面
+			photoFImageRefId:$.cookie("driverLicensePicId_driver"), //个人照片
+			drivingFImageRefId:$.cookie("driverLicensePicId_driver"), //驾驶证照片
+			qualifiImageRefId:$.cookie("bizLicensePicId_driver"),//从业资格证照片
+			licenseImageRefId:$.cookie("driverLicensePicId"), //行驶证照片
+			ocImageRefId:$.cookie("bizLicensePicId"), //营运证照片
+			vehicleImageRefId:$.cookie("carPicId") //车辆照片
+		};
+
+		$.ajax({
+			type: "post",
+			url: interfaceUrl,
+			data: data,
+			async: true,
+			success: function(msg) {
+				if (msg && msg.status && msg.status.statusCode == global.status.success) 
+				{
+                    window.close();
+				}
+				else
+				{
+					alert(msg.status.errorMsg);
+                    window.close();
+
+				}
+			}
+		});
+	}
+
+	//上传行驶证照片
+	$("#inputDriverLicense").change(function (e) {
+		var file = e.target.files;
+		console.log(file.item(0));
+		if(file){
+			var reader = new FileReader();
+			reader.onload = function () {
+				var w = $("#imgDriverLicense")[0].width;
+				var h = $("#imgDriverLicense")[0].height;
+
+				console.log("width :" + w + ", height:" + h);
+				uploadImage(file.item(0), function(e, i){
+					console.log("upload image:" + file.item(0).name + " successful");
+					$("#imgDriverLicense")[0].src = e;
+					$("#imgDriverLicense")[0].width =  w;
+					$("#imgDriverLicense")[0].height = h;
+					driverLicensePicId = i;
+                    $.cookie("driverLicensePicId_driver", i);
+				})
+			}
+
+			reader.readAsDataURL(file.item(0));
+		}
+	})
+
+	//上传营业执照照片
+	$("#inputBizLicense").change(function (e) {
+		var file = e.target.files;
+		console.log(file.item(0));
+		if(file){
+			var reader = new FileReader();
+			reader.onload = function () {
+				var w = $("#imgBizLicense")[0].width;
+				var h = $("#imgBizLicense")[0].height;
+
+				console.log("width :" + w + ", height:" + h);
+				uploadImage(file.item(0), function(e, i){
+					console.log("upload image:" + file.item(0).name + " successful");
+					$("#imgBizLicense")[0].src = e;
+					$("#imgBizLicense")[0].width =  w;
+					$("#imgBizLicense")[0].height = h;
+					bizLicensePicId = i;
+                    $.cookie("bizLicensePicId_driver", i);
+				})
+			}
+
+			reader.readAsDataURL(file.item(0));
+		}
+	})
+
+	//添加常跑线路
+	$("div.add").click(function() {
+		console.log("add usually path");
+		console.log(window.value0 + "-" + window.value1);
+
+		if ((window.value0 != "请选择") && (window.value1 != "请选择"))
+		{
+			var li = "";
+			li += "<li class='clearfix'>";
+			li += "<span><i>起运地</i><strong class='origin'>" + window.value0 + "</strong></span> <b>—</b> <span class='to'><i>目的地</i><strong class='destination'>" + window.value1 + "</strong></span>";
+			li += "<em onclick='window.removePath(this)'></em>";
+			li += "</li>";
+
+			var item = window.value0 + "_" + window.value1;
+
+			if(usuallyPath.indexOf(item) < 0)
+			{
+				$("#routes").append(li);
+				usuallyPath.push(item);
+			}
+
+			$("#routes li").mouseover(function(event) {
+				$(this).children().addClass('r_close').parent("li").siblings().children().removeClass('r_close');
+			});
+		}
+	})
+
+    //上一步
+	$("#btnPrevious").click(function(){
+        console.log("previous button");
+		window.location = "info_cars.htm";
+	})
+
+	//保存
+	$("#btnSave").click(function(){
+		$("#commentForm").validate({
+			debug:true, //只验证，不提交
+			rules:{
+				driver_name:"required",
+				id_card_number:"required",
+                biz_license_number:"required",
+				driver_license_date:"required",
+				biz_license_date:"required"
+			},
+			messages:{
+				driver_name:"姓名不能为空",
+				id_card_number:"身份证不能为空",
+				driver_license_date:"驾驶证有效期不能为空",
+                biz_license_number:"从业资格证号不能为空",
+				biz_license_date:"从业资格证不能为空"
+			},
+			errorPlacement:function(error, element){
+                $(error).css("color", "#ff0000");
+				error.appendTo(element.parent());
+			},
+			submitHandler:function(){
+                console.log("driverLicensePicId=" + driverLicensePicId);
+				if(driverLicensePicId == "")
+				{
+					alert("请上传行驶证照片");
+				}
+				else if(bizLicensePicId == "")
+				{
+					alert("请上传营运证照片");
+				}
+				else
+				{
+					//保存所有的数据到下一页
+					$.cookie("driverLicensePicId_driver", driverLicensePicId);
+					$.cookie("bizLicensePicId_driver", bizLicensePicId);
+
+					$.cookie("driver_name", $("#driver_name").val());
+					$.cookie("id_card_number", $("#id_card_number").val());
+					$.cookie("biz_license_number", $("#biz_license_number").val());
+                    $.cookie("driver_license_date", $("#driver_license_date").val());
+					$.cookie("biz_license_date", $("#biz_license_date").val());
+
+                    addDriver();
+				}
+			},
+			success:function(){}
+		});
+	})
+
+})
+

@@ -1,0 +1,89 @@
+<div class="content_w wrap container_w log_info">
+	<div class="title clearfix">
+		<div class="distance">
+			<span>物流信息</span>
+		</div>
+		<a href="location.htm?loadId={{info.loadInfo.loadId}}&quotedId={{info.loadInfo.quotedId}}">查看地图</a>
+	</div>
+	<ul class="track_w">
+		<li ng-class="{'active':{{$index}} == '0'}" ng-repeat="new in news">
+			<span ng-bind="new.createdTime"></span>
+			<span><em ng-bind="new.realName"></em>（<em ng-bind="new.position"></em>）</span>
+			<a href="#" ng-disabled="{{$index}} != '0'"><span ng-if="new.latitude"><em ng-bind="new.latitude"></em>,<em ng-bind="new.longitude"></em></span><span ng-if="!new.latitude"><em ng-bind="new.address"></em></span></a>
+			<span ng-if="new.isException !='01'" ng-bind="new.content"></span>
+			<div ng-if="new.isException =='01'" class="abnormal">
+				<p>
+					<em class="warn" ng-bind="new.content"></em>
+					<em>开始时间： <em ng-bind="new.startTime | timeFenFilter"></em></em>
+					<em>结束时间： <em ng-bind="new.endTime | timeFenFilter"></em></em>
+				</p>
+				<p ng-bind="new.itemDesc"></p>
+				<div class="img_w">
+					 <em ng-repeat="att in new.atta">
+						<img ng-src="{{server}}{{att.fileId}}">
+					</em>
+				</div>
+			</div>
+			<span class="dot"></span>
+		</li>
+		<!-- <li>
+			<span>2016-9-18  10:18</span>
+			<span>张三　（客服）</span>
+			<a href="#">广州市白云区大杨村</a>
+			<span>一切正常，预计到达时间 2016-09-24  12:00</span>
+			<span class="dot"></span>
+		</li>
+		<li>
+			<span>2016-9-17  18:35</span>
+			<span>李明海（司机）</span>
+			<a href="#">121.48 31.4145，54359</a>
+			<div class="abnormal">
+				<p>
+					<em class="warn">异常：堵车</em>
+					<em>开始时间： 12：30</em>
+					<em>结束时间： 13：30 </em>
+				</p>
+				<p>高速大雾，封路了，要等大雾散去才能继续行驶，预计到达时间  2016-09-24  18:00</p>
+				<div class="img_w">
+					<em>
+						<img src="#">
+					</em>
+					<em>
+						<img src="#">
+					</em>
+					<em>
+						<img src="#">
+					</em>
+					<em>
+						<img src="#">
+					</em>
+					<em>
+						<img src="#">
+					</em>
+				</div>
+			</div>
+			<span class="dot"></span>
+		</li>
+		<li>
+			<span>2016-9-17  19:45</span>
+			<span>系统自动跟踪 </span>
+			<a href="#">130.39 32.92349，2378 </a>
+			<span>系统自动跟踪</span>
+			<span class="dot"></span>
+		</li>
+		<li>
+			<span>2016-9-18  19:23</span>
+			<span>张三　（客服）</span>
+			<a href="#">深圳市坂田区下沙路明里镇光明村</a>
+			<span>车辆限行，延误两小时，预计到达时间 9-24  12:00</span>
+			<span class="dot"></span>
+		</li>
+		<li>
+			<span>2016-9-16  10:25</span>
+			<span>系统自动跟踪</span>
+			<a href="#">151.46 77.89，6777342 </a>
+			<span>系统自动跟踪</span>
+			<span class="dot"></span>
+		</li> -->
+	</ul>
+</div>

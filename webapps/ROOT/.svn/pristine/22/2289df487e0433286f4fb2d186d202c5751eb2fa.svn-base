@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="editApp">
+    <head>
+        <meta charset="utf-8">
+        <title>货源详情</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/return_supply.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dialog.css"/>
+    </head>
+    <body style="background-color:#fbfbfb;">
+		<div class="con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="index.htm">
+						<img src="img/c_logo.png" height="32" width="184">
+					</a>
+				</div>
+				<ul class="nav clearfix">
+					<li>
+						<a href="index.htm">首页</a>
+					</li>
+					<li class="current">
+						<a href="supply_hall.htm">货源大厅</a>
+					</li>
+					<li>
+						<a href="my_order.htm">我的订单</a>
+					</li>
+				</ul>
+				<div class="search_w">
+					<span class="notice"></span>
+					<span class="user">
+						<a href="center_basicinfo.htm"></a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="container wrap clearfix">
+			<div class="container_l">
+				<div class="groom">
+					<a href="supply_hall.htm" class="recommend_supply">推荐回程货源</a>
+					<span class="arrow"></span>
+				</div>
+				<ul ng-controller="getRecommendSource">
+					<li ng-repeat="item in items | limitNum:2">
+						<a href="supply_detail.htm?id={{item.sourceId}}" class="flow_w">
+							<div class="flow">
+								<div class="flow_bar clearfix">
+									<span class="city" ng-bind="item.startCodeCCn | filter "></span>
+									<span class="car_bg"></span>
+									<span class="city" ng-bind="item.endCodeCCn | filter "></span>
+								</div>
+								<dl class="detail clearfix">
+									<dt>提货时间</dt>
+									<dd ng-bind="item.arriveCustomerTime"></dd>
+									<dt>提货地点</dt>
+									<dd ng-bind="item.senderAreaList | addsource"></dd>
+									<dt>需求车长</dt>
+									<dd class="w96">货物吨位</dd>
+									<dd>货物体积</dd>
+									<dt class="font18">{{item.needLength}}米</dt>
+									<dd class="font18 w96">{{item.goodsWeight}}吨</dd>
+									<dd class="font18">{{item.goodsVolumne}}方</dd>
+									<dt>需求车型</dt>
+									<dd class="w160" ng-bind="item.needType"></dd>
+									<dt>货物类型</dt>
+									<dd ng-bind="item.goodsName"></dd>
+								</dl>
+								<div class="name">广东志鸿物流有限公司</div>
+								<div class="count clearfix">
+									<span class="mans">已应标<i ng-bind="item.quoteNum"></i>人</span>
+									<span class="line"></span>
+									<span class="days" ng-bind="item.ageTime | timeFilter:{{item.hasBegin}}"></span>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+				<!-- 无数据时调用 -->
+				<!-- <div class="flow">
+					<span class="icon"></span>
+					<span class="no_data">暂无数据</span>
+				</div> -->
+			</div>
+			<div class="container_r">
+				<div class="line_detail">
+					<div class="tit">
+						<span></span>
+						<button class="quoted_price"></button>
+					</div>
+					<div class="content clearfix">
+					</div>
+				</div>
+				<div class="line_detail quote_price ishide clearfix">
+					<div class="price_l">
+						<p class="price">我的报价
+							<input type="text" name=doller class="doller" placeholder="¥12000.00"/>
+						</p>
+						<p class="remark clearfix">
+							<span class="remark_l">备注</span>
+							<span class="remark_r">
+								<textarea></textarea>
+							</span>
+						</p>
+						<p class="clearfix">
+							<span class="blank"></span>
+							<button class="priceBtn">报价应标</button>
+						</p>
+					</div>
+				</div>
+				<div class="line_detail quote_price hint">
+					<p>提示 <br/>应标会扣除您的200元做为押金，如果竞标失败，则会自动退还到您的账户；如果竞标成功，则在发车后自动退还到您的账户。</p>
+					<p class="more_rule">
+						<a href="#">更多规则</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="con_foot">
+			<div class="wrap">
+				<p>
+					条款 - 隐私权
+					<span>©2016 guangzhouzhihong</span>                                                 
+				</p>
+			</div>
+		</div>
+		<!-- 报价成功对话框 -->
+		<div class="dialog_wrap" style="display:none;">
+    		<div class="dialog_done dialog_w price_done">
+		  		<p class="star">
+		  			<img src="img/star.png">
+		  		</p>
+		  		<p class="txt">
+		  			<span class="txt_d">报价成功！</span></br>
+		  		</p>
+			</div>
+			<div class="mask"></div>
+    	</div>
+    </body>	
+	<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/js/angular.min.js"></script>
+	<script type="text/javascript" src="/js/moment.js"></script>
+    <script type="text/javascript" src="/js/store.min.js"></script> 
+	<script type="text/javascript" src="/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/js/global_config.js"></script>	
+	<script type="text/javascript" src="/js/global.js"></script>
+	<script type="text/javascript" src="/js/supply_detail.js"></script>
+    <script type="text/javascript" src="js/controller.js"></script>
+</html> 

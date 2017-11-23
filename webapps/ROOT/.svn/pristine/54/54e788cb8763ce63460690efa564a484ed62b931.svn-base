@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <title>注册</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/reg.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dialog.css"/>
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui-extends.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.multiselect.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.multiselect.filter.css"/>
+    </head>
+    <body>
+    	<div class="header">
+			<h1 class="logo">
+				<a href="#">
+					<img src="img/logo.png"/>
+				</a>
+			</h1>
+		</div>
+    	<div class="wrap">
+    		<div class="reg_tit">创建您的运势界账户</div>
+    		<div class="reg_con clearfix">
+    			<div class="reg_r">
+    				<div class="reg_w">
+						<div class="reg-row">
+							<label for="user">手机号</label>
+							<input type="text" class="phone data-phone" maxlength="11" placeholder="请输入手机号"/>
+							<span class="reg_hint"></span>
+							<!-- <span class="msg">输入11位数手机号码
+								<em class="triangle"></em>
+							</span> -->
+						</div>
+						<div class="reg-row">
+							<label for="code">图形验证码</label>
+							<span class="change_code">看不清，点击更换验证码</span>
+							<div class="clearfix code_w">
+								<input type="text" class="code data-pic-code" maxlength="4" placeholder="图形验证码"/>
+								<span class="picCode">
+									<img src="#" height="32" width="91">
+								</span>
+							</div>
+							<span class="reg_hint"></span>
+						</div>
+						<div class="reg-row">
+							<label for="code">请输入短信中验证码</label>
+							<div class="clearfix getMobileCode_w">
+								<input type="text" class="code data-sms-code" maxlength="6" placeholder="短信验证码"/>
+								<span class="getMobileCode">获取验证码</span>
+							</div>
+							<span class="reg_hint"></span>
+						</div>
+						<div class="reg-row">
+							<label for="pass">密码</label>
+							<input type="password" class="pass data-password" maxlength="16" placeholder="设置6-16位登录密码" />
+							<span class="reg_hint"></span>
+						</div>
+						<div class="reg-row">
+							<label for="pass">再次输入密码</label>
+							<input type="password" class="pass data-re-password" maxlength="16" placeholder="请再输入一次密码" />
+							<span class="reg_hint"></span>
+						</div>
+						<div class="reg-row">
+						    <label>起运地</label>
+							<select id="start_line"></select>
+						</div>
+						<div class="reg-row">
+						    <label>目的地</label>
+							<select id="end_line"></select>
+						</div>
+						<div class="add_w reg-row">
+						    <span class="add">添加</span>
+						    <span class="most">(最多五条)</span>
+						</div>
+						<span class="reg_hint" id="reg_hint_path"></span>
+						<ul class="route_w" id="routeWrap">
+						</ul>
+						<div class="reg-row">
+							<label for="agree" class="agree_w"><input id="agree" class="agree" type="checkbox">我同意接受<a href="#">《运势界服务协议》</a></label>
+							<span class="reg_hint"></span>
+						</div>
+						<div class="clearfix">
+							<input type="button" value="提交" class="nextStep" />
+						</div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="footer"></div>
+    </body>
+    <script type="text/javascript" src="js/vendor/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/vendor/store.min.js"></script> 
+	<script type="text/javascript" src="js/vendor/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.md5.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.multiselect.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.multiselect.filter.js"></script>
+	<script type="text/javascript" src="js/vendor/datepicker.min.js"></script>
+	<script type="text/javascript" src="js/public/global_config.js"></script>	
+	<script type="text/javascript" src="js/public/global.js"></script>
+	<script type="text/javascript" src="js/public/YSJLineSelect.js"></script>
+	<script type="text/javascript" src="js/public/YSJReg.js"></script>
+</html>

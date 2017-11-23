@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="editApp">
+    <head>
+        <meta charset="utf-8">
+        <title>货源详情</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>
+        <link rel="stylesheet" type="text/css" href="css/supply_hall.css"/>
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui-extends.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.multiselect.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.multiselect.filter.css"/>
+		<link rel="stylesheet" type="text/css" href="css/select.css"/>   
+		<link rel="stylesheet" type="text/css" href="css/dialog.css"/>   
+		<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.css"/>   
+    </head>
+    <body style="background-color:#f6f6f6;" ng-controller="getInfo">
+		<div class="con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="index.htm">
+						<img src="img/c_logo.png" height="45" width="155">
+					</a>
+				</div>
+				<ul class="nav clearfix">
+					<li>
+						<a href="index.htm">首页</a>
+					</li>
+					<li class="current">
+						<a href="supply_hall.htm">我的货源</a>
+					</li>
+					<li>
+						<a href="my_order.htm">我的订单</a>
+					</li>
+				</ul>
+				<div class="search_w" ng-controller="getUnreadMessageCount">
+					<a href="center_news.htm">
+						<span ng-class="{'notice': true,'has_notice': flag}"></span>
+					</a>
+					<span class="user">
+						<a href="center_basicinfo.htm" class="current"></a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="order_tit order_list_w">
+			<div class="order_top clearfix wrap">
+				<div class="breadcrumb">
+					<a href="supply_hall.htm">我的货源</a> > <em ng-bind="Info.startCodePCn"></em>-<em ng-bind="Info.endCodePCn"></em> > 货源详情
+				</div>
+			</div>
+		</div>
+		<!-- 报价应标结束状态 -->
+		<div class="order_list_w content_w wrap detail_w"> 
+			<ol class="order_list wrap">
+			    <li> 
+				    <div class="list_top clearfix"> 
+					    <div class="list_top_l"> 
+					       	<span class="city" ng-bind="Info.startCodeCCn"></span> 
+					       	<span class="route_bg"></span> 
+					       	<span class="city" ng-bind="Info.endCodeCCn"></span> 
+					    </div> 
+					    <div class="list_con_r"> 
+					
+					       	<p class="num">已应标<span ng-bind="Info.quoteNum"></span>人</p>
+							<p ng-if="Info.status == '02'" ng-class="{'end': true,'start': flag}" ng-bind="Info.ageTime?Info.ageTime:Info.ageTime | ageTime:Info.hasBegin?Info.hasBegin:Info.hasBegin"></p>
+				
+							<p ng-if="Info.status !='02'" ng-class="{'end':true,'start': flag}" ng-bind="Info.statusCn?Info.statusCn:Info.statusCn"></p>
+							
+					   	</div> 
+				    </div> 
+				    <div class="list_con clearfix"> 
+					    <div class="list_con_l"> 
+					       	<p class="vehicle_l w97"> 
+					       		<span>需求车长</span> 
+					       		<span class="txt font18"><em ng-bind="Info.needLength"></em>米</span> 
+					       	</p> 
+					       	<p class="vehicle_l w97"> 
+					       		<span>车型</span> 
+					       		<span class="txt font18"><em ng-bind="Info.needType"></em></span> 
+					       	</p> 
+					       	<p class="vehicle_l w97"> 
+					       		<span>货物重量</span> 
+					       		<span class="txt font18"><em ng-bind="Info.goodsWeight"></em>吨</span> 
+					       	</p> 
+					       	<p class="vehicle_l w97"> 
+					       		<span>体积</span> 
+					       		<span class="txt font18"><em ng-bind="Info.goodsVolumne"></em>方</span> 
+					       	</p> 
+					       	<p class="vehicle_l w97"> 
+					       		<span>类型</span> 
+					       		<span class="txt font18"><em ng-bind="Info.goodsName"></em></span> 
+					       	</p> 
+					    </div> 
+				     	<div class="list_con_r">
+				     		<p>
+				     			<span>提货时间</span><em ng-bind="Info.arriveCustomerTime"></em>
+				     		</p>
+				     		<p>
+				     			<span>到达时间</span><em ng-bind="Info.needArriveTime"></em>
+				     		</p>
+				     	</div>
+				    </div> 
+				    <div class="list_con_m clearfix"> 
+				      	<p class="name">广东志鸿物流有限公司</p> 
+				      	<p class="addr">提货地点：
+				      		<span ng-bind="Info.senderAreaList | getCompArr"></span>
+				      	</p> 
+				    </div>
+				    <button class="quoted_price" ng-show="Info.hasQuote == '1'"></button>
+			    </li>
+			</ol>
+			<form ng-controller="addQuote">
+				<div class="quote_w" ng-if="Info.hasBegin == '1' && Info.hasQuote == '0' && Info.allowBid==true">
+					<dl class="clearfix">
+						<dt>报价</dt>
+						<dd>
+							<input type="text" name="doller" ng-model="$parent.price" ng-blur="changeForm()" maxlength="5" />元
+							<span class="fr">应标押金500元</span>
+							<span>竞标成功发车后押金自动退回到您的账户</span>
+							<span>竞标失败押金立即退回到您的账户</span>
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>留言</dt>
+						<dd>
+							<textarea ng-keyup="count()" maxlength="50"></textarea>
+							<span><em ng-bind="sum"></em><em class="def-val">0</em> / 50</span>
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt></dt>
+						<dd>
+							<button ng-click="addQuote()">应标</button>
+						</dd>
+					</dl>
+				</div>
+				<!-- 报价应标开始状态 回程货源未开始但可以报价-->
+				<div class="quote_w" ng-if="Info.hasQuote == '0' && Info.allowBid==true && Info.hasBegin =='0'">
+					<dl class="clearfix">
+						<dt>报价</dt>
+						<dd>
+							<input type="text" name="doller" ng-blur="changeForm()"/>元
+							<span class="hint">您的报价将在竞标开始后自动应标</span>
+							<span class="fr">应标押金500元</span>
+							<span>竞标成功发车后押金自动退回到您的账户</span>
+							<span>竞标失败押金立即退回到您的账户</span>
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>备注</dt>
+						<dd>
+							<textarea></textarea>
+							<span>0 / 50</span>
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt></dt>
+						<dd>
+							<button>报价</button>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="recommend wrap">
+			<div class="groom groom_w">
+				<a class="recommend_supply">推荐回程货源</a>
+				<a href="supply_hall.htm">
+					<span class="arrow">查看更多</span>
+				</a>
+			</div>
+			<ul class="recommend_list clearfix">
+				<li ng-repeat="item in items | limitNum:4" ng-show="len >'0'">
+					<a href="supply_detail.htm?id={{item.sourceId}}" class="flow_w" target="_blank">
+						<div class="flow">
+							<div class="flow_bar clearfix">
+								<span class="city start" ng-bind="item.startCodeCCn | filter "></span>
+								<span class="car_bg"></span>
+								<span class="city end" ng-bind="item.endCodeCCn | filter "></span>
+							</div>
+							<dl class="detail clearfix">
+								<dt>提货时间</dt>
+								<dd class="w172" ng-bind="item.arriveCustomerTime"></dd>
+								<dt>需求车长</dt>
+								<dd class="w172"><em ng-bind="item.needLength"></em>米</dd>
+								<dt>需求车型</dt>
+								<dd class="w172" ng-bind="item.needType"></dd>
+								<dt>货物重量</dt>
+								<dd class="w172"><em ng-bind="item.goodsWeight"></em>吨</dd>
+								<dt>货物类型</dt>
+								<dd class="w172" ng-bind="item.goodsName"></dd>
+								<button class="quoted_price" ng-show="item.hasQuote == '1'"></button>
+							</dl>
+							<div class="count clearfix">
+								<span class="mans">已应标&nbsp;<i ng-bind="item.quoteNum"></i>&nbsp;人</span>
+								<span class="days" ng-bind="item.ageTime | timeFilter"></span>
+								<!-- 天数开始样式加入类名start -->
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="no-data" ng-show="len =='0'">
+					<span class="txt">暂无数据</span>
+				</li>
+			</ul>
+			<!-- 无数据时调用 -->
+			<!-- <div class="no-data">
+				
+			</div> -->
+		</div>
+		<div class="con_foot">
+			<div class="wrap clearfix foot_w">
+				<p>
+					<span class="copyright">条款 - 隐私权         ©2016 guangzhouzhihong</span>
+					<span class="tel">
+						<i>400-888-0906</i>
+						</br>
+						<i class="time">周一至周日  8:00-22:00</i>
+					</span>                                                 
+				</p>
+			</div>
+		</div>
+
+		<!-- 提交成功对话框 -->
+		<div class="dialog_wrap price_success" style="display:none;">
+    		<div class="dialog_done dialog_w price_done">
+		  		<p class="star">
+		  			<img src="img/star.png">
+		  		</p>
+		  		<p class="txt">
+		  			<span class="txt_d">提交成功！</span></br>
+		  		</p>
+		  		<!-- <span class="close"></span> -->
+			</div>
+			<div class="mask"></div>
+    	</div>
+    	<!-- 提交失败对话框 -->
+    	<div class="dialog_wrap price_fail" style="display:none;">
+    		<div class="dialog_done dialog_w price_done price_fail">
+		  		<p class="star">
+		  			<img src="img/ball.png">
+		  		</p>
+		  		<p class="txt">
+		  			<span class="txt_d">提交失败！ 请重新提交</span></br>
+		  		</p>
+		  		<span class="close" ng-click="close_dialog()"></span>
+			</div>
+			<div class="mask"></div>
+    	</div>
+    </body>
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/angular-resource.min.js"></script>
+	<script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/store.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/global_config.js"></script>	
+	<script type="text/javascript" src="js/global.js"></script>
+	<!-- <script type="text/javascript" src="js/supply_detail.js"></script> -->
+	<script type="text/javascript" src="js/services.js"></script>
+	<script type="text/javascript" src="js/filters.js"></script>
+	<script type="text/javascript" src="js/directives.js"></script>
+	<script type="text/javascript" src="js/controller.js"></script>
+</html> 

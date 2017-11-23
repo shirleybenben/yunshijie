@@ -1,0 +1,107 @@
+(function(window,angular,undefined){
+	'use strict';
+	var editApp = angular.module("editApp",['main_services','main_filters','ngRoute'])
+	.controller('getRecommendSource',getRSource)
+	// .controller('getRecordList',getRList)
+	.controller('getQOList',getQOList)
+	.controller('getLoaBill',getLoaBill)
+	.controller('getTrackInfo',getTrackInfo)
+
+	function getTrackInfo(getTrackInfo,getGeo,$scope,$log){
+		var count=0;
+		getTrackInfo().then(function(strData){
+			$scope.Info = strData.data.info;
+			$scope.track = strData.data.track;
+			console.log($scope.track);
+		}).then(function(){
+			var trackList=[],speedList=[],exception=[],exceptionName=[],expSTime=[],expETime=[],track = $scope.track,param={},
+				starCity = $scope.Info.receiverArea[1].regionName+$scope.Info.receiverArea[0].regionName+$scope.Info.senderAddress,
+				endCity = $scope.Info.receiverArea[1].regionName+$scope.Info.receiverArea[0].regionName+$scope.Info.receiverAddress;
+			trackList.push([starCity]);
+			trackList.push([endCity]);
+			for(var i = 0;i<track.length;i++){
+				trackList.push([track[i].latitude,track[i].longitude]);
+				speedList.push(track[i].speed);
+				exception.push([track[i].isException]);
+				exceptionName.push([track[i].itemName]);
+				expSTime.push([track[i].feedbackTime]);
+				expETime.push([track[i].endTime]);
+			}
+			// trackList.push(["39.594349","115.840374"]);
+			// exception.push(["ele"])
+			// param.okey = trackList;
+			param ={
+				okey : trackList,
+				carNo : $scope.Info.plateNumber,
+				exception : exception,
+				speed : [],
+				exceptionName : exceptionName,
+				expSTime: expSTime,
+				expETime: expETime,
+				addStar: starCity,
+				addEnd: endCity,
+				speed: speedList
+			}
+			$scope.map = $("#big_map").GdMap(param);
+		})
+
+		$scope.getGeo = function(){
+			var action = new MarkerAction();
+			$(".getLPos").attr("disabled","disabled").addClass("disabled-class");
+			getGeo().then(function(strData){
+				$log.info(strData.data);
+				if(strData.status.statusCode == "200"){
+					var options = {
+						position:[strData.data.longitude,strData.data.latitude],
+						speed:strData.data.speed,
+						feedbackTime: strData.data.feedbackTime,
+						carNo: $scope.Info.plateNumber
+					};
+					if(count == 0){
+						action.addMarker($scope.map, options);
+					}else{
+						action.updateMarker($scope.map, options);
+					}
+					count = 1;
+					$(".getLPos").removeAttr("disabled").removeClass("disabled-class");
+				}
+			})
+		}
+	}
+	getTrackInfo.$inject=['getTrackInfo','getGeo','$scope','$log'];
+
+	function getLoaBill(getLoaBill,gRList,loadId,$scope,$log){
+		getLoaBill().then(function(strData){
+			loadId.loadId = strData.data.loadId;
+			$scope.Info = strData.data;
+			$log.info($scope.Info);
+		}).then(function(){
+			gRList().then(function(strData){
+				$scope.news = strData.data;
+			})
+		})
+	}
+	getLoaBill.$inject=['getLoaBill','getRecordList','getloadId','$scope','$log'];
+
+	function getRSource(gRS,$scope,$log){
+		gRS().then(function(strData){
+			$scope.items = strData.data;
+		})
+	}
+	getRSource.$inject=['getRecommendSource','$scope','$log'];
+
+	function getQOList(gQ,$scope,$log){//test
+		gQ().then(function(strData){
+			$scope.lines = strData.data.rows;
+		})
+
+		$scope.repeatDown = function(){
+			$("div.holder").jPages({
+		      containerID : "itemContainer",
+		      perPage : 5
+		    });
+		}
+	}
+	getQOList.$inject =['getQuotedOrderList','$scope','$log']
+
+})(window,window.angular)

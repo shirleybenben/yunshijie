@@ -1,0 +1,34 @@
+<div class="line_detail quote_price transit_info clearfix" ng-if="info.status=='05'">
+	<div class="info_l">
+		<div class="main_info">
+			<span>预计公里数：<em ng-bind="info.loadInfo.miles"></em>KM</span>
+			<span class="m82">在途要求：<em ng-bind="info.loadInfo.transitRequire"></em></span>
+		</div>
+		<dl>
+			<dt>计划发车时间：<span ng-bind="info.loadInfo.needStartTime"></span></dt>
+			<dd>
+				<span class="w215">发货联系人：<em ng-bind="info.loadInfo.contactName"></em></span> 
+				<span class="w220">发货人电话：<em ng-bind="info.loadInfo.sendTelphone"></em></span>     
+				<span>发货人手机:<em ng-bind="info.loadInfo.sendMobile"></em></span>
+			</dd>
+			<dd>发货地址：   <em ng-bind="info.loadInfo.sendAddress"></em></dd>
+		</dl>
+		<dl>
+			<dt>到达时间：<span ng-bind="info.loadInfo.needArriveTime"></span></dt>
+			<dd>
+				<span class="w215">收货联系人：<em ng-bind="info.loadInfo.receiveName"></em></span> 
+				<span class="w220">收货人电话：<em ng-bind="info.loadInfo.receiverTelphone"></em></span>     
+				<span>收货人手机: <em ng-bind="info.loadInfo.receiverMobile"></em></span>
+			</dd>
+			<dd>收货地址：   <em ng-bind="info.loadInfo.receiveAddress"></em></dd>
+		</dl>
+	</div>
+	<div class="info_r">
+		<div class="map_btn">
+			<a href="order_detail_map.html?loadId={{info.loadInfo.loadId}}&quotedId={{info.loadInfo.quotedId}}&status=05">
+				<img src="img/map_btn.png"/>
+				<span>查看地图</span>
+			</a>
+		</div>
+	</div>
+</div>

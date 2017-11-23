@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="editApp">
+    <head ng-controller="head">
+        <meta charset="utf-8">
+        <title>我的账户</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>
+        <link rel="stylesheet" type="text/css" href="css/supply_hall.css"/>
+        <link rel="stylesheet" type="text/css" href="css/center_news.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dialog.css"/>
+		<link rel="shortcut icon" ng-href="{{path}}" />
+    </head>
+    <body>
+    	<headtop></headtop>
+		<div class="order_tit order_list_w">
+			<div class="order_top clearfix wrap">
+				<div class="order_top_l">
+					<ul class="clearfix tab_tit">
+						<li class="current">
+							<a href="center_basicinfo.htm">我的账户</a>
+						</li>
+						<li>
+							<a href="driver_list.htm">车辆及司机信息</a>
+						</li>
+						<li>
+							<a href="running_route.htm">常跑线路</a>
+						</li>
+					</ul>
+				</div>
+				<div class="order_top_l order_top_r clearfix">
+					<ul class="clearfix tab_tit">
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="news_content wrap clearfix basic_info">
+			<div class="info_l ng-cloak" ng-controller="getAgent">
+				<div class="info_l_l">
+					<span class="img_w">
+						<img ng-src="{{userHeader}}"/>
+					</span>
+					<span class="font14 pass">
+						<em ng-if="perInfo.status =='01'" class="unpass">待审核</em>
+						<em ng-if="perInfo.status =='00'">通过</em>
+						<em ng-if="perInfo.status =='02'" class="unpass">未通过</em>
+					</span>
+				</div>
+				<div class="info_l_l info_detail">
+					<p class="name">您好，<em ng-bind="perInfo.realName"></em></p>
+					<p class="tel mt26">手机号：<em ng-bind="tel | getTel"></em></p>
+					<p class="tel" ng-if="perInfo.status !='02'">身份证号：**************<em ng-bind="perInfo.idno | getIdNo"></em></p>
+					<p class="tel" ng-if="perInfo.status =='02'">身份证号：<em class="unwrite">未填写</em></p>
+					<p ng-if="perInfo.status =='02'" class="tel unwrite">信息认证失败</p>
+					<p class="font12">如需修改信息请到手机 App 端</p>
+				</div>
+			</div>
+			<div class="info_r">
+				<p>账户余额</p>
+				<p class="amount">
+					<span>88,888.00</span> 元
+				</p>
+				<p class="btns">
+					<a href="javascript:;" class="active">充值</a>
+					<a href="javascript:;">提现</a>
+				</p>
+			</div>
+		</div>
+		<div class="wrap trans_records">
+			<div class="tit clearfix">
+				<span class="trade">交易记录</span>
+				<a href="center_statement.htm">账单</a>
+			</div>
+		   	<table width="1158" border="0" cellspacing="0" cellpadding="0">
+			   	<thead>
+			   		<tr>
+		   				<th width="321" align="left">
+		   					<span class="check_down">发车时间</span>
+		   				</th>
+		   				<th width="269" align="left">
+		   					<span class="check_up">线路</span>
+		   				</th>
+		   				<th width="277" align="left">
+		   					<span>金额</span>
+		   				</th>
+		   				<th width="233" align="left">
+		   					<span>状态</span>
+		   				</th>
+		   				<th width="60"  align="right">
+		   					<span>操作</span>
+		   				</th>
+		   			</tr>
+			   	</thead>
+			   	<tbody>
+			   		<tr>
+			   			<td width="321" align="left">2016-12-12 12:12</td>
+			   			<td width="269" align="left">北京 - 上海</td>
+			   			<td width="277" align="left">+3,000.00</td>
+			   			<td width="233" align="left">成功</td>
+			   			<td width="60" align="left">
+			   				<a href="center_records_detail.htm">交易明细</a>
+			   			</td>
+			   		</tr>
+			   		<tr>
+			   			<td align="left">2016-12-12 12:12</td>
+			   			<td align="left">北京 - 上海</td>
+			   			<td align="left">+3,000.00</td>
+			   			<td align="left">失败</td>
+			   			<td align="left">
+			   				<a href="center_records_detail.htm">交易明细</a>
+			   			</td>
+			   		</tr>
+			   		<tr>
+			   			<td align="left">2016-12-12 12:12</td>
+			   			<td align="left">北京 - 上海</td>
+			   			<td align="left">+3,000.00</td>
+			   			<td align="left">处理中</td>
+			   			<td align="left">
+			   				<a href="center_records_detail.htm">交易明细</a>
+			   			</td>
+			   		</tr>
+			   		<tr>
+			   			<td align="left">2016-12-12 12:12</td>
+			   			<td align="left">北京 - 上海</td>
+			   			<td align="left">+3,000.00</td>
+			   			<td align="left">成功</td>
+			   			<td align="left">
+			   				<a href="center_records_detail.htm">交易明细</a>
+			   			</td>
+			   		</tr>
+			   		<tr>
+			   			<td align="left">2016-12-12 12:12</td>
+			   			<td align="left">北京 - 上海</td>
+			   			<td align="left">+3,000.00</td>
+			   			<td align="left">成功</td>
+			   			<td align="left">
+			   				<a href="center_records_detail.htm">交易明细</a>
+			   			</td>
+			   		</tr>
+			   	</tbody>
+		   	</table>
+			<div class="list_page clearfix wrap">
+				<div class="page_w">
+					<div class="handle clearfix">
+						<div id="kkpager" class="handle-page clearfix skin-tb"><span class="pagination-start"><span>上一页</span></span><span class="pagination-curr">1</span><a class="pagination-spec" data-page="2">2</a><a class="pagination-spec" data-page="3">3</a><a class="pagination-spec" data-page="4">4</a><a class="pagination-spec" data-page="5">5</a><span class="pagination-break">...</span><a class="pagination-next"><span>下一页<span></span></span></a>共&nbsp;16&nbsp;页，到第<input class="selectPart" type="tel" value="2">页<button class="pagination-select">确定</button></div>		
+					</div>
+				</div>
+			</div>
+		</div>
+        <foot></foot>
+		<div class="dialog_wrap" style="display:none;">
+    		<div class="dialog_w">
+		  		<div class="tit">编辑备注信息</div>
+		  		<div class="con">
+		  			<dl class="clearfix">
+			  			<dt>名称：</dt>
+			  			<dd>运势界-运费</dd>
+			  		</dl>
+			  		<dl class="clearfix">
+			  			<dt>备注：</dt>
+			  			<dd>
+			  				<textarea></textarea>
+			  			</dd>
+			  		</dl>
+			  		<dl class="clearfix">
+			  			<dt></dt>
+			  			<dd class="font12">可以写 50 个字</dd>
+			  		</dl>
+			  		<dl class="clearfix">
+			  			<dt></dt>
+			  			<dd>
+			  				<button>确定</button>
+			  			</dd>
+			  		</dl>
+		  		</div>
+		  		<span class="close"></span>
+			</div>
+			<div class="mask"></div>
+    	</div>
+    </body>
+    <script type="text/javascript" src="js/vendor/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/vendor/toTop.min.js"></script> 
+    <script type="text/javascript" src="js/vendor/angular.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-resource.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/public/global_config.js"></script>
+	<script type="text/javascript" src="js/public/global.js"></script>
+	<script type="text/javascript" src="js/services/services.js"></script>
+	<script type="text/javascript" src="js/filters/filters.js"></script>
+	<script type="text/javascript" src="js/directives/directives.js"></script>
+	<script type="text/javascript" src="js/controllers/controller.js"></script>
+</html>

@@ -1,0 +1,53 @@
+<ol class="order_list wrap">
+	<li ng-repeat="line in lines" ng-if="isExit==true"> 					
+		<div class="list_top clearfix"> 						
+			<div class="list_top_l"> 							
+				<span class="city" ng-bind="line.startCodeCCn"></span> 							
+				<span class="route_bg"></span> 							
+				<span class="city" ng-bind="line.endCodeCCn"></span>
+			</div> 						
+			<div class="list_top_r">提货时间　　<span ng-bind="line.arriveCustomerTime"></span></div> 						
+			<div class="list_con_r"> 							
+				<p class="num">应标&nbsp;<span ng-bind="line.quoteNum"></span>&nbsp;人</p> 							
+				<p ng-class="{'end':true,'start':line.hasBegin=='0'}"><span ng-bind="line.ageTime | ageTime:line.hasBegin"></span></p> 						
+			</div>
+		</div> 					
+		<div class="list_con clearfix"> 						
+			<div class="list_con_l"> 							
+				<p class="vehicle_l w97"> 								
+				<span>需求车长</span> 								
+				<span class="txt font18"><em ng-bind="line.needLength"></em>米</span> 							
+				</p> 							
+				<p class="vehicle_l w97"> 								
+				<span>车型</span> 								
+				<span class="txt font18"><em ng-bind="line.needType"></em></span> 							
+				</p> 							
+				<p class="vehicle_l w97"> 								
+				<span>货物重量</span> 								
+				<span class="txt font18"><em ng-bind="line.goodsWeight"></em>吨</span> 							
+				</p> 							
+				<p class="vehicle_l w97">
+				<span>体积</span> 								
+				<span class="txt font18"><em ng-bind="line.goodsVolumne"></em>方</span> 							
+				</p> 							
+				<p class="vehicle_l w97"> 								
+				<span>类型</span> 								
+				<span class="txt font18"><em ng-bind="line.goodsName"></em></span> 							
+				</p> 						
+			</div> 						
+			<a class="goto_detail" href="supply_detail.htm?id={{line.sourceId}}" target="_blank">货源详情</a> 					
+		</div> 					
+		<div class="list_con_m clearfix"> 						
+			<p class="name">广东志鸿物流有限公司</p> 						
+			<p class="addr">提货地点：<span ng-bind="line.senderAreaList | getCompArr"> </span></p> 					
+		</div>
+		<button ng-if="line.hasQuote == '1'" class="quoted_price"></button>
+	</li>
+	<li ng-if="isExit == false">
+		<!-- 无数据时调用 -->
+		<div class="list_no_data">
+			<span class="icon"></span>
+			<span class="txt">亲，暂时没有相关内容哦~</span>
+		</div>
+	</li>
+</ol>

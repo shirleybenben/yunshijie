@@ -1,0 +1,41 @@
+
+$(function(){
+	// 常跑路线
+	$("#lines li").mouseover(function(event) {
+		$(this).children().addClass('r_close').parent("li").siblings().children().removeClass('r_close');
+	});
+	$("#lines").on('click', 'em.r_close', function(event) {
+		$(this).parent().hide();
+	});
+	
+	var container = $('.add-line');
+	var lineSelect = new YSJLineSelect({
+		startSelect : container.find(".start_line"),
+		endSelect : container.find(".end_line"),
+		addBtn : container.find('.add-btn'),
+		max : 5,
+		render : function(data){
+			var target = this;
+			var el = $('<li> \
+						<span class="from"> \
+							<em class="are">起运地</em> \
+							<em class="city"></em> \
+						</span> \
+						<span class="line">——</span> \
+						<span class="to"> \
+							<em class="are">目的地</em> \
+							<em class="city"></em> \
+						</span> \
+						<span class="close">x</span> \
+					</li>');
+			el.find('.from > .city').text(data.from);
+			el.find('.to > .city').text(data.to);
+			el.attr("refId", data.id);
+			el.find('.close').click(function(){
+				target.delLine(el.attr('refId'));
+				el.remove();
+			});
+			container.find('#routeWrap').append(el);
+		}
+	});
+})

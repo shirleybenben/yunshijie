@@ -1,0 +1,32 @@
+/*
+* @Author: Administrator
+* @Date:   2016-07-05 11:05:37
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-07-05 15:30:02
+*/
+/* 搜索列表 */
+.search_d{position:relative;}
+.search_d .search_s{background-color:#fff;box-shadow: 0px 3px 3px #ccc;padding:0 8px;position:absolute;top:31px;left:1px;z-index:999;}
+.search_d .search_s .search_c{width:504px;margin:0 auto;position: relative;}
+.search_d .search_s .search_c ul{margin-top:23px;}
+.search_d .search_s .search_c ul li.select_li{float:left;margin-right:38px;}
+.search_d .search_s .search_c ul li label{float:left;}
+.search_d .search_s .search_c ul li .select_f{float:left;margin-left:10px;}
+.search_d .search_s .search_c p{margin-top:7px;}
+.search_d .search_s label{font-size:14px;color:#898888;line-height:25px;}
+.search_d .search_s input{width:100%;height:20px;border:1px solid #dedede;border-radius:2px;padding-left:5px;-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;}
+.search_d .search_s input:focus{border:1px solid #518df4;}
+.select_f .selectDark{width:83px;}
+.select_f .selectDark ul{width:83px;}
+.select_f .selectDark .selected{padding-left:10px;}
+.select_f .selectDark li span{padding-left:10px;}
+.search_s .search_c .search_b{margin:30px auto 11px;}
+.search_s .search_c .search_b .search_b_l{float:left;}
+.search_s .search_c .search_b .search_b_r{float:right;}
+.search_b .search_b_l button{width:61px;height:24px;border:1px solid #c95a27;border-radius:2px;background:#de642c url(../img/search-icon.png) no-repeat center;}
+.search_b .search_b_l button:hover{background-color:#e14d00;}
+.search_b .search_b_r a{font-size:12px;color:#c7c7c7;}
+.search_s .search_c .close{display:block;width:8px;height:8px;background:url(../img/delete-icon.png) no-repeat center; position:absolute;top:0px;right:0px;cursor:pointer;}
+.search_d em.down{display:block;width:8px;height:4px;position:absolute;top:13px;left:505px;background:url(../img/down.png) no-repeat center;}

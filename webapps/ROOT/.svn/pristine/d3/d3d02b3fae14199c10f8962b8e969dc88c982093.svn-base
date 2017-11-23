@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <title>忘记密码</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/login.css"/>
+        <link rel="stylesheet" type="text/css" href="css/find_pass.css"/>
+    </head>
+    <body>
+    	<div class="header log_head">
+			<h1 class="logo">
+				<a href="#">
+					<img src="img/logo.png"/>
+				</a>
+			</h1>
+		</div>
+    	<div class="wrap">
+    		<div class="con_w">
+    			<div class="log_tit">
+	    			<h2>运势界车货匹配平台</h2>
+	    			<p>忘记密码</p>
+	    		</div>
+	    		<div class="log_con">
+	    			<div class="touxiang fi_lock">
+	    				<img src="img/LOCK.png" height="77" width="77">
+	    			</div>
+	    			<div class="log_inps find_inps new_pass">
+	    				<form  method="" action="" onsubmit="return false">
+	    					<div class="confirm_info">
+								<p>
+									<label for="user">手机号</label>
+									<input type="tel" name="phone" class="phone" id="reg_phone"  placeholder="请输入手机号" maxlength="11" />
+									<span class="reg_hint" style="display: none;">请输入正确的手机号</span>
+								</p>
+								<p>
+									<label for="reg_val_code">图形验证码</label>
+									<span class="change_code">看不清，点击更换验证码</span>
+									<div class="clearfix code_w">
+										<input type="text" class="code" id="reg_val_code" data-id="" placeholder="图形验证码" />
+										<span class="picCode">
+											<img src="#" height="32" width="91">
+										</span>
+									</div>
+								</p>
+								<p>
+									<label for="dxcode">短信验证码</label>
+									<div class="clearfix getMobileCode_w">
+										<input readonly type="text" id="dxcode" name="code" class="code" placeholder="短信验证码"/>
+										<span class="getMobileCode getTelCode">获取验证码</span>
+										<span class="getMobileCode hideclock" style="display:none;"><em>60</em>s后重新获取</span>
+									</div>
+								</p>
+								<p>
+									<input type="submit" name="submit" id="LoginBtn" value="确认" class="LoginBtn" />
+								</p>
+							</div>
+							<div class="confirm_pwd" style="display:none">
+								<p>
+									<label for="pass">请输入新密码</label>
+									<input type="password" name="pass" class="pass" id="reg_pass" placeholder="请输入新密码" />
+									<span class="reg_hint"></span>
+								</p>
+								<p>
+									<label for="pass">请再次输入密码</label>
+									<input type="password" name="pass" class="pass" id="re_pass" placeholder="请再输入一次密码" />
+									<span class="reg_hint"></span>
+								</p>
+								<p>
+									<input type="submit" name="submit" id="savePwd" value="保存" class="LoginBtn" />
+								</p>
+							</div>
+						</form>
+	    			</div>
+	    		</div>
+    		</div>
+    	</div>
+    	<div class="footer"></div>
+    </body>
+    <script type="text/javascript" src="js/vendor/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/vendor/toTop.min.js"></script>
+    <script type="text/javascript" src="js/vendor/store.min.js"></script> 
+	<script type="text/javascript" src="js/vendor/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/public/global_config.js"></script>	
+	<script type="text/javascript" src="js/public/global.js"></script>
+	<script type="text/javascript" src="js/public/ajaxAction.js"></script>
+	<script type="text/javascript" src="js/public/forgot_pwd.js"></script>
+</html>

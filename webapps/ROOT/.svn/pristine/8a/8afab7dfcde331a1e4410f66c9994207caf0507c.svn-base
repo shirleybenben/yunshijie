@@ -1,0 +1,49 @@
+<div class="content_w wrap detail_w select_car mb26 pt22 pb0">
+	<div class="head clearfix">
+		<div class="head_l">选择车辆及司机</div>
+		<div class="head_r">
+			<div class="head_r_l">
+				<span class="color">已选</span>
+				<span class="car_brand" ng-bind="chosen_carName"></span>
+				<span class="driver" ng-repeat="dirInfo in nameList" ng-bind="dirInfo.name"></span>
+				<span class="color hide">清空</span>
+			</div>
+			<div class="head_r_r">
+				<button class="active" ng-click="showConfirm(info.needDriverNum)">提交</button>
+				<button ng-click="showGPDiag()">毁约</button>
+			</div>
+		</div>
+	</div>
+	<ul class="con">
+		<li ng-repeat="list in driverList" class="clearfix dlist" attrvId="{{list.vehicleInfoId}}">
+			<div class="con_l">
+				<div class="con_l_l">
+					<img src="img/car_pic.png">
+				</div>
+				<div class="con_l_r">
+					<p class="font18 car_name" ng-bind="list.plateNumber"></p>
+					<p>    
+						<span>车长：<em class="car_length" ng-bind="list.length"></em></span>
+						<span class="pl16">车型：<em class="car_type" ng-bind="list.type"></em></span>
+					</p>
+				</div>
+			</div>
+			<div class="con_r">
+				<div class="driver" ng-repeat="data in list.driverInfo" ng-click="chosen($parent.$index,$index)" attrId="{{data.driverInfoId}}">
+					<span class="select_btn"></span>
+					<div class="driver_r">
+						<p class="name" ng-bind="data.realName"></p>
+						<p class="tel" ng-bind="data.telphone"></p>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+	<div class="list_page clearfix wrap">
+		<div class="page_w">
+			<div class="handle clearfix">
+				<div id="kkpager" class="handle-page clearfix skin-tb"></div>
+			</div>
+		</div>
+	</div>
+</div>

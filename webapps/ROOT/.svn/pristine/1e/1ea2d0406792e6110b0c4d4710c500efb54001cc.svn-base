@@ -1,0 +1,56 @@
+<ol class="order_list wrap ng-cloak">
+    <li> 
+	    <div class="list_top clearfix"> 
+		    <div class="list_top_l"> 
+		       	<span class="city" ng-bind="info.startCodeCCn"></span> 
+		       	<span class="route_bg"></span> 
+		       	<span class="city" ng-bind="info.endCodeCCn"></span> 
+		    </div> 
+		    <div class="list_con_r"> 
+		       	<p class="num">已应标<span ng-bind="info.quoteNum"></span>人</p>
+				<!-- <p ng-if="info.status == '02'" ng-class="{'end': true,'start': flag}" ng-bind="info.ageTime?info.ageTime:info.ageTime | ageTime:info.hasBegin?info.hasBegin:info.hasBegin"></p> -->
+	
+				<!-- <p ng-if="info.status !='02'" ng-class="{'end':true,'start': flag}" ng-bind="info.statusCn?info.statusCn:info.statusCn"></p> -->
+				<p ng-class="{'end':true,'over':info.status=='06','transit':info.status=='05','cancel':info.status=='04','bid':info.status=='03','close':info.status=='07'||info.status=='02'}" ng-bind="info.statusCn"></p>
+		   	</div> 
+	    </div> 
+	    <div class="list_con clearfix"> 
+		    <div class="list_con_l"> 
+		       	<p class="vehicle_l w97"> 
+		       		<span>需求车长</span> 
+		       		<span class="txt font18"><em ng-bind="info.needLength"></em>米</span> 
+		       	</p> 
+		       	<p class="vehicle_l w97"> 
+		       		<span>车型</span> 
+		       		<span class="txt font18" ng-bind="info.needType"></span> 
+		       	</p> 
+		       	<p class="vehicle_l w97"> 
+		       		<span>货物重量</span> 
+		       		<span class="txt font18"><em ng-bind="info.goodsWeight"></em>吨</span> 
+		       	</p> 
+		       	<p class="vehicle_l w97"> 
+		       		<span>体积</span> 
+		       		<span class="txt font18"><em ng-bind="info.goodsVolumne"></em>方</span> 
+		       	</p> 
+		       	<p class="vehicle_l w97"> 
+		       		<span>类型</span> 
+		       		<span class="txt font18" ng-bind="info.goodsName"></span> 
+		       	</p> 
+		    </div> 
+	     	<div class="list_con_r">
+	     		<p>
+	     			<span>提货时间</span><em ng-bind="info.arriveCustomerTime"></em>
+	     		</p>
+	     		<p>
+	     			<span>到达时间</span><em ng-bind="info.needArriveTime"></em>
+	     		</p>
+	     	</div>
+	    </div> 
+	    <div class="list_con_m clearfix"> 
+	      	<p class="name">广东志鸿物流有限公司</p> 
+	      	<p class="addr">提货地点：
+	      		<span ng-bind="info.senderAreaList | getCompArr"></span>
+	      	</p> 
+	    </div>
+    </li>
+</ol>

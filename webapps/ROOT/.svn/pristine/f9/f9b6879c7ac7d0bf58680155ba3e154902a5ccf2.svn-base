@@ -1,0 +1,89 @@
+/*
+* @Author: Administrator
+* @Date:   2016-06-06 17:36:40
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-06-22 17:27:35
+*/
+$(function(){
+
+	if($.cookie("accountId") == null)
+	{
+		window.location = "login.htm";
+	}
+
+	var interfaceUrl = global.server + "/api/agent/query";
+    var idCard = "";
+    var companyName = "";
+    var bizLicense = "";
+    var orgCode = "";
+    var taxCode = "";
+
+    var idCardPic1 = "";
+    var idCardPic2 = "";
+    var bizLicesePic = "";
+    var orgPic = "";
+    var taxPic = "";
+
+    var data = {"Authorization":$.cookie("accountId") + ":" + $.cookie("token")};
+    //data = {driverInfoId : "",  "Authorization":$.cookie("accountId") + ":" + $.cookie("token")};
+
+	//加载个人详细信息
+	$.ajax({
+		type: "get",
+		url: interfaceUrl,
+		data: data,
+		async: true,
+		success: function(msg) {
+			if (msg && msg.status && msg.status.statusCode == global.status.success)
+			{
+                if(msg.data)
+                {
+                    var driver = msg.data;
+                    idCard = driver.idno;
+                    companyName = driver.companyFullName;
+                    bizLicense = driver.busCode;
+                    orgCode = driver.orgCode;
+                    taxCode = driver.taxRegCode;
+
+                    idCardPic1 = driver.idFImageRefId;
+                    idCardPic2 = driver.idBImageRefId;
+                    bizLicesePic = driver.busImageRefId;
+                    orgPic = driver.orgImageRefId;
+                    taxPic = driver.taxImageRefId;
+
+                    $("#idCard").html(idCard);
+                    $("#companyName").html(companyName);
+                    $("#bizLicense").html(bizLicense);
+                    $("#orgCode").html(orgCode);
+                    $("#taxCode").html(taxCode);
+
+                    if(idCardPic1 != null)
+                        $("#idCardPic1")[0].src = global.imageServer + idCardPic1;
+
+                    if(idCardPic2 != null)
+                        $("#idCardPic2")[0].src = global.imageServer + idCardPic2;
+
+                    if(bizLicesePic != null)
+                        $("#bizLicensePic")[0].src = global.imageServer + bizLicesePic;
+
+                    if(orgPic != null)
+                        $("#orgCodePic")[0].src = global.imageServer + orgPic;
+
+                    if(taxPic != null)
+                        $("#taxCodePic")[0].src = global.imageServer + taxPic;
+                }
+                else
+                {
+                    console.error(msg.status.errorMsg);
+                }
+			}
+			else if(msg.status.statusCode != global.status.success)
+			{
+				console.error(msg.status.statusCode + ":" + msg.status.errorMsg);
+			}
+		}
+	})
+
+	//初始化数据
+	$("#telephone").html("手机号:" + $.cookie("telphone"));
+})

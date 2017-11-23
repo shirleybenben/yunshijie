@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="editApp">
+    <head ng-controller="head">
+        <meta charset="utf-8">
+        <title>个人中心</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>
+        <link rel="stylesheet" type="text/css" href="css/supply_hall.css"/>
+        <link rel="stylesheet" type="text/css" href="css/center_news.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dialog.css"/>
+		<link rel="shortcut icon" ng-href="{{path}}" />
+    </head>
+    <body ng-controller="qDVDeatil">
+    	<headtop></headtop>
+		<div class="order_tit order_list_w">
+			<div class="order_top clearfix wrap">
+				<div class="order_top_l">
+					<ul class="clearfix tab_tit">
+						<li>
+							<a href="center_basicinfo.htm">我的账户</a>
+						</li>
+						<li class="current">
+							<a href="driver_list.htm">车辆及司机信息</a>
+						</li>
+						<li>
+							<a href="running_route.htm">常跑线路</a>
+						</li>
+					</ul>
+				</div>
+				<div class="order_top_l order_top_r clearfix">
+					<ul class="clearfix tab_tit">
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="car_w wrap driver_w" ng-controller="getDriverInfo">
+			<div class="breadcrumd">
+				<a href="#">车辆及司机信息</a> > 司机信息
+			</div>
+			<div class="panel clearfix">
+				<div class="panel_l">
+					<span class="panel_l_l"></span>
+					<div class="panel_l_r">
+						<p ng-bind="driverInfo.realName"></p>
+						<p>
+							<em>手机号</em></br>
+							<em ng-bind="driverInfo.telphone | telNoSpace"></em>
+						</p>
+						<p>
+							<em>身份证号</em></br>
+							<em ng-bind="driverInfo.idno | idNo"></em>
+						</p>
+					</div>
+				</div>
+				<ul class="panel_r">
+					<li>
+						<p class="text">身份证照片</p>
+						<p>
+							<span>
+								<img ng-src="{{server}}{{driverInfo.idFImageRefId}}{{cut}}"/>
+							</span>
+							<span>
+								<img ng-src="{{server}}{{driverInfo.idBImageRefId}}{{cut}}"/>
+							</span>
+						</p>
+					</li>
+					<li>
+						<p class="text">驾驶证照片</p>
+						<p>
+							<span>
+								<img ng-src="{{server}}{{driverInfo.drivingFImageRefId}}{{cut}}"/>
+							</span>
+						</p>
+					</li>
+					<li>
+						<p class="text">从业资格证照片</p>
+						<p>
+							<span>
+								<img ng-src="{{server}}{{driverInfo.qualifiImageRefId}}{{cut}}"/>
+							</span>
+							<span>
+								<img ng-src="{{server}}{{driverInfo.qualifiImage2RefId}}{{cut}}"/>
+							</span>
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+        <foot></foot>
+         <!-- 大图预览 -->
+        <div class="dialog_wrap" style="display:none;">
+    		<div class="dialog_done dialog_w big_img">
+    			<p class="tit">车辆行驶证照片</p>
+		  		<div class="img_w">
+		  			<img src="#"/>
+		  		</div>
+		  		<span class="close"></span>
+			</div>
+			<div class="mask"></div>
+    	</div>
+    </body>
+    <script type="text/javascript" src="js/vendor/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/vendor/toTop.min.js"></script> 
+    <script type="text/javascript" src="js/vendor/angular.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-resource.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/public/global_config.js"></script>
+	<script type="text/javascript" src="js/public/global.js"></script>
+	<script type="text/javascript" src="js/services/services.js"></script>
+	<script type="text/javascript" src="js/filters/filters.js"></script>
+	<script type="text/javascript" src="js/directives/directives.js"></script>
+	<script type="text/javascript" src="js/controllers/controller.js"></script>
+</html>

@@ -1,0 +1,185 @@
+var YSJSupplyHall = function(){
+	var count = 1;
+	this.table = new YSJTable({
+		page : $('.handle-page'),
+		content : $('.order_list'),
+		url : "/api/source/query",
+		method  : 'get',
+		pageNumber : 0,
+		pageSize : 10,
+		rowRender : function(index, row){
+			return new YSJSourceRowL(row);
+		},
+		onBeforeLoad : function(param){
+			if(param.count <= 2){
+				if(global.QueryString.key){
+					param.lineId = global.QueryString.key;
+				}
+				var count = global.QueryString.count;
+				$(".tab_tit").find("li:eq("+count+")").addClass("current").siblings().removeClass("current");
+			}
+			if(param.lineId){
+				$(".class_2").attr("ref",param.lineId);
+			}
+			
+			return param.lineId != null;
+		}
+	});
+	
+	this.init = function(){
+		var _this = this;
+		_this.getLines();
+	};
+
+	this.getLines = function(){
+		var _this = this;
+		$.ajax({
+			type: "get",
+			url: global.server + '/api/line/getLineList',
+			success: function (msg) {
+				if (msg && msg.status && msg.status.statusCode == global.status.success) {
+                    var data = msg.data;
+                    _this.fillLineData(data);
+                }
+			}
+		});
+	};
+
+	this.selectCountry= function(param){
+		var _this = this,
+			params = {
+				lineId: param.lineId ? param.lineId:$(".class_2").attr("ref")
+			}
+
+		$(".filter_w li").unbind('click').bind('click',function(){
+			var len = $(this).find(".ol_w li").length,
+				_ol = $(this).find(".ol_w");
+			if(len<5){
+				_ol.find(".select_ol").css("cssText","height: auto !important")
+			}else{
+				_ol.find(".select_ol").css("cssText","height: 200px !important")
+			}
+			_ol.toggle().parents("li").siblings().find(".ol_w").hide();
+		})
+
+		$(".class_2").off('click').on('click','li',function(){
+			params.startCodeC = $(this).attr("value");
+			_this.loadData(params);
+		});
+
+		$(".class_3").off('click').on('click','li',function(){
+			params.endCodeC = $(this).attr("value");
+			console.log(params);
+			_this.loadData(params);
+		})
+
+		$(".needLength li").unbind('click').bind('click',function(){
+			params.needLength = isNaN($(this).attr("val"))?"":$(this).attr("val");
+			_this.loadData(params);
+		})
+
+		$(".needType li").unbind('click').bind('click',function(){
+			params.needType = $(this).attr("value");
+			_this.loadData(params);
+		})
+
+		$(".pubdate").unbind('click').bind('click',function(){
+			if(!params.sort){
+				params.sort = "01";
+			}else{
+				params.sort = (params.sort=="01")?"02":"01";
+			}
+			if(params.sort == "01"){
+				$(this).removeClass("check_up").addClass("check_down");
+			}else{
+				$(this).removeClass("check_down").addClass("check_up");
+			}
+			_this.loadData(params);
+		})
+
+		$(".back_source").unbind('click').bind('click',function(){
+			$(".order_list").empty();
+			var returned ="";
+			if(!params.returned){
+				params.returned = "01";
+				$(this).find("span").addClass("checked");
+			}else{
+				$(this).find("span").removeClass("checked");
+				params.returned =""
+			}
+			_this.loadData(params);
+		})
+	}
+	
+	this.fillLineData = function(data){
+		var _this = this,plineId="";
+		var container = $('.tab_tit'),
+			plineId={};
+		container.empty();
+		$.each(data, function(i, j){
+			var el = $('<li data-dept="'+j.departureCode+'" data-dest="'+j.destinationCode+'"><a href="javascript:;">'+j.departureCodeCn+'——'+j.destinationCodeCn+'</a></li>');
+
+			el.click(function(){
+				el.addClass('current').siblings('li').removeClass('current');
+				$(".ol_w").hide();
+				$(".back_source").find("span").removeClass("checked");
+				$(".pubdate").removeClass("check_up").removeClass("check_down");
+				$(".returned").attr("checked",false);
+				$('select').prop('selectedIndex', 0);
+				var lineId = el.attr('ref'),
+					param = {},
+					dept = el.attr("data-dept"),
+					dest = el.attr("data-dest");
+				param.lineId = lineId;
+				plineId = {lineId:lineId};
+				count +=1;
+				param.count = count;
+				_this.loadData(param);
+				//数据源countrySelect.js
+				var sdCountry = getCountrySelect.getSecondLevel();
+				if(global.QueryString.q && count<=2){
+					sdCountry({regionCode:global.QueryString.e,"class":"2"});
+					sdCountry({regionCode:global.QueryString.q,"class":"3"});
+				}else{
+					sdCountry({regionCode:dept,"class":"2"});
+					sdCountry({regionCode:dest,"class":"3"});
+				}
+				_this.selectCountry(plineId);
+			});
+
+			el.attr('ref',j.lineInfoId);
+			container.append(el);
+		});
+
+		if(data.length >=5){
+			$('.order_top_m').remove();
+		}
+		var first = container.find('li:first');
+		if(first.length>0){
+			first.addClass('current').get(0).click();
+		}
+	};
+	
+	
+	this.loadData = function(param){
+		var _this = this;
+		var table = _this.table;
+		table.load(param);
+	}
+	
+	
+	this.init();
+}
+
+
+$(function(){
+	new YSJSupplyHall();
+	global.coffee({
+		"click":{
+			"#searchWin": function(){
+				var queryContent = $("#queryContent").val();
+				window.open('search_list.htm?queryContent='+queryContent,'_blank')
+			}
+		}
+	})
+});

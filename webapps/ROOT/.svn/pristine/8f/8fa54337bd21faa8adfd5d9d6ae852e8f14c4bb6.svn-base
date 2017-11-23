@@ -1,0 +1,63 @@
+<div class="quote_w price_w select_car perfect">
+	<div class="price_detail">
+		<dl class="clearfix">
+			<dt>报价</dt>
+			<dd>
+				<i>12,000.00</i>
+			</dd>
+		</dl>
+		<dl class="clearfix">
+			<dt>留言</dt>
+			<dd ng-bind="info.remark"></dd>
+		</dl>
+		<div class="clearfix panel">
+			<div class="price_l">
+				<p>
+					<span>预付款</span>
+					<em>2,000.00</em>
+				</p>
+				<p>
+					<span>尾款</span>
+					<em class="font14">7,000.00</em>
+				</p>
+			</div>
+			<div class="price_l tip_box">
+				装车完毕后，预付款会自动打到您的账户</br>
+				纸质回单上传完毕后，尾款会自动打到您的账户
+			</div>
+		</div>
+	</div>
+	<div class="title">使用车辆及司机</div>
+	<ul class="con">
+		<li class="clearfix">
+			<div class="con_l">
+				<div class="con_l_l">
+					<img src="img/car_pic.png">
+				</div>
+				<div class="con_l_r">
+					<p class="font18">粤 A8888888</p>
+					<p>    
+						<span>车长：9.5 米</span>
+						<span class="pl16">车型：箱式</span>
+					</p>
+				</div>
+			</div>
+			<div class="con_r">
+				<div class="driver selected">
+					<span class="select_btn"></span>
+					<div class="driver_r">
+						<p>张文丽</p>
+						<p class="tel">138 4388 5688</p>
+					</div>
+				</div>
+				<div class="driver selected">
+					<span class="select_btn"></span>
+					<div class="driver_r">
+						<p>张文丽</p>
+						<p class="tel">138 4388 5688</p>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

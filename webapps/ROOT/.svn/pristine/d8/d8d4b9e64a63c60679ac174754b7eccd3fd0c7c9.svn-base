@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <title>登录</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/login.css"/>
+    </head>
+    <body>
+    	<div class="header log_head">
+			<h1 class="logo">
+				<a href="#">
+					<img src="img/logo.png"/>
+				</a>
+			</h1>
+		</div>
+    	<div class="wrap">
+    		<div class="con_w">
+    			<div class="log_tit">
+	    			<h2>运势界车货匹配平台</h2>
+	    			<p>使用您的运势界账户登录</p>
+	    		</div>
+	    		<div class="log_con">
+	    			<div class="touxiang">
+	    				<img src="img/touxiang.png" height="102" width="102">
+	    			</div>
+	    			<div class="log_inps">
+	    				<form id="login" method="" action="" onsubmit="return false">
+							<p>
+								<input type="text" placeholder="请输入手机号" name="phone" class="phone" id="phone"/>
+								<span class="reg_hint"></span>
+							</p>
+							<p>
+								<input type="password" placeholder="请输入密码" name="pass" class="pass" id="pass" />
+								<span class="reg_hint"></span>
+							</p>
+							<p>
+								<input type="submit" name="submit" id="LoginBtn" value="登&nbsp;录" class="LoginBtn" />
+							</p>
+							<p class="forget_pass">
+								<a href="forget_pass.htm">忘记密码?</a>
+							</p>
+						</form>
+	    			</div>
+	    		</div>
+	    		<div class="to_reg">
+	    			<a href="reg.htm">注册账号</a>
+		    	</div>
+    		</div>
+    	</div>
+    	<div class="footer"></div>
+    </body>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/jquery.md5.js"></script>
+	<script type="text/javascript" src="js/global_config.js"></script>	
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
+</html>

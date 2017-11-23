@@ -1,0 +1,29 @@
+/*
+* @Author: Administrator
+* @Date:   2016-08-29 08:59:09
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-09-21 18:59:12
+*/
+.banner_w{position:relative;height:450px;}
+.banner_bg{width:1920px;height:450px;position:absolute;left:50%;margin-left:-960px;text-align:center;background:url(../img/banner_bg.png) no-repeat center;}
+.about_w{background-color:#fff;}
+.about{width:1442px;margin:0 auto;padding:158px 0 128px;}
+.about_l{float: left;width:613px;height:503px;background:url(../img/about_l_bg.png) no-repeat center;}
+.about_r{float: left;width:637px;margin:15px 0 0 60px;}
+.about_r .tit{font-size:22px;color:#202028;padding-left:16px;background:url(../img/about_tit_bg.png) no-repeat left center;margin-bottom:50px;}
+.about_r p{font-size:16px;color:#5e5e76;padding-left:42px;background:url(../img/icon_1.png) no-repeat 15px 12px;line-height:38px;margin-bottom:40px;}
+.about_r p:nth-child(3){background-image:url(../img/icon_2.png);background-position: 15px 13px;}
+.about_r p:nth-child(4){background-image:url(../img/icon_3.png);background-position: 15px 13px;}
+.agent_serve{height:660px;background-color:#f4f5f8;}
+.agent_serve .agent{width:1192px;margin:0 auto;text-align:center;}
+.agent_serve .agent .tit{font-size:24px;color:#333;position:relative;display:inline-block;margin-top:122px;}
+.agent_serve .agent .tit:before{content:"";display:block;width:151px;height:1px;background-color:#dfdee3;position:absolute;top:18px;left:-173px;}
+.agent_serve .agent .tit:after{content:"";display:block;width:151px;height:1px;background-color:#dfdee3;position:absolute;top:18px;left:208px;}
+.agent_serve .agent ul{margin-top:164px;}
+.agent_serve .agent ul li{float:left;padding-top:88px;background:url(../img/agent_bg_1.png) no-repeat top center;margin-right:60px;}
+.agent_serve .agent ul li:nth-child(2){background-image:url(../img/agent_bg_2.png);}
+.agent_serve .agent ul li:nth-child(3){background-image:url(../img/agent_bg_3.png);}
+.agent_serve .agent ul li:nth-child(4){background-image:url(../img/agent_bg_4.png);margin-right:0px;}
+.agent_serve .agent ul li span{display:block;text-align:center;font-size:28px;color:#333;}
+.agent_serve .agent ul li span:nth-child(2){font-size:14px;color:#666;}
+.driver_serve{background-color:#fff;}

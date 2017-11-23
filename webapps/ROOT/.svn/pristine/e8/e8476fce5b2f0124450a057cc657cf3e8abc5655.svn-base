@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <title>个人中心</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>
+        <link rel="stylesheet" type="text/css" href="css/supply_hall.css"/>
+        <link rel="stylesheet" type="text/css" href="css/center_news.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dialog.css"/> 
+    </head>
+    <body style="background-color:#fbfbfb;">
+		<div class="con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="index.htm">
+						<img src="img/c_logo.png" height="45" width="155">
+					</a>
+				</div>
+				<ul class="nav clearfix">
+					<li>
+						<a href="index.htm">首页</a>
+					</li>
+					<li>
+						<a href="supply_hall.htm">我的货源</a>
+					</li>
+					<li>
+						<a href="my_order.htm">我的订单</a>
+					</li>
+				</ul>
+				<div class="search_w">
+					<span class="notice"></span>
+					 <!-- 有消息加入类名has_notice -->
+					<span class="user">
+						<a href="center_basicinfo.htm" class="current"></a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="order_tit order_list_w">
+			<div class="order_top clearfix wrap">
+				<span class="lines">个人中心：</span>
+				<div class="order_top_l">
+					<ul class="clearfix tab_tit">
+						<li class="current">
+							<a href="center_basicinfo.htm">我的资料</a>
+						</li>
+						<li>
+							<a href="javascript:;">财务-申请付款表</a>
+						</li>
+						<li>
+							<a href="driver_list.htm">司机及车辆信息</a>
+						</li>
+						<li>
+							<a href="running_route.htm">常跑线路</a>
+						</li>
+						<li>
+							<a href="javascript:;">消息通知</a>
+						</li>
+					</ul>
+				</div>
+				<div class="order_top_l order_top_r clearfix">
+					<ul class="clearfix tab_tit">
+						<li>
+							<a href="javascript:;">设置</a>
+						</li>
+						<li>
+							<a href="javascript:;">规则</a>
+						</li>
+						<li>
+							<a href="javascript:;">帮助</a>
+						</li>
+						<li>
+							<a href="javascript:;">退出</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="wrap trans_records records_detail">
+			<div class="tit clearfix">
+				<span>记录详情</span>
+			</div>
+		  	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+		  		<thead>
+		  			<tr>
+		  				<th align="left" width="150">交易名称</th>
+		  				<th align="right" width="113">实付金额</th>
+		  				<th align="right" width="177">首付款</th>
+		  				<th align="right" width="178">尾款</th>
+		  				<th align="right" width="178">退押金</th>
+		  				<th align="right" width="182">货损货差</th>
+		  				<th align="right" width="204">总金额</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+		  			<tr>
+		  				<td align="left" width="150">运势界-运费发放</td>
+		  				<td align="right" width="113">+3,200.00</td>
+		  				<td align="right" width="177">+3,000.00</td>
+		  				<td align="right" width="178">+0.00.00</td>
+		  				<td align="right" width="178">+200.00</td>
+		  				<td align="right" width="182">-0.00</td>
+		  				<td align="right" width="204">+3,000.00</td>
+		  			</tr>
+		  		</tbody>
+		  	</table>
+			<div class="news_page wrap clearfix">
+	            <div id="page" class="m-pagination"></div>
+	            <div id="eventLog"></div>
+				<div class="page">
+					分页
+				</div>
+			</div>
+		</div>
+		<div class="con_foot">
+			<div class="wrap clearfix foot_w">
+				<p>
+					<span class="copyright">条款 - 隐私权         ©2016 guangzhouzhihong</span>
+					<span class="tel">
+						<i>400-888-0906</i>
+						</br>
+						<i class="time">周一至周日  8:00-22:00</i>
+					</span>                                                 
+				</p>
+			</div>
+		</div>
+		<!-- 编辑备注信息对对话框 -->
+		<div class="dialog_wrap" style="display:none;">
+    		<div class="dialog_w">
+		  		<div class="tit">编辑备注信息</div>
+		  		<div class="con">
+		  			<dl class="clearfix">
+			  			<dt>名称：</dt>
+			  			<dd>运势界-运费</dd>
+			  		</dl>
+			  		<dl class="clearfix">
+			  			<dt>备注：</dt>
+			  			<dd>
+			  				<textarea></textarea>
+			  			</dd>
+			  		</dl>
+			  		<dl class="clearfix">
+			  			<dt></dt>
+			  			<dd class="font12">可以写 50 个字</dd>
+			  		</dl>
+			  		<dl class="clearfix">
+			  			<dt></dt>
+			  			<dd>
+			  				<button>确定</button>
+			  			</dd>
+			  		</dl>
+		  		</div>
+		  		<span class="close"></span>
+			</div>
+			<div class="mask"></div>
+    	</div>
+    </body>
+</html>

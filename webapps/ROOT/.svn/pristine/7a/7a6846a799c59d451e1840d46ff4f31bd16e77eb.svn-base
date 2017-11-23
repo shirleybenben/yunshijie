@@ -1,0 +1,25 @@
+rm -fr ./ROOT
+mkdir ./ROOT
+cp ./*.html ./ROOT
+cp ./*htm ./ROOT
+cp -R ./css/ ./ROOT/css
+cp -R ./js/ ./ROOT/js
+cp -R ./img/ ./ROOT/img
+cp -R ./WEB-INF/ ./ROOT/WEB-INF
+
+if [[ $1 == "test" ]]; then
+cp -f ./properties/global_config_test.js ./ROOT/js/global_config.js
+elif [[ $1 == "dev" ]]; then
+cp -f ./properties/global_config_dev.js ./ROOT/js/global_config.js
+elif [[ $1 == "prd" ]]; then
+cp -f ./properties/global_config_prd.js ./ROOT/js/global_config.js
+elif [[ $1 == "poc" ]]; then
+cp -f ./properties/global_config_poc.js ./ROOT/js/global_config.js
+elif [[ $1 == "local" ]]; then
+cp -f ./properties/global_config_local.js ./ROOT/js/global_config.js
+else
+cp -f ./properties/global_config_prd.js ./ROOT/js/global_config.js
+fi
+
+zip -r ./root.zip ./ROOT
+rm -fr ./ROOT

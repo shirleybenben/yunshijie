@@ -1,0 +1,81 @@
+var editApp = angular.module("editApp",[]);
+
+editApp.controller("editInfoController",['$scope','$http','$q',function editInfoController($scope,$http,$q) {
+		$scope.saveInfo = function(){
+			var len = 0,slen =0,relList=[];
+			$scope.realList=[];
+			$scope.real={};
+			$scope.postData={
+				"plateNumber": "",
+				"licenseImageRefId": "",
+				"ocImageRefId": "",
+				"ciImageRefId": "",
+				"viImageRefId": ""
+			}
+			$scope.input = $('.wrap').find("input");
+			for (var i = 0; i < $scope.input.length; i++) {
+				var list = $scope.input[i],
+					value = $(list).val();
+					if(i<=4){
+						switch (i){
+							case 0:
+								$scope.postData.plateNumber = value;
+							break;
+							case 1:
+								$scope.postData.licenseImageRefId = value;
+							break;
+							case 2:
+								$scope.postData.ocImageRefId = value;
+							break;
+							case 3:
+								$scope.postData.ciImageRefId = value;
+							break;
+							case 4:
+								$scope.postData.viImageRefId = value;
+							break;
+						}
+					}else{
+						relList.push(value);
+					}
+			}
+			$.each(relList,function(j,item){
+				var index = (j+1)%7;
+				switch(index){
+						case 0:
+							$scope.real.idFImageRefId = item;
+						break;
+						case 1:
+							$scope.real.idBImageRefId = item;
+						break;
+						case 2:
+							$scope.real.drivingFImageRefId = item;
+						break;
+						case 3:
+							$scope.real.qualifiImageRefId = item;
+						break;
+						case 4:
+							$scope.real.realName = item;
+						break;
+						case 5:
+							$scope.real.idno = item;
+						break;
+						case 6:
+							$scope.real.telphone = item;
+						break;
+					}
+				if(index == 0){
+					$scope.realList.push($scope.real);
+					$scope.real={}
+				}
+			})
+
+			$scope.postData.realName= $scope.realList;
+			
+			$http.post(global.server + "/api/quoted/addQuotedInfo",$scope.postData).success(function(data,status){
+				console.log(data);
+			}).error(function(data,status){
+				console.log(data);
+			});
+		}
+	}
+]);

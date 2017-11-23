@@ -1,0 +1,199 @@
+/**
+ * 
+ */
+var YSJCar = function(options){
+	this.opt = $.extend({}, options);
+	this.driverNum = 1;
+	this.el = $('<div class="tab" style="display:block;"> \
+				<div class="driver_w edit_driver_w clearfix"> \
+				<div class="status"> \
+				<div class="inps"> \
+					<p> \
+						<label for=""><strong>车牌号</strong></label> \
+						<input maxlength="7" data-column="plateNumber" class="text-column" type="text" placeholder="粤A12345"/> \
+					</p> \
+				</div> \
+			</div> \
+			<div class="upload_img_w"> \
+				<div class="upload_img" data-column="licenseImageRefId"> \
+					<img src="img/car.png"> \
+				</div> \
+				<div class="upload_img" data-column="ocImageRefId"> \
+					<img src="img/trans.png"> \
+				</div> \
+				<div class="upload_img" data-column="viImageRefId"> \
+					<img src="img/add_sybx.png"> \
+				</div> \
+				<div class="upload_img" data-column="ciImageRefId"> \
+					<img src="img/add_qzbx.png"> \
+				</div> \
+			</div> \
+		</div> \
+	</div>');
+	
+	this.modify = false;
+	this.allowSave = true;
+	
+	this.imageList = [];
+	this.driverList = [];
+	
+	this.addDriver = function(driverInfo){
+		var _this = this;
+		var num = $('.tab_tit').find('.driver_tab_title').size();
+		var el = $('<li class="driver_tab_title"><a href="javascript:;" class="check"><strong>司机信息</strong></a></li>');
+		el.insertBefore('.add_driver');
+		var append = $('#info_tab')
+		var driver = new YSJDriver({
+			append : append,
+			data : driverInfo
+		});
+		_this.driverList.push(driver);
+		_this.driverNum = num+1;
+	}
+	
+	this.bindEvent = function(){
+		var _this = this;
+		$('.add_driver').click(function(){
+			_this.addDriver();
+			if(_this.driverNum>5){
+				$(this).remove();
+			}
+		});
+		
+		$('.tab_tit').on('click','li',function(){
+			$(this).siblings('li').removeClass('current');
+			$(this).addClass('current');
+			var i = $(this).index();
+			$('#info_tab>.tab').hide();
+			$('#info_tab>.tab:eq('+i+')').show();
+		});
+		
+	}
+	
+	
+	this.init = function(options){
+		var _this = this;
+		$("#info_tab").append(_this.el);
+		_this.bindEvent();
+		 if (options && options.vehicleInfoId) {
+			 console.log('init vehicle data with id: ' + options.vehicleInfoId);
+	            var url = "/api/driver/queryDriverAndVehicleDetail?vehicleInfoId=" + options.vehicleInfoId;
+	            var _this = this;
+	            $.get(global.server + url, function (msg) {
+	                if (msg && msg.status && msg.status.statusCode == global.status.success) {
+	                	var data = msg.data;
+	                	_this.fillData(data);
+	                }
+	            });
+		 } else {
+			 console.log('new vehicle');
+			 _this.el.find('.upload_img').each(function(i, j){
+				var image = new YSJImage({
+	           		view: $(this),
+	           		category: $(this).data('column'),
+	           		require:"个人免冠照，请确保身份证四角完整，文字清晰可辨认",
+	           		exClass :"exClass"
+	            });
+				_this.imageList.push(image);
+			})
+			_this.addDriver({});
+		 }
+	}
+	
+	this.fillData = function(data){
+		var _this = this;
+		this.modify = true;
+		this.allowSave = data.canEdit;
+		_this.el.find('.text-column').each(function(i, j){
+			var self = $(j);
+			var _p = self.data('column');
+			self.val(data[_p]);
+		});
+		_this.el.find('.upload_img').each(function(i, j){
+			var _p = $(this).data('column');
+			var image = new YSJImage({
+           		view: $(this),
+           		category: _p,
+           		require:"个人免冠照，请确保身份证四角完整，文字清晰可辨认",
+           		exClass :"exClass",
+           		imageId : data[_p]
+            });
+			_this.imageList.push(image);
+		});
+		var driverList = data.driverList;
+    	$.each(driverList, function(i, driver){
+    		_this.addDriver(driver);
+    	});
+	}
+	
+	this.getData = function(){
+		var _this = this;
+		var data = {};
+		_this.el.find('.text-column').each(function(i, j){
+			var self = $(j);
+			var _p = self.data('column');
+			var _v = self.val();
+			data[_p] = _v;
+		});
+		if(_this.modify){
+			data.vehicleInfoId = _this.opt.vehicleInfoId;
+		}
+		$.each(_this.imageList, function(i, j){
+			var result = j.postToServer('/api/driver/imageUpload');
+			if(result != null){
+				var column = result.column;
+				var imageId = result.imageId;
+				data[column] = imageId;
+			}
+		});
+		var driverList = [];
+		$.each(_this.driverList, function(i, j){
+			var data = j.getData();
+			driverList.push(data);
+		});
+		data.driverList = driverList;
+		return data;
+	}
+	
+	this.init(options);
+};
+
+YSJCar.prototype.validPost = function(data){
+	var _this = this;
+	var allow = _this.allowSave;
+	if(!allow){
+		alert("当前信息审核中，不能修改。");
+		return false;
+	}
+	return true;
+}
+
+YSJCar.prototype.doSave = function(){
+	var _this = this;
+	var data = _this.getData();
+	var valid = _this.validPost(data);
+	if(valid){
+		var dataStringify = JSON.stringify(data);
+		var url = '/api/driver/addDriverAndVehicle';
+		if(_this.modify){
+			url = '/api/driver/updateDriverAndVehicleInfo'
+		}
+	    $.ajax({
+	        url: global.server + url,
+	        type: "POST",
+	        contentType: "application/json; charset=utf-8",
+	        data: dataStringify,
+	        dataType: "json",
+	        success: function (msg) {
+	            if (msg && msg.status && msg.status.statusCode == global.status.success) {
+	            	var vehicleInfoId = msg.data.vehicleInfoId;
+	            } else {
+	            	alert(msg.status.errorMsg);
+	            }
+	        }
+	    });
+	}
+}
+
+
+

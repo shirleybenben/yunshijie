@@ -1,0 +1,67 @@
+<div class="con_header" ng-controller="getUnreadMessageCount">
+	<div class="wrap clearfix">
+		<div class="logo">
+			<a href="index.htm">
+				<img src="img/c_logo.png"/>
+			</a>
+		</div>
+		<div ng-if="states != 10">
+			<ul class="nav clearfix" ng-controller="navState">
+				<li ng-class="{'current': states == '1'}">
+					<a href="index.htm" attr-mark="index">首页</a>
+				</li>
+				<li ng-class="{'current': states == '2'}">
+					<a ng-href="{{mark1}}" attr-mark="supply_hall" ng-click="saveLink($event)">我的货源</a>
+				</li>
+				<li ng-class="{'current': states == '3'}">
+					<a ng-href="{{mark2}}" attr-mark="my_order" ng-click="saveLink($event)">我的订单</a>
+				</li>
+			</ul>
+			<div class="search_w">
+				<div class="clearfix">
+					<a ng-href="{{mark3}}" ng-click="saveLink($event)" class="go_news">
+						<span attr-mark="center_news" ng-class="{'news': true,'has_news': flag,'press_no_news':states=='4'}"></span>
+					</a>
+					<a ng-href="{{mark4}}" attr-mark="center_basicinfo" ng-click="saveLink($event)" ng-class="{'go_center':true,'current':states=='5'}" ng-mouseover="hover = false" ng-mouseleave="hover = true"></a>
+					<!-- 个人账户下拉框 -->
+					<span ng-class="{'user_select':true,'hide': hover}" ng-mouseover="hover = false" ng-mouseleave="hover = true">
+						<a ng-href="{{mark4}}" attr-mark="center_basicinfo" ng-click="saveLink($event)">我的账户</a>
+						<a href="help.htm" class="help">帮助</a>
+						<a ng-if="isLogin" href="javascript:;" class="exit" ng-click="showDialog()">退出</a>
+					</span>
+				</div>
+				<!-- 退出账户确认框 -->
+				<div class="dialog_wrap hide_dialog logout_dialog">
+					<div class="dialog_done dialog_w close_price">
+				  		<p class="star">
+				  			<img src="img/exit_pic.png"/>
+				  		</p>
+				  		<p class="txt">
+				  			<span class="txt_d">确定退出账户？</span></br>
+				  		</p>
+				  		<p class="txt txt_we">
+				  		</p>
+				  		<p class="resure clearfix">
+				  			<button class="sure" ng-click="logout()">取消</button>
+				  			<button class="cancel" ng-click="cancel()">确定</button>
+				  		</p>
+				  		<span class="close" ng-click="cancel()"></span>
+					</div>
+					<div class="mask"></div>
+				</div>
+				<!-- 账户已登出确认框 -->
+				<div class="dialog_wrap hide_dialog signout_dialog">
+					<div class="dialog_done dialog_w close_price sign_out">
+				  		<p class="star">
+				  			<img src="img/sign_out.png"/>
+				  		</p>
+				  		<p class="txt">
+				  			<span class="txt_d">账户已登出</span></br>
+				  		</p>
+				  	</div>
+					<div class="mask"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="editApp">
+    <head>
+        <meta charset="utf-8">
+        <title>个人中心</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>
+        <link rel="stylesheet" type="text/css" href="css/supply_hall.css"/>
+        <link rel="stylesheet" type="text/css" href="css/center_news.css"/>
+    </head>
+    <body>
+    	<headtop></headtop>
+		<div class="order_tit order_list_w">
+			<div class="order_top clearfix wrap">
+				<div class="order_top_l">
+					<ul class="clearfix tab_tit">
+						<li>
+							<a href="center_basicinfo.htm">我的账户</a>
+						</li>
+						<!-- <li>
+							<a href="center_pay_schedule.htm">财务-申请付款表</a>
+						</li> -->
+						<li class="current">
+							<a href="driver_list.htm">车辆及司机信息</a>
+						</li>
+						<li>
+							<a href="running_route.htm">常跑线路</a>
+						</li>
+					</ul>
+				</div>
+				<div class="order_top_l order_top_r clearfix">
+					<ul class="clearfix tab_tit">
+						<!-- <li>
+							<a href="javascript:;">设置</a>
+						</li>
+						<li>
+							<a href="javascript:;">规则</a>
+						</li>
+						<li>
+							<a href="javascript:;">帮助</a>
+						</li>
+						<li>
+							<a href="javascript:;" class="exit">退出</a>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="nav_bar wrap clearfix" ng-controller="pageDAVList">
+			<div class="nav">
+				<ul class="clearfix">
+					<li class="tab current" ng-click="changeTab(0,'00')">审核通过</li>
+					<li class="tab" ng-click="changeTab(1,'01')">待审核</li>
+					<li class="tab" ng-click="changeTab(2,'02')">审核未通过</li>
+				</ul>
+			</div>
+			<!-- 审核通过 -->
+			<ol class="list_group">
+			<!-- 待审核加类名wait_audit,审核未通过加类名audit_unpass -->
+				<li class="clearfix" ng-repeat="list in lists">
+					<a href="car_info.htm?id={{list.vehicleInfoId}}" attr-id="{{list.vehicleInfoId}}">
+						<div class="list_l">
+							<span class="list_l_l"></span>
+							<div class="list_l_r">
+								<p class="font18" ng-bind="list.plateNumber"></p>
+								<p>
+									<em>车长：<em></em> 米</em>
+									<em>车型：<em></em></em>
+								</p>
+							</div>
+						</div>
+					</a>
+					<div class="list_r">
+						<a href="driver_info.htm?id={{list.vehicleInfoId}}" attr-id="{{list.vehicleInfoId}}" ng-repeat="dlist in list.driverList">
+							<div class="list_r_item">
+								<p class="font14" ng-bind="dlist.realName"></p>
+								<p ng-bind="dlist.telphone"></p>
+							</div>
+						</a>
+					</div>
+				</li>
+			</ol>
+			<div class="list_page clearfix wrap">
+				<div class="page_w">
+					<div class="handle clearfix">
+						<div id="kkpager" class="handle-page clearfix skin-tb"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="con_foot">
+			<div class="wrap clearfix foot_w">
+				<p>
+					<span class="copyright">条款 - 隐私权         ©2016 guangzhouzhihong</span>
+					<span class="tel">
+						<i>400-888-0906</i>
+						</br>
+						<i class="time">周一至周日  8:00-22:00</i>
+					</span>                                                 
+				</p>
+			</div>
+		</div>
+    </body>
+    <script type="text/javascript" src="js/vendor/jquery-2.1.1.min.js"></script> 
+    <script type="text/javascript" src="js/vendor/angular.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-resource.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/public/global_config.js"></script>
+	<script type="text/javascript" src="js/public/global.js"></script>
+	<script type="text/javascript" src="js/public/pagination.js"></script>
+	<script type="text/javascript" src="js/services/services.js"></script>
+	<script type="text/javascript" src="js/filters/filters.js"></script>
+	<script type="text/javascript" src="js/directives/directives.js"></script>
+	<script type="text/javascript" src="js/controllers/controller.js"></script>
+</html>

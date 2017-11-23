@@ -1,0 +1,191 @@
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Server version:        Apache Tomcat/7.0.70
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Server built:          Jun 15 2016 16:27:45 UTC
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Server number:         7.0.70.0
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: OS Name:               Windows 7
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: OS Version:            6.1
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Architecture:          amd64
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Java Home:             D:\Java\jdk1.7.0_79\jre
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: JVM Version:           1.7.0_79-b15
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: JVM Vendor:            Oracle Corporation
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: CATALINA_BASE:         D:\apache-tomcat-8080
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: CATALINA_HOME:         D:\apache-tomcat-8080
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Djava.util.logging.config.file=D:\apache-tomcat-8080\conf\logging.properties
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Djava.endorsed.dirs=D:\apache-tomcat-8080\endorsed
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Dcatalina.base=D:\apache-tomcat-8080
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Dcatalina.home=D:\apache-tomcat-8080
+七月 29, 2016 9:03:37 上午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Djava.io.tmpdir=D:\apache-tomcat-8080\temp
+七月 29, 2016 9:03:37 上午 org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+信息: Loaded APR based Apache Tomcat Native library 1.2.7 using APR version 1.5.2.
+七月 29, 2016 9:03:37 上午 org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+信息: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+七月 29, 2016 9:03:37 上午 org.apache.catalina.core.AprLifecycleListener initializeSSL
+信息: OpenSSL successfully initialized (OpenSSL 1.0.2h  3 May 2016)
+七月 29, 2016 9:03:39 上午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["http-apr-8080"]
+七月 29, 2016 9:03:39 上午 org.apache.catalina.startup.Catalina load
+信息: Initialization processed in 4830 ms
+七月 29, 2016 9:03:39 上午 org.apache.catalina.core.StandardService startInternal
+信息: Starting service Catalina
+七月 29, 2016 9:03:39 上午 org.apache.catalina.core.StandardEngine startInternal
+信息: Starting Servlet Engine: Apache Tomcat/7.0.70
+七月 29, 2016 9:03:39 上午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory D:\apache-tomcat-8080\webapps\ROOT
+七月 29, 2016 9:03:40 上午 org.apache.catalina.util.SessionIdGeneratorBase createSecureRandom
+信息: Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [147] milliseconds.
+七月 29, 2016 9:03:40 上午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deployment of web application directory D:\apache-tomcat-8080\webapps\ROOT has finished in 1,737 ms
+七月 29, 2016 9:03:40 上午 org.apache.coyote.AbstractProtocol start
+信息: Starting ProtocolHandler ["http-apr-8080"]
+七月 29, 2016 9:03:40 上午 org.apache.catalina.startup.Catalina start
+信息: Server startup in 1836 ms
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Server version:        Apache Tomcat/7.0.70
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Server built:          Jun 15 2016 16:27:45 UTC
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Server number:         7.0.70.0
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: OS Name:               Windows 7
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: OS Version:            6.1
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Architecture:          amd64
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Java Home:             D:\Java\jdk1.7.0_79\jre
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: JVM Version:           1.7.0_79-b15
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: JVM Vendor:            Oracle Corporation
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: CATALINA_BASE:         D:\apache-tomcat-8080
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: CATALINA_HOME:         D:\apache-tomcat-8080
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Djava.util.logging.config.file=D:\apache-tomcat-8080\conf\logging.properties
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Djava.endorsed.dirs=D:\apache-tomcat-8080\endorsed
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Dcatalina.base=D:\apache-tomcat-8080
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Dcatalina.home=D:\apache-tomcat-8080
+七月 29, 2016 2:18:20 下午 org.apache.catalina.startup.VersionLoggerListener log
+信息: Command line argument: -Djava.io.tmpdir=D:\apache-tomcat-8080\temp
+七月 29, 2016 2:18:20 下午 org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+信息: Loaded APR based Apache Tomcat Native library 1.2.7 using APR version 1.5.2.
+七月 29, 2016 2:18:20 下午 org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+信息: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+七月 29, 2016 2:18:21 下午 org.apache.catalina.core.AprLifecycleListener initializeSSL
+信息: OpenSSL successfully initialized (OpenSSL 1.0.2h  3 May 2016)
+七月 29, 2016 2:18:21 下午 org.apache.coyote.AbstractProtocol init
+信息: Initializing ProtocolHandler ["http-apr-8080"]
+七月 29, 2016 2:18:21 下午 org.apache.coyote.AbstractProtocol init
+严重: Failed to initialize end point associated with ProtocolHandler ["http-apr-8080"]
+java.lang.Exception: Socket bind failed: [730048] ?????????×???(Э?é/???????/???)????í??
+	at org.apache.tomcat.util.net.AprEndpoint.bind(AprEndpoint.java:470)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:650)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:435)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:978)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:560)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:838)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:642)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:667)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:253)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:427)
+
+七月 29, 2016 2:18:21 下午 org.apache.catalina.core.StandardService initInternal
+严重: Failed to initialize connector [Connector[HTTP/1.1-8080]]
+org.apache.catalina.LifecycleException: Failed to initialize component [Connector[HTTP/1.1-8080]]
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:106)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:560)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:838)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:642)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:667)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:253)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:427)
+Caused by: org.apache.catalina.LifecycleException: Protocol handler initialization failed
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:980)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	... 12 more
+Caused by: java.lang.Exception: Socket bind failed: [730048] ?????????×???(Э?é/???????/???)????í??
+	at org.apache.tomcat.util.net.AprEndpoint.bind(AprEndpoint.java:470)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:650)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:435)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:978)
+	... 13 more
+
+七月 29, 2016 2:18:21 下午 org.apache.catalina.startup.Catalina load
+信息: Initialization processed in 1325 ms
+七月 29, 2016 2:18:21 下午 org.apache.catalina.core.StandardService startInternal
+信息: Starting service Catalina
+七月 29, 2016 2:18:21 下午 org.apache.catalina.core.StandardEngine startInternal
+信息: Starting Servlet Engine: Apache Tomcat/7.0.70
+七月 29, 2016 2:18:21 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory D:\apache-tomcat-8080\webapps\ROOT
+七月 29, 2016 2:18:22 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deployment of web application directory D:\apache-tomcat-8080\webapps\ROOT has finished in 363 ms
+七月 29, 2016 2:18:22 下午 org.apache.catalina.startup.Catalina start
+信息: Server startup in 393 ms
+七月 29, 2016 2:18:22 下午 org.apache.catalina.core.StandardServer await
+严重: StandardServer.await: create[localhost:8005]: 
+java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(DualStackPlainSocketImpl.java:106)
+	at java.net.AbstractPlainSocketImpl.bind(AbstractPlainSocketImpl.java:376)
+	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:190)
+	at java.net.ServerSocket.bind(ServerSocket.java:376)
+	at java.net.ServerSocket.<init>(ServerSocket.java:237)
+	at org.apache.catalina.core.StandardServer.await(StandardServer.java:444)
+	at org.apache.catalina.startup.Catalina.await(Catalina.java:781)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:727)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:294)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:428)
+
+七月 29, 2016 2:18:22 下午 org.apache.coyote.AbstractProtocol pause
+信息: Pausing ProtocolHandler ["http-apr-8080"]
+七月 29, 2016 2:18:22 下午 org.apache.catalina.core.StandardService stopInternal
+信息: Stopping service Catalina
+七月 29, 2016 2:18:22 下午 org.apache.coyote.AbstractProtocol stop
+信息: Stopping ProtocolHandler ["http-apr-8080"]
+七月 29, 2016 2:18:22 下午 org.apache.coyote.AbstractProtocol destroy
+信息: Destroying ProtocolHandler ["http-apr-8080"]

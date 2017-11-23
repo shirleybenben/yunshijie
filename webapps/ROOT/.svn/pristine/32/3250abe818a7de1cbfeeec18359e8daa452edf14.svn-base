@@ -1,0 +1,60 @@
+/*
+* @Author: Administrator
+* @Date:   2016-06-20 10:20:17
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-07-05 14:23:58
+*/
+/* 信息录入车辆 */
+.content_w .con_i{background-color:#fff;margin-top:44px;box-shadow: 0px 3px 3px #ccc;}
+.content_w .wrap .c_tit{height:45px;border-bottom:1px solid #dcdcdc;line-height:45px;font-size:18px;color:#363636;padding-left:67px;background:url(../img/cars_bg.png) no-repeat 20px center;}
+.content_w .wrap .cars_con{width:882px;margin:0 auto;margin-top:23px;}
+.content_w .cars_con .cars_con_l{float:left;width:384px;}
+.content_w .cars_con .cars_con_r{float:right;width:410px;}
+.content_w .cars_con .cars_con_r p{margin-top:16px;}
+.content_w .cars_con .cars_con_r p.select_w{margin-top:0px;}
+.content_w .cars_con .cars_con_r .user_w{margin-top:0px;}
+.content_w .cars_con .cars_con_r .btn{margin:22px 0px 10px;}
+.content_w .cars_con .cars_con_r .cars_info p{margin-top:15px;}
+.content_w .cars_con .cars_con_r .cars_info span.select_w{margin-top:5px;display:block;}
+.content_w .cars_con .cars_con_r .cars_info p:nth-child(1){margin-top:0px;}
+.cars_con_l p{width:178px;height:178px;border:1px solid #e5e5e5;border-radius:5px;cursor:pointer;float:left;margin-right:24px;margin-bottom:22px;}
+.cars_con_l p:nth-child(2n){margin-right:0px;}
+.cars_con_r label{font-size:14px;color:#444;height:25px;line-height:25px;}
+.cars_con_r input{width:100%;height:24px;line-height:24px;border:1px solid #a0a0a0;border-radius:2px;padding-left:5px;-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;}
+.cars_con_r input:focus{border:1px solid #2b84fa;}
+.cars_con_r button{width:83px;height:27px;background-color:#ef5b0a;border:1px solid #cb4900;border-radius:2px;color:#fff;font-size:14px;color:#fff;line-height:27px;}
+.cars_con_r button:hover{background-color:#e14d00;}
+.cars_con_r button.cars_btn{float:right;margin:22px 0px 58px;}
+.cars_con_r .selectDark{width:100%;height:24px;line-height:24px;border-radius:2px;}
+.cars_con_r .selectDark .passiveSelect{width:100%;height:24px;line-height:24px;background:url(../img/select_s.png) no-repeat 391px center;-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;}
+.cars_con_r .selectDark li{width:100%;height:24px;line-height:24px;}
+.cars_con_r .selectDark li:hover{color:#f25a0b;}
+.cars_con_r .selectDark .activeSelect{width:100%;height:24px;line-height:24px;background:url(../img/select_s.png) no-repeat 391px center;-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;}
+
+/* 信息录入司机 */
+.content_w .con_dr .c_tit{padding-left:40px;background:url(../img/user_d.png) no-repeat 10px 10px;}
+.cars_con_r div.btn .add{width:70px;height:27px;border:1px solid #dcdcdc;border-radius:3px;background:#eee url(../img/plus-lg.png) no-repeat center;cursor:pointer;float:right;}
+.cars_con_r div.btn .save_btn{float:left;width:83px;height:27px;border:1px solid #cb4900;background-color:#ef5b0a;color:#fff;font-size:14px;line-height:27px;border-radius:2px;margin-left:22px;text-align:center;cursor:pointer;}
+.cars_con_r div.btn .save_btn:hover{background-color:#e14d00;}
+.cars_con_r p.dist{position:relative;}
+.cars_con_r p.dist em{display:block;height:26px;}
+.cars_con_r p.dist span.zhi{display:block;width:14px;height:53px;position:absolute;top:37px;left:-12px;background:url(../img/zhi.png) no-repeat center;}
+.cars_con_r ul.routes{margin:20px 0 60px 0;}
+.cars_con_r ul.routes li{position:relative;cursor:pointer;}
+.cars_con_r ul.routes li span{line-height:30px;font-size:14px;color:#a6a6a6;display:inline-block;width:149px;float:left;}
+.cars_con_r ul.routes li b{line-height:30px;height:30px;float:left;}
+.cars_con_r ul.routes li strong{font-size:18px;color:#424242;margin-left:15px;display:inline-block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;width:90px;float:left;}
+.cars_con_r ul.routes li i{font-style:normal;float:left;}
+.cars_con_r ul.routes li span.to{margin-left:25px;}
+.cars_con_r ul.routes li em.r_close{display:block;width:14px;height:15px;position:absolute;top:8px;right:0px;background:url(../img/r_close.png) no-repeat center;cursor:pointer;}
+.cars_con_r ul.routes li em.r_close:hover{background:url(../img/dio_close_active.png) no-repeat center;}
+.content_w .con_dr{min-height:890px;}
+.cars_con_r .btn_w button{float:left;}
+.cars_con_r .btn_w input.prev_step{color:#727272;background-color:#eee;border:1px solid #dcdcdc;margin-right:22px;float:left;width:83px;height:27px;cursor:pointer;}
+.cars_con_r .btn_w{margin-left:222px;}

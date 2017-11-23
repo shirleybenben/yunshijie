@@ -1,0 +1,195 @@
+(function(window,angular,undefined){
+	var editApp = angular.module("editApp",['main_services','main_filters','ngRoute'])
+	.controller('getRecommendSource',getRSource)
+	// .controller('getRecordList',getRList)
+	.controller('getQOList',getQOList)
+	.controller('getLoaBill',getLoaBill)
+	.controller('getTrackInfo',getTrackInfo)
+	.controller('getMessageList',getMessageList)
+	.controller('getUnreadMessageCount',getUnreadMessageCount)
+
+	function getUnreadMessageCount(getUnreadMessageCount,$scope,$log){
+		$scope.flag = true;
+		$scope.count = 0;
+		setInterval(function(){
+			getUnreadMessageCount.get({},{},function(strData){
+				$scope.count++;
+			})
+		},300000)
+		$scope.$watch('count',function(newValue,oldValue, scope){
+			if($scope.count>0){
+				$scope.flag = true;
+			}else{
+				$scope.flag = false;
+			}
+		})
+	}
+	getUnreadMessageCount.$inject=['getUnreadMessageCount','$scope','$log']
+
+	function getMessageList(getMessageList,$scope,$log){
+		$scope.news =[];
+		/*
+        $scope.$watch('news',function(newValue,oldValue, scope){
+			$scope.news = newValue;
+		})
+		*/
+        // $("#page").page({
+        //     debug: true,
+        //     showInfo: true,
+        //     showJump: true,
+        //     showPageSizes: true,
+        //     remote: {
+        //         url: global_config.server+"/api/message/getMessageList",
+        //         success: function (data) {
+        //             $scope.news = data.data.rows;
+        //             CheckScopeBeforeApply();
+        //         }
+        //     }
+        // })
+
+
+        getMessageList.get({pageSize: 1},{},function(strData){
+        	$scope.news = strData.data.rows;
+        	var num = strData.data.current+1;
+
+        	new Pagination({
+        		page:$("#kkpager"),
+        		totalPage: strData.data.total,
+        		currentPage : num,
+        		onSwitch : function(n){
+					var _index = n-1;
+					// this.selectPage(n);
+					getMessageList.get({pageIndex: _index,pageSize: 1},{},function(strData){
+						$scope.news = strData.data.rows;
+					})
+				}
+        	});
+   //      	kkpager.total = strData.data.total;
+   //      	kkpager.totalRecords = kkpager;
+	  //       kkpager.generPageHtml({
+	  //       	mode : "click",
+			// 	pno : num,
+			// 	total : strData.data.total,
+			// 	totalRecords : strData.data.rows.length,
+			// 	click : function(n){
+			// 		var _index = n-1;
+			// 		this.selectPage(n);
+			// 		getMessageList.get({pageIndex: _index,pageSize: 1},{},function(strData){
+			// 			$scope.news = strData.data.rows;
+			// 		})
+			// 	}
+			// },true)
+        })
+
+        function CheckScopeBeforeApply() {
+		    if(!$scope.$$phase) {//当angular不处于$apply()/$digest()状态的时候
+		         $scope.$apply();//执行检测
+		    }
+		}
+	}
+	getMessageList.$inject = ['getMessageList','$scope','$log']
+
+	function getTrackInfo(getTrackInfo,getGeo,$scope,$log){
+		var count=0;
+		getTrackInfo().then(function(strData){
+			$scope.Info = strData.data.info;
+			$scope.track = strData.data.track;
+		}).then(function(){
+			var param={},
+				trackList=[],
+				starCity = $scope.Info.senderArea[1].regionName+$scope.Info.senderArea[0].regionName+$scope.Info.senderAddress,
+				endCity = $scope.Info.receiverArea[1].regionName+$scope.Info.receiverArea[0].regionName+$scope.Info.receiverAddress;
+				trackList.push([starCity]);
+				trackList.push([endCity]);
+			if($scope.track.length>0){
+				var speedList=[],exception=[],exceptionName=[],expSTime=[],expETime=[],track = $scope.track,param={};
+				
+				for(var i = 0;i<track.length;i++){
+					trackList.push([track[i].latitude,track[i].longitude]);
+					speedList.push(track[i].speed);
+					exception.push([track[i].isException]);
+					exceptionName.push([track[i].itemName]);
+					expSTime.push([track[i].feedbackTime]);
+					expETime.push([track[i].endTime]);
+				}
+			}
+			param ={
+				okey : trackList,
+				carNo : $scope.Info.plateNumber,
+				exception : exception,
+				speed : [],
+				exceptionName : exceptionName,
+				expSTime: expSTime,
+				expETime: expETime,
+				addStar: starCity,
+				addEnd: endCity,
+				speed: speedList
+			}
+			$scope.map = $("#big_map").GdMap(param);
+
+		})
+
+		$scope.getGeo = function(){
+			var action = new MarkerAction();
+			$(".getLPos").attr("disabled","disabled").addClass("disabled-class");
+			getGeo().then(function(strData){
+				if(strData.status.statusCode == "200"){
+					var options = {
+						position:[strData.data.longitude,strData.data.latitude],
+						speed:strData.data.speed,
+						feedbackTime: strData.data.feedbackTime,
+						carNo: $scope.Info.plateNumber
+					};
+					if(count == 0){
+						action.addMarker($scope.map, options);
+					}else{
+						action.updateMarker($scope.map, options);
+					}
+					count = 1;
+				}else{
+					window.confirm("获取实时位置超时,请稍后再试。");
+				}
+				$(".getLPos").removeAttr("disabled").removeClass("disabled-class");
+			})
+		}
+	}
+	getTrackInfo.$inject=['getTrackInfo','getGeo','$scope','$log'];
+
+	function getLoaBill(getLoaBill,gRList,loadId,$scope,$log){
+		if(global.QueryString.status || global.QueryString.status =="05"){
+			getLoaBill().then(function(strData){
+				loadId.loadId = strData.data.loadId;
+				$scope.Info = strData.data;
+			}).then(function(){
+				gRList().then(function(strData){
+					$scope.news = strData.data;
+				})
+			})
+		}
+	}
+	getLoaBill.$inject=['getLoaBill','getRecordList','getloadId','$scope','$log'];
+
+	function getRSource(gRS,$scope,$log){
+		gRS().then(function(strData){
+			$scope.items = strData.data;
+			$log.info(strData.data);
+			$scope.len = strData.data.length;
+		})
+	}
+	getRSource.$inject=['getRecommendSource','$scope','$log'];
+
+	function getQOList(gQ,$scope,$log){//test
+		gQ().then(function(strData){
+			$scope.lines = strData.data.rows;
+		})
+
+		$scope.repeatDown = function(){
+			$("div.holder").jPages({
+		      containerID : "itemContainer",
+		      perPage : 5
+		    });
+		}
+	}
+	getQOList.$inject =['getQuotedOrderList','$scope','$log']
+
+})(window,window.angular)

@@ -1,0 +1,249 @@
+(function(){
+	var paramId = { 
+		"sourceId": global.QueryString.id?global.QueryString.id:"",
+		"quotedId":global.QueryString.quotedId?global.QueryString.quotedId:""
+	},gType = global.QueryString.type,gStatus = global.QueryString.statusCn,isBegin="";
+	getDetails(paramId);
+	if(gStatus){
+		getBidVehicleInfo(paramId)
+	}
+
+	global.coffee({
+		"click":{
+			".close_p":function(){
+				$(".dialog_wrap").show();
+			},
+			".priceBtn": function(){//提交报价
+				var params = {
+					"sourceId": global.QueryString.id,
+					"price": $(".doller").val(),
+					"remark": $(".remark_r>textarea").val()
+				}
+				addQuotedInfo(params);
+			},
+			".price_r" : function(){//弹出关闭报价按钮
+				$(".close_p").toggle();
+			},
+			".resure>.cancel,.close" : function(){
+				$(".dialog_wrap").hide();
+			}
+		}
+	});
+	
+
+	//新增报价
+	function addQuotedInfo(params){
+		$.post(global.server + "/api/quoted/addQuotedInfo",params,function(strData){
+			if (strData && strData.status && strData.status.statusCode == global.status.success) {
+				console.log(strData);
+				$(".dialog_wrap").show();
+				$(".ishide").hide();
+				setTimeout(function(){$(".dialog_wrap").hide()},2000);
+			}
+		})
+	}
+
+	//订单毁约 /api/quoted/invalidTheBid
+	function invalidTheBid(params){
+		$.post(global.server + "/api/quoted/invalidTheBid",param,function(strData){
+
+		});
+	}
+
+	//推荐列表
+	function getRecommendList(params) {
+		$.get( global.server + "/api/source/query",params,function(strData){
+			console.log(strData.data);
+			if (strData && strData.status && strData.status.statusCode == global.status.success) {
+				var data = strData.data;
+
+			}
+		});
+	}
+
+	//货源详情
+	function getDetails(param){
+		var url= global.server + "/api/source/info";
+		switch(gType){
+			case "1":
+				url=global.server + "/api/quoted/getQuotedOrderDetail"
+			break;
+		}
+		$.get( url,param,function(strData){
+				if (strData && strData.status && strData.status.statusCode == global.status.success) {
+					var data = strData.data,
+						transferCodeCHtml = "",
+						beginDay = "",
+						addr_str ="",
+						sourceId = data.sourceId,
+						sourceNo = data.sourceNo,
+						startC = data.startCodeCCn,
+						endC = data.endCodeCCn,
+						needType = data.needType,
+						needLength = data.needLength;
+						transferCodeC = data.transferCodeC,
+						startTime = data.startTime,
+						endTime = data.endTime,
+						goodsName = data.goodsName,
+						hasBegin = data.hasBegin,
+						quoteNum = data.quoteNum,
+						hasQuote = data.hasQuote,
+						price = data.price,
+						remark = data.remark,
+						senderAreaList = data.senderAreaList;
+
+						if(senderAreaList.length>0){
+							var senderAddr = data.senderAreaList.reverse();
+							$.each(senderAddr, function(i, j){
+								addr_str += j.regionName;
+							});
+						}
+						
+						ageTime = global.fromNow(data.ageTime),
+						
+						quotedId = data.quotedId,
+						statusCn = data.statusCn,
+						allowBid = data.allowBid,
+						isShowTime = data.isShowTime?data.isShowTime:"",
+						actionList = data.actionList;
+						
+						var goodsWeight = "";
+						var ngw = Number(data.goodsWeight);
+						if(ngw){
+							goodsWeight = (ngw/1000).toFixed(1);
+							if(goodsWeight>=100){
+								goodsWeight = 99.9
+							}
+						}
+						
+						
+						var goodsVolumne = "";
+						var ngv = Number(data.goodsVolumne);
+						if(ngv){
+							goodsVolumne = ngv;
+						}
+						
+						if(transferCodeC !=null ){
+							transferCodeCHtml = '<span class="font14">经停</span>\
+												<span class="font18">'+transferCodeC+'</span>\
+												<span class="route_end"></span>';
+						}
+
+						if(hasBegin == 1){
+							if(ageTime =="0天后"){
+								beginDay = "已结束"
+							}else{
+								beginDay = ageTime +"结束";
+							}
+						}else{
+							if(ageTime =="0天后"){
+								beginDay = ageTime +"结束";
+							}else{
+								beginDay = ageTime +"开始";
+							}
+						}
+
+						$(".doller").text(price);
+						$(".remark_r").text(remark);
+
+						if(gType == 1){
+							if(actionList == null || actionList[0].name == "已关闭" && actionList.length>1){
+								$(".price_r").remove();
+							}
+							if(isShowTime == false){
+								beginDay = statusCn;
+							}
+						}else if(hasQuote > 0){
+							$(".quoted_price").text("已报价");
+						}else{
+							$(".quoted_price").remove();
+//							$(".quoted_price").text("未报价");
+						}
+						
+						if(allowBid == false){
+							$(".ishide").remove();
+						}
+
+                    var e = 
+						$('<div class="content_l">\
+							<p class="clearfix">\
+								<span class="city">'+startC+'</span>\
+								<span class="route_start"></span>\
+								'+transferCodeCHtml+'\
+								<span class="city">'+endC+'</span>\
+							</p>\
+							<p class="time">\
+								<span>提货时间&nbsp;&nbsp;&nbsp;&nbsp;'+startTime+'</span>\
+								<span class="arrive_time">到达时间&nbsp;&nbsp;&nbsp;&nbsp;'+endTime+'</span>\
+							</p>\
+							<div class="car_detail clearfix">\
+								<p class="detail_l">\
+									<span>需求车型：</span>\
+									<span class="m5">需求车长：</span>\
+								</p>\
+								<p class="detail_l w82">\
+									<span>'+needType+'</span>\
+									<span class="m5">'+needLength+'</span>\
+								</p>\
+								<p class="detail_l w110">\
+									<span>货物吨位</span>\
+									<span class="font18 m5">'+goodsWeight+'吨</span>\
+								</p>\
+								<p class="detail_l w105">\
+									<span>货物体积</span>\
+									<span class="font18 m5">'+goodsVolumne+'方</span>\
+								</p>\
+								<p class="detail_l w110">\
+									<span>货物类型</span>\
+									<span class="font18 m5">'+goodsName+'</span>\
+								</p>\
+							</div>\
+							<p class="addr_detail">\
+								<span class="name">广东志鸿物流有限公司</span>\
+							 	<span class="address">提货地点:'+addr_str+'</span>\
+							</p>\
+						</div>\
+						<div class="content_r">\
+							<p class="font14">已应标<i class="font18">'+quoteNum+'</i>人</p>\
+							<p class="font18">'+beginDay+'</p>\
+						</div>\
+						<div class="tel">\
+							<span class="consult">咨询电话</span>\
+							<span class="num">400 5623 2345</span>\
+						</div>');
+					$('.tit').find("span").text("货源编号:"+ sourceNo);
+					$('.content').html(e);
+
+					$(".resure>.sure").on("click",function(){
+						var params = {"quotedId": quotedId,"sourceId": global.QueryString.id}
+						if(gStatus == "got"){
+							$.post(global.server + "/api/quoted/invalidTheBid",params,function(strData){
+								if (strData && strData.status && strData.status.statusCode == global.status.success && gType==1) {
+									console.log(strData);
+									$(".ishide").remove();
+									$(".dialog_wrap").hide();
+								}
+							})
+						}else{
+							$.post(global.server + "/api/quoted/closeQuotedInfo",params,function(strData){
+								if (strData && strData.status && strData.status.statusCode == global.status.success && gType==1) {
+									$(".ishide").remove();
+									$(".dialog_wrap").hide();
+								}
+							})
+						}
+					});
+                }		
+		})
+	}
+
+	//获取中标运输车辆信息 
+	function getBidVehicleInfo(param){
+		$.get(global.server + "/api/quoted/getBidVehicleInfo",param,function(strData){
+			if (strData && strData.status && strData.status.statusCode == global.status.success) {
+				console.log(strData);
+			}
+		})
+	}
+
+})();

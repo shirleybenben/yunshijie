@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>常跑线路</title>
+        <link rel="stylesheet" type="text/css" href="/css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/jquery-ui.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/jquery-ui-extends.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/jquery.multiselect.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/jquery.multiselect.filter.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/person_info.css"/>
+    </head>
+    <body style="background-color:#fbfbfb;">
+		<div class="con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="index.htm">
+						<img src="img/c_logo.png" height="32" width="184">
+					</a>
+				</div>
+				<ul class="nav clearfix">
+					<li>
+						<a href="index.htm">首页</a>
+					</li>
+					<li>
+						<a href="supply_hall.htm">货源大厅</a>
+					</li>
+					<li>
+						<a href="my_order.htm">我的订单</a>
+					</li>
+				</ul>
+				<div class="search_w">
+					<span class="notice"></span>
+					<span class="user">
+						<a href="center_basicinfo.htm"></a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="content_w">
+			<div class="wrap clearfix">
+				<div class="con_l">
+					<div class="tit">个人中心</div>
+					<ul class="menu">
+						<li>
+							<a href="center_basicinfo.htm">我的资料</a>
+						</li>
+						<li>
+							<a href="driver_list.htm">司机车辆信息</a>
+						</li>
+						<li style="margin-bottom:10px;">
+							<a href="running_route.htm" class="active">常跑线路</a>
+						</li>
+						<li>
+							<span class="line"></span>
+						</li>
+						<li style="margin-top:15px;">
+							<a href="#">设置</a>
+						</li>
+						<li>
+							<a href="#">帮助</a>
+						</li>
+					</ul>
+					<span class="exit">退出</span>
+				</div>
+				<div class="con_r">
+					<div class="r_tit">
+						<div class="r_title run_title">
+							<strong>常跑线路</strong>
+							<span class="most_lines">最多只能添加5条不同的常跑线路</span>
+						</div>
+					</div>
+					<div class="route_rw clearfix">
+						<div class="route_content">
+							<div class="btn clearfix">
+								<div class="add add_r"></div>
+								<div class="error_tips"></div>
+							</div>
+							<p class="dist">
+								<label><strong>常用线路</strong></label>
+								<span class="select_w">
+									<select id="start_line"></select>
+								</span>
+								<em></em>
+								<span class="select_w">
+									<select id="end_line"></select>
+								</span>
+								<span class="zhi"></span>
+							</p>
+							<ul class="routes">
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="con_foot">
+			<div class="wrap">
+				<p>
+					条款 - 隐私权
+					<span>©2016 guangzhouzhihong</span>                                                 
+				</p>
+			</div>
+		</div>
+    </body>	
+    <script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/js/store.min.js"></script> 
+	<script type="text/javascript" src="/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/js/jquery.md5.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.multiselect.js"></script>
+	<script type="text/javascript" src="/js/jquery.multiselect.filter.js"></script>
+	<script type="text/javascript" src="/js/datepicker.min.js"></script>
+	<script type="text/javascript" src="/js/global_config.js"></script>	
+	<script type="text/javascript" src="/js/global.js"></script>
+	<script type="text/javascript" src="/js/YSJLineSelect.js"></script>
+	<script type="text/javascript" src="/js/YSJLineManager.js"></script>
+</html>

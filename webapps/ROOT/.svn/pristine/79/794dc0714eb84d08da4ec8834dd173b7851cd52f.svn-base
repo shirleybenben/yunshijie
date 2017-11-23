@@ -1,0 +1,74 @@
+$(function(){
+	getAjax.captcha()();
+	var reg = /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+	global.coffee({
+		"click":{
+			".picCode": function(){
+				getAjax.captcha()();
+			},
+			".getTelCode" : function(){
+				var params ={"telphone":$("#reg_phone").val(),"codeType":"01"};
+				if(params.telphone && reg.test($.trim(params.telphone))){
+					if(!$("#reg_val_code").val()){
+						window.confirm("请填写验证码！");
+					}else{
+						getAjax.isExist()(params);
+					}
+				}else{
+					$(".reg_hint").show();
+					$("#reg_phone").focus().css("border","1px solid red");
+				}
+			},
+			"#LoginBtn" : function(){
+				var dxcode = $("#dxcode").val(),
+					params = {"telphone":$("#reg_phone").val(),"barCode":dxcode,"codeType": "01"}
+					if(!params.telphone || !$("#reg_val_code").val() || !dxcode){
+						if(!reg.test($.trim(params.telphone))){
+							
+							$(".reg_hint").show();
+							$("#reg_phone").focus().css("border","1px solid red");
+							return false;
+						}
+						window.confirm("请填写完整信息！");
+						return false;
+					}
+				getAjax.validSmsCode()(params);
+			},
+			"#savePwd" : function(){
+				if($("#reg_pass").val()==$("#re_pass").val()){
+					var params = {"telphone":$("#reg_phone").val(),"barCode":$("#dxcode").val(),"password": $("#reg_pass").val()}
+					getAjax.resetPassword()(params);
+				}else{
+					window.confirm("两次输入的密码不一致！");
+				}
+			}
+		},
+		"blur":{
+			"#reg_val_code" : function(){
+				var params={"token": $(this).val(),"validId": $(this).attr("data-id")}
+				if(params.token){
+					getAjax.captcha()(params);
+				}else{
+					window.confirm("请填写验证码！");
+				}
+			}
+		},
+		"keyup":{
+			"#reg_phone" : function(){
+				if(isNaN($("#reg_phone").val())){
+					window.confirm("手机号码不正确！");
+				}else{
+					$(".reg_hint").hide();
+					$("#reg_phone").css("border","1px solid #d9d9d9");
+				}
+			},
+			"#dxcode": function(){
+				if($(this).val() != ""){
+					$(".getTelCode").hide();
+				}else{
+					$(".getTelCode").show();
+				}
+			}
+		}
+	})
+})

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="editApp">
+    <head>
+        <meta charset="utf-8">
+        <title>我的货源</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>
+        <link rel="stylesheet" type="text/css" href="css/supply_hall.css"/>
+		<link rel="stylesheet" type="text/css" href="css/select.css"/>   
+		<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.css"/>
+		<link rel="stylesheet" type="text/css" href="css/dialog.css"/>
+		<link rel="shortcut icon" href="bitbug_favicon.ico" />   
+    </head>
+    <body class="ng-cloak" ng-controller="supplyHall_getLineList">
+    	<headtop></headtop>
+		<div class="order_tit order_list_w">
+			<div class="order_top clearfix wrap">
+				<div class="order_top_l">
+					<ul class="clearfix tab_tit">
+						<li ng-click="changeClass($index)" ng-repeat="line in Lines" data-dept="{{line.departureCode}}" data-dest="{{line.destinationCode}}" ref="{{line.lineInfoId}}" ng-class="{'current':addClass({{$index}})}" ><a href="javascript:;"><span ng-bind="line.departureCodeCn"></span> —— <span ng-bind="line.destinationCodeCn"></span></a></li>
+					</ul>
+				</div>
+				<div class="order_top_r clearfix">
+					<input id="queryContent" type="text" placeholder="输入查询货源编号"/>
+					<button id="searchWin"><a style="color: #fff;" href="javascript:void(0)" ng-click="searchByNo()"></a></button>
+				</div>
+				<div class="order_top_m">
+					<a href="running_route.htm">添加线路</a>
+				</div>
+			</div>
+		</div>
+		<div class="order_list_w content_w wrap">
+			<div class="order_filter clearfix">
+				<span class="select">筛选：</span>
+				<ul class="filter_w clearfix">
+					<li>
+						<span class="pubdate" ng-click="sortByTime()">发布时间</span>
+						<!-- 最早时间货源排前面加类名check_up,最新货源加类名check_down -->
+					</li>
+					<li ng-click="showSelect(1,$event)">
+						<div class="select_w">
+							<div class="div_select">
+							    <div class="text">出发地</div>
+							    <span class="select_dropdown triangle-all"></span>
+							</div>
+							<div class="ol_w hide">
+								<div class="select_ol">
+									<ol class="class_2">
+										<li ng-repeat="val in selfVals" value="{{val.regionCode}}" ng-bind="val.regionName"  ng-click="changeSC($index)"></li>
+									</ol>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li ng-click="showSelect(2,$event)">
+						<div class="select_w">
+							<div class="div_select clearfix">
+							    <div class="text">目的地</div>
+							    <span class="select_dropdown triangle-all"></span>
+							</div>
+							<div class="ol_w hide">
+								<div class="select_ol">
+									<ol class="class_3">
+										<li ng-repeat="val in selsVals" value="{{val.regionCode}}" ng-bind="val.regionName" ng-click="changeEC($index)"></li>
+									</ol>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li ng-click="showSelect(3,$event)">
+						<div class="select_w">
+							<div class="div_select">
+							    <div class="text car_length">车长</div>
+							    <span class="select_dropdown triangle-all"></span>
+							</div>
+							<div class="ol_w hide">
+								<div class="select_ol">
+									<ol class="needLength">
+										<li val="">全部</li>
+										<li val="4.2">4.2米</li>
+										<li val="5">5米</li>
+										<li val="5.2">5.2米</li>
+										<li val="5.8">5.8米</li>
+										<li val="6.2">6.2米</li>
+										<li val="6.8">6.8米</li>
+										<li val="7.2">7.2米</li>
+										<li val="7.6">7.6米</li>
+										<li val="8.5">8.5米</li>
+										<li val="9.6">9.6米</li>
+										<li val="12.5">12.5米</li>
+										<li val="13">13米</li>
+										<li val="13.5">13.5米</li>
+										<li val="15">15米</li>
+										<li val="16.5">16.5米</li>
+										<li val="17.5">17.5米</li>
+										<li val="18.5">18.5M</li>
+										<li val="21">21米</li>
+										<li val="22">22米</li>
+										<li val="23">23米</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li ng-click="showSelect(4,$event)">
+						<div class="select_w">
+							<div class="div_select">
+							    <div class="text car_length">车型</div>
+							    <span class="select_dropdown triangle-all"></span>
+							</div>
+							<div class="ol_w hide">
+								<div class="select_ol">
+									<ol class="needType">
+										<li value="">全部</li>
+										<li value="中栏车">中栏车</li>
+										<li value="低栏车">低栏车</li>
+										<li value="冷藏车">冷藏车</li>
+										<li value="危险品车">危险品车</li>
+										<li value="厢式车">厢式车</li>
+										<li value="平板车">平板车</li>
+										<li value="自卸货车">自卸货车</li>
+										<li value="集装箱">集装箱</li>
+										<li value="高低板车">高低板车</li>
+										<li value="高栏车">高栏车</li>
+										<li value="其它车型">其它车型</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="back_source">
+						<label for="backSource" class="clearfix" ng-click="getBack()">
+							<span class="unchecked"></span>
+							<!-- 选中加入类名checked -->
+							<span>回程货源</span>
+						</label>
+					</li>
+				</ul>
+			</div>
+			<list></list>
+			<div class="list_page clearfix wrap">
+				<div class="page_w">
+					<div class="handle clearfix">
+						<div id="kkpager" class="handle-page clearfix skin-tb"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="recommend wrap">
+			<div class="groom groom_w">
+				<a class="recommend_supply">推荐热门货源</a>
+				<!-- <a href="supply_hall.htm">
+					<span class="arrow">查看更多</span>
+				</a> -->
+			</div>
+			<ul class="recommend_list clearfix" ng-controller="getRecommendSource" >
+				<li ng-repeat="item in items | limitNum:4" ng-if="len >'0'">
+					<a href="supply_detail.htm?id={{item.sourceId}}" class="flow_w" target="_blank">
+						<div class="flow">
+							<div class="flow_bar clearfix">
+								<span class="city start" ng-bind="item.startCodeCCn | filter "></span>
+								<span class="car_bg"></span>
+								<span class="city end" ng-bind="item.endCodeCCn | filter "></span>
+							</div>
+							<dl class="detail clearfix">
+								<dt>提货时间</dt>
+								<dd class="w172" ng-bind="item.arriveCustomerTime"></dd>
+								<dt>需求车长</dt>
+								<dd class="w172"><em ng-bind="item.needLength"></em>米</dd>
+								<dt>需求车型</dt>
+								<dd class="w172" ng-bind="item.needType"></dd>
+								<dt>货物重量</dt>
+								<dd class="w172"><em ng-bind="item.goodsWeight"></em>吨</dd>
+								<dt>货物类型</dt>
+								<dd class="w172" ng-bind="item.goodsName"></dd>
+								<button class="quoted_price" ng-show="item.hasQuote == '1'"></button>
+							</dl>
+							<div class="count clearfix">
+								<span class="mans">应标&nbsp;<i ng-bind="item.quoteNum"></i>&nbsp;人</span>
+								<span ng-class="{'days':true,'start': item.hasBegin=='0'}" ng-bind="item.ageTime | ageTime:item.hasBegin"></span>
+								<!-- 天数开始样式加入类名start -->
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="no-data" ng-if="len =='0'">
+					<span class="icon"></span>
+					<span class="txt">亲，暂时没有相关内容哦~</span>
+				</li>
+			</ul>
+		</div>
+        <foot></foot>
+    </body>
+    <script type="text/javascript" src="js/vendor/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/vendor/toTop.min.js"></script>
+    <script type="text/javascript" src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="js/vendor/angular.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-resource.min.js"></script>
+    <script type="text/javascript" src="js/vendor/store.min.js"></script> 
+	<script type="text/javascript" src="js/vendor/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/public/global_config.js"></script>	
+	<script type="text/javascript" src="js/public/global.js"></script>
+	<script type="text/javascript" src="js/public/pagination.js"></script>
+	<script type="text/javascript" src="js/services/services.js"></script>
+	<script type="text/javascript" src="js/filters/filters.js"></script>
+	<script type="text/javascript" src="js/directives/directives.js"></script>
+	<script type="text/javascript" src="js/controllers/controller.js"></script>
+</html> 

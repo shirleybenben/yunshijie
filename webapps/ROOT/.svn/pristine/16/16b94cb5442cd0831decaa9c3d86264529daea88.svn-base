@@ -1,0 +1,36 @@
+<div class="con_header">
+	<div class="wrap clearfix">
+		<div class="logo">
+			<a href="index.htm">
+				<img src="img/c_logo.png" height="45" width="155">
+			</a>
+		</div>
+		<ul class="nav clearfix" ng-controller="navState">
+			<li ng-class="{'current': states == '1'}">
+				<a href="index.htm">首页</a>
+			</li>
+			<li ng-class="{'current': states == '2'}">
+				<a href="supply_hall.htm">我的货源</a>
+			</li>
+			<li ng-class="{'current': states == '3'}">
+				<a href="my_order.htm">我的订单</a>
+			</li>
+		</ul>
+		<div class="search_w" ng-controller="getUnreadMessageCount">
+			<div ng-if="isLogin">
+				<a href="center_news.htm">
+					<span ng-class="{'news': true,'has_news': flag,'press_no_news':states=='4'}"></span>
+					<!-- 默认没有新消息和未读消息 点击进去加类名press_no_news
+					有新消息和未读消息加类名has_news 点击进去加类名press_has_news-->
+				</a>
+				<a href="center_basicinfo.htm" ng-class="{'go_center':true,'current':states=='5'}" ng-mouseover="hover = false" ng-mouseleave="hover = true"></a>
+				<!-- 个人账户下拉框 -->
+				<span ng-class="{'user_select':true,'hide': hover}" ng-mouseover="hover = false" ng-mouseleave="hover = true">
+					<a href="center_basicinfo.htm">我的账户</a>
+					<a href="javascript:;" class="help">帮助</a>
+					<a href="javascript:;" class="exit" ng-click="logout()">退出</a>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>

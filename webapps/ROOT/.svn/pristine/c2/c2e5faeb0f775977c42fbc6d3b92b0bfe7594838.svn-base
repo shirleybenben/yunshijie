@@ -1,0 +1,52 @@
+/*
+* @Author: Administrator
+* @Date:   2016-08-29 08:59:09
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-09-22 15:14:34
+*/
+.banner_w{position:relative;height:450px;}
+.banner_bg{width:1920px;height:450px;position:absolute;left:50%;margin-left:-960px;text-align:center;background:url(../img/banner_bg.png) no-repeat center;}
+.about_w{background-color:#fff;}
+.about{width:1442px;margin:0 auto;padding:158px 0 128px;}
+.about_l{float: left;width:613px;height:503px;background:url(../img/about_l_bg.png) no-repeat center;}
+.about_r{float: left;width:637px;margin:15px 0 0 60px;}
+.about_r .tit{font-size:22px;color:#202028;padding-left:16px;background:url(../img/about_tit_bg.png) no-repeat left center;margin-bottom:50px;}
+.about_r p{font-size:16px;color:#5e5e76;padding-left:42px;background:url(../img/icon_1.png) no-repeat 15px 12px;line-height:38px;margin-bottom:40px;}
+.about_r p:nth-child(3){background-image:url(../img/icon_2.png);background-position: 15px 13px;}
+.about_r p:nth-child(4){background-image:url(../img/icon_3.png);background-position: 15px 13px;}
+.agent_serve{height:660px;background-color:#f4f5f8;}
+.agent_serve .agent{width:1192px;margin:0 auto;text-align:center;}
+.agent_serve .agent .tit{font-size:24px;color:#333;position:relative;display:inline-block;margin-top:122px;}
+.agent_serve .agent .tit:before{content:"";display:block;width:151px;height:1px;background-color:#dfdee3;position:absolute;top:18px;left:-173px;}
+.agent_serve .agent .tit:after{content:"";display:block;width:151px;height:1px;background-color:#dfdee3;position:absolute;top:18px;left:208px;}
+.agent_serve .agent ul{margin-top:164px;}
+.agent_serve .agent ul li{float:left;padding-top:88px;background:url(../img/agent_bg_1.png) no-repeat top center;margin-right:60px;}
+.agent_serve .agent ul li:nth-child(2){background-image:url(../img/agent_bg_2.png);}
+.agent_serve .agent ul li:nth-child(3){background-image:url(../img/agent_bg_3.png);}
+.agent_serve .agent ul li:nth-child(4){background-image:url(../img/agent_bg_4.png);margin-right:0px;}
+.agent_serve .agent ul li span{display:block;text-align:center;font-size:28px;color:#333;}
+.agent_serve .agent ul li span:nth-child(2){font-size:14px;color:#666;margin-top:18px;line-height:20px;}
+.driver_serve{background-color:#fff;}
+.driver_serve .agent ul li{background:url(../img/driver_bg_1.png) no-repeat top center;padding-top:164px;}
+.driver_serve .agent ul li:nth-child(2){background-image:url(../img/driver_bg_2.png);}
+.driver_serve .agent ul li:nth-child(3){background-image:url(../img/driver_bg_3.png);}
+.driver_serve .agent ul li:nth-child(4){background-image:url(../img/driver_bg_4.png);}
+.driver_serve .agent .tit:after{left:186px;}
+
+/* 轮播效果 */
+.picScroll-left{width:249px;overflow:hidden;position:absolute;top:113px;left:1081px;}
+.picScroll-left .hd{overflow:hidden;height:30px;background:#f4f4f4;padding:0 10px;}
+.picScroll-left .hd .prev,.picScroll-left .hd .next{display:block;width:5px;height:9px;float:right;margin-right:5px;margin-top:10px;overflow:hidden;cursor:pointer;background:url("images/arrow.png") no-repeat;}
+.picScroll-left .hd .next{background-position:0 -50px;}
+.picScroll-left .hd .prevStop{background-position:-60px 0;}
+.picScroll-left .hd .nextStop{background-position:-60px -50px;}
+.picScroll-left .hd ul{float:right;overflow:hidden;zoom:1;margin-top:10px;zoom:1;}
+.picScroll-left .hd ul li{float:left;width:9px;height:9px;overflow:hidden;margin-right:5px;text-indent:-999px;cursor:pointer;background:url("images/icoCircle.gif") 0 -9px no-repeat;}
+.picScroll-left .hd ul li.on{background-position:0 0;}
+.picScroll-left .bd{padding:10px;}
+.picScroll-left .bd ul{overflow:hidden;zoom:1;}
+.picScroll-left .bd ul li{margin:0 8px;float:left;display:inline;overflow:hidden;text-align:center;}
+.picScroll-left .bd ul li .pic{text-align:center;}
+.picScroll-left .bd ul li .pic img{width:210px;height:324px;display:block;padding:2px;}
+.picScroll-left .bd ul li .pic a:hover img{border-color:#999;}
+.picScroll-left .bd ul li .title{line-height:24px;}

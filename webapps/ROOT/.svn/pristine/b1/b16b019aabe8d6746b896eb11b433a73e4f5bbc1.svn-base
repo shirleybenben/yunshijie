@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>货源大厅</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>
+        <link rel="stylesheet" type="text/css" href="css/supply_hall.css"/>      
+    </head>
+    <body style="background-color:#fbfbfb;">
+		<div class="con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="#">
+						<img src="img/c_logo.png" height="32" width="184">
+					</a>
+				</div>
+				<ul class="nav clearfix">
+					<li>
+						<a href="#">首页</a>
+					</li>
+					<li>
+						<a href="#">货源大厅</a>
+					</li>
+					<li>
+						<a href="#">我的订单</a>
+					</li>
+				</ul>
+				<div class="search_w">
+					<span class="notice"></span>
+					<span class="user">
+						<a href="#"></a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="order_tit">
+			<div class="wrap">
+				<h1>货源大厅</h1>
+			</div>
+		</div>
+		<div class="order_list_w wrap">
+			<div class="order_top clearfix">
+				<div class="order_top_l">
+					<ul class="clearfix tab_tit">
+						<li class="current"><a href="javascript:;" class="check"><strong>广州——上海</strong></a></li>
+						<li><a href="javascript:;"><strong>四川——北京</strong></a></li>
+						<li><a href="javascript:;" class="map"><strong>广州——北京</strong></a></li>
+						<li><a href="javascript:;" class="delete"><strong>广州——北京</strong></a></li>
+					</ul>
+				</div>
+				<div class="order_top_m">
+					<a href="#"><strong>进行添加</strong></a>
+				</div>
+				<div class="order_top_r clearfix">
+					<input type="text" placeholder="货源编号/出发地/目的地"/>
+					<button>搜索</button>
+				</div>
+			</div>
+			<div class="order_filter">
+				<ul class="filter_w clearfix">
+					<li>
+						<input type="text" placeholder="发布时间" class="pubdate" />
+					</li>
+					<li>
+						<select>
+							<option>出发地</option>
+							<option>北京</option>
+							<option>上海</option>
+						</select>
+					</li>
+					<li>
+						<select>
+							<option>目的地</option>
+							<option>北京</option>
+							<option>上海</option>
+						</select>
+					</li>
+					<li>
+						<select>
+							<option>车长</option>
+							<option>1m</option>
+							<option>2m</option>
+						</select>
+					</li>
+					<li>
+						<select>
+							<option>车型</option>
+							<option>高栏</option>
+							<option>低栏</option>
+						</select>
+					</li>
+					<li>
+						<input type="radio"/>回程货源
+					</li>
+				</ul>
+			</div>
+			<ol class="order_list wrap">
+				<li>
+					<a href="#">
+						<div class="list_top clearfix">
+							<div class="list_top_l">
+								<span class="city">广州</span>
+								<span class="route_bg"></span>
+								<span class="city">上海</span>
+							</div>
+							<div class="list_top_r">提货时间　　2012/12/12 12:00</div>
+						</div>
+						<div class="list_con clearfix">
+							<div class="list_con_l">
+								<p class="font14">需求车型：高栏 &nbsp;&nbsp;&nbsp;&nbsp;货物吨位&nbsp;&nbsp;&nbsp;&nbsp; 货物体积&nbsp;&nbsp;&nbsp;&nbsp; 货物类型</p>
+								<p class="font18">需求车长：9.6米 <span>&nbsp;&nbsp;8吨</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5方</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电子配件</span></p>
+							</div>
+							<div class="list_con_m">
+								<p class="name">广东志鸿物流有限公司</p>
+								<p class="addr">提货地点:广东省 广州市</p>
+							</div>
+							<div class="list_con_r">
+								<p class="end">已中标</p>
+								<p class="num">已应标<span>26</span>人</p>
+							</div>
+						</div>
+						<button class="quoted_price">已报价</button>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<div class="list_top clearfix">
+							<div class="list_top_l">
+								<span class="city">广州</span>
+								<span class="route_bg"></span>
+								<span class="city">上海</span>
+							</div>
+							<div class="list_top_r">提货时间　　2012/12/12 12:00</div>
+						</div>
+						<div class="list_con clearfix">
+							<div class="list_con_l">
+								<p class="font14">需求车型：高栏 &nbsp;&nbsp;&nbsp;&nbsp;货物吨位&nbsp;&nbsp;&nbsp;&nbsp; 货物体积&nbsp;&nbsp;&nbsp;&nbsp; 货物类型</p>
+								<p class="font18">需求车长：9.6米 <span>&nbsp;&nbsp;8吨</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5方</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电子配件</span></p>
+							</div>
+							<div class="list_con_m">
+								<p class="name">广东志鸿物流有限公司</p>
+								<p class="addr">提货地点:广东省 广州市</p>
+							</div>
+							<div class="list_con_r">
+								<p class="end">已中标</p>
+								<p class="num">已应标<span>26</span>人</p>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<div class="list_top clearfix">
+							<div class="list_top_l">
+								<span class="city">广州</span>
+								<span class="route_bg"></span>
+								<span class="city">上海</span>
+							</div>
+							<div class="list_top_r">提货时间　　2012/12/12 12:00</div>
+						</div>
+						<div class="list_con clearfix">
+							<div class="list_con_l">
+								<p class="font14">需求车型：高栏 &nbsp;&nbsp;&nbsp;&nbsp;货物吨位&nbsp;&nbsp;&nbsp;&nbsp; 货物体积&nbsp;&nbsp;&nbsp;&nbsp; 货物类型</p>
+								<p class="font18">需求车长：9.6米 <span>&nbsp;&nbsp;8吨</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5方</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电子配件</span></p>
+							</div>
+							<div class="list_con_m">
+								<p class="name">广东志鸿物流有限公司</p>
+								<p class="addr">提货地点:广东省 广州市</p>
+							</div>
+							<div class="list_con_r">
+								<p class="end">2天结束</p>
+								<p class="num">已应标<span>26</span>人</p>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<div class="list_top clearfix">
+							<div class="list_top_l">
+								<span class="city">广州</span>
+								<span class="route_bg"></span>
+								<span class="city">上海</span>
+							</div>
+							<div class="list_top_r">提货时间　　2012/12/12 12:00</div>
+						</div>
+						<div class="list_con clearfix">
+							<div class="list_con_l">
+								<p class="font14">需求车型：高栏 &nbsp;&nbsp;&nbsp;&nbsp;货物吨位&nbsp;&nbsp;&nbsp;&nbsp; 货物体积&nbsp;&nbsp;&nbsp;&nbsp; 货物类型</p>
+								<p class="font18">需求车长：9.6米 <span>&nbsp;&nbsp;8吨</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5方</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电子配件</span></p>
+							</div>
+							<div class="list_con_m">
+								<p class="name">广东志鸿物流有限公司</p>
+								<p class="addr">提货地点:广东省 广州市</p>
+							</div>
+							<div class="list_con_r">
+								<p class="end">在途中</p>
+								<p class="num">已应标<span>26</span>人</p>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<div class="list_top clearfix">
+							<div class="list_top_l">
+								<span class="city">广州</span>
+								<span class="route_bg"></span>
+								<span class="city">上海</span>
+							</div>
+							<div class="list_top_r">提货时间　　2012/12/12 12:00</div>
+						</div>
+						<div class="list_con clearfix">
+							<div class="list_con_l">
+								<p class="font14">需求车型：高栏 &nbsp;&nbsp;&nbsp;&nbsp;货物吨位&nbsp;&nbsp;&nbsp;&nbsp; 货物体积&nbsp;&nbsp;&nbsp;&nbsp; 货物类型</p>
+								<p class="font18">需求车长：9.6米 <span>&nbsp;&nbsp;8吨</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5方</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电子配件</span></p>
+							</div>
+							<div class="list_con_m">
+								<p class="name">广东志鸿物流有限公司</p>
+								<p class="addr">提货地点:广东省 广州市</p>
+							</div>
+							<div class="list_con_r">
+								<p class="end">在途中</p>
+								<p class="num">已应标<span>26</span>人</p>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<div class="list_top clearfix">
+							<div class="list_top_l">
+								<span class="city">广州</span>
+								<span class="route_bg"></span>
+								<span class="city">上海</span>
+							</div>
+							<div class="list_top_r">提货时间　　2012/12/12 12:00</div>
+						</div>
+						<div class="list_con clearfix">
+							<div class="list_con_l">
+								<p class="font14">需求车型：高栏 &nbsp;&nbsp;&nbsp;&nbsp;货物吨位&nbsp;&nbsp;&nbsp;&nbsp; 货物体积&nbsp;&nbsp;&nbsp;&nbsp; 货物类型</p>
+								<p class="font18">需求车长：9.6米 <span>&nbsp;&nbsp;8吨</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5方</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电子配件</span></p>
+							</div>
+							<div class="list_con_m">
+								<p class="name">广东志鸿物流有限公司</p>
+								<p class="addr">提货地点:广东省 广州市</p>
+							</div>
+							<div class="list_con_r">
+								<p class="end">2天结束</p>
+								<p class="num">已应标<span>26</span>人</p>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<div class="list_top clearfix">
+							<div class="list_top_l">
+								<span class="city">广州</span>
+								<span class="route_bg"></span>
+								<span class="city">上海</span>
+							</div>
+							<div class="list_top_r">提货时间　　2012/12/12 12:00</div>
+						</div>
+						<div class="list_con clearfix">
+							<div class="list_con_l">
+								<p class="font14">需求车型：高栏 &nbsp;&nbsp;&nbsp;&nbsp;货物吨位&nbsp;&nbsp;&nbsp;&nbsp; 货物体积&nbsp;&nbsp;&nbsp;&nbsp; 货物类型</p>
+								<p class="font18">需求车长：9.6米 <span>&nbsp;&nbsp;8吨</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5方</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电子配件</span></p>
+							</div>
+							<div class="list_con_m">
+								<p class="name">广东志鸿物流有限公司</p>
+								<p class="addr">提货地点:广东省 广州市</p>
+							</div>
+							<div class="list_con_r">
+								<p class="end">2天结束</p>
+								<p class="num">已应标<span>26</span>人</p>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<div class="list_top clearfix">
+							<div class="list_top_l">
+								<span class="city">广州</span>
+								<span class="route_bg"></span>
+								<span class="city">上海</span>
+							</div>
+							<div class="list_top_r">提货时间　　2012/12/12 12:00</div>
+						</div>
+						<div class="list_con clearfix">
+							<div class="list_con_l">
+								<p class="font14">需求车型：高栏 &nbsp;&nbsp;&nbsp;&nbsp;货物吨位&nbsp;&nbsp;&nbsp;&nbsp; 货物体积&nbsp;&nbsp;&nbsp;&nbsp; 货物类型</p>
+								<p class="font18">需求车长：9.6米 <span>&nbsp;&nbsp;8吨</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5方</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电子配件</span></p>
+							</div>
+							<div class="list_con_m">
+								<p class="name">广东志鸿物流有限公司</p>
+								<p class="addr">提货地点:广东省 广州市</p>
+							</div>
+							<div class="list_con_r">
+								<p class="end">2天结束</p>
+								<p class="num">已应标<span>26</span>人</p>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<div class="list_top clearfix">
+							<div class="list_top_l">
+								<span class="city">广州</span>
+								<span class="route_bg"></span>
+								<span class="city">上海</span>
+							</div>
+							<div class="list_top_r">提货时间　　2012/12/12 12:00</div>
+						</div>
+						<div class="list_con clearfix">
+							<div class="list_con_l">
+								<p class="font14">需求车型：高栏 &nbsp;&nbsp;&nbsp;&nbsp;货物吨位&nbsp;&nbsp;&nbsp;&nbsp; 货物体积&nbsp;&nbsp;&nbsp;&nbsp; 货物类型</p>
+								<p class="font18">需求车长：9.6米 <span>&nbsp;&nbsp;8吨</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5方</span> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电子配件</span></p>
+							</div>
+							<div class="list_con_m">
+								<p class="name">广东志鸿物流有限公司</p>
+								<p class="addr">提货地点:广东省 广州市</p>
+							</div>
+							<div class="list_con_r">
+								<p class="end">2天结束</p>
+								<p class="num">已应标<span>26</span>人</p>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ol>
+		</div>
+		<div class="list_page clearfix wrap">
+			<div class="page_w">
+				<div class="handle clearfix">
+					<div class="handle-page clearfix">
+						<span class="handle_num">第<i class="page-num">1</i>页，共10页</span>
+						<div class="han-page">
+							<button class="handle-pre"></button>
+							<button class="handle-next"></button>
+						</div>
+						<div class="select_w">
+							<select name="" id="" class="pageSelect">
+								<option value="" selected>第1页</option>
+								<option value="">第2页</option>
+							</select>
+						</div>
+					</div>					
+				</div>
+			</div>
+		</div>
+		<div class="recommend wrap">
+			<div class="groom">
+				<a href="#">推荐货源</a>
+				<span class="arrow">更多</span>
+			</div>
+			<ul class="recommend_list clearfix">
+				<li>
+					<div class="flow">
+						<div class="flow_bar clearfix">
+							<span class="city">广州</span>
+							<span class="car_bg"></span>
+							<span class="city">上海</span>
+						</div>
+						<dl class="detail clearfix">
+							<dt>提货时间</dt>
+							<dd>2012/12/12 12:00</dd>
+							<dt>提货地点</dt>
+							<dd>广东省 广州市</dd>
+							<dt>需求车长</dt>
+							<dd>货物吨位</dd>
+							<dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;货物体积</dd>
+							<dt class="font18">9.6米</dt>
+							<dd class="font18">8吨</dd>
+							<dd class="font18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5方</dd>
+							<dt>需求车型</dt>
+							<dd>高栏&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+							<dt>货物类型</dt>
+							<dd>电子配件</dd>
+						</dl>
+						<div class="name">广东志鸿物流有限公司</div>
+						<div class="count clearfix">
+							<span class="mans">已应标<i>26</i>人</span>
+							<span class="line"></span>
+							<span class="days">2天结束</span>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="flow">
+						<div class="flow_bar clearfix">
+							<span class="city">广州</span>
+							<span class="car_bg"></span>
+							<span class="city">上海</span>
+						</div>
+						<dl class="detail clearfix">
+							<dt>提货时间</dt>
+							<dd>2012/12/12 12:00</dd>
+							<dt>提货地点</dt>
+							<dd>广东省 广州市</dd>
+							<dt>需求车长</dt>
+							<dd>货物吨位</dd>
+							<dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;货物体积</dd>
+							<dt class="font18">9.6米</dt>
+							<dd class="font18">8吨</dd>
+							<dd class="font18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5方</dd>
+							<dt>需求车型</dt>
+							<dd>高栏&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+							<dt>货物类型</dt>
+							<dd>电子配件</dd>
+						</dl>
+						<div class="name">广东志鸿物流有限公司</div>
+						<div class="count clearfix">
+							<span class="mans">已应标<i>26</i>人</span>
+							<span class="line"></span>
+							<span class="days">2天结束</span>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="flow">
+						<div class="flow_bar clearfix">
+							<span class="city">广州</span>
+							<span class="car_bg"></span>
+							<span class="city">上海</span>
+						</div>
+						<dl class="detail clearfix">
+							<dt>提货时间</dt>
+							<dd>2012/12/12 12:00</dd>
+							<dt>提货地点</dt>
+							<dd>广东省 广州市</dd>
+							<dt>需求车长</dt>
+							<dd>货物吨位</dd>
+							<dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;货物体积</dd>
+							<dt class="font18">9.6米</dt>
+							<dd class="font18">8吨</dd>
+							<dd class="font18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5方</dd>
+							<dt>需求车型</dt>
+							<dd>高栏&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+							<dt>货物类型</dt>
+							<dd>电子配件</dd>
+						</dl>
+						<div class="name">广东志鸿物流有限公司</div>
+						<div class="count clearfix">
+							<span class="mans">已应标<i>26</i>人</span>
+							<span class="line"></span>
+							<span class="days">2天结束</span>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="flow">
+						<div class="flow_bar clearfix">
+							<span class="city">广州</span>
+							<span class="car_bg"></span>
+							<span class="city">上海</span>
+						</div>
+						<dl class="detail clearfix">
+							<dt>提货时间</dt>
+							<dd>2012/12/12 12:00</dd>
+							<dt>提货地点</dt>
+							<dd>广东省 广州市</dd>
+							<dt>需求车长</dt>
+							<dd>货物吨位</dd>
+							<dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;货物体积</dd>
+							<dt class="font18">9.6米</dt>
+							<dd class="font18">8吨</dd>
+							<dd class="font18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5方</dd>
+							<dt>需求车型</dt>
+							<dd>高栏&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+							<dt>货物类型</dt>
+							<dd>电子配件</dd>
+						</dl>
+						<div class="name">广东志鸿物流有限公司</div>
+						<div class="count clearfix">
+							<span class="mans">已应标<i>26</i>人</span>
+							<span class="line"></span>
+							<span class="days">2天结束</span>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="con_foot">
+			<div class="wrap">
+				<p>
+					条款 - 隐私权
+					<span>©2016 guangzhouzhihong</span>                                                 
+				</p>
+			</div>
+		</div>
+    </body>	
+</html> 

@@ -1,0 +1,37 @@
+var getCountrySelect = {
+	getFirstLevel: function(){//一级:城市
+		/*
+		var level ={};
+		return function(level){
+			$.get(global.server+"/api/region/list",level,function(strData){
+				if (strData && strData.status && strData.status.statusCode == global.status.success) {
+					var subRegion = strData.data.subRegion,optList="";
+					$.each( subRegion, function(i, item){ 
+						var regionName = item.regionName,parentCode = item.regionCode;
+						optList+="<option value="+parentCode+">"+regionName+"</option>"
+					});
+					$(".level_1").html(optList)
+				}
+			})
+		}
+		*/
+	},
+	getSecondLevel: function(){//二级:区县
+		var level ={};
+		return function(level){
+			$.get(global.server+"/api/region/findByCode",level,function(strData){
+				if (strData && strData.status && strData.status.statusCode == global.status.success) {
+					var subRegion = strData.data,optList="",lineId="";
+					$.each(subRegion, function(i, item){ 
+						var regionName = item.regionName,parentCode = item.regionCode;
+						optList+="<option value="+parentCode+">"+regionName+"</option>"
+					});
+					if(global.QueryString.key){
+						lineId = global.QueryString.key;
+					}
+					$(".class_"+level.class).attr("ref",lineId).html(optList)
+				}
+			})
+		}
+	}
+}

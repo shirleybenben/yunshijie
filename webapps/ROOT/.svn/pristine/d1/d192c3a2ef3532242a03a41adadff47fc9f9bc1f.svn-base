@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="editApp">
+    <head>
+        <meta charset="utf-8">
+        <title>个人中心</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <!-- <link rel="stylesheet" type="text/css" href="css/person_info.css"/> -->
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>
+        <link rel="stylesheet" type="text/css" href="css/supply_hall.css"/>
+        <link rel="stylesheet" type="text/css" href="css/center_news.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dialog.css"/> 
+    </head>
+    <body style="background-color:#f6f6f6;">
+		<div class="con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="index.htm">
+						<img src="img/c_logo.png" height="45" width="155">
+					</a>
+				</div>
+				<ul class="nav clearfix">
+					<li>
+						<a href="index.htm">首页</a>
+					</li>
+					<li>
+						<a href="supply_hall.htm">我的货源</a>
+					</li>
+					<li>
+						<a href="my_order.htm">我的订单</a>
+					</li>
+				</ul>
+				<div class="search_w" ng-controller="getUnreadMessageCount">
+					<a href="center_news.htm">
+						<span ng-class="{'notice': true,'has_notice': flag}"></span>
+					</a>
+					<span class="user">
+						<a href="center_basicinfo.htm" class="current"></a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="order_tit order_list_w">
+			<div class="order_top clearfix wrap">
+				<div class="order_top_l">
+					<ul class="clearfix tab_tit">
+						<li class="current">
+							<a href="center_basicinfo.htm">我的账户</a>
+						</li>
+						<!-- <li>
+							<a href="center_pay_schedule.htm">财务-申请付款表</a>
+						</li> -->
+						<li>
+							<a href="driver_list.htm">司机及车辆信息</a>
+						</li>
+						<li>
+							<a href="running_route.htm">常跑线路</a>
+						</li>
+						<li>
+							<a href="center_news.htm">消息通知</a>
+						</li>
+					</ul>
+				</div>
+				<div class="order_top_l order_top_r clearfix">
+					<ul class="clearfix tab_tit">
+						<!-- <li>
+							<a href="javascript:;">设置</a>
+						</li>
+						<li>
+							<a href="javascript:;">规则</a>
+						</li>
+						<li>
+							<a href="javascript:;">帮助</a>
+						</li> -->
+						<li>
+							<a href="javascript:;" class="exit">退出</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="news_content wrap clearfix basic_info">
+			<div class="info_l ng-cloak" ng-controller="getAgent">
+				<div class="info_l_l">
+					<span class="img_w">
+						<img ng-src="{{userHeader}}"/>
+					</span>
+					<span class="font14 pass">
+						<em ng-if="perInfo.status =='01'">待审核</em>
+						<em ng-if="perInfo.status =='00'">通过</em>
+						<em ng-if="perInfo.status =='02'">未通过</em>
+					</span>
+				</div>
+				<div class="info_l_l info_detail">
+					<p class="name">晚上好，<em ng-bind="perInfo.realName"></em></p>
+					<p class="tel mt26">手机号：<em ng-bind="tel | getTel"></em></p>
+					<p class="tel">身份证号：<em ng-if="perInfo.idno">**************</em><em ng-bind="perInfo.idno | getIdNo"></em></p>
+					<p class="font12">如需修改信息请到手机 App 端</p>
+				</div>
+			</div>
+			<div class="info_r">
+				<p>账户余额</p>
+				<p class="amount">
+					<span>88,888.00</span> 元
+				</p>
+				<p class="btns">
+					<a href="javascript:;" class="active">充值</a>
+					<a href="javascript:;">提现</a>
+					<!-- <a href="javascript:;">转账</a> -->
+				</p>
+			</div>
+		</div>
+		<div class="wrap trans_records">
+			<div class="tit clearfix">
+				<span class="trade">交易记录</span>
+				<a href="center_statement.htm">志鸿对账单</a>
+			</div>
+		    <div class="table">
+		    	<div class="thead">
+		    		<div class="tr clearfix">
+			    		<div class="th">创建时间</div>
+			    		<div class="th">交易名称</div>
+			    		<div class="th">交易对方</div>
+			    		<div class="th">金额（元）</div>
+			    		<div class="th">状态</div>
+			    		<div class="th">操作</div>
+			    	</div>
+		    	</div>
+		    	<div class="tbody">
+		    		<div class="tr_w">
+		    			<div class="tr clearfix">
+			    			<div class="td">2016-12-12 12：12</div>
+				    		<div class="td">运势界 - 运费发放</div>
+				    		<div class="td">广州志鸿物流有限公司</div>
+				    		<div class="td">
+				    			<p>+3000.00
+				    			</p>
+				    		</div>
+				    		<div class="td">成功</div>
+				    		<div class="td">
+				    			<div class="select_w">
+				    				<div class="select clearfix">
+					    				<a href="center_records_detail.htm">详情</a>
+					    				<span></span>
+					    			</div>
+					    			<div class="select_down">
+					    				备注
+					    			</div>
+				    			</div>
+				    			<!-- 加入类名select_w显示下拉列表 -->
+				    		</div>	
+			    		</div>
+			    		<div class="tr clearfix">
+			    			<div class="td"></div>
+				    		<div class="td"></div>
+				    		<div class="td"></div>
+				    		<div class="td">
+				    			<p>+0.00
+									<span>
+										<i class="font14">类型：首付款</i>
+										<i>交易号：111111111111111111</i>
+										<i>付款时间：2012-12-12  12:12</i>
+									</span>
+				    			</p>
+				    		</div>
+				    		<div class="td">等待付款</div>
+				    		<div class="td"></div>	
+			    		</div>
+			    	</div>
+					<div class="tr_w">
+		    			<div class="tr clearfix">
+			    			<div class="td">2016-12-12 12：12</div>
+				    		<div class="td">运势界 - 运费发放</div>
+				    		<div class="td">广州志鸿物流有限公司</div>
+				    		<div class="td">
+				    			<p>+3000.00</p>
+				    		</div>
+				    		<div class="td">成功</div>
+				    		<div class="td">
+				    			<a href="center_records_detail.htm">详情</a>
+				    		</div>	
+			    		</div>
+			    	</div>
+			    	<div class="tr_w">
+		    			<div class="tr clearfix">
+			    			<div class="td">2016-12-12 12：12</div>
+				    		<div class="td">运势界 - 运费发放</div>
+				    		<div class="td">广州志鸿物流有限公司</div>
+				    		<div class="td">
+				    			<p>+3000.00</p>
+				    		</div>
+				    		<div class="td">成功</div>
+				    		<div class="td">
+				    			<a href="center_records_detail.htm">详情</a>
+				    		</div>	
+			    		</div>
+			    	</div>
+			    	<div class="tr_w">
+		    			<div class="tr clearfix">
+			    			<div class="td">2016-12-12 12：12</div>
+				    		<div class="td">运势界 - 运费发放</div>
+				    		<div class="td">广州志鸿物流有限公司</div>
+				    		<div class="td">
+				    			<p>+3000.00</p>
+				    		</div>
+				    		<div class="td">成功</div>
+				    		<div class="td">
+				    			<a href="center_records_detail.htm">详情</a>
+				    		</div>	
+			    		</div>
+			    	</div>
+			    	<div class="tr_w">
+		    			<div class="tr clearfix">
+			    			<div class="td">2016-12-12 12：12</div>
+				    		<div class="td">运势界 - 运费发放</div>
+				    		<div class="td">广州志鸿物流有限公司</div>
+				    		<div class="td">
+				    			<p>+3000.00</p>
+				    		</div>
+				    		<div class="td">成功</div>
+				    		<div class="td">
+				    			<a href="center_records_detail.htm">详情</a>
+				    		</div>	
+			    		</div>
+			    	</div>
+		    	</div>
+		    	
+		    </div>
+			<div class="news_page wrap clearfix">
+	            <div id="page" class="m-pagination"></div>
+	            <div id="eventLog"></div>
+				<div class="page">
+					分页
+				</div>
+			</div>
+		</div>
+		<!-- <div class="content_w">
+			<div class="wrap clearfix">
+				<div class="con_l">
+					<div class="tit">个人中心</div>
+					<ul class="menu">
+						<li>
+							<a href="center_basicinfo.htm" class="active">我的资料</a>
+						</li>
+						<li>
+							<a href="driver_list.htm">司机车辆信息</a>
+						</li>
+						<li style="margin-bottom:10px;">
+							<a href="running_route.htm">常跑线路</a>
+						</li>
+						<li>
+							<span class="line"></span>
+						</li>
+						<li style="margin-top:15px;">
+							<a href="#">设置</a>
+						</li>
+						<li>
+							<a href="#">帮助</a>
+						</li>
+					</ul>
+					<span class="exit">退出</span>
+				</div>
+				<div class="con_r">
+					<div class="user_c">
+						<div class="user clearfix">
+							<div class="user_l user_head" data-column="userHead">
+								<img class="picture" src="img/user_s.png"/>
+							</div>
+							<div class="user_r">
+								<p>运势界，欢迎您</p>
+								<p id="telephone">手机号:<span data-column="telphone" class="text-column"></span></p>
+								<p data-column="statusCn" class="status text-column"></p>
+							</div>
+						</div>
+					</div>
+					<div class="main_w">
+						<div class="tit clearfix">
+							<div class="tit_l">基本信息</div>
+							<div class="tit_r ">
+								<span class="edit to_edit"></span>
+							</div>
+						</div>
+						<div class="driver_w clearfix">
+						    	<div class="driver_w_l center_l">
+						    		<dl>
+						    			<dd>
+						    				<strong>姓名</strong><span data-column="realName" class="text-column"></span>
+						    			</dd>
+						    			<dd>
+						    				<strong>身份证号码</strong><span data-column="idno" class="text-column"></span>
+						    			</dd>
+						    			<dd>
+						    				<strong>手机</strong><span data-column="telphone" class="text-column"></span>
+						    			</dd>
+						    		</dl>
+						    	</div>
+						    	<div class="driver_w_r">
+						    		<ul class="clearfix">
+						    			<li>
+						    				<p class="pic_w cert_c pic-column" data-column="idFImageRefId">
+						    					<img src="img/photo.png">
+						    				</p>
+						    				<p class="txt">身份证正面照</p>
+						    			</li>
+						    			<li>
+						    				<p class="pic_w pic-column" data-column="idBImageRefId">
+						    					<img src="img/photo.png">
+						    				</p>
+						    				<p class="txt">身份证反面照</p>
+						    			</li>
+						    			<li>
+						    				<p class="pic_w pic-column" data-column="busImageRefId">
+						    					<img src="img/photo.png">
+						    				</p>
+						    				<p class="txt">营业执照照片</p>
+						    			</li>
+						    		</ul>
+						    	</div>
+						    </div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<div class="con_foot">
+			<div class="wrap clearfix foot_w">
+				<p>
+					<span class="copyright">条款 - 隐私权         ©2016 guangzhouzhihong</span>
+					<span class="tel">
+						<i>400-888-0906</i>
+						</br>
+						<i class="time">周一至周日  8:00-22:00</i>
+					</span>                                                 
+				</p>
+			</div>
+		</div>
+		<!-- 编辑备注信息对对话框 -->
+		<div class="dialog_wrap" style="display:none;">
+    		<div class="dialog_w">
+		  		<div class="tit">编辑备注信息</div>
+		  		<div class="con">
+		  			<dl class="clearfix">
+			  			<dt>名称：</dt>
+			  			<dd>运势界-运费</dd>
+			  		</dl>
+			  		<dl class="clearfix">
+			  			<dt>备注：</dt>
+			  			<dd>
+			  				<textarea></textarea>
+			  			</dd>
+			  		</dl>
+			  		<dl class="clearfix">
+			  			<dt></dt>
+			  			<dd class="font12">可以写 50 个字</dd>
+			  		</dl>
+			  		<dl class="clearfix">
+			  			<dt></dt>
+			  			<dd>
+			  				<button>确定</button>
+			  			</dd>
+			  		</dl>
+		  		</div>
+		  		<span class="close"></span>
+			</div>
+			<div class="mask"></div>
+    	</div>
+    </body>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script> 
+    <script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/angular-resource.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/datepicker.min.js"></script>
+	<script type="text/javascript" src="js/global_config.js"></script>
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/services.js"></script>
+	<script type="text/javascript" src="js/filters.js"></script>
+	<script type="text/javascript" src="js/directives.js"></script>
+	<script type="text/javascript" src="js/controller.js"></script>
+	<!-- <script type="text/javascript" src="js/CBSImage.js"></script> -->
+	<!-- <script type="text/javascript" src="js/IdCardNoUtil.js"></script> -->
+	<!-- <script type="text/javascript" src="js/center_basicinfo.js"></script> -->
+	<script type="text/javascript">
+		$(function(){
+			// new UserCenter({readonly:true});
+			global.coffee({
+				"click":{
+					".exit" :function(){
+						if(confirm("确认退出？")){
+							global.Logout();
+						}
+					}
+				}
+			})
+		});
+	</script>
+</html>

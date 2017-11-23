@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="editApp">
+    <head>
+        <meta charset="utf-8">
+        <title>订单详情</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dialog.css"/>
+    </head>
+    <body style="background-color:#fbfbfb;position: relative;" ng-controller="getLoaBill">
+    	<headtop></headtop>
+		<div class="container wrap clearfix">
+			<div class="container_l">
+				<div class="transit_state">
+					<div class="state_w">
+						<p ng-repeat="new in news | limitNum:10">
+						<em ng-bind="new.createdTime"></em>
+						[<em ng-bind="new.real_name"></em>]
+						<em ng-bind="new.content"></em>
+						</p>
+						<span>最新</span>
+					</div>
+				</div>
+			</div>
+			<div class="container_r">
+				<div class="line_detail">
+					<div class="tit">货源编号：123456789</div>
+					<div class="content clearfix">
+					</div>
+				</div>
+				<div class="line_detail quote_price clearfix select_car_w sp_style">
+					<dl class="select_car clearfix">
+						<dt>使用车辆</dt>
+						<dd class="brands carBrand">
+						</dd>
+						<dd class="add">
+							<a href="edit_driver_info.htm">添加</a>
+						</dd>
+						<dt>使用驾驶员</dt>
+						<dd class="brands nameBrand">
+						</dd>
+						<dt></dt>
+						<dd class="txt clearfix">
+							<button class="saveCarInfo" disabled="disabled">完善信息</button>
+							<p class="lstyle">新增车辆或驾驶员需要审核，请提前添加，避免耽误发车。</p>
+						</dd>
+					</dl>
+				</div>
+				<div class="line_detail quote_price ishide clearfix">
+					<div class="price_l">
+						<p class="price">我的报价
+							<span class="doller">¥12000.00</span>
+						</p>
+						<p class="remark clearfix">
+							<span class="remark_l">备注：</span>
+							<span class="remark_r">四大水电费及扩大及福利卡的跟价格了恐惧感四大水电费及扩大及福利卡的跟价格了恐惧感四大水电费及扩大及福利卡的跟价格了恐惧感四大水电费及扩大及福利卡的跟价格了恐惧。</span>
+						</p>
+					</div>
+				</div>
+				<div class="line_detail quote_price transit_info clearfix">
+					<div class="info_l">
+						<div class="main_info">
+							<span>预计公里数：<em ng-bind="Info.miles"></em>KM</span>
+							<span class="m82">在途要求：<em ng-bind="Info.transitRequire"></em></span>
+						</div>
+						<dl>
+							<dt>计划发车时间：<span ng-bind="Info.needStartTime"></span></dt>
+							<dd>
+								<span class="w215">发货联系人：<em ng-bind="Info.contactName"></em></span> 
+								<span class="w220">发货人电话：<em ng-bind="Info.telphone"></em></span>     
+								<span>发货人手机:<em ng-bind="Info.sendMobile"></em></span>
+							</dd>
+							<dd>发货地址：   <em ng-bind="Info.sendAddress"></em></dd>
+						</dl>
+						<dl>
+							<dt>到达时间：<span ng-bind="Info.needArriveTime"></span></dt>
+							<dd>
+								<span class="w215">收货联系人：<em ng-bind="Info.receiveName"></em></span> 
+								<span class="w220">收货人电话：<em ng-bind="Info.receiverTelphone"></em></span>     
+								<span>收货人手机: <em ng-bind="Info.sendTelphone"></em></span>
+							</dd>
+							<dd>收货地址：   <em ng-bind="Info.receiveAddress"></em></dd>
+						</dl>
+					</div>
+					<div class="info_r">
+						<div class="map_btn">
+							<a href="order_detail_map.htm?loadId={{Info.loadId}}&quotedId={{Info.quotedId}}&status=05">
+								<img src="img/map_btn.png"/>
+								<span>查看地图</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="con_foot">
+			<div class="wrap">
+				<p>
+					条款 - 隐私权
+					<span>©2016 guangzhouzhihong</span>                                                 
+				</p>
+			</div>
+		</div>
+    </body>	
+	<script type="text/javascript" src="js/vendor/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-resource.min.js"></script>
+	<script type="text/javascript" src="js/vendor/moment.js"></script>
+    <script type="text/javascript" src="js/vendor/store.min.js"></script> 
+	<script type="text/javascript" src="js/vendor/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/public/global_config.js"></script>	
+	<script type="text/javascript" src="js/public/global.js"></script>
+	<script type="text/javascript" src="js/services/services.js"></script>
+	<script type="text/javascript" src="js/filters/filters.js"></script>
+	<script type="text/javascript" src="js/directives/directives.js"></script>
+	<script type="text/javascript" src="js/controllers/controller.js"></script>
+	<script type="text/javascript" src="js/public/supply_detail.js"></script>
+</html> 

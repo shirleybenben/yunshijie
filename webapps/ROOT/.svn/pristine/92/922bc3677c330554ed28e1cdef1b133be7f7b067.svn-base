@@ -1,0 +1,169 @@
+(function(window,angular,undefined){
+	'use strict';
+	var services = angular.module('main_services',['ngResource','ngRoute'])
+	.factory('getRecoSour',getRecoSour)
+	.factory('getRecommendSource',getRecommendSource)
+	.factory('getRList',getRList)
+	.factory('getRecordList',getRecordList)
+	.factory('getloadId',getloadId)
+	.factory('getQOList',getQOList)///api/quoted/getQuotedOrderList
+	.factory('getQuotedOrderList',getQuotedOrderList)
+	.factory('loaBillQuery',loaBillQuery)///api/quoted/getLoaBillByQuotedId
+	.factory('getLoaBill',getLoaBill)
+	.factory('trackInfoQuery',trackInfoQuery)///api/trip/trackInfo
+	.factory('getTrackInfo',getTrackInfo)
+	.factory('geoQuery',geoQuery)///api/trip/getgeo
+	.factory('getGeo',getGeo)
+
+	function geoQuery($resource){
+		return $resource(global_config.server+"/api/trip/getgeo",{},{
+	        get:{
+	            method:"GET",
+	            headers:{
+	            	'Authorization':global.getUserId() + ':' + global.getToken()
+	            }
+	        },
+	    });
+	}
+	geoQuery.$inject=['$resource'];
+
+	function getGeo(gQy,$q,$log){
+		return function(){
+			var delay = $q.defer();
+			gQy.get({loadId: global.QueryString.loadId},function(data){
+				delay.resolve(data);
+			},function(){
+				delay.reject('Error');
+			})
+			return delay.promise;
+		}
+	}
+	getGeo.$inject=['geoQuery','$q','$log'];
+
+
+	function trackInfoQuery($resource){
+		return $resource(global_config.server+"/api/trip/trackInfo",{},{
+	        get:{
+	            method:"GET",
+	            headers:{
+	            	'Authorization':global.getUserId() + ':' + global.getToken()
+	            }
+	        },
+	    });
+	}
+	trackInfoQuery.$inject=['$resource'];
+
+	function getTrackInfo(tIQ,$q,$log){
+		return function(){
+			var delay = $q.defer();
+			tIQ.get({loadId: global.QueryString.loadId},function(data){
+				delay.resolve(data);
+			},function(){
+				delay.reject('Error');
+			})
+			return delay.promise;
+		}
+	}
+	getTrackInfo.$inject=['trackInfoQuery','$q','$log'];
+
+	function loaBillQuery($resource){
+		return $resource(global_config.server+"/api/quoted/getLoadBillByQuotedId",{},{
+	        get:{
+	            method:"GET",
+	            headers:{
+	            	'Authorization':global.getUserId() + ':' + global.getToken()
+	            }
+	        },
+	    });
+	}
+	loaBillQuery.$inject=['$resource'];
+
+	function getLoaBill(lBQ,$q,$log){
+		return function(){
+			var delay = $q.defer();
+			lBQ.get({quotedId: global.QueryString.quotedId},function(data){
+				delay.resolve(data);
+			},function(){
+				delay.reject('Error');
+			})
+			return delay.promise;
+		}
+	}
+	getLoaBill.$inject=['loaBillQuery','$q','$log'];
+
+
+	function getQOList($resource){
+		return $resource("/text.json");
+	}
+	getQOList.$inject=['$resource'];
+
+	function getQuotedOrderList(gQ,$q,$log){
+		return function(){
+			var delay = $q.defer();
+			gQ.get({sourceType:'0'},function(data){
+				delay.resolve(data);
+			},function(){
+				delay.reject('Error');
+			})
+			return delay.promise;
+		}
+	}
+	getQuotedOrderList.$inject=['getQOList','$q','$log'];
+
+	function getRecoSour($resource){
+		return $resource(global_config.server+"/api/source/getRecommendSource",{},{
+	        get:{
+	            method:"GET",
+	            headers:{
+	            	'Authorization':global.getUserId() + ':' + global.getToken()
+	            }
+	        },
+	    });
+	}
+	getRecoSour.$inject=['$resource'];
+
+	function getRecommendSource(gR,$q,$log){
+		return function(){
+			var delay = $q.defer();
+			gR.get({sourceCount:'4'},function(data){
+				delay.resolve(data);
+			},function(){
+				delay.reject('Error');
+			})
+			return delay.promise;
+		}
+	}
+	getRecommendSource.$inject=['getRecoSour','$q','$log'];
+
+	function getloadId(){
+		return {
+			loadId: ""
+		}
+	}
+
+	function getRList($resource){
+		return $resource(global_config.server+"/api/record/getRecordList",{},{
+	        get:{
+	            method:"GET",
+	            headers:{
+	            	'Authorization':global.getUserId() + ':' + global.getToken()
+	            }
+	        },
+	    });
+	}
+
+	getRList.$inject=['$resource'];
+
+	function getRecordList(gL,loadId,$q,$route,$location,$log){
+		return function(){
+			var delay = $q.defer();
+			gL.get({remarkType:'05',targetId: loadId.loadId},function(data){
+				delay.resolve(data);
+			},function(){
+				delay.reject('Error');
+			})
+			return delay.promise;
+		}
+	}
+	getRecordList.$inject=['getRList','getloadId','$q','$route','$location','$log'];
+})(window,window.angular)

@@ -1,0 +1,19 @@
+<div class="dialog_wrap hyDialog" style="display:none" ng-controller="closeQuotedInfo">
+	<div class="dialog_done dialog_w close_price">
+  		<p class="star">
+  			<img src="img/close_price_bg.png"/>
+  		</p>
+  		<p class="txt">
+  			<span class="txt_d">毁约</span></br>
+  		</p>
+  		<p class="txt txt_we">
+  			<span class="txt_w">请慎重确认<br/>毁约将减少您的信誉度和处罚200元</span> 
+  		</p>
+  		<p class="resure clearfix">
+  			<button class="sure" ng-click="bkPromise()">确认</button>
+  			<button class="cancel" ng-click="cancel()">取消</button>
+  		</p>
+  		<span class="close" ng-click="cancel()"></span>
+	</div>
+	<div class="mask"></div>
+</div>

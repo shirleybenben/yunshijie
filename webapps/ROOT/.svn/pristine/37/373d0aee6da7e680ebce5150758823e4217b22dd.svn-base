@@ -1,0 +1,117 @@
+var YSJSourceRowL = function(data){
+	
+	this.template = function (data) {
+			var needLength = data.needLength,
+				arriveCustomerTime = data.arriveCustomerTime,
+				quoteNum = data.quoteNum,
+				startCodeC = data.startCodeCCn?data.startCodeCCn:data.startCodePCn,
+				endCodeC = data.endCodeCCn?data.endCodeCCn:data.endCodePCn,
+				needType = data.needType,
+				needLength = data.needLength,
+				goodsWeight = data.goodsWeight;
+			
+			var goodsVolumne = data.goodsVolumne;
+			/*
+			var ngv = Number(data.goodsVolumne);
+			if(ngv){
+				goodsVolumne = ngv;
+			}
+			*/
+			
+			var goodsName = data.goodsName,
+				status = data.status,
+				sourceId = data.sourceId,
+				quotedId = data.quotedId,
+				statusCn = data.statusCn,
+				hasBegin = data.hasBegin,
+				ageTime = global.fromNow(data.ageTime);
+			
+			var el = $('<li> \
+					<a class="goto_detail" href="javascript:void(0)"> \
+					<div class="list_top clearfix"> \
+						<div class="list_top_l"> \
+							<span class="city">'+global.filterWord(startCodeC)+'</span> \
+							<span class="route_bg"></span> \
+							<span class="city">'+global.filterWord(endCodeC)+'</span> \
+						</div> \
+						<div class="list_top_r">提货时间　　'+arriveCustomerTime+'</div> \
+					</div> \
+					<div class="list_con clearfix"> \
+						<div class="list_con_l"> \
+							<p class="vehicle_l"> \
+								<span>需求车型：</span> \
+								<span class="txt">需求车长：</span> \
+							</p> \
+							<p class="vehicle_l w84"> \
+								<span>'+needType+'</span> \
+								<span class="txt font18">'+needLength+'米</span> \
+							</p> \
+							<p class="vehicle_l w97"> \
+								<span>货物吨位</span> \
+								<span class="txt font18">'+goodsWeight+'吨</span> \
+							</p> \
+							<p class="vehicle_l w97"> \
+								<span>货物体积</span> \
+								<span class="txt font18">'+goodsVolumne+'方</span> \
+							</p> \
+							<p class="vehicle_l w300"> \
+								<span>货物类型</span> \
+								<span class="txt font18">'+goodsName+'</span> \
+							</p> \
+						</div> \
+						<div class="list_con_m"> \
+							<p class="name">广东志鸿物流有限公司</p> \
+							<p class="addr">提货地点:广东省&nbsp;&nbsp;广州市</p> \
+						</div> \
+						<div class="list_con_r"> \
+							<p class="end">已中标</p> \
+							<p class="num">已应标<span>'+quoteNum+'</span>人</p> \
+						</div> \
+					</div> \
+					<button class="quoted_price">已报价</button> \
+				</a> \
+			</li>');
+			if(data.type == 1){
+				switch(statusCn){
+					case "已中标":
+						el.find(".goto_detail").attr("href","order_detail_perfectinfo.htm?quotedId="+quotedId+"&id="+sourceId+"&type=1&statusCn=got&status="+status);
+					break;
+					case "在途中":
+						el.find(".goto_detail").attr("href","order_detail_transitinfo.htm?quotedId="+quotedId+"&id="+sourceId+"&type=1&"+"status="+status);
+					break;
+					default:
+						el.find(".goto_detail").attr("href","order_detail.htm?quotedId="+quotedId+"&id="+sourceId+"&type=1");
+					break;
+				}
+			}else{
+				el.find(".goto_detail").attr("href","supply_detail.htm?id="+sourceId);
+			}
+			
+			if(data.hasQuote==0 || data.type==1){
+				el.find('.quoted_price').remove();
+			}
+			if(hasBegin == 0){
+				el.find('p.end').text(ageTime+"开始");
+				el.find('p.num').html("未开始");
+			}else{
+				el.find('p.end').text(ageTime+"结束");
+			}
+			
+			if(data.type==1){
+				if(status!='01'){
+					el.find('p.end').text(statusCn);
+				}
+			}
+			var addr_str = "";
+			if(data.senderAreaList.length>0){
+				var senderAddr = data.senderAreaList.reverse();
+				$.each(senderAddr, function(i, j){
+					addr_str += j.regionName;
+				});
+			}
+			el.find('.addr').text('提货地点:'+addr_str);
+			return el;
+		};
+	
+	return this.template(data);
+}

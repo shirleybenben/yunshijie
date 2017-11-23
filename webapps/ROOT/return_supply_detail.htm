@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="editApp">
+    <head ng-controller="head">
+        <meta charset="utf-8">
+        <title>货源详情</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>
+        <link rel="stylesheet" type="text/css" href="css/supply_hall.css"/>
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui-extends.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.multiselect.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.multiselect.filter.css"/>
+		<link rel="stylesheet" type="text/css" href="css/select.css"/>   
+		<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.css"/>
+		<link rel="shortcut icon" ng-href="{{path}}" />
+    </head>
+    <body>
+		<div class="con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="index.htm">
+						<img src="img/c_logo.png" height="45" width="155">
+					</a>
+				</div>
+				<ul class="nav clearfix">
+					<li>
+						<a href="index.htm">首页</a>
+					</li>
+					<li class="current">
+						<a href="supply_hall.htm">我的货源</a>
+					</li>
+					<li>
+						<a href="my_order.htm">我的订单</a>
+					</li>
+				</ul>
+				<div class="search_w">
+					<a href="center_news.htm">
+						<span class="notice"></span>
+					 	<!-- 有消息加入类名has_notice -->
+					</a>
+					<span class="user">
+						<a href="center_basicinfo.htm"></a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="order_tit order_list_w">
+			<div class="order_top clearfix wrap">
+				<div class="breadcrumb">
+					<a href="supply_hall.htm">我的货源</a> > 四川-黑龙江 > 货源详情
+				</div>
+			</div>
+		</div>
+		<!-- 报价应标 -->
+		<div class="order_list_w content_w wrap detail_w return_detail"> 
+			<ol class="order_list wrap">
+			    <li> 
+				    <div class="list_top clearfix"> 
+					    <div class="list_top_l"> 
+					       	<span class="city">北京</span> 
+					       	<span class="route_bg"></span> 
+					       	<span class="city">天津</span> 
+					    </div> 
+				      	<div class="list_top_r">回程</div> 
+					    <div class="list_con_r"> 
+					       	<p class="end">206天后结束</p> 
+					   	</div> 
+				    </div> 
+				    <div class="list_con clearfix"> 
+					    <div class="list_con_l"> 
+					       	<p class="vehicle_l w97"> 
+					       		<span>需求车长</span> 
+					       		<span class="txt font18">6.8米</span> 
+					       	</p> 
+					       	<p class="vehicle_l w97"> 
+					       		<span>车型</span> 
+					       		<span class="txt font18">中栏车</span> 
+					       	</p> 
+					       	<p class="vehicle_l w97"> 
+					       		<span>货物重量</span> 
+					       		<span class="txt font18">0.0吨</span> 
+					       	</p> 
+					       	<p class="vehicle_l w97"> 
+					       		<span>体积</span> 
+					       		<span class="txt font18">44.0方</span> 
+					       	</p> 
+					       	<p class="vehicle_l w97"> 
+					       		<span>类型</span> 
+					       		<span class="txt font18">封口费</span> 
+					       	</p> 
+					    </div> 
+				     	<div class="list_con_r">
+				     		<p>
+				     			<span>提货时间</span>2016-10-08  12:30
+				     		</p>
+				     		<p>
+				     			<span>到达时间</span>2016-10-08  12:30
+				     		</p>
+				     	</div>
+				    </div> 
+				    <div class="list_con_m clearfix"> 
+				      	<p class="name">广州志鸿物流有限公司</p> 
+				      	<p class="addr">提货地点：
+				      		<span>广东 广州市 花都区 </span>
+				      	</p> 
+				    </div> 
+			    </li>
+			</ol>
+			<div class="quote_w">
+				<dl class="clearfix">
+					<dt>报价</dt>
+					<dd>
+						<input type="text"/>元
+						<span class="hint">您的报价将在竞标开始后自动应标</span>
+						<span class="fr">应标押金500元</span>
+						<span>竞标成功发车后押金自动退回到您的账户</span>
+						<span>竞标失败押金立即退回到您的账户</span>
+					</dd>
+				</dl>
+				<dl class="clearfix">
+					<dt>留言</dt>
+					<dd>
+						<textarea></textarea>
+						<span>0 / 50</span>
+					</dd>
+				</dl>
+				<dl class="clearfix">
+					<dt></dt>
+					<dd>
+						<button>报价</button>
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<!-- 已报价 -->
+		<!-- <div class="order_list_w content_w wrap detail_w"> 
+			<div class="breadcrumb">
+				<a href="supply_hall.htm">我的货源</a> > 四川-黑龙江 > 货源详情
+			</div>
+			<ol class="order_list wrap">
+			    <li> 
+				    <div class="list_top clearfix"> 
+					    <div class="list_top_l"> 
+					       	<span class="city">北京</span> 
+					       	<span class="route_bg"></span> 
+					       	<span class="city">天津</span> 
+					    </div> 
+				      	<div class="list_top_r">提货时间　　2016-08-26 09:17</div> 
+					    <div class="list_con_r"> 
+					       	<p class="num">应标&nbsp;<span>2</span>&nbsp;人</p> 
+					       	<p class="end">206天后结束</p> 
+					   	</div> 
+				    </div> 
+				    <div class="list_con clearfix"> 
+					    <div class="list_con_l"> 
+					       	<p class="vehicle_l w97"> 
+					       		<span>需求车长</span> 
+					       		<span class="txt font18">6.8米</span> 
+					       	</p> 
+					       	<p class="vehicle_l w97"> 
+					       		<span>车型</span> 
+					       		<span class="txt font18">中栏车</span> 
+					       	</p> 
+					       	<p class="vehicle_l w97"> 
+					       		<span>货物重量</span> 
+					       		<span class="txt font18">0.0吨</span> 
+					       	</p> 
+					       	<p class="vehicle_l w97"> 
+					       		<span>体积</span> 
+					       		<span class="txt font18">44.0方</span> 
+					       	</p> 
+					       	<p class="vehicle_l w97"> 
+					       		<span>类型</span> 
+					       		<span class="txt font18">封口费</span> 
+					       	</p> 
+					    </div> 
+				     	<div class="list_con_r">
+				     		<p>
+				     			<span>提货时间</span>2016-10-08  12:30
+				     		</p>
+				     		<p>
+				     			<span>到达时间</span>2016-10-08  12:30
+				     		</p>
+				     	</div>
+				    </div> 
+				    <div class="list_con_m clearfix"> 
+				      	<p class="name">广州志鸿物流有限公司</p> 
+				      	<p class="addr">提货地点：
+				      		<span>广东 广州市 花都区 </span>
+				      	</p> 
+				    </div>
+				    <button class="quoted_price"></button> 
+			    </li>
+			</ol>
+			<div class="quote_w price_w">
+				<dl class="clearfix">
+					<dt>报价</dt>
+					<dd>
+						<i>12,000.00</i>元
+					</dd>
+				</dl>
+				<dl class="clearfix">
+					<dt>留言</dt>
+					<dd>
+						需要提前 15 分钟到发车地点
+					</dd>
+				</dl>
+			</div>
+		</div> -->
+		<div class="recommend wrap">
+			<div class="groom groom_w">
+				<a class="recommend_supply">推荐回程货源</a>
+				<a href="supply_hall.htm">
+					<span class="arrow">查看更多</span>
+				</a>
+			</div>
+			<ul class="recommend_list clearfix" ng-controller="getRecommendSource" >
+				<li ng-repeat="item in items | limitNum:4" ng-show="len >'0'">
+					<a href="supply_detail.htm?id={{item.sourceId}}" class="flow_w">
+						<div class="flow">
+							<div class="flow_bar clearfix">
+								<span class="city start" ng-bind="item.startCodeCCn | filter "></span>
+								<span class="car_bg"></span>
+								<span class="city end" ng-bind="item.endCodeCCn | filter "></span>
+							</div>
+							<dl class="detail clearfix">
+								<dt>提货时间</dt>
+								<dd class="w172" ng-bind="item.arriveCustomerTime"></dd>
+								<dt>需求车长</dt>
+								<dd class="w172"><em ng-bind="item.needLength"></em>米</dd>
+								<dt>需求车型</dt>
+								<dd class="w172" ng-bind="item.needType"></dd>
+								<dt>货物重量</dt>
+								<dd class="w172"><em ng-bind="item.goodsWeight"></em>吨</dd>
+								<dt>货物类型</dt>
+								<dd class="w172" ng-bind="item.goodsName"></dd>
+								<button class="quoted_price" ng-show="item.hasQuote == '1'"></button>
+							</dl>
+							<div class="count clearfix">
+								<span class="mans">应标&nbsp;<i ng-bind="item.quoteNum"></i>&nbsp;人</span>
+								<span class="days" ng-bind="item.ageTime | timeFilter"></span>
+								<!-- 天数开始样式加入类名start -->
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="no-data" ng-show="len =='0'">
+					<span class="txt">暂无数据</span>
+				</li>
+			</ul>
+			<!-- 无数据时调用 -->
+			<!-- <div class="no-data">
+				
+			</div> -->
+		</div>
+		<div class="con_foot">
+			<div class="wrap clearfix foot_w">
+				<p>
+					<span class="copyright">条款 - 隐私权         ©2016 guangzhouzhihong</span>
+					<span class="tel">
+						<i>400-888-0906</i>
+						</br>
+						<i class="time">周一至周日  8:00-22:00</i>
+					</span>                                                 
+				</p>
+			</div>
+		</div>
+    </body>
+    <!-- <script data-baseurl="./" data-main="js/main.js" src="js/require.min.js" id="main"></script> -->
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/angular-resource.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/store.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/jquery.md5.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.multiselect.js"></script>
+	<script type="text/javascript" src="js/jquery.multiselect.filter.js"></script>
+	<script type="text/javascript" src="js/datepicker.min.js"></script>
+	<script type="text/javascript" src="js/global_config.js"></script>	
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/countrySelect.js"></script>
+	<script type="text/javascript" src="js/pagination.js"></script>
+	<script type="text/javascript" src="js/YSJTable.js"></script>
+	<script type="text/javascript" src="js/YSJSourceRowL.js"></script>
+	<script type="text/javascript" src="js/YSJSupplyHall.js"></script>
+	<script type="text/javascript" src="js/services.js"></script>
+	<script type="text/javascript" src="js/filters.js"></script>
+	<script type="text/javascript" src="js/controller.js"></script>
+</html> 

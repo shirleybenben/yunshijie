@@ -1,0 +1,163 @@
+/*
+* @Author: Administrator
+* @Date:   2016-06-06 17:36:40
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-06-22 17:27:35
+*/
+$(function(){
+
+	$("#div_loading").hide();
+
+	function addAgent()
+	{
+		var url = global.server + '/api/agent/addOrUpdateAgent';
+		
+		var data = {
+			Authorization: $.cookie("accountId") + ":" + $.cookie("token"),
+			agentType: "02",
+			realName: $("#user_name").val(),
+			idno: $("#id_card").val(),
+			idFImageRefId:"",
+			idBImageRefId:"",
+			companyFullName: $("#company_name").val(),
+			busCode: $("#biz_id").val(),
+			orgCode: $("#org_id").val(),
+			taxRegCode: $("#tax_id").val()
+		};
+
+		$.ajax({
+			type:"post",
+			url: url,
+			async:true,
+			data: data,
+			success: function (msg) {
+				if (msg && msg.status && msg.status.statusCode == global.status.success) {
+					window.location = nextPage;
+					return true;
+				}
+				else if(msg.status.statusCode != global.status.success) {
+					alert(msg.status.statusCode + ":" + msg.status.errorMsg);
+					return false;
+				}
+		}});
+	}
+
+	$("#social_code").keyup(function(){
+		console.log($(this).val());
+		var v = $(this).val();
+		if((v!=null) && (v != "") && ($.trim(v) != ""))
+		{
+			$("#company_code").attr("disabled","disabled");
+			$("#biz_id").attr("disabled","disabled");
+			$("#org_id").attr("disabled","disabled");
+			$("#tax_id").attr("disabled","disabled");
+		}
+		else
+		{
+			$("#company_code").removeAttr("disabled");
+			$("#biz_id").removeAttr("disabled");
+			$("#org_id").removeAttr("disabled");
+			$("#tax_id").removeAttr("disabled");
+		}
+	})
+
+	$("#company_code").keyup(function(){
+		console.log($(this).val());
+		var v = $(this).val();
+		if((v!=null) && (v != "") && ($.trim(v) != ""))
+		{
+			$("#social_code").attr("disabled","disabled");
+		}
+		else
+		{
+			$("#social_code").removeAttr("disabled");
+		}
+	})
+
+	$("#inputUploadFile").change(function(e){
+		//$("#divLoading").css("display","block");
+		//$("#imgUpload").css("display","none");
+
+		var file = e.target.files;
+		console.log(file.item(0));
+		if(file){
+			var reader = new FileReader();
+			reader.onload = function () {
+				var w = $("#imgDriverLicense")[0].width;
+				var h = $("#imgDriverLicense")[0].height;
+
+				console.log("width :" + w + ", height:" + h);
+				$("#imgDriverLicense")[0].src = this.result;
+				$("#imgDriverLicense")[0].width =  w;
+				$("#imgDriverLicense")[0].height = h;
+
+				uploadImage(file.item(0), function(){
+					console.log("upload image:" + file.item(0).name + " successful");
+				})
+			}
+
+			reader.readAsDataURL(file.item(0));
+		}
+
+	})
+
+	var validator1 = $("#commentForm").validate({
+		debug:true, //只验证，不提交
+		rules:{
+			user_name:"required",
+			id_card:"required",
+			company_name:"required"
+		},
+		messages:{
+			user_name:"用户名不能为空",
+			id_card:"身份证号不能为空",
+			company_name:"公司名称不能为空"
+		},
+		errorPlacement:function(error, element){
+			error.appendTo(element.parent());
+		},
+		submitHandler:function(){
+			//添加经纪人信息
+			console.log("添加经纪人信息");
+			addAgent();
+		},
+		success:function(){}		
+	});
+
+	//上传照片
+	$("#input_upload_file").change(function(){
+		//$("#div_loading").show();
+
+		//上传照片
+		$.ajax({
+			type: "post",
+			url: global.server + '/api/driver/imageUpload',
+			data: {image: this.files[0]},
+			async: true,
+			enctype: 'multipart/form-data',
+			cache: false,
+			contentType: false,
+			processData: false,
+			success: function(msg) {
+				if (msg && msg.status && msg.status.statusCode == global.status.success) 
+				{
+					var imageId = msg.data.imageId;
+					$("#div_loading").hide();
+				}
+				else if(msg.status.statusCode != global.status.success)
+				{
+					console.log(msg.status.statusCode + ":" + msg.status.errorMsg);
+				}
+			}
+		});
+	})
+	
+	//提交数据
+	$("#btnSave").click(function(){
+		//验证字段
+		validator.resetForm();
+		console.log("testing...");
+	});
+	
+})
+

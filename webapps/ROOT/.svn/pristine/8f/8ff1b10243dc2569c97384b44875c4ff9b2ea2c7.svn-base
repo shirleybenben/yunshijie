@@ -1,0 +1,153 @@
+var editApp = angular.module("editApp",[]);
+
+editApp.controller("editInfoController",['$scope','$http',function editInfoController($scope,$http) {
+		$scope.saveInfo = function(){
+			var len = 0,slen =0,relList=[];
+			$scope.realList=[];
+			$scope.real={};
+			$scope.postData={
+				"plateNumber": "",
+				"licenseImageRefId": "",
+				"ocImageRefId": "",
+				"ciImageRefId": "",
+				"viImageRefId": ""
+			}
+			$scope.input = $('.wrap').find("input");
+			for (var i = 0; i < $scope.input.length; i++) {
+				var list = $scope.input[i],
+					value = $(list).val();
+					if(i<=4){
+						switch (i){
+							case 0:
+								$scope.postData.plateNumber = value;
+							break;
+							case 1:
+								$scope.postData.licenseImageRefId = value;
+							break;
+							case 2:
+								$scope.postData.ocImageRefId = value;
+							break;
+							case 3:
+								$scope.postData.ciImageRefId = value;
+							break;
+							case 4:
+								$scope.postData.viImageRefId = value;
+							break;
+						}
+					}else{
+						relList.push(value);
+					}
+			}
+			$.each(relList,function(j,item){
+				var index = (j+1)%7;
+				switch(index){
+						case 0:
+							$scope.real.idFImageRefId = item;
+						break;
+						case 1:
+							$scope.real.idBImageRefId = item;
+						break;
+						case 2:
+							$scope.real.drivingFImageRefId = item;
+						break;
+						case 3:
+							$scope.real.qualifiImageRefId = item;
+						break;
+						case 4:
+							$scope.real.realName = item;
+						break;
+						case 5:
+							$scope.real.idno = item;
+						break;
+						case 6:
+							$scope.real.telphone = item;
+						break;
+					}
+				if(index == 0){
+					$scope.realList.push($scope.real);
+					$scope.real={}
+				}
+			})
+
+			$scope.postData.realName= $scope.realList;
+			
+			$http.post(global.server + "/api/quoted/addQuotedInfo",$scope.postData).success(function(data,status){
+				console.log(data);
+			}).error(function(data,status){
+				console.log(data);
+			});
+		}
+	}
+]);
+
+//获取推荐货源   api/source/getRecommendSource
+editApp.controller('getRecommendSource', ['$scope','$http',function getRecommendSource($scope,$http){
+		$scope.param={
+			headers:{'Authorization':global.getUserId() + ':' + global.getToken()},
+			params:{"sourceCount":"4"}
+		};
+		$http.get(global.server + "/api/source/getRecommendSource",$scope.param).success(function(data,status){
+			$scope.items=data.data;
+		}).error(function(data,status){
+			console.log(data);
+		});
+	}
+]);
+
+//去除省,自治区,市等后缀
+editApp.filter('filter',function(){
+	return  function(input){
+		if(input.indexOf("省")>0){
+			return input.replace("省","");
+		}else if(input.indexOf("自治区")>0){
+			return input.replace("自治区","");
+		}else if(input.indexOf("市")>0){
+			return input.replace("市","");
+		}
+	}
+});
+
+//拼接提货地址
+editApp.filter('addsource',function(){
+	return function(add){
+		if(add.length>0){
+			var addr_str="",senderAddr=[];
+			add = $.grep(add, function(n) {return $.trim(n).length > 0;})
+			senderAddr = add.reverse();
+			for(var i=0;i< senderAddr.length;i++){
+				addr_str += senderAddr[i].regionName;
+			}
+		}
+		return addr_str;
+	}
+})
+
+//过滤时间
+editApp.filter('timeFilter',function(){
+	return function(time){
+		return global.fromNow(time);
+	}
+})
+
+//过滤重量
+editApp.filter('weightFilter',function(){
+	return function(weight){
+		var weight = weight/1000;
+		return weight>100?99.9:weight;
+	}
+})
+
+//限制循列表的环次数
+editApp.filter('limitNum',function(){
+	return function(items,param){
+		var list=[];
+		if(items){
+			for(var i=0;i<items.length;i++){
+				if(i<param){
+					list.push(items[i])
+				}
+			}
+		}
+		return list;
+	}
+})

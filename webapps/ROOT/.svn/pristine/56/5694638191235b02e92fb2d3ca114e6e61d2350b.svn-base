@@ -1,0 +1,66 @@
+<div class="quote_w price_w select_car perfect">
+	<div class="price_detail">
+		<dl class="clearfix">
+			<dt>报价</dt>
+			<dd>
+				<i ng-bind="info.price"></i>元
+			</dd>
+		</dl>
+		<dl class="clearfix">
+			<dt>留言</dt>
+			<dd ng-bind="info.remark" class="w350"></dd>
+		</dl>
+		<div class="clearfix panel" ng-if="info.status=='05' || info.status=='10'">
+			<div class="price_l">
+				<p>
+					<span>预付款</span>
+					<em>2,000.00 元</em>
+				</p>
+				<p>
+					<span>尾款</span>
+					<em class="font14">7,000.00 元</em>
+				</p>
+			</div>
+			<div class="price_l tip_box">
+				装车完毕后，预付款会自动打到您的账户</br>
+				纸质回单上传完毕后，尾款会自动打到您的账户
+			</div>
+		</div>
+		<div class="clearfix panel" ng-if="info.status=='09'">
+			<div class="payment">
+				<p>总支付
+					<span>13,000.00</span>
+				</p>
+				<a href="javascript:;">查看支付明细</a>
+			</div>
+		</div>
+	</div>
+	<div ng-if="info.status=='05' || info.status=='10' || info.status=='09'">
+		<div class="title">使用车辆及司机</div>
+		<ul class="con">
+			<li class="clearfix">
+				<a href="javascript:;" class="con_l">
+					<div class="con_l_l">
+						<img src="img/car_pic.png">
+					</div>
+					<div class="con_l_r">
+						<p class="font18" ng-bind="driverInfo.plateNumber | carNoSpace"></p>
+						<p>    
+							<span>车长：<em ng-bind="driverInfo.length"></em> 米</span>
+							<span class="pl16">车型：<em ng-bind="driverInfo.type"></em></span>
+						</p>
+					</div>
+				</a>
+				<a href="javascript:;" class="con_r">
+					<div class="driver selected" ng-repeat="dinfo in driverInfo.driverList">
+						<span class="select_btn"></span>
+						<div class="driver_r">
+							<p ng-bind="dinfo.realName"></p>
+							<p class="tel" ng-bind="dinfo.telphone | telNoSpace"></p>
+						</div>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>

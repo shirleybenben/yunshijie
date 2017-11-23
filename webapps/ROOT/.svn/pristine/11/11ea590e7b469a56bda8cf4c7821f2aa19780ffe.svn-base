@@ -1,0 +1,14 @@
+/*
+* @Author: Administrator
+* @Date:   2016-06-26 15:44:03
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-06-26 15:50:16
+*/
+$(function(){
+	$("#search_g").on('click', function(event) {
+		$("#search_s").show();
+	});
+	$("#search_s").on('click', '.close', function(event) {
+		$(this).parent().parent().hide();
+	});
+})

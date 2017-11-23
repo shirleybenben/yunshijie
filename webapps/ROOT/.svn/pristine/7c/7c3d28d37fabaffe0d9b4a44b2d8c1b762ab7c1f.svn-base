@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/info.css"/>
+        <link rel="stylesheet" type="text/css" href="css/datepicker.min.css"/>
+    </head>
+    <body style="background-color:#fbfbfb;">
+		<div class="con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="#">
+						<img src="img/c_logo.png" height="32" width="184">
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="content_w">
+			<div class="wrap con_i">
+				<div class="c_tit">
+					车辆
+				</div>
+				<div class="cars_con clearfix">
+					<div class="cars_con_l">
+						<p>
+							<img src="img/car.png" id="imgDriverLicense" onclick="inputDriverLicense.click();">
+							<input type="file" class="hide" id="inputDriverLicense"/>
+						</p>
+						<p>
+							<img src="img/add_yyz.png" id="imgBizLicense" onclick="inputBizLicense.click();">
+							<input type="file" class="hide" id="inputBizLicense"/>
+						</p>
+						<p>
+							<img src="img/cars.png" id="imgCarPic" onclick="inputCarPic.click();">
+							<input type="file" class="hide" id="inputCarPic"/>
+						</p>
+					</div>
+					<form id="commentForm">
+						<div class="cars_con_r">
+							<p>
+								<label>车牌号</label>
+								<input type="text" id="car_no" name="car_no" />
+							</p>
+							<p>
+								<label>车长</label>
+								<select class="mySelect" id="car_length" name="car_length" >
+									<option  class="first" value="" selected>点击选择</option>
+									<option  value="2.5">2.5米</option>
+									<option  value="4.5">4.5米</option>
+									<option  value="6.8">6.8米</option>
+									<option  value="9.6">9.6米</option>
+									<option  value="13">13米</option>
+									<option  value="10">10米</option>
+									<option  value="12">12米</option>
+									<option  value="13">13米</option>
+									<option  value="13.5">13.5米</option>
+									<option  value="16">16米</option>
+									<option  value="17">17米</option>
+
+								</select>
+							</p>
+							<p>
+								<label>行驶证有效期至</label>
+								<input type="text"  id="license_date" name="license_date" class="use-date column" data-position="bottom left">
+							</p>
+							<p>
+								<label>核载重量（Kg）</label>
+								<input type="text" id="car_max_load" name="car_max_load"  />
+							</p>
+							<p>
+								<label>营运证发证日期</label>
+								<input type="text"  id="biz_license_date" name="biz_license_date" class="use-date column" data-position="bottom left">
+							</p>
+							<p>
+								<label>车辆品牌</label>
+								<input type="text"  id="car_band" name="car_band" />
+							</p>
+							<p>
+								<label>车辆登记日期</label>
+								<input type="text" id="car_register_date" name="car_register_date"  class="use-date column" data-position="bottom left">
+							</p>
+							<p>
+								<label>登记证书号</label>
+								<input type="text" id="register_cer_no" name="register_cer_no"  />
+							</p>
+							<p>
+								<label>证件号</label>
+								<input type="text"  id="cer_no" name="cer_no" />
+							</p>
+							<p>
+								<label>强制险有效期</label>
+								<input type="text" id="assure_date" name="assure_date"  class="use-date column" data-position="bottom left">
+							</p>
+							<p>
+								<label>强制险公司名称</label>
+								<input type="text" id="assure_name" name="assure_name"  />
+							</p>
+							<p>
+								<label>商业险公司名称</label>
+								<input type="text"  id="biz_assure_name" name="biz_assure_name" />
+							</p>
+							<button class="cars_btn" id="btnSave" >下一步</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="con_foot">
+			<div class="wrap">
+				<p>
+					条款 - 隐私权
+					<span>©2016 guangzhouzhihong</span>                                                 
+				</p>
+			</div>
+		</div>
+    </body>
+	
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.styleSelect.js"></script>
+    <script type="text/javascript" src="js/datepicker.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/global.js"></script>
+    <script type="text/javascript" src="js/CBSVehicle.js"></script>
+	<script type="text/javascript" src="js/global_config.js"></script>
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js/info_cars.js"></script>
+
+    <script type="text/javascript">
+		$(document).ready(function(){
+			// 下拉
+			$(".mySelect").styleSelect({styleClass: "selectDark", valueId: 0});
+			// 日期
+			var vehicleInfoId = global.QueryString.vehicleInfoId;
+			var vehicle = new CBSVehicle({vehicleInfoId:vehicleInfoId});
+		});
+	</script>
+</html>

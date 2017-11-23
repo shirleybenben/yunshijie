@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="editApp">
+    <head>
+        <meta charset="utf-8">
+        <title>我的货源</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>
+        <link rel="stylesheet" type="text/css" href="css/supply_hall.css"/>
+		<link rel="stylesheet" type="text/css" href="css/select.css"/> 
+		<link rel="stylesheet" type="text/css" href="css/dialog.css"/>
+		<link rel="shortcut icon" href="bitbug_favicon.ico" />  
+    </head>
+    <body class="ng-cloak" ng-controller="queryHall">
+    	<headtop></headtop>
+		<div class="order_tit order_list_w search_tit">
+			<div class="order_top clearfix wrap">
+				<div class="order_top_l">
+					<ul class="clearfix tab_tit">
+						<li class="current">
+							<a href="javascript:;">搜索结果 > <em ng-bind="key"></em> </a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="order_list_w content_w wrap search_list">
+			<list></list>
+			<div class="list_page clearfix wrap">
+				<div class="page_w">
+					<div class="handle clearfix">
+						<div id="kkpager" class="handle-page clearfix skin-tb"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="recommend wrap">
+			<div class="groom groom_w">
+				<a class="recommend_supply">推荐热门货源</a>
+				<!-- <a href="supply_hall.htm">
+					<span class="arrow">查看更多</span>
+				</a> -->
+			</div>
+			<ul class="recommend_list clearfix" ng-controller="getRecommendSource" >
+				<li ng-repeat="item in items | limitNum:4" ng-if="len >'0'">
+					<a href="supply_detail.htm?id={{item.sourceId}}" class="flow_w" target="_blank">
+						<div class="flow">
+							<div class="flow_bar clearfix">
+								<span class="city start" ng-bind="item.startCodeCCn | filter "></span>
+								<span class="car_bg"></span>
+								<span class="city end" ng-bind="item.endCodeCCn | filter "></span>
+							</div>
+							<dl class="detail clearfix">
+								<dt>提货时间</dt>
+								<dd class="w172" ng-bind="item.arriveCustomerTime"></dd>
+								<dt>需求车长</dt>
+								<dd class="w172"><em ng-bind="item.needLength"></em>米</dd>
+								<dt>需求车型</dt>
+								<dd class="w172" ng-bind="item.needType"></dd>
+								<dt>货物重量</dt>
+								<dd class="w172"><em ng-bind="item.goodsWeight"></em>吨</dd>
+								<dt>货物类型</dt>
+								<dd class="w172" ng-bind="item.goodsName"></dd>
+								<button class="quoted_price" ng-show="item.hasQuote == '1'"></button>
+							</dl>
+							<div class="count clearfix">
+								<span class="mans">应标&nbsp;<i ng-bind="item.quoteNum"></i>&nbsp;人</span>
+								<span ng-class="{'days':true,'start': item.hasBegin=='0'}" ng-bind="item.ageTime | ageTime:item.hasBegin"></span>
+								<!-- 天数开始样式加入类名start -->
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="no-data" ng-if="len =='0'">
+					<span class="icon"></span>
+					<span class="txt">亲，暂时没有相关内容哦~</span>
+				</li>
+			</ul>
+		</div>
+        <foot></foot>
+    </body>
+    <script type="text/javascript" src="js/vendor/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/vendor/toTop.min.js"></script>
+    <script type="text/javascript" src="js/vendor/angular.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-resource.min.js"></script>
+    <script type="text/javascript" src="js/vendor/store.min.js"></script> 
+	<script type="text/javascript" src="js/vendor/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/public/global_config.js"></script>	
+	<script type="text/javascript" src="js/public/global.js"></script>
+	<script type="text/javascript" src="js/public/pagination.js"></script>
+	<script type="text/javascript" src="js/services/services.js"></script>
+	<script type="text/javascript" src="js/filters/filters.js"></script>
+	<script type="text/javascript" src="js/directives/directives.js"></script>
+	<script type="text/javascript" src="js/controllers/controller.js"></script>
+</html> 

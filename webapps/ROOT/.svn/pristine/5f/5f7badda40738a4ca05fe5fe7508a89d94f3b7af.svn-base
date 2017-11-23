@@ -1,0 +1,49 @@
+/*
+* @Author: Administrator
+* @Date:   2016-06-23 10:26:54
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-07-01 16:16:12
+*/
+
+$(function(){
+    // 上传身份证对话框
+    function idCardDialoge(name){
+        $(name).click(function() {
+            $( ".dialog_w" ).dialog({
+                width:848,
+                modal:true,
+            });
+            $( ".dialog_w" ).dialog( "open" ); 
+            
+        });
+    }
+    idCardDialoge("#idCardFace");
+    idCardDialoge("#idCardBack");
+    idCardDialoge("#uploadIdCardFace");
+    idCardDialoge("#uploadIdCardBack");
+    idCardDialoge("#updateIdCardsFace");
+    idCardDialoge("#updateIdCardsBack");
+    idCardDialoge("#uploadIdCardFace1");
+    idCardDialoge("#uploadIdCardBack1");
+    idCardDialoge("#uploadIdCd");
+    idCardDialoge("#uploadIdCdBack");
+
+    // 注册完成对话框
+    function regDoneDialoge(name){
+        $(name).click(function() {
+            $( ".dialog_done" ).dialog({
+                width:848,
+                modal:true,
+            });
+            $( ".dialog_done" ).dialog( "open" ); 
+            
+        });
+    }
+    regDoneDialoge("#saveBtn");
+    // 对话框滚动
+    $(window).scroll(function () {
+        $('.ui-dialog').css('position', "fixed");
+        $('.ui-dialog').css('top',200);
+    });
+
+})

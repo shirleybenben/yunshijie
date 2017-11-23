@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="editApp">
+    <head ng-controller="head">
+        <meta charset="utf-8">
+        <title>编辑三证合一</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/person_info.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dialog.css"/>
+		<link rel="shortcut icon" ng-href="{{path}}" />
+    </head>
+    <body style="background-color:#fbfbfb;">
+    	<headtop></headtop>
+		<div class="content_w">
+			<div class="wrap clearfix">
+				<div class="con_l">
+					<div class="tit">个人中心</div>
+					<ul class="menu">
+						<li>
+							<a href="#">我的资料</a>
+						</li>
+						<li>
+							<a href="#" class="active">司机车辆信息</a>
+						</li>
+						<li style="margin-bottom:10px;">
+							<a href="#">常跑线路</a>
+						</li>
+						<li>
+							<span class="line"></span>
+						</li>
+						<li style="margin-top:15px;">
+							<a href="#">设置</a>
+						</li>
+						<li>
+							<a href="#">帮助</a>
+						</li>
+					</ul>
+					<span class="exit">退出</span>
+				</div>
+				<div class="con_r">
+					<div class="user_c">
+						<div class="user clearfix">
+							<div class="user_l">
+								<img src="img/user_s.png"/>
+							</div>
+							<div class="user_r">
+								<p>运势界，欢迎您</p>
+								<p>手机号：1360000000</p>
+								<p class="status">未通过</p>
+							</div>
+						</div>
+					</div>
+					<div class="main_w">
+						<div class="tit clearfix">
+							<div class="tit_l">基本信息</div>
+							<div class="tit_r">
+							</div>
+						</div>
+						<div class="driver_w clearfix">
+						    	<div class="driver_w_l edit_driver_w edit_threecards">
+						    		<div class="status">
+										<div class="inps">
+											<p>
+												<label for=""><strong>身份证号码</strong></label>
+												<input type="text" />
+											</p>
+										</div>
+										<div class="p_w">
+								    		<ul class="clearfix photo_w">
+								    			<li>
+								    				<p class="pic_w cert_c" id="uploadIdCardFace1">
+								    					<img src="img/add_img.png">
+								    				</p>
+								    			</li>
+								    			<li>
+								    				<p class="pic_w" id="uploadIdCardBack1">
+								    					<img src="img/cards_f.png">
+								    				</p>
+								    			</li>
+								    		</ul>
+								    	</div>
+							    	</div>
+						    	</div>
+						    	<div class="driver_w_r edit_driver_w edit_threecards">
+						    		<div class="status">
+										<div class="inps">
+											<p>
+												<label for=""><strong>公司全称</strong></label>
+												<input type="text" />
+											</p>
+											<p>
+												<label for=""><strong>统一社会信用代码</strong></label>
+												<input type="text" />
+											</p>
+										</div>
+										<div class="p_w">
+								    		<ul class="clearfix photo_w">
+								    			<li>
+								    				<p class="pic_w">
+								    					<img src="img/add_yyzz.png">
+								    				</p>
+								    			</li>
+								    		</ul>
+								    	</div>
+							    	</div>
+						    	</div>
+						    </div>
+					</div>
+					<div class="btn_w">
+						<button>保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="con_foot">
+			<div class="wrap">
+				<p>
+					条款 - 隐私权
+					<span>©2016 guangzhouzhihong</span>                                                 
+				</p>
+			</div>
+		</div>
+		<!-- dialog -->
+		<div class="dialog_wrap" style="display:none;">
+			<div class="dialog_w">
+		  		<div class="upload_c clearfix">
+		  			<div class="clearfix">
+		  				<div class="upload_c_l">
+			  				<img src="img/shili.png">
+			  			</div>
+			  			<div class="upload_c_l upload_c_r">
+			  				<img id="imgUpload" src="img/upload_bg.png" style="display:block;" onclick="inputUploadFile.click();">
+							<input type="file" id="inputUploadFile" class="hide"/>
+							<span></span>
+			  			</div>
+		  			</div>
+		  			<p>上传要求：个人免冠照，请确保身份证四角完整，文字清晰可辨认</p>
+		  		</div>
+		  		<span class="close"></span>
+			</div>
+			<div class="mask"></div>
+		</div>
+		<!-- 角色选择dialog -->
+		<div class="dialog_wrap" style="display:none;">
+			<div class="dialog_w role_dialog">
+				<p class="role_icon"></p>
+				<p class="role_txt">角色选择</p>
+				<button class="disabled">我是司机</button>
+				<button>我是经纪人</button>
+		  		<span class="close"></span>
+			</div>
+			<div class="mask"></div>
+		</div>
+    </body>
+    <script type="text/javascript" src="js/vendor/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/vendor/toTop.min.js"></script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/login.css"/>
+    </head>
+    <body>
+    	<div class="header log_head">
+			<h1 class="logo">
+				<a href="#">
+					<img src="img/logo.png"/>
+				</a>
+			</h1>
+		</div>
+		<div class="reg_done_w">
+			<h2>恭喜你！注册完成</h2>
+			<h3>运势界，欢迎您！</h3>
+			<p>我们会在3个工作日完成对驾驶员、车辆信息的审核，届时您可以开始运势界货运之旅！</br> <span>说明：审核未通过时，可以查看货源信息，但不能参与报价</span></p>
+			<h3 class="hint">小提示</h3>
+			<p class="back">您还可以：返回<a href="#">个人中心</a>，继续添加司机、车辆、常跑路线等信息</br> 或返回<a href="#">首页</a>开启赚钱吧！ </p>
+		</div>
+		<div class="footer"></div>
+    </body>
+    <script type="text/javascript" src="js/vendor/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/vendor/toTop.min.js"></script>
+</html>

@@ -1,0 +1,58 @@
+<div class="content_w wrap container_w">
+	<div class="title clearfix">
+		<div class="distance">
+			<span>预计公里数</span>
+			<em><em ng-bind="loadBillInfo.miles"></em> 公里</em>
+		</div>
+	</div>
+	<div class="con">
+		<div class="item clearfix">
+			<p>
+				<span>计划发车时间</span>
+				<span class="font18" ng-bind="loadBillInfo.needStartTime"></span>
+			</p>
+			<p>
+				<span>发货人</span>
+				<span class="font18" ng-bind="loadBillInfo.contactName"></span>
+			</p>
+			<p>
+				<span>发货人电话</span>
+				<span class="font18">
+					<em ng-bind="loadBillInfo.sendTelphone"></em>
+					<em ng-bind="loadBillInfo.sendMobile"></em>
+				</span>
+			</p>
+			<p>
+				<span>发货地址</span>
+				<span class="font18">
+					<em ng-bind="loadBillInfo.senderAreaList | getCompArr"></em>
+					<em ng-bind="loadBillInfo.sendAddress"></em>
+				</span>
+			</p>
+		</div>
+		<div class="item clearfix">
+			<p>
+				<span>到达时限</span>
+				<span class="font18" ng-bind="loadBillInfo.needArriveTime"></span>
+			</p>
+			<p>
+				<span>收货人</span>
+				<span class="font18" ng-bind="loadBillInfo.receiveName"></span>
+			</p>
+			<p>
+				<span>收货人电话</span>
+				<span class="font18">
+					<em ng-bind="loadBillInfo.receiverTelphone"></em>
+					<em ng-bind="loadBillInfo.receiverMobile"></em>
+				</span>
+			</p>
+			<p>
+				<span>收货地址</span>
+				<span class="font18">
+					<em ng-bind="loadBillInfo.receiveAreaList | getCompArr"></em>
+					<em ng-bind="loadBillInfo.receiveAddress"></em>
+				</span>
+			</p>
+		</div>
+	</div>
+</div>

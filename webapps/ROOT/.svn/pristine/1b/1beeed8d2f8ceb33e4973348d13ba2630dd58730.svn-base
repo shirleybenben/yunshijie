@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="editApp">
+    <head>
+        <meta charset="utf-8">
+        <title>订单详情</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dialog.css"/>
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+    </head>
+    <body style="background-color:#f6f6f6;position: relative;" ng-controller="getQuotedDeatil">
+    	<headtop></headtop>
+    	<navlan></navlan>
+		<!-- 订单详情开始 -->
+		<!-- <div class="order_list_w content_w wrap detail_w">
+			<orderdetail></orderdetail>
+			<div class="quote_w price_w">
+				<dl class="clearfix">
+					<dt>报价</dt>
+					<dd>
+						<i ng-bind="info.price"></i>元
+					</dd>
+					<dd class="breach">
+						毁约或不按时提货将扣除您的 500 元押金
+					</dd>
+				</dl>
+				<dl class="clearfix">
+					<dt>留言</dt>
+					<dd ng-bind="info.remark"></dd>
+				</dl>
+				<button class="btn cancelPrice" ng-if="info.status =='01'" ng-click="showCPDiag()">取消报价</button>
+				<button class="btn giveUPrice" ng-if="info.status =='03'" ng-click="showGPDiag()">毁约</button>
+			</div>
+		</div> -->
+		<!-- 订单详情结束 -->
+		<!-- 选择车辆司机开始 -->
+		<!-- <div class="content_w wrap detail_w mb26 pt4">
+			<orderdetail></orderdetail>
+		</div>
+		<dirver ng-if="info.status=='03'"></dirver>
+		<div class="content_w wrap detail_w mb26 pt1">
+			<div class="quote_w price_w">
+				<dl class="clearfix">
+					<dt>报价</dt>
+					<dd>
+						<i ng-bind="info.price"></i>元
+					</dd>
+				</dl>
+				<dl class="clearfix">
+					<dt>留言</dt>
+					<dd ng-bind="info.remark"></dd>
+				</dl>
+				<button class="btn cancelPrice" ng-if="info.status =='01'" ng-click="showCPDiag()">取消报价</button>
+				<button class="btn giveUPrice" ng-if="info.status =='03'" ng-click="showGPDiag()">毁约</button>
+			</div>
+		</div> -->
+		<!-- 选择车辆司机结束 -->
+		<!-- 选择车辆司机——已完善开始 -->
+		<!-- <div class="order_list_w content_w wrap detail_w">
+			<orderdetail></orderdetail>
+			<perfected></perfected>
+		</div> -->
+		<!-- 选择车辆司机——已完善结束 -->
+		<!-- 在途详情开始 -->
+		<div class="order_list_w content_w wrap detail_w transit_detail">
+			<orderdetail></orderdetail>
+			<div ng-if="info.status=='01'" class="content_w wrap detail_w mb26 pt1">
+				<div class="quote_w price_w">
+					<dl class="clearfix">
+						<dt>报价</dt>
+						<dd>
+							<i ng-bind="info.price"></i>元
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>留言</dt>
+						<dd ng-bind="info.remark"></dd>
+					</dl>
+					<button class="btn cancelPrice" ng-if="info.status =='01'" ng-click="showCPDiag()">取消报价</button>
+					<!-- <button class="btn giveUPrice" ng-if="info.status =='03'" ng-click="showGPDiag()">毁约</button> -->
+				</div>
+			</div>
+			<carperfected ng-if="info.status =='05'"></carperfected>
+		</div>
+		<dirver ng-if="info.status =='03'"></dirver>
+		<transitdetail ng-if="info.status =='05'"></transitdetail>
+		<logisticinfo ng-if="info.status =='05'"></logisticinfo>
+		<!-- 在途详情结束 -->
+		<!-- 在途详情——地图开始 -->
+		<!-- <div class="content_w wrap map_W clearfix">
+			<div class="map_l">
+				<div class="map"></div>
+			</div>
+			<div class="map_r">
+				<div class="top clearfix">
+					<span class="top_l">广州——上海</span>
+					<span class="top_r">货源编号：123456789</span>
+				</div>
+				<div class="middle clearfix">
+					<span class="middle_l"></span>
+					<span class="middle_r">
+						<p class="font18">粤 A8888888</p>
+						<p>行驶速度：100 km/h</p>
+					</span>
+				</div>
+				<div class="bottom">
+					<p>起点：广东省 广州市 荔枝湾区 三顿饭路 1222 号</p>
+					<p>终点：江苏省 扬州市 广陵东区 秋雨东路 1222 号</p>
+				</div>
+			</div>
+		</div> -->
+		<!-- 在途详情——地图结束 -->
+		<div class="recommend wrap">
+			<div class="groom groom_w">
+				<a class="recommend_supply">推荐回程货源</a>
+				<!-- <a href="supply_hall.htm">
+					<span class="arrow">查看更多</span>
+				</a> -->
+			</div>
+			<ul class="recommend_list clearfix">
+				<li ng-repeat="item in items | limitNum:4" ng-show="len >'0'">
+					<a href="supply_detail.htm?id={{item.sourceId}}" class="flow_w" target="_blank">
+						<div class="flow">
+							<div class="flow_bar clearfix">
+								<span class="city start" ng-bind="item.startCodeCCn | filter "></span>
+								<span class="car_bg"></span>
+								<span class="city end" ng-bind="item.endCodeCCn | filter "></span>
+							</div>
+							<dl class="detail clearfix">
+								<dt>提货时间</dt>
+								<dd class="w172" ng-bind="item.arriveCustomerTime"></dd>
+								<dt>需求车长</dt>
+								<dd class="w172"><em ng-bind="item.needLength"></em>米</dd>
+								<dt>需求车型</dt>
+								<dd class="w172" ng-bind="item.needType"></dd>
+								<dt>货物重量</dt>
+								<dd class="w172"><em ng-bind="item.goodsWeight"></em>吨</dd>
+								<dt>货物类型</dt>
+								<dd class="w172" ng-bind="item.goodsName"></dd>
+								<button class="quoted_price" ng-show="item.hasQuote == '1'"></button>
+							</dl>
+							<div class="count clearfix">
+								<span class="mans">已应标&nbsp;<i ng-bind="item.quoteNum"></i>&nbsp;人</span>
+								<span ng-class="{'days':true,'start': item.hasBegin=='0'}" ng-bind="item.ageTime | ageTime:item.hasBegin"></span>
+								<!-- 天数开始样式加入类名start -->
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="no-data" ng-show="len =='0'">
+					<span class="txt">暂无数据</span>
+				</li>
+			</ul>
+			<!-- 无数据时调用 -->
+			<!-- <div class="no-data">
+				
+			</div> -->
+		</div>
+		<div class="con_foot">
+			<div class="wrap clearfix foot_w">
+				<p>
+					<span class="copyright">条款 - 隐私权         ©2016 guangzhouzhihong</span>
+					<span class="tel">
+						<i>400-888-0906</i>
+						</br>
+						<i class="time">周一至周日  8:00-22:00</i>
+					</span>                                                 
+				</p>
+			</div>
+		</div>
+		<!-- 取消报价对话框 -->
+		<div ng-controller="closeQuotedInfo">
+			<div class="dialog_wrap hide_dialog closePrice_dialog">
+	    		<div class="dialog_done dialog_w close_price">
+			  		<p class="star">
+			  			<img src="img/close_price_bg.png"/>
+			  		</p>
+			  		<p class="txt">
+			  			<span class="txt_d">确定取消报价？</span></br>
+			  		</p>
+			  		<p class="txt txt_we">
+			  		</p>
+			  		<p class="resure clearfix">
+			  			<button class="sure" ng-click="giveUpPrice()">去意已决</button>
+			  			<button class="cancel" ng-click="cancel()">我再想想</button>
+			  		</p>
+			  		<span class="close" ng-click="cancel()"></span>
+				</div>
+				<div class="mask"></div>
+	    	</div>
+			<!-- 毁约 -->
+			<div class="dialog_wrap hide_dialog break_promise giveUp_dialog">
+	    		<div class="dialog_done dialog_w close_price">
+			  		<p class="star">
+			  			<img src="img/close_price_bg.png"/>
+			  		</p>
+			  		<p class="txt">
+			  			<span class="txt_d">确定毁约？</span></br>
+			  		</p>
+			  		<p class="txt txt_we">
+			  			<span class="txt_w">毁约或不按时提货将扣除您的押金<br/>以及不能再次竞标此货源</span> 
+			  		</p>
+			  		<p class="resure clearfix">
+			  			<button class="sure" ng-click="bkPromise()">去意已决</button>
+			  			<button class="cancel" ng-click="cancel()">我再想想</button>
+			  		</p>
+			  		<span class="close" ng-click="cancel()"></span>
+				</div>
+				<div class="mask"></div>
+	    	</div>
+	    </div>
+    	<!-- 报价取消成功对话框 -->
+		<div class="dialog_wrap hide_dialog cancelPrice_success">
+    		<div class="dialog_done dialog_w price_done">
+		  		<p class="star">
+		  			<img src="img/star.png">
+		  		</p>
+		  		<p class="txt">
+		  			<span class="txt_d">报价已取消！</span></br>
+		  		</p>
+		  		<!-- <span class="close"></span> -->
+			</div>
+			<div class="mask"></div>
+    	</div>
+    	<!-- 报价取消失败对话框 -->
+    	<div class="dialog_wrap hide_dialog cancelPrice_fail">
+    		<div class="dialog_done dialog_w price_done price_fail">
+		  		<p class="star">
+		  			<img src="img/ball.png">
+		  		</p>
+		  		<p class="txt">
+		  			<span class="txt_d">报价取消失败！</span></br>
+		  		</p>
+		  		<span class="close" ng-click="close_dialog()"></span>
+			</div>
+			<div class="mask"></div>
+    	</div>
+    	<!-- 毁约成功对话框 -->
+		<div class="dialog_wrap hide_dialog giveUp_success">
+    		<div class="dialog_done dialog_w price_done">
+		  		<p class="star">
+		  			<img src="img/star.png">
+		  		</p>
+		  		<p class="txt">
+		  			<span class="txt_d">订单已毁约！</span></br>
+		  		</p>
+		  		<!-- <span class="close"></span> -->
+			</div>
+			<div class="mask"></div>
+    	</div>
+    	<!-- 毁约失败对话框 -->
+    	<div class="dialog_wrap hide_dialog giveUp_fail">
+    		<div class="dialog_done dialog_w price_done price_fail">
+		  		<p class="star">
+		  			<img src="img/ball.png">
+		  		</p>
+		  		<p class="txt">
+		  			<span class="txt_d">订单毁约失败！</span></br>
+		  		</p>
+		  		<span class="close" ng-click="close_dialog()"></span>
+			</div>
+			<div class="mask"></div>
+    	</div>
+		<!-- 提交成功对话框 -->
+		<div class="dialog_wrap chosen_success" style="display:none;">
+    		<div class="dialog_done dialog_w price_done">
+		  		<p class="star">
+		  			<img src="img/star.png">
+		  		</p>
+		  		<p class="txt">
+		  			<span class="txt_d">提交成功！</span></br>
+		  		</p>
+		  		<!-- <span class="close"></span> -->
+			</div>
+			<div class="mask"></div>
+    	</div>
+    	<!-- 提交失败对话框 -->
+    	<div class="dialog_wrap chosen_fail" style="display:none;">
+    		<div class="dialog_done dialog_w price_done price_fail">
+		  		<p class="star">
+		  			<img src="img/ball.png">
+		  		</p>
+		  		<p class="txt">
+		  			<span class="txt_d">提交失败！ 请重新提交</span></br>
+		  		</p>
+		  		<p class="txt font14">
+		  			<span class="txt_d errtxt"></span></br>
+		  		</p>
+		  		<span class="close" ng-click="close_dialog()"></span>
+			</div>
+			<div class="mask"></div>
+    	</div>
+		<!-- 提交成功对话框 -->
+		<div class="dialog_wrap complete_success hide_dialog">
+    		<div class="dialog_done dialog_w price_done">
+		  		<p class="star">
+		  			<img src="img/star.png">
+		  		</p>
+		  		<p class="txt">
+		  			<span class="txt_d">提交成功！</span></br>
+		  		</p>
+		  		<!-- <span class="close"></span> -->
+			</div>
+			<div class="mask"></div>
+    	</div>
+    	<!-- 提交失败对话框 -->
+    	<div class="dialog_wrap complete_fail hide_dialog">
+    		<div class="dialog_done dialog_w price_done price_fail">
+		  		<p class="star">
+		  			<img src="img/ball.png">
+		  		</p>
+		  		<p class="txt">
+		  			<span class="txt_d">提交失败！ 请重新提交</span></br>
+		  		</p>
+		  		<p class="txt font14">
+		  			<span class="txt_d errtxt"></span></br>
+		  		</p>
+		  		<span class="close" ng-click="cancel()"></span>
+			</div>
+			<div class="mask"></div>
+    	</div>
+    </body>	
+	<script type="text/javascript" src="js/vendor/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-resource.min.js"></script>
+	<script type="text/javascript" src="js/vendor/moment.js"></script>
+    <script type="text/javascript" src="js/vendor/store.min.js"></script> 
+	<script type="text/javascript" src="js/vendor/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/public/global_config.js"></script>	
+	<script type="text/javascript" src="js/public/global.js"></script>
+	<script type="text/javascript" src="js/public/pagination.js"></script>
+	<script type="text/javascript" src="js/services/services.js"></script>
+	<script type="text/javascript" src="js/filters/filters.js"></script>
+	<script type="text/javascript" src="js/directives/directives.js"></script>
+	<script type="text/javascript" src="js/controllers/controller.js"></script>
+</html> 

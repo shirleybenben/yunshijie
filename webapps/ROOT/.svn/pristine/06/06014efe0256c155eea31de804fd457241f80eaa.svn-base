@@ -1,0 +1,114 @@
+var YSJDriver = function(options){
+	this.opt = $.extend({}, options);
+	
+	this.container = this.opt.append;
+	this.isNew = true;
+	this.infoId = null;
+	
+	this.imageList = [];
+	
+	this.el = $('<div class="tab"> \
+			<div class="driver_w edit_driver_w clearfix"> \
+			<div class="upload_img_w clearfix"> \
+			<div class="upload_img" data-column="idFImageRefId"> \
+				<img src="img/add_img.png"> \
+			</div> \
+			<div class="upload_img" data-column="idBImageRefId"> \
+				<img src="img/cards_f.png"> \
+			</div> \
+			<div class="upload_img" data-column="drivingFImageRefId"> \
+				<img src="img/driver.png"> \
+			</div> \
+			<div class="upload_img" data-column="qualifiImageRefId"> \
+				<img src="img/career.png"> \
+			</div> \
+		</div> \
+		<div class="status"> \
+			<div class="inps"> \
+				<p> \
+					<label for=""><strong>姓名</strong></label> \
+					<input maxlength="20" type="text" data-column="realName" class="text-column" placeholder="填真实姓名"/> \
+				</p> \
+				<p> \
+					<label for=""><strong>身份证号</strong></label> \
+					<input maxlength="18" type="text" data-column="idno" class="text-column"/> \
+				</p> \
+				<p> \
+					<label for=""><strong>手机号</strong></label> \
+					<input maxlength="11" type="text" data-column="telphone" class="text-column"/> \
+				</p> \
+			</div> \
+		</div> \
+		</div> \
+	</div>');
+	
+	
+	this.getData = function(){
+		var _this = this;
+		var data = {};
+		_this.el.find('.text-column').each(function(i, j){
+			var self = $(j);
+			var _p = self.data('column');
+			var _v = self.val();
+			data[_p] = _v;
+		});
+		$.each(_this.imageList, function(i, j){
+			var result = j.postToServer('/api/driver/imageUpload');
+			if(result != null){
+				var column = result.column;
+				var imageId = result.imageId;
+				data[column] = imageId;
+			}
+		});
+		if(!_this.isNew){
+			data.driverInfoId = _this.infoId;
+		}
+		return data;
+	}
+	
+	this.init = function(options){
+		var _this = this;
+		_this.container.append(_this.el);
+		
+		var data = _this.opt.data;
+		if(!$.isEmptyObject(data)){
+			_this.isNew = false;
+			_this.fillData(data);
+		} else {
+			_this.el.find('.upload_img').each(function(i, j){
+				var image = new YSJImage({
+	           		view: $(this),
+	           		category: $(this).data('column'),
+	           		require:"个人免冠照，请确保身份证四角完整，文字清晰可辨认",
+	           		exClass :"exClass"
+	            });
+				_this.imageList.push(image);
+			})
+		}
+	}
+	
+	this.fillData = function(data){
+		var _this = this;
+		_this.infoId = data.driverInfoId;
+		_this.el.find('.text-column').each(function(i, j){
+			var self = $(j);
+			var _p = self.data('column');
+			self.val(data[_p]);
+		});
+		_this.el.find('.upload_img').each(function(i, j){
+			var _p = $(this).data('column');
+			var image = new YSJImage({
+           		view: $(this),
+           		category: _p,
+           		require:"个人免冠照，请确保身份证四角完整，文字清晰可辨认",
+           		exClass :"exClass",
+           		imageId : data[_p]
+            });
+			_this.imageList.push(image);
+		});
+	}
+	
+	this.init(options);
+};
+
+

@@ -1,0 +1,7 @@
+<div class="line_detail quote_price hint" ng-if="info.status !='05'">
+	<p ng-if="info.status !='03'" ng-cloak>提示 <br/>应标会扣除您的200元作为押金，如果竞标失败，则会自动退还到您的账户；如果竞标成功，则在发车后自动退还到您的账户。</p>
+	<p ng-if="info.status =='03'" ng-cloak>提示 <br/>毁约或不按时接货将扣除您的押金，请慎重。有需要请联系客服沟通，谢谢。</p>
+	<p class="more_rule">
+		<a href="#">更多规则</a>
+	</p>
+</div>

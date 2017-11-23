@@ -1,0 +1,28 @@
+/*
+* @Author: Administrator
+* @Date:   2016-07-11 11:20:09
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-07-12 14:07:09
+*/
+/* 回程货源 */
+.flow{position: relative;}
+.flow .quoted_price{width:84px;height:29px;line-height:29px;text-align:center;font-size:14px;color:#a2a2a3;background-color:#eee;border-radius:3px;position:absolute;top:180px;right:7px;outline:none;}
+.container_r .notice{margin-top:20px;height:119px;}
+.container_r .notice p{height:22px;line-height:22px;text-align:center;padding-top:40px;font-size:14px;}
+.quote_price .price_l input.doller{width:120px;padding-left:15px;background:url(../img/price_bg.png) no-repeat bottom center;-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;color:#7a7a7a;outline:none;border:none;}
+.quote_price .price_l .remark_r textarea{min-width:759px;min-height:45px;border:1px solid #dfdfdf;outline:none;margin-left:25px;border-radius:3px;}
+.quote_price .price_l{width:830px;}
+.quote_price .price_l .remark_l{height:45px;line-height:45px;}
+.quote_price .price_l p .blank{float:left;width:53px;height:30px;}
+.quote_price .price_l p .priceBtn{float:left;width:112px;height:30px;line-height:30px;text-align:center;color:#fff;font-size:14px;background-color:#ef5b0a;border-radius:3px;margin-top:11px;}
+.quote_price .price_l .price{margin-bottom:14px;}
+.quote_price .price_l p .priceBtn:hover{background-color:#e14d00;}
+
+/* 货源详情 */
+.quote_price .price_l input.doller::-webkit-input-placeholder{color:#eee;}
+.quote_price .price_l input.doller:-moz-placeholder{color:#eee;}
+.quote_price .price_l input.doller::-moz-placeholder{color:#eee;}
+.quote_price .price_l input.doller:-ms-input-placeholder{color:#eee;}
+.container_l a.flow_w:hover{text-decoration:none;}

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="editApp">
+    <head>
+        <meta charset="utf-8">
+        <title>我的账户-账单</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>
+        <link rel="stylesheet" type="text/css" href="css/supply_hall.css"/>
+        <link rel="stylesheet" type="text/css" href="css/center_news.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dialog.css"/>
+        <link rel="stylesheet" type="text/css" href="css/select.css"/>
+        <link rel="shortcut icon" href="bitbug_favicon.ico" />
+    </head>
+    <body>
+		<headtop></headtop>
+		<div class="order_tit order_list_w">
+			<div class="order_top clearfix wrap">
+				<div class="order_top_l">
+					<ul class="clearfix tab_tit">
+						<li class="current">
+							<a href="center_basicinfo.htm">我的账户</a>
+						</li>
+						<!-- <li>
+							<a href="center_pay_schedule.htm">财务-申请付款表</a>
+						</li> -->
+						<li>
+							<a href="driver_list.htm">车辆及司机信息</a>
+						</li>
+						<li>
+							<a href="running_route.htm">常跑线路</a>
+						</li>
+					</ul>
+				</div>
+				<div class="order_top_l order_top_r clearfix">
+					<ul class="clearfix tab_tit">
+						<!-- <li>
+							<a href="javascript:;">设置</a>
+						</li>
+						<li>
+							<a href="javascript:;">规则</a>
+						</li>
+						<li>
+							<a href="javascript:;">帮助</a>
+						</li>
+						<li>
+							<a href="javascript:;">退出</a>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="wrap records_detail statement">
+			<div class="breadcrumb">
+				<a href="center_basicinfo.htm">我的账户</a> > 账单
+			</div>
+			<div class="tit clearfix">
+				<span>账单</span>
+				<span class="amount">总计 <i>88,888.00</i>&nbsp;元</span>
+			</div>
+			<div class="search_w">
+				<ul class="clearfix">
+					<li>
+						<span class="time">交易时间</span>
+						<div class="select_l select_list">
+							<div class="select_t">
+							    <span class="txt">本周</span>
+							    <span class="select_dropdown"></span>
+							</div>
+							<div class="select_c" style="display:none;">
+								<ol>
+								    <li>本周</li>
+								    <li>本月</li>
+								</ol>
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="time">其他月份</span>
+						<div class="select_l select_list">
+							<div class="select_t">
+							    <span class="txt">选择月份</span>
+							    <span class="select_dropdown"></span>
+							</div>
+							<div class="select_c w128" style="display:none;">
+								<ol>
+								    <li>1 月</li>
+								    <li>2 月</li>
+								    <li>3 月</li>
+								    <li>4 月</li>
+								    <li>5 月</li>
+								</ol>
+							</div>
+						</div>
+					</li>
+					<li>
+						<button>搜索</button>
+					</li>
+				</ul>
+			</div>
+		  	<table width="1152" border="0" cellpadding="0" cellspacing="0">
+		  		<thead>
+		  			<tr>
+		  				<th align="left" width="158">创建时间</th>
+		  				<th align="left" width="150">交易名称</th>
+		  				<th align="right" width="98">存入</th>
+		  				<th align="right" width="121">支出</th>
+		  				<th align="right" width="146">结余</th>
+		  				<th align="left" width="189">备注</th>
+		  				<th align="right" width="172">交易号</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+		  			<tr>
+		  				<td align="left" width="158">2016-12-12  12:12</td>
+		  				<td align="left" width="150">运势界 - 运费发放</td>
+		  				<td align="right" width="98">+3,000.00</td>
+		  				<td align="right" width="121"></td>
+		  				<td align="right" width="146">6,000.00</td>
+		  				<td align="left" width="189">另有油卡2,200.00元需支付</td>
+		  				<td align="right" width="172">299282992828829</td>
+		  			</tr>
+		  			<tr>
+		  				<td align="left" width="158">2016-12-12  12:12</td>
+		  				<td align="left" width="150">运势界 - 运费发放</td>
+		  				<td align="right" width="98">+3,000.00</td>
+		  				<td align="right" width="121"></td>
+		  				<td align="right" width="146">6,000.00</td>
+		  				<td align="left" width="189">另有油卡2,200.00元需支付</td>
+		  				<td align="right" width="172">299282992828829</td>
+		  			</tr>
+		  			<tr>
+		  				<td align="left" width="158">2016-12-12  12:12</td>
+		  				<td align="left" width="150">运势界 - 押金</td>
+		  				<td align="right" width="98"></td>
+		  				<td align="right" width="121">-200.00</td>
+		  				<td align="right" width="146">6,000.00</td>
+		  				<td align="left" width="189">另有油卡2,200.00元需支付</td>
+		  				<td align="right" width="172">299282992828829</td>
+		  			</tr>
+		  			<tr>
+		  				<td align="left" width="158">2016-12-12  12:12</td>
+		  				<td align="left" width="150">运势界 - 运费发放</td>
+		  				<td align="right" width="98">+3,000.00</td>
+		  				<td align="right" width="121"></td>
+		  				<td align="right" width="146">6,000.00</td>
+		  				<td align="left" width="189">另有油卡2,200.00元需支付</td>
+		  				<td align="right" width="172">299282992828829</td>
+		  			</tr>
+		  			<tr>
+		  				<td align="left" width="158">2016-12-12  12:12</td>
+		  				<td align="left" width="150">运势界 - 运费发放</td>
+		  				<td align="right" width="98">+3,000.00</td>
+		  				<td align="right" width="121"></td>
+		  				<td align="right" width="146">6,000.00</td>
+		  				<td align="left" width="189">另有油卡2,200.00元需支付</td>
+		  				<td align="right" width="172">299282992828829</td>
+		  			</tr>
+		  		</tbody>
+		  	</table>
+		  	<div class="news_page wrap clearfix">
+	            <div id="page" class="m-pagination"></div>
+	            <div id="eventLog"></div>
+				<div class="page">
+					分页
+				</div>
+			</div>
+		</div>
+		<div class="con_foot">
+			<div class="wrap clearfix foot_w">
+				<p>
+					<span class="copyright">条款 - 隐私权         ©2016 guangzhouzhihong</span>
+					<span class="tel">
+						<i>400-888-0906</i>
+						</br>
+						<i class="time">周一至周日  8:00-22:00</i>
+					</span>                                                 
+				</p>
+			</div>
+		</div>
+		<!-- 编辑备注信息对对话框 -->
+		<div class="dialog_wrap" style="display:none;">
+    		<div class="dialog_w">
+		  		<div class="tit">编辑备注信息</div>
+		  		<div class="con">
+		  			<dl class="clearfix">
+			  			<dt>名称：</dt>
+			  			<dd>运势界-运费</dd>
+			  		</dl>
+			  		<dl class="clearfix">
+			  			<dt>备注：</dt>
+			  			<dd>
+			  				<textarea></textarea>
+			  			</dd>
+			  		</dl>
+			  		<dl class="clearfix">
+			  			<dt></dt>
+			  			<dd class="font12">可以写 50 个字</dd>
+			  		</dl>
+			  		<dl class="clearfix">
+			  			<dt></dt>
+			  			<dd>
+			  				<button>确定</button>
+			  			</dd>
+			  		</dl>
+		  		</div>
+		  		<span class="close"></span>
+			</div>
+			<div class="mask"></div>
+    	</div>
+    </body>
+    <script type="text/javascript" src="js/vendor/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/vendor/toTop.min.js"></script> 
+    <script type="text/javascript" src="js/vendor/angular.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-resource.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/public/global_config.js"></script>
+	<script type="text/javascript" src="js/public/global.js"></script>
+	<script type="text/javascript" src="js/services/services.js"></script>
+	<script type="text/javascript" src="js/filters/filters.js"></script>
+	<script type="text/javascript" src="js/directives/directives.js"></script>
+	<script type="text/javascript" src="js/controllers/controller.js"></script>
+</html>

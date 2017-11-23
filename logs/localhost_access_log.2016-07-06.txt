@@ -1,0 +1,11 @@
+127.0.0.1 - - [06/Jul/2016:08:40:42 +0800] "GET /index.htm HTTP/1.1" 304 -
+127.0.0.1 - - [06/Jul/2016:08:40:42 +0800] "GET /js/jquery-2.1.1.min.js HTTP/1.1" 304 -
+127.0.0.1 - - [06/Jul/2016:08:40:42 +0800] "GET /css/common.css HTTP/1.1" 304 -
+127.0.0.1 - - [06/Jul/2016:08:40:42 +0800] "GET /css/jquery.fullPage.css HTTP/1.1" 304 -
+127.0.0.1 - - [06/Jul/2016:08:40:42 +0800] "GET /js/jquery.cookie.js HTTP/1.1" 304 -
+127.0.0.1 - - [06/Jul/2016:08:40:42 +0800] "GET /img/notice.png HTTP/1.1" 304 -
+127.0.0.1 - - [06/Jul/2016:08:40:42 +0800] "GET /img/c_logo.png HTTP/1.1" 304 -
+127.0.0.1 - - [06/Jul/2016:08:40:42 +0800] "GET /img/search.png HTTP/1.1" 304 -
+127.0.0.1 - - [06/Jul/2016:08:40:42 +0800] "GET /img/user.png HTTP/1.1" 304 -
+127.0.0.1 - - [06/Jul/2016:08:40:42 +0800] "GET /js/jquery.fullPage.min.js HTTP/1.1" 304 -
+127.0.0.1 - - [06/Jul/2016:08:40:42 +0800] "GET /favicon.ico HTTP/1.1" 404 973

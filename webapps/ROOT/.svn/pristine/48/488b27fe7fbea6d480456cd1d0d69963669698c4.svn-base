@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/info.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/datepicker.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/jquery-ui.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/jquery-ui-extends.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/jquery.multiselect.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/jquery.multiselect.filter.css"/>
+    </head>
+    <body style="background-color:#fbfbfb;">
+		<div class="con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="#">
+						<img src="img/c_logo.png" height="32" width="184">
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="content_w">
+			<div class="wrap con_i con_dr">
+				<div class="c_tit">
+					司机
+				</div>
+				<div class="cars_con clearfix">
+					<div class="cars_con_l clearfix">
+						<p id="idCardFace">
+							<img src="img/add_img.png" onclick="">
+							<input type="file" class="hide"/>
+						</p>
+						<p id="idCardBack">
+							<img src="img/cards_f.png" onclick="">
+							<input type="file" class="hide"/>
+						</p>
+						<p>
+							<img src="img/add_jsz.png" id="imgDriverLicense" onclick="inputDriverLicense.click();">
+							<input type="file" class="hide" id="inputDriverLicense"/>
+						</p>
+						<p>
+							<img src="img/add_cyzg.png" id="imgBizLicense" onclick="inputBizLicense.click();">
+							<input type="file" class="hide" id="inputBizLicense"/>
+						</p>
+					</div>
+					<form id="commentForm">
+						<div class="cars_con_r">
+							<div class="cars_info">
+								<p>
+									<label>姓名</label>
+									<input type="text" name="driver_name" id="driver_name" />
+								</p>
+								<p>
+									<label>身份证</label>
+									<input type="text" name="id_card_number" id="id_card_number"/>
+								</p>
+								<p>
+									<label>从业资格证号</label>
+									<input type="text" name="id_card_number" id="id_card_number"/>
+								</p>
+								<p>
+									<label>驾驶证有效期至</label>
+									<input type="text" id="driver_license_date" name="driver_license_date"  class="use-date column" data-position="bottom left">
+								</p>
+								<p>
+									<label>从业资格证有效期至</label>
+									<input type="text" class="use-date column" id="biz_license_date" name="biz_license_date" data-position="bottom left">
+								</p>
+								<p class="dist">
+									<label>常跑线路</label>
+									<select class="mySelect" id="origin">
+										<option  class="first" value="" selected>请选择</option>
+									</select>
+									<em></em>
+									<select class="mySelect" id="destination">
+										<option  class="first" value="" selected>请选择</option>
+									</select>
+									<span class="zhi"></span>
+								</p>
+								<div class="btn clearfix">
+									<div class="add"></div>
+								</div>
+								<ul class="routes" id="routes">
+									<!-- <li class="clearfix">
+										<span><i>起运地</i><strong>上海</strong></span> <b>—</b> <span class="to"><i>目的地</i><strong>大连</strong></span>
+										<em class="r_close" onclick="window.removePath(this)"></em>
+									</li> -->
+									<!--<li class="clearfix">-->
+										<!--<span><i>起运地</i><strong>广州</strong></span> <b>—</b> <span class="to"><i>目的地</i><strong>四川</strong></span>-->
+										<!--<em onclick="window.removePath(this)"></em>-->
+									<!--</li>-->
+									<!--<li>-->
+										<!--<span><i>起运地</i><strong>乌鲁木齐</strong></span> <b>—</b> <span class="to"><i>目的地</i><strong>上海</strong></span>-->
+										<!--<em onclick="window.removePath(this)"></em>-->
+									<!--</li>-->
+								</ul>
+							</div>
+							<div class="btn_w clearfix">
+								<input type="button" id="btnPrevious" class="prev_step" name="prev_step" value="上一步"/>
+								<button id="btnSave">保存</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="con_foot">
+			<div class="wrap">
+				<p>
+					条款 - 隐私权
+					<span>©2016 guangzhouzhihong</span>                                                 
+				</p>
+			</div>
+		</div>
+		<div class="dialog_done" style="display:none;">
+	  		<p class="star">
+	  			<img src="img/star.png">
+	  		</p>
+	  		<p class="txt">
+	  			<span class="txt_d"><strong>恭喜你！注册完成 </strong></span>
+	  		</p>
+	  		<p class="txt txt_we">
+	  			<span class="txt_w"><strong>运势界，欢迎您！</strong></span> 
+	  		</p>
+	  		<p class="txt txt_p">
+	  			我们会尽快完成对司机、车辆信息审核，审核通过后，你就可以参与竞标，</br>以及后续的运输任务处理
+	  		</p>
+	  		<p class="txt txt_dr">
+	  			提示：返回<a id="car_info_link" href="info_cars.htm">个人中心</a>继续添加司机、车辆、常跑路线等信息
+	  		</p>
+	  		<p class="txt_a">
+	  			<a href="index.htm">个人中心</a>
+	  		</p>
+		</div>
+		<div class="dialog_w" style="display:none;">
+	  		<div class="upload_c clearfix">
+	  			<div class="clearfix">
+	  				<div class="upload_c_l">
+		  				<img src="img/shili.png">
+		  			</div>
+		  			<div class="upload_c_l upload_c_r">
+		  				<img id="imgUpload" src="img/upload_bg.png" style="display:block;" onclick="inputUploadFile.click();">
+						<input type="file" id="inputUploadFile" class="hide"/>
+		  				<!-- 加载进度 -->
+		  				<div id="divLoading" class="load-container load8" style="display:none;">
+							<div class="loader">Loading...</div>
+						</div>
+						<span></span>
+		  			</div>
+	  			</div>
+	  			<p>上传要求：个人免冠照，请确保身份证四角完整，文字清晰可辨认</p>
+	  		</div>
+		</div>
+    </body>
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/jquery.styleSelect.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/info.js"></script>
+	<script type="text/javascript" src="js/datepicker.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/upload_image.js"></script>
+	<script type="text/javascript" src="js/global_config.js"></script>
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/CBSVehicle.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js/info_driver.js"></script>
+    <script type="text/javascript">
+		$(document).ready(function(){
+			// 常跑线路
+			$("#routes li").mouseover(function(event) {
+				$(this).children().addClass('r_close').parent("li").siblings().children().removeClass('r_close');
+			});
+
+			// 日期
+			var vehicleInfoId = global.QueryString.vehicleInfoId;
+			var vehicle = new CBSVehicle({vehicleInfoId:vehicleInfoId});
+		});
+	</script>
+</html>

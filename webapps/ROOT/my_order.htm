@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="editApp">
+    <head ng-controller="head">
+        <meta charset="utf-8">
+        <title>我的订单</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>      
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui-extends.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.multiselect.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.multiselect.filter.css"/>
+		<link rel="stylesheet" type="text/css" href="css/dialog.css"/>
+		<link rel="shortcut icon" ng-href="{{path}}" />
+    </head>
+    <body>
+    	<headtop></headtop>
+		<div class="order_tit order_list_w">
+			<div class="wrap">
+				<div class="order_top clearfix">
+					<div class="order_top_l">
+						<ul class="clearfix tab_tit">
+							<li ng-class="{'current':_index=='0'}" ng-click="changeOrderList(0)"><a href="javascript:;">全部</a></li>
+							<li ng-class="{'current':_index=='1'}" ng-click="changeOrderList(1)"><a href="javascript:;">完善信息</a></li>
+							<li ng-class="{'current':_index=='2'}" ng-click="changeOrderList(2)"><a href="javascript:;" class="map">在途</a></li>
+							<li ng-class="{'current':_index=='3'}" ng-click="changeOrderList(3)"><a href="javascript:;" class="delete">完成</a></li>
+						</ul>
+					</div>
+					<!-- <div class="order_top_r clearfix">
+						<input id="queryContent" type="text" placeholder="货源编号/出发地/目的地"/>
+						<button id="searchlist">搜索</button>
+					</div> -->
+				</div>
+			</div>
+		</div>
+		<div class="order_list_w content_w order_c wrap">
+			<orderlist></orderlist>
+			<div class="list_page clearfix wrap">
+				<div class="page_w">
+					<div class="handle clearfix">
+						<div id="kkpager" class="handle-page clearfix skin-tb"></div>		
+					</div>
+				</div>
+			</div>
+		</div>
+        <foot></foot>
+    </body>	
+    <script type="text/javascript" src="js/vendor/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/vendor/toTop.min.js"></script>
+    <script type="text/javascript" src="js/vendor/angular.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-resource.min.js"></script>
+    <script type="text/javascript" src="js/vendor/store.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.md5.js"></script>
+	<script type="text/javascript" src="js/vendor/lazyload.js"></script>
+	<script type="text/javascript" src="js/public/global_config.js"></script>	
+	<script type="text/javascript" src="js/public/global.js"></script>
+	<script type="text/javascript" src="js/public/pagination.js"></script>
+	<script type="text/javascript" src="js/services/services.js"></script>
+	<script type="text/javascript" src="js/filters/filters.js"></script>
+	<script type="text/javascript" src="js/directives/directives.js"></script>
+	<script type="text/javascript" src="js/controllers/controller.js"></script>
+</html> 

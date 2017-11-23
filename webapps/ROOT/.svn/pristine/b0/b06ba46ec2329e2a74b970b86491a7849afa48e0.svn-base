@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <title>个人中心</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>
+        <link rel="stylesheet" type="text/css" href="css/supply_hall.css"/>
+        <link rel="stylesheet" type="text/css" href="css/center_news.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dialog.css"/>
+        <link rel="shortcut icon" href="bitbug_favicon.ico" /> 
+    </head>
+    <body style="background-color:#fbfbfb;">
+		<div class="con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="index.htm">
+						<img src="img/c_logo.png" height="45" width="155">
+					</a>
+				</div>
+				<ul class="nav clearfix">
+					<li>
+						<a href="index.htm">首页</a>
+					</li>
+					<li>
+						<a href="supply_hall.htm">我的货源</a>
+					</li>
+					<li>
+						<a href="my_order.htm">我的订单</a>
+					</li>
+				</ul>
+				<div class="search_w" ng-controller="getUnreadMessageCount">
+					<a href="center_news.htm">
+						<span ng-class="{'notice': true,'has_notice': flag}"></span>
+					</a>
+					<a href="center_basicinfo.htm" class="go_center current"></a>
+					<span class="user_select" style="display:none;">
+						<a href="center_basicinfo.htm">我的账户</a>
+						<a href="javascript:;" class="help">帮助</a>
+						<a href="javascript:;" class="exit">退出</a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="order_tit order_list_w">
+			<div class="order_top clearfix wrap">
+				<div class="order_top_l">
+					<ul class="clearfix tab_tit">
+						<li>
+							<a href="center_basicinfo.htm">我的账户</a>
+						</li>
+						<li class="current">
+							<a href="center_pay_schedule.htm">财务-申请付款表</a>
+						</li>
+						<li>
+							<a href="driver_list.htm">车辆及司机信息</a>
+						</li>
+						<li>
+							<a href="running_route.htm">常跑线路</a>
+						</li>
+						<li>
+							<a href="center_news.htm">消息通知</a>
+						</li>
+					</ul>
+				</div>
+				<div class="order_top_l order_top_r clearfix">
+					<ul class="clearfix tab_tit">
+						<li>
+							<a href="javascript:;">设置</a>
+						</li>
+						<li>
+							<a href="javascript:;">规则</a>
+						</li>
+						<li>
+							<a href="javascript:;">帮助</a>
+						</li>
+						<li>
+							<a href="javascript:;">退出</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="wrap trans_records pay_list_w">
+			<div class="tit clearfix">
+				<span class="tit_l">申请付款表</span>
+				<span class="tit_r">
+					<i>已同意 <b>2</b> 条</i>
+					<i>待处理 <b>5</b> 条</i>
+					<i>已拒绝 <b>1</b> 条</i>
+				</span>
+			</div>
+			<div class="pay_list mt0">
+				<div class="list_tit">
+					<dl class="clearfix">
+						<dt>
+							<span>订单号：</span>288822918
+							<a href="#">查看订单信息</a>
+						</dt>
+						<dd>
+							<span>申请时间：</span>2012-12-12 12:12
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>
+							<span>运势界：</span>司机合同编号 2992828929
+							<a href="#">查看竞标信息</a>
+						</dt>
+						<dd>
+							<span>申请人：</span>王通钦
+						</dd>
+					</dl>
+				</div>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<thead>
+						<tr>
+							<th align="left" width="163">交易名称</th>
+							<th align="right" width="112">实付金额</th>
+							<th align="right" width="131">首付款</th>
+							<th align="right" width="104">尾款</th>
+							<th align="right" width="113">退押金</th>
+							<th align="right" width="125">货损货差</th>
+							<th align="right" width="130">中标运费</th>
+							<th align="right" width="241">备注</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td align="left">运势界 - 运费发放</td>
+							<td align="right">+3,200.00</td>
+							<td align="right">+3,000.00</td>
+							<td align="right">+0.00</td>
+							<td align="right">+200.00</td>
+							<td align="right">+0.00</td>
+							<td align="right">+13,000.00</td>
+							<td align="right">另有油卡 ¥ 2,200.00 需支付</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="btns_w clearfix">
+					<div class="btns">
+						<button>同意</button>
+						<button>拒绝</button>
+					</div>
+				</div>
+			</div>
+			<div class="pay_list">
+				<div class="list_tit">
+					<dl class="clearfix">
+						<dt>
+							<span>订单号：</span>288822918
+							<a href="#">查看订单信息</a>
+						</dt>
+						<dd>
+							<span>申请时间：</span>2012-12-12 12:12
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>
+							<span>运势界：</span>司机合同编号 2992828929
+							<a href="#">查看竞标信息</a>
+						</dt>
+						<dd>
+							<span>申请人：</span>王通钦
+						</dd>
+					</dl>
+				</div>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<thead>
+						<tr>
+							<th align="left" width="163">交易名称</th>
+							<th align="right" width="112">实付金额</th>
+							<th align="right" width="131">首付款</th>
+							<th align="right" width="104">尾款</th>
+							<th align="right" width="113">退押金</th>
+							<th align="right" width="125">货损货差</th>
+							<th align="right" width="130">中标运费</th>
+							<th align="right" width="241">备注</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td align="left">运势界 - 运费发放</td>
+							<td align="right">+3,200.00</td>
+							<td align="right">+3,000.00</td>
+							<td align="right">+0.00</td>
+							<td align="right">+200.00</td>
+							<td align="right">+0.00</td>
+							<td align="right">+13,000.00</td>
+							<td align="right">另有油卡 ¥ 2,200.00 需支付</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="btns_w clearfix">
+					<div class="btns">
+						<span>已同意</span>
+					</div>
+				</div>
+			</div>
+			<div class="pay_list">
+				<div class="list_tit">
+					<dl class="clearfix">
+						<dt>
+							<span>订单号：</span>288822918
+							<a href="#">查看订单信息</a>
+						</dt>
+						<dd>
+							<span>申请时间：</span>2012-12-12 12:12
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>
+							<span>运势界：</span>司机合同编号 2992828929
+							<a href="#">查看竞标信息</a>
+						</dt>
+						<dd>
+							<span>申请人：</span>王通钦
+						</dd>
+					</dl>
+				</div>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<thead>
+						<tr>
+							<th align="left" width="163">交易名称</th>
+							<th align="right" width="112">实付金额</th>
+							<th align="right" width="131">首付款</th>
+							<th align="right" width="104">尾款</th>
+							<th align="right" width="113">退押金</th>
+							<th align="right" width="125">货损货差</th>
+							<th align="right" width="130">中标运费</th>
+							<th align="right" width="241">备注</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td align="left">运势界 - 运费发放</td>
+							<td align="right">+3,200.00</td>
+							<td align="right">+3,000.00</td>
+							<td align="right">+0.00</td>
+							<td align="right">+200.00</td>
+							<td align="right">+0.00</td>
+							<td align="right">+13,000.00</td>
+							<td align="right">另有油卡 ¥ 2,200.00 需支付</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="btns_w clearfix">
+					<div class="btns">
+						<span class="refuse">已拒绝</span>
+					</div>
+				</div>
+			</div>
+			<div class="pay_list">
+				<div class="list_tit">
+					<dl class="clearfix">
+						<dt>
+							<span>订单号：</span>288822918
+							<a href="#">查看订单信息</a>
+						</dt>
+						<dd>
+							<span>申请时间：</span>2012-12-12 12:12
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>
+							<span>运势界：</span>司机合同编号 2992828929
+							<a href="#">查看竞标信息</a>
+						</dt>
+						<dd>
+							<span>申请人：</span>王通钦
+						</dd>
+					</dl>
+				</div>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<thead>
+						<tr>
+							<th align="left" width="163">交易名称</th>
+							<th align="right" width="112">实付金额</th>
+							<th align="right" width="131">首付款</th>
+							<th align="right" width="104">尾款</th>
+							<th align="right" width="113">退押金</th>
+							<th align="right" width="125">货损货差</th>
+							<th align="right" width="130">中标运费</th>
+							<th align="right" width="241">备注</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td align="left">运势界 - 运费发放</td>
+							<td align="right">+3,200.00</td>
+							<td align="right">+3,000.00</td>
+							<td align="right">+0.00</td>
+							<td align="right">+200.00</td>
+							<td align="right">+0.00</td>
+							<td align="right">+13,000.00</td>
+							<td align="right">另有油卡 ¥ 2,200.00 需支付</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="btns_w clearfix">
+					<div class="btns">
+						<button>同意</button>
+						<button>拒绝</button>
+					</div>
+				</div>
+			</div>
+			<div class="news_page wrap clearfix">
+	            <div id="page" class="m-pagination"></div>
+	            <div id="eventLog"></div>
+				<div class="page">
+					分页
+				</div>
+			</div>
+		</div>
+		<div class="con_foot">
+			<div class="wrap clearfix foot_w">
+				<p>
+					<span class="copyright">条款 - 隐私权         ©2016 guangzhouzhihong</span>
+					<span class="tel">
+						<i>400-888-0906</i>
+						</br>
+						<i class="time">周一至周日  8:00-22:00</i>
+					</span>                                                 
+				</p>
+			</div>
+		</div>
+    </body>
+</html>

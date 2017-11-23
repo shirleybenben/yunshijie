@@ -1,0 +1,47 @@
+$(function(){
+	getAjax.captcha()();
+	global.coffee({
+		"click":{
+			".picCode": function(){
+				getAjax.captcha()();
+			},
+			".getMobileCode" : function(){
+				var params ={"telphone":$("#reg_phone").val(),"codeType":"01"};
+				if(params.telphone){
+					if(!$("#reg_val_code").val()){
+						window.confirm("请填写验证码！");
+					}else{
+						getAjax.isExist()(params);
+					}
+				}else{
+					window.confirm("请填写手机号码！");
+				}
+			},
+			"#LoginBtn" : function(){
+				var dxcode = $("#dxcode").val(),
+					params = {"telphone":$("#reg_phone").val(),"barCode":dxcode,"codeType": "01"}
+					if(!params.telphone || !$("#reg_val_code").val() || !dxcode){
+						window.confirm("请填写完整信息！");
+						return false;
+					}
+				getAjax.validSmsCode()(params);
+			},
+			"#savePwd" : function(){
+				if($("#reg_pass").val()==$("#re_pass").val()){
+					var params = {"telphone":$("#reg_phone").val(),"barCode":$("#dxcode").val(),"password": $("#reg_pass").val()}
+					getAjax.resetPassword()(params);
+				}
+			}
+		},
+		"blur":{
+			"#reg_val_code" : function(){
+				var params={"token": $(this).val(),"validId": $(this).attr("data-id")}
+				if(params.token){
+					getAjax.captcha()(params);
+				}else{
+					window.confirm("请填写验证码！");
+				}
+			}
+		}
+	})
+})

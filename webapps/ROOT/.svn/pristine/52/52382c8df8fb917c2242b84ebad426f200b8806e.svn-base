@@ -1,0 +1,37 @@
+/*
+* @Author: Administrator
+* @Date:   2016-09-02 09:37:11
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-09-02 11:45:07
+*/
+.order_list_w .order_top_l ul li{width:auto;padding:0 18px;text-align:center;}
+.order_list_w .order_top_r ul li{padding:0 15px;}
+.order_list_w .order_top_r ul li a{text-decoration:none;font-size:14px;color:#fff;}
+.order_list_w .order_top_r{margin-top:0px;}
+.order_list_w span.lines{padding-right:20px;}
+.order_list_w .order_top{padding-right:0px;}
+.news_content{background-color:#fff;padding-top:48px;}
+ul.news_list{width:1034px;margin:0 auto;}
+ul.news_list li{width:100%;height:160px;margin-top:48px;padding:25px 0 0 150px;background:#f8f8f8 url(../img/zhongbiao.png) no-repeat 48px center;-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;color:#999;position:relative;}
+ul.news_list li:nth-child(1){margin-top:0px;}
+ul.news_list li p{padding-left:29px;}
+ul.news_list li p.tit{font-size:20px;background:url(../img/dotted.png) no-repeat left center;}
+ul.news_list li p.tit span{font-size:14px;padding-left:20px;}
+ul.news_list li p.news_con{font-size:16px;line-height:29px;margin-top:10px;}
+ul.news_list li.depart_news{background-image:url(../img/fache.png);}
+ul.news_list li.cert_success{background-image:url(../img/renzhen_ok.png);}
+ul.news_list li.cert_failure{background-image:url(../img/renzheng_no.png);}
+ul.news_list li.reg_success{background-image:url(../img/reg_done.png);}
+.news_page{height:68px;width:1034px;}
+.news_page .page{float:right;margin-top:10px;}
+ul.news_list li a.go_detail{font-size:14px;color:#999;text-decoration:none;position:absolute;top:12px;right:18px;padding-right:13px;background:url(../img/go_Detail.png) no-repeat right center;}
+ul.news_list li.active p.tit{background-image:url(../img/active_dot.png);color:#333;}
+ul.news_list li.active p.tit span{color:#999;}
+ul.news_list li.active{background-image:url(../img/active_zhongbiao.png);}
+ul.news_list li.depart_news.active{background-image:url(../img/active_fache.png);}
+ul.news_list li.cert_success.active{background-image:url(../img/a_rezheng_ok.png);}
+ul.news_list li.cert_failure.active{background-image:url(../img/a_renzheng_no.png);}
+ul.news_list li.reg_success.active{background-image:url(../img/a_reg_done.png);}
+ul.news_list li.active p.news_con{color:#666;}

@@ -1,0 +1,10 @@
+
+$(function(){
+	// 常跑路线
+	$("#lines li").mouseover(function(event) {
+		$(this).children().addClass('r_close').parent("li").siblings().children().removeClass('r_close');
+	});
+	$("#lines").on('click', 'em.r_close', function(event) {
+		$(this).parent().hide();
+	});
+})

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<title>运势界</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css"/>
+	</head>
+	<body>
+		<div id="dowebok">
+			<div class="section">
+				<div class="con_header index_con_header">
+					<div class="wrap clearfix">
+						<div class="logo">
+							<a href="#">
+								<img src="img/c_logo.png" height="32" width="184">
+							</a>
+						</div>
+						<div class="h_line"></div>
+						<ul class="nav clearfix">
+							<li>
+								<a href="#">首页</a>
+							</li>
+							<li>
+								<a href="#">货源大厅</a>
+							</li>
+							<li>
+								<a href="#">我的竞标</a>
+							</li>
+							<li>
+								<a href="#">在途运输</a>
+							</li>
+						</ul>
+						<div class="search_w">
+							<div class="search_c">
+								<input type="text" class="search" />
+								<span class="serch_icon"></span>
+							</div>
+							<span class="notice"></span>
+							<span class="user">
+								<a href="#"></a>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section">
+				<h3>第二屏</h3>
+				<p>请查看右边的圆圈</p>
+			</div>
+			<div class="section">
+				<h3>第三屏</h3>
+				<p>圆圈还可以设置位置，颜色，加上 tip，点击可以控制</p>
+			</div>
+			<div class="section">
+				<h3>第四屏</h3>
+				<p>这是最后一屏</p>
+			</div>
+		</div>
+	</body>
+</html>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery.fullPage.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script>
+$(function(){
+	//检查是否已经登录
+	if($.cookie("isLogined") == null)
+	{
+		window.location = "login.htm";
+	}
+
+	$('#dowebok').fullpage({
+		sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
+		'navigation': true
+	});
+});
+</script>

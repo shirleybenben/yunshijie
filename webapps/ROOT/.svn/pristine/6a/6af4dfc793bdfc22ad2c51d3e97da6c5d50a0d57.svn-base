@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/reg.css"/>  
+    </head>
+    <body>
+    	<div class="header">
+			<h1 class="logo">
+				<a href="#">
+					<img src="img/logo.png"/>
+				</a>
+			</h1>
+		</div>
+    	<div class="wrap rou_w">
+    		<div class="reg_tit rou_tit">创建您的常跑路线</div>
+    		<div class="reg_con clearfix rou_con">
+    			<div class="reg_r rou_r">
+    				<div class="reg_w">
+    					<form method="" action="" onsubmit="return false">
+							<p>
+							    <label for="role">出发地</label>
+								<select class="mySelect">
+									<option  class="first" value="" selected>广州</option>
+									<option  value="hippopotamus">上海</option>
+									<option  class="first" value="">重庆</option>
+								</select>
+							</p>
+							<p>
+							    <label for="role">目的地</label>
+								<select class="mySelect">
+									<option  class="first" value="" selected>广州</option>
+									<option  value="hippopotamus">上海</option>
+									<option  class="first" value="">重庆</option>
+								</select>
+							</p>
+							<h3 class="hint">小提示</h3>
+							<div class="rou_txt">只有添加常跑路线，才能看到该路线打货源信息，并报价哦！</br>
+							<span>说明：路线全部为一级，即到省级</span>
+							</div>
+							<p class="clearfix">
+								<input type="submit" name="submit" id="nextStep" value="增&nbsp;加" class="nextStep" />
+							</p>
+						</form>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="footer"></div>
+    </body>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.styleSelect.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		$(".mySelect3").styleSelect({styleClass: "selectFruits",optionsWidth: 1,speed: 'fast'});
+			$(".mySelect").styleSelect({styleClass: "selectDark"});
+		});
+	</script>
+</html>

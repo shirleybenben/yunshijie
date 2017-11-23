@@ -1,0 +1,157 @@
+var YSJSupplyHall = function(){
+	var count = 1;
+	this.table = new YSJTable({
+		page : $('.handle-page'),
+		content : $('.order_list'),
+		url : "/api/source/query",
+		method  : 'get',
+		pageNumber : 0,
+		pageSize : 10,
+		rowRender : function(index, row){
+			return new YSJSourceRowL(row);
+		},
+		onBeforeLoad : function(param){
+			if(param.count <= 2){
+				if(global.QueryString.key){
+					param.lineId = global.QueryString.key;
+				}
+				var count = global.QueryString.count;
+				$(".tab_tit").find("li:eq("+count+")").addClass("current").siblings().removeClass("current");
+			}
+			if(param.lineId){
+				$(".class_2").attr("ref",param.lineId);
+			}
+			
+			return param.lineId != null;
+		}
+	});
+	
+	this.init = function(){
+		var _this = this;
+		_this.getLines();
+	};
+
+	this.getLines = function(){
+		var _this = this;
+		$.ajax({
+			type: "get",
+			url: global.server + '/api/line/getLineList',
+			success: function (msg) {
+				if (msg && msg.status && msg.status.statusCode == global.status.success) {
+                    var data = msg.data;
+                    _this.fillLineData(data);
+                }
+			}
+		});
+	};
+
+	this.selectCountry= function(param){
+		var _this = this,
+			params = {
+				lineId: param.lineId ? param.lineId:$(".class_2").attr("ref")
+			}
+
+		$(".returned").unbind('click').bind('click',function(){
+			$(".order_list").empty();
+			var returned ="";
+			if($(this).is(":checked")){
+				returned="01";
+			}else{
+				returned ="";
+			}
+			params.returned = returned;
+			_this.loadData(params);
+		})
+
+		$(".pubdate").unbind('click').bind('click',function(){
+			var pubdate = "";
+			if(!params.sort){
+				params.sort = "01";
+			}else{
+				params.sort = (params.sort=="01")?"02":"01";
+			}
+			console.log(params);
+			_this.loadData(params);
+		})
+
+		$(".class_2,.class_3,.needLength,.needType").unbind('change').bind('change',function(){
+			params.startCodeC = $(".class_2").val();
+			params.endCodeC = $(".class_3").val();
+			params.needLength = isNaN($(".needLength").val())?"":$(".needLength").val();
+			params.needType = $(".needType").val() =="车型"?"":$(".needType").val() =="不限"?"":$(".needType").val();
+			_this.loadData(params);
+		})
+	}
+	
+	
+	this.fillLineData = function(data){
+		var _this = this,plineId="";
+		var container = $('.tab_tit'),
+			plineId={};
+		container.empty();
+		$.each(data, function(i, j){
+			var departureCodeCn = global.filterWord(j.departureCodeCn),
+				destinationCodeCn = global.filterWord(j.destinationCodeCn);
+			var el = $('<li data-dept="'+j.departureCode+'" data-dest="'+j.destinationCode+'"><a href="javascript:;"><strong>'+departureCodeCn+'——'+destinationCodeCn+'</strong></a></li>');
+
+			el.click(function(){
+				el.addClass('current').siblings('li').removeClass('current');
+				$(".returned").attr("checked",false);
+				$('select').prop('selectedIndex', 0);
+				var lineId = el.attr('ref'),
+					param = {},
+					dept = el.attr("data-dept"),
+					dest = el.attr("data-dest");
+				param.lineId = lineId;
+				plineId = {lineId:lineId};
+				count +=1;
+				param.count = count;
+				_this.loadData(param);
+				//数据源countrySelect.js
+				var sdCountry = getCountrySelect.getSecondLevel();
+				if(global.QueryString.q && count<=2){
+					sdCountry({regionCode:global.QueryString.e,"class":"2"});
+					sdCountry({regionCode:global.QueryString.q,"class":"3"});
+				}else{
+					sdCountry({regionCode:dept,"class":"2"});
+					sdCountry({regionCode:dest,"class":"3"});
+				}
+				_this.selectCountry(plineId);
+			});
+
+			el.attr('ref',j.lineInfoId);
+			container.append(el);
+		});
+
+		if(data.length >=5){
+			$('.order_top_m').remove();
+		}
+		var first = container.find('li:first');
+		if(first.length>0){
+			first.addClass('current').get(0).click();
+		}
+	};
+	
+	
+	this.loadData = function(param){
+		var _this = this;
+		var table = _this.table;
+		table.load(param);
+	}
+	
+	
+	this.init();
+}
+
+
+$(function(){
+	new YSJSupplyHall();
+	global.coffee({
+		"click":{
+			"#searchWin": function(){
+				var queryContent = $("#queryContent").val();
+				window.open('search_list.htm?queryContent='+queryContent,'_blank')
+			}
+		}
+	})
+});

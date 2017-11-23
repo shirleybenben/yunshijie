@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>完善信息</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dialog.css"/>
+    </head>
+    <body style="background-color:#fbfbfb;">
+		<div class="con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="index.htm">
+						<img src="img/c_logo.png" height="32" width="184">
+					</a>
+				</div>
+				<ul class="nav clearfix">
+					<li>
+						<a href="index.htm">首页</a>
+					</li>
+					<li>
+						<a href="supply_hall.htm">货源大厅</a>
+					</li>
+					<li>
+						<a href="my_order.htm">我的订单</a>
+					</li>
+				</ul>
+				<div class="search_w">
+					<span class="notice"></span>
+					<span class="user">
+						<a href="center_basicinfo.htm"></a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="container wrap clearfix">
+			<div class="container_l">
+				<div class="groom">
+					<a href="#" class="recommend_supply">推荐回程货源</a>
+					<span class="arrow"></span>
+				</div>
+				<a href="return_supply.htm" class="flow_w">
+					<div class="flow">
+						<div class="flow_bar clearfix">
+							<span class="city">广州</span>
+							<span class="car_bg"></span>
+							<span class="city">上海</span>
+						</div>
+						<dl class="detail clearfix">
+							<dt>提货时间</dt>
+							<dd>2012/12/12 12:00</dd>
+							<dt>提货地点</dt>
+							<dd>广东省 广州市</dd>
+							<dt>需求车长</dt>
+							<dd class="w96">货物吨位</dd>
+							<dd>货物体积</dd>
+							<dt class="font18">9.6米</dt>
+							<dd class="font18 w96">8吨</dd>
+							<dd class="font18">5方</dd>
+							<dt>需求车型</dt>
+							<dd class="w160">高栏</dd>
+							<dt>货物类型</dt>
+							<dd>电子配件</dd>
+						</dl>
+						<div class="name">广东志鸿物流有限公司</div>
+						<div class="count clearfix">
+							<span class="mans">已应标<i>26</i>人</span>
+							<span class="line"></span>
+							<span class="days">2天结束</span>
+						</div>
+					</div>
+				</a>
+				<!-- 无数据时调用 -->
+				<!-- <div class="flow">
+					<span class="icon"></span>
+					<span class="no_data">暂无数据</span>
+				</div> -->
+				<a href="return_supply.htm" class="flow_w">
+					<div class="flow">
+						<div class="flow_bar clearfix">
+							<span class="city">广州</span>
+							<span class="car_bg"></span>
+							<span class="city">上海</span>
+						</div>
+						<dl class="detail clearfix">
+							<dt>提货时间</dt>
+							<dd>2012/12/12 12:00</dd>
+							<dt>提货地点</dt>
+							<dd>广东省 广州市</dd>
+							<dt>需求车长</dt>
+							<dd class="w96">货物吨位</dd>
+							<dd>货物体积</dd>
+							<dt class="font18">9.6米</dt>
+							<dd class="font18 w96">8吨</dd>
+							<dd class="font18">5方</dd>
+							<dt>需求车型</dt>
+							<dd class="w160">高栏</dd>
+							<dt>货物类型</dt>
+							<dd>电子配件</dd>
+						</dl>
+						<div class="name">广东志鸿物流有限公司</div>
+						<div class="count clearfix">
+							<span class="mans">已应标<i>26</i>人</span>
+							<span class="line"></span>
+							<span class="days">2天结束</span>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="container_r">
+				<div class="line_detail">
+					<div class="tit">货源编号：123456789</div>
+					<div class="content clearfix">
+						<div class="content_l">
+							<p class="clearfix">
+								<span class="city">广州</span>
+								<span class="route_start"></span>
+								<span class="font14">经停</span>
+								<span class="font18">苏州</span>
+								<span class="route_end"></span>
+								<span class="city">上海</span>
+							</p>
+							<p class="time">
+								<span>提货时间&nbsp;&nbsp;&nbsp;&nbsp;2012/12/12 12:00</span>
+								<span class="arrive_time">到达时间&nbsp;&nbsp;&nbsp;&nbsp;2012/12/12 12:00</span>
+							</p>
+							<div class="car_detail clearfix">
+								<p class="detail_l">
+									<span>需求车型：</span>
+									<span class="m5">需求车长：</span>
+								</p>
+								<p class="detail_l w82">
+									<span>高栏</span>
+									<span class="m5">9.6米</span>
+								</p>
+								<p class="detail_l w110">
+									<span>货物吨位</span>
+									<span class="font18 m5">8吨</span>
+								</p>
+								<p class="detail_l w105">
+									<span>货物体积</span>
+									<span class="font18 m5">5方</span>
+								</p>
+								<p class="detail_l w110">
+									<span>货物类型</span>
+									<span class="font18 m5">电子配件</span>
+								</p>
+							</div>
+							<p class="addr_detail">
+								<span class="name">广东志鸿物流有限公司</span>
+							 	<span class="address">提货地点:广东省 广州市</span>
+							</p>
+						</div>
+						<div class="content_r">
+							<p class="font14">已应标<i class="font18">26</i>人</p>
+							<p class="font18">2天结束</p>
+						</div>
+						<div class="tel">
+							<span class="consult">咨询电话</span>
+							<span class="num">400 5623 2345</span>
+						</div>
+					</div>
+				</div>
+				<div class="line_detail quote_price clearfix select_car_w">
+					<dl class="select_car clearfix">
+						<dt>使用车辆</dt>
+						<dd class="brands">
+							<span>沪A123456</span>
+							<span>沪A123456</span>
+							<span>沪A123456</span>
+							<span>沪A123456</span>
+							<span>沪A123456</span>
+							<span>沪A123456</span>
+						</dd>
+						<dd class="add">
+							<a href="#">添加</a>
+						</dd>
+						<dt>使用驾驶员</dt>
+						<dd class="brands name">
+							<span>张三</span>
+							<span>李四</span>
+							<span>周武</span>
+							<span>李玉帝</span>
+							<span>欧阳明明</span>
+						</dd>
+						<dt></dt>
+						<dd class="txt clearfix">
+							<button>完善信息</button>
+							<p>新增车辆或驾驶员需要审核，请提前添加，避免耽误发车。</p>
+						</dd>
+					</dl>
+					<!-- 无数据时调用 -->
+					<!-- <dl class="select_car">
+						<span class="icon"></span>
+						<span class="no_data">暂无数据</span>
+					</dl> -->
+					<div class="price_l">
+						<p class="price">我的报价
+							<span class="doller">$12000.00</span>
+						</p>
+						<p class="remark clearfix">
+							<span class="remark_l">备注：</span>
+							<span class="remark_r">四大水电费及扩大及福利卡的跟价格了恐惧感四大水电费及扩大及福利卡的跟价格了恐惧感四大水电费及扩大及福利卡的跟价格了恐惧感四大水电费及扩大及福利卡的跟价格了恐惧。</span>
+						</p>
+					</div>
+
+					<div class="price_r">
+						<span class="close_price close_p giveUp" style="display: none">毁约</span>
+					</div>
+				</div>
+				<div class="line_detail quote_price hint">
+					<p>提示 <br/>应标徽扣除您的200元做为押金，如果竞标失败，则会自动退还到您的账户；如果竞标成功，则在发车后自动退还到您的账户。</p>
+					<p class="more_rule">
+						<a href="#">更多规则</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="con_foot">
+			<div class="wrap">
+				<p>
+					条款 - 隐私权
+					<span>©2016 guangzhouzhihong</span>                                                 
+				</p>
+			</div>
+		</div>
+		<!-- 完善信息成功对话框 -->
+		<div class="dialog_wrap" style="display:none;">
+    		<div class="dialog_done dialog_w price_done">
+		  		<p class="star">
+		  			<img src="img/star.png">
+		  		</p>
+		  		<p class="txt">
+		  			<span class="txt_d">完善成功！</span></br>
+		  		</p>
+			</div>
+			<div class="mask"></div>
+    	</div>
+		<!-- 关闭报价对话框 -->
+		<div class="dialog_wrap" style="display:none">
+    		<div class="dialog_done dialog_w close_price">
+		  		<p class="star">
+		  			<img src="img/close_price_bg.png"/>
+		  		</p>
+		  		<p class="txt">
+		  			<span class="txt_d">毁约</span></br>
+		  		</p>
+		  		<p class="txt txt_we">
+		  			<span class="txt_w">请慎重确认<br/>毁约将减少您的信誉度和处罚200元</span> 
+		  		</p>
+		  		<p class="resure clearfix">
+		  			<button class="sure">确认</button>
+		  			<button class="cancel">取消</button>
+		  		</p>
+		  		<span class="close"></span>
+			</div>
+			<div class="mask"></div>
+    	</div>
+    </body>	
+	<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/js/store.min.js"></script> 
+	<script type="text/javascript" src="/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/js/global_config.js"></script>	
+	<script type="text/javascript" src="/js/global.js"></script>
+	<script type="text/javascript" src="/js/moment.js"></script>
+	<script type="text/javascript" src="/js/supply_detail.js"></script>
+</html> 

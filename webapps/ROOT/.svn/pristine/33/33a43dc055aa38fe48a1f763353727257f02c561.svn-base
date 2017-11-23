@@ -1,0 +1,57 @@
+<div class="content_w wrap container_w">
+	<div class="title clearfix">
+		<div class="distance">
+			<span>预计公里数</span>
+			<em>128392 KM</em>
+		</div>
+		<div class="distance">
+			<span>在途要求</span>
+			<em>2H一次</em>
+		</div>
+		<a href="#">查看地图</a>
+	</div>
+	<div class="con">
+		<div class="item clearfix">
+			<p>
+				<span>计划发车时间</span>
+				<span class="font18">2016-10-08  12:30</span>
+			</p>
+			<p>
+				<span>发货人</span>
+				<span class="font18">王丽儿</span>
+			</p>
+			<p>
+				<span>发货人电话</span>
+				<span class="font18">
+					<em>021-382722837</em>
+					<em>18582737281</em>
+				</span>
+			</p>
+			<p>
+				<span>发货地址</span>
+				<span class="font18">广东省 广州市 荔枝湾区 中山路 2212 号</span>
+			</p>
+		</div>
+		<div class="item clearfix">
+			<p>
+				<span>到达时限</span>
+				<span class="font18">2016-10-08  12:30</span>
+			</p>
+			<p>
+				<span>发货人</span>
+				<span class="font18">王丽儿</span>
+			</p>
+			<p>
+				<span>发货人电话</span>
+				<span class="font18">
+					<em>021-382722837</em>
+					<em>18582737281</em>
+				</span>
+			</p>
+			<p>
+				<span>发货地址</span>
+				<span class="font18">广东省 广州市 荔枝湾区 中山路 2212 号</span>
+			</p>
+		</div>
+	</div>
+</div>

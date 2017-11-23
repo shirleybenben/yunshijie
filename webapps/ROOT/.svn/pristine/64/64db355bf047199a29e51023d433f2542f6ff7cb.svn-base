@@ -1,0 +1,469 @@
+var YSJReg = function(container){
+	var _this = this;
+	this.phoneNum = container.find('.data-phone');
+	this.smsCode = container.find('.data-sms-code');
+	this.password = container.find('.data-password');
+	this.picCode = container.find('.data-pic-code');
+	this.rePassword = container.find('.data-re-password');
+	this.sendSmsBtn = container.find('.getMobileCode_w .getMobileCode');
+	this.picCodeImg = container.find('.code_w');
+	
+	//线路选择空间
+	this.lineSelect = new YSJLineSelect({
+		startSelect : $("#start_line"),
+		endSelect : $("#end_line"),
+		addBtn : container.find('.add'),
+		max : 5,
+		errorTip : $('#reg_hint_path'),
+		render : function(data){
+			var target = this;
+			var el = $('<li> \
+						<span class="from"> \
+							<em class="are">起运地</em> \
+							<em class="city"></em> \
+						</span> \
+						<span class="line">——</span> \
+						<span class="to"> \
+							<em class="are">目的地</em> \
+							<em class="city"></em> \
+						</span> \
+						<span class="close">删除</span> \
+					</li>');
+			var selected=$('<span class="selected">已选择</span>');
+			el.find('.from > .city').text(data.from);
+			el.find('.to > .city').text(data.to);
+			el.attr("refId", data.id);
+			el.find('.close').click(function(){
+				target.delLine(el.attr('refId'));
+				el.remove();
+			});
+			container.find('#routeWrap').append(el);
+			container.find('#routeWrap').append(selected);
+		}
+	});
+	
+	
+	this.checkPassword = function(password){
+		var _this = this;
+		Error.hide(_this.password);
+		if(password == ''){
+			return false;
+		} else {
+			if(password.length < 6){
+				Error.show(_this.password,"请设置6-16位登录密码");
+				return false;
+			} else if(password.length > 16){
+				Error.show(_this.password,"请设置6-16位登录密码");
+				return false;
+			} else {
+				return _this.checkRePass(_this.rePassword.val());
+			}
+		}
+	};
+	
+	this.checkRePass = function(password){
+		var _this = this;
+		Error.hide(_this.rePassword);
+		if(password == ''){
+			return false;
+		} else {
+			if(password != _this.password.val()){
+				Error.show(_this.rePassword,"密码不一致，请重新输入。");
+				return false;
+			} else {
+				Error.hide(_this.rePassword);
+				return true;
+			}
+		}
+	}
+	
+	//发送手机短信
+	this.getSmsCode = function(){
+		var _this = this;
+		Error.hide(_this.smsCode);
+		var picCode = _this.picCode.val();
+		var phone = _this.phoneNum.val();
+		if(phone){
+			var phoneValid = _this.checkAccount(phone);
+			if(phoneValid){
+				var valid = _this.validPicCode(picCode);
+				if(valid){
+					Error.hide(_this.picCode);
+					new YSJTimer({timer : 60, container : _this.sendSmsBtn});
+					$.ajax({
+						type: "post",
+						url: global.server + '/api/account/generate',
+						data: { telphone: phone, codeType: '00'},
+						success: function (msg) {
+							if (msg && msg.status && msg.status.statusCode == global.status.success) {
+								Error.show(_this.smsCode, "短信下发成功，请注意查收。");
+							} else if(msg.status.statusCode != global.status.success){
+								Error.show(_this.smsCode, msg.status.errorMsg);
+								_this.refreshPicCode();
+							}
+						}
+					});
+				} else{
+					Error.show(_this.picCode, "图形验证码错误");
+					_this.refreshPicCode();
+				}
+			}
+		} else {
+			Error.show(_this.phoneNum, "请输入手机号");
+		}
+	};
+	//校验手机号规则
+	this.checkPhoneRule = function(account){
+		var _this = this;
+		if (!/^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/.test(account)){
+			Error.show(_this.phoneNum, "请输入正确的手机号");
+			return false;
+		} else {
+			return true;
+		}
+	};
+	//检查手机号是否已被注册
+	this.checkExists = function(account){
+		var _this = this;
+		var valid = false;
+		$.ajax({
+			type: "get",
+			url: global.server + '/api/account/isExist',
+			data:{telphone:account},
+			async:false,
+			success: function(msg) {
+				if (msg && msg.status && msg.status.statusCode == global.status.success) {
+					Error.hide(_this.phoneNum);
+					valid = true;
+				} else {
+					Error.show(_this.phoneNum, "该手机号已被注册");
+					valid = false;
+				}
+			}
+		});
+		return valid;
+	}
+	
+	//验证账号
+	this.checkAccount = function(account){
+		var _this = this;
+		var valid = _this.checkPhoneRule(account);
+		if (valid){
+			valid = _this.checkExists(account);
+		}
+		return valid;
+	}
+
+	//刷新图形验证码
+	this.refreshPicCode = function(){
+		var _this = this;
+		_this.picCaptcha.refresh();
+		_this.picCode.val('');
+	};
+	//验证图形验证码
+	this.validPicCode = function(code){
+		var _this = this;
+		return _this.picCaptcha.valid(code);
+	}
+	
+	//初始化方法
+	this.init = function(container){
+		var _this = this;
+		_this.container = container;
+		_this.picCaptcha = new YSJPicCaptcha({
+			container:_this.picCodeImg
+		});
+	};
+	
+	//注册
+	this.toReg = function(){
+		var _this = this;
+		var valid = _this.validToReg();
+		if(valid){
+			var data = {};
+			data.telphone = _this.phoneNum.val();
+//			data.password = $.md5_32(_this.password.val());
+			data.password = _this.password.val();
+			data.barCode = _this.smsCode.val();
+			data.deviceType = '01';
+			var lines = _this.lineSelect.getLines();
+			var lineList = [];
+			$.each(lines, function(i, j){
+				var line = {};
+				line.departureCode = j.start;
+				line.destinationCode = j.end;
+				lineList.push(line);
+			});
+			data.lineList = lineList;
+			
+			var dataStringify = JSON.stringify(data);
+			var url = '/api/account/register';
+		    $.ajax({
+		        url: global.server + url,
+		        type: "POST",
+		        contentType: "application/json; charset=utf-8",
+		        data: dataStringify,
+		        dataType: "Json",
+		        success: function (msg) {
+		            if (msg && msg.status && msg.status.statusCode == global.status.success) {
+		            	var user = msg.data;
+		            	user.userId = user.accountId;
+						global.login(user, true);
+						new YSJRegDialog();
+		            } else {
+		            	alert(msg.status.errorMsg);
+		            }
+		        }
+		    });
+		}
+	}
+	//验证数据
+	this.validToReg = function(){
+		var _this = this;
+		var phone = _this.phoneNum.val();
+		var phoneValid = _this.checkPhoneRule(phone);
+		if(!phoneValid){
+			return false;
+		}
+		var smsCode = _this.smsCode.val();
+		if(smsCode==''){
+			Error.show(_this.smsCode,"请输入短信中的验证码");
+			return false;
+		}
+		Error.hide(_this.smsCode);
+		var _pass = _this.password.val();
+		if(_pass == ''){
+			Error.show(_this.password,"请设置6-16位登录密码");
+			return false;
+		}
+		var password = _this.checkPassword(_this.password.val());
+		if(!password){
+			if(_this.rePassword.val() == ''){
+				Error.show(_this.rePassword,"密码不一致，请重新输入。");
+			}
+			return false;
+		}
+		var lineValid = _this.lineSelect.valid();
+		if(!lineValid){
+			return false;
+		}
+		var exists = _this.checkExists(phone);
+		if(!exists){
+			return false;
+		}
+		return true;
+	}
+	
+	this.addLine = function(start, end){
+		var _this = this;
+		_this.lineSelect.addLine(start, end);
+	}
+	
+	this.init(container);
+}
+
+var YSJRegDialog = function(){
+	
+	this.init = function(){
+		var _this = this;
+		_this.el = $('<div class="dialog_wrap" style="display:none;"> \
+    		<div class="dialog_done dialog_w"> \
+		  		<p class="star"> \
+		  			<img src="/img/star.png"> \
+		  		</p> \
+		  		<p class="txt"> \
+		  			<span class="txt_d">恭喜你！账号注册完成</span></br> \
+		  		</p> \
+		  		<p class="txt txt_we"> \
+		  			<span class="txt_w">运势界，欢迎您的加入！</span>  \
+		  		</p> \
+		  		<p class="txt txt_p"> \
+		  			只有完善资料信息，并审核通过后，才能进行竞标以</br>及后续的业务处理  \
+		  		</p> \
+		  		<p class="txt txt_dr"> \
+		  			<a href="/info_agent.htm">继续完善个人信息</a> \
+		  		</p> \
+		  		<p class="txt_a"> \
+		  			<a href="/index.htm">首页&nbsp;&nbsp;></a> \
+		  		</p> \
+		  		<span class="close"></span> \
+			</div> \
+			<div class="mask"></div> \
+    	</div>');
+		
+		$('body').append(_this.el);
+		
+		_this.show();
+	};
+	
+	this.show = function(){
+		var _this = this;
+		_this.el.show();
+	};
+	
+	this.hide = function(){
+		var _this = this;
+		_this.el.remove();
+	};
+	
+	this.init();
+}
+
+
+//图片验证码
+var YSJPicCaptcha = function(options){
+	
+	this.init = function(){
+		this.opt = $.extend({}, options);
+		this.container = options.container;
+		var _this = this;
+		_this.refresh();
+	};
+	
+	this.refresh = function(){
+		var _this = this;
+		$.ajax({
+			type: "get",
+			url: global.server + '/api/account/captcha',
+			success: function(msg) {
+				if (msg && msg.status && msg.status.statusCode == global.status.success) {
+					var data = msg.data;
+					_this.show(data);
+				}
+			}
+		});
+	};
+	
+	this.show = function(data){
+		var _this = this;
+		_this.container.find('.picCode>img').attr("src","data:image/png;base64," + data.image);
+		_this.validId = data.validId;
+	};
+	
+	this.valid = function(code){
+		var _this = this;
+		var result = false;
+		$.ajax({
+			type: "post",
+			url: global.server + '/api/account/captcha',
+			data: {token: code, validId:_this.validId},
+			async: false,
+			success: function(msg) {
+				if (msg && msg.status && msg.status.statusCode == global.status.success) {
+					var data = msg.data;
+					result = data;
+				}
+			}
+		});
+		return result;
+	};
+	
+	this.init(options);
+	
+}
+
+//倒计时
+var YSJTimer = function(options){
+	this.opt = $.extend({},{timer:5},options);
+	this.timerc = this.opt.timer;
+	this.container = this.opt.container;
+	
+	this.start = function(){
+		var _this = this;
+		_this.t = setInterval(_this.calc, 1000, _this); 
+		var container = _this.container;
+		container.addClass('timer').addClass('disabled');;
+	}
+
+	this.calc = function(target){
+		var _this = target;
+		_this.timerc--;
+		var timerc = _this.timerc;
+		var container = _this.container;
+		container.text(Number(parseInt(timerc%60/10)).toString()+(timerc%10)+'s后重新获取');
+		if(timerc<=0){
+			_this.stop(container);
+		}
+	}
+	
+	this.stop = function(container){
+		var _this = this;
+		var t = _this.t;
+		clearInterval(t);
+		container.text('获取验证码');
+		container.removeClass('timer').removeClass('disabled');
+	};
+	
+	this.start();
+}
+
+//错误提示
+var Error = {
+	show : function(target, msg){
+		target.parents('div.reg-row').find('.reg_hint').html(msg);
+		target.css('border-color','#e4867b');
+	},
+	hide : function(target){
+		target.parents('div.reg-row').find('.reg_hint').empty();
+		target.css('border-color','#d9d9d9');
+	}
+};
+
+
+$(function(){
+	
+	$("#user_role").multiselect({
+		header : false,
+		multiple : false,
+		selectedList : 1,
+		noneSelectedText: '请选择'
+	});
+	
+	var container = $('.reg_w');
+	var ysjReg = new YSJReg(container);
+	
+	container.find('.getMobileCode_w .getMobileCode').click(function(){
+		var self = $(this);
+		if(self.hasClass('timer')){
+			return false;
+		}
+		ysjReg.getSmsCode();
+	});
+	
+	container.find('.data-re-password').blur(function(){
+		var v = this.value;
+		ysjReg.checkRePass(v);
+	});
+	
+	container.find('.code_w .picCode').click(function(){
+		ysjReg.refreshPicCode();
+	});
+	
+	container.find('.data-password').blur(function(){
+		var v = this.value;
+		ysjReg.checkPassword(v);
+	});
+	
+	container.find('.data-phone').blur(function(){
+		var v = this.value;
+		var self = $(this);
+		var _v = $.trim(v);
+		if(_v!=""){
+			ysjReg.checkAccount(_v);
+		} else {
+			Error.hide(self);
+		}
+	});
+	
+	container.find('.nextStep').click(function(){
+		var agree = $('#agree').is(":checked");
+		if(agree){
+			Error.hide($('#agree'));
+			ysjReg.toReg();
+		} else {
+			Error.show($('#agree'),"您必须同意《运势界服务协议》才可注册");
+		}
+	});
+
+});
+

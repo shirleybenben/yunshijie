@@ -1,0 +1,29 @@
+<div class="line_detail quote_price clearfix select_car_w" ng-if="info.status == '03' || info.status == '05'" ng-controller="getRDL" ng-cloak>
+	<dl class="select_car clearfix" style="border-bottom: none;">
+		<dt>使用车辆</dt>
+		<dd class="brands carBrand">
+			<span class="carNo" ng-if="info.status == '03'" ng-repeat="list in driverList" data-id="{{list.vehicleInfoId}}" ng-bind="list.plateNumber" ng-click="carNo($index,list.plateNumber)"></span>
+			<span ng-if="info.status == '05'" class="active" ng-bind="plName" ng-cloak></span>
+		</dd>
+		<dd class="add" ng-if="info.status == '03'" ng-cloak>
+			<a href="edit_driver_info.htm">添加</a>
+		</dd>
+		<dt>使用驾驶员</dt>
+		<dd class="brands nameBrand">
+			<em ng-repeat="list in driverList">
+				<span class="drName" ng-if="info.status == '03'" ng-repeat="dlist in list.DriverInfo" class="disabled" disabled="disabled" data-car="{{list.plateNumber}}" data-id="{{dlist.driverInfoId}}" ng-bind="dlist.realName" ng-click="driverNo($index)" style="color: #e2e2e2"></span>
+			</em>
+			<span ng-if="info.status == '05'" class="active" ng-repeat="slist in drivName" ng-bind="slist.realName" ng-cloak></span>
+		</dd>
+		<dt></dt>
+		<dd class="txt clearfix">
+			<button class="saveCarInfo" ng-if="info.status == '03'" disabled="disabled" data-dnum="{{len}}" ng-click="saveCarInfo()" ng-cloak>完善信息</button>
+			<p class="lstyle">新增车辆或驾驶员需要审核，请提前添加，避免耽误发车。</p>
+		</dd>
+	</dl>
+	<!-- 无数据时调用 -->
+	<!-- <dl class="select_car">
+		<span class="icon"></span>
+		<span class="no_data">暂无数据</span>
+	</dl> -->
+</div>	

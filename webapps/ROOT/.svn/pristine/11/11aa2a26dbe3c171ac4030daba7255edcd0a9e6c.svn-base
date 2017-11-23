@@ -1,0 +1,44 @@
+<ol class="order_list wrap" ng-controller="getOrderList">
+  <li ng-repeat="line in lines">
+    <div class="list_top clearfix">
+      <div class="list_top_l">
+        <span class="city" ng-bind="line.startCodeCCn | filter"></span>
+        <span class="route_bg"></span>
+        <span class="city" ng-bind="line.endCodeCCn | filter"></span></div>
+      <div class="list_top_r">提货时间　　<em ng-bind="line.arriveCustomerTime"></em></div>
+      <div class="list_con_r">
+        <p class="num">已应标
+          <span ng-bind="line.quoteNum"></span>人</p>
+        <!-- <p ng-if="line.status=='01'" ng-class="{'end':true}" ng-bind="line.ageTime|ageTime"></p> -->
+        <!-- <p ng-if="line.status!='01'" ng-class="{'end':true,'over':line.status=='06','transit':line.status=='05','cancel':line.status=='04','bid':line.status=='03','close':line.status=='07'||line.status=='02'}" ng-bind="line.statusCn"></p> -->
+        <p ng-class="{'end':true,'over':line.status=='06','transit':line.status=='05','cancel':line.status=='04','bid':line.status=='03','close':line.status=='07'||line.status=='02'}" ng-bind="line.statusCn"></p>
+      </div>
+    </div>
+    <div class="list_con clearfix">
+      <div class="list_con_l">
+        <p class="vehicle_l w97">
+          <span>需求车长</span>
+          <span class="txt font18"><em ng-bind="line.needLength"></em>米</span></p>
+        <p class="vehicle_l w97">
+          <span>车型</span>
+          <span class="txt font18"><em ng-bind="line.needType"></em></span></p>
+        <p class="vehicle_l w97">
+          <span>货物重量</span>
+          <span class="txt font18"><em ng-bind="line.goodsWeight"></em>吨</span></p>
+        <p class="vehicle_l w97">
+          <span>体积</span>
+          <span class="txt font18"><em ng-bind="line.goodsVolumne"></em>方</span></p>
+        <p class="vehicle_l w97">
+          <span>类型</span>
+          <span class="txt font18" ng-bind="line.goodsName"></span></p>
+      </div>
+      <a ng-if="line.status!='03'" class="goto_detail" href="order_detail.htm?quotedId={{line.quotedId}}&id={{line.sourceId}}&type=1" target="_blank">查看详情</a>
+      <a ng-if="line.status=='03'" class="goto_detail" href="order_detail.htm?quotedId={{line.quotedId}}&id={{line.sourceId}}&type=1" target="_blank">请选择车辆及司机</a></div>
+    <div class="list_con_m clearfix">
+      <p class="name">广东志鸿物流有限公司</p>
+      <p class="addr">提货地点：
+        <span ng-bind="line.senderAreaList | getCompArr"></span>
+      </p>
+    </div>
+  </li>
+</ol>

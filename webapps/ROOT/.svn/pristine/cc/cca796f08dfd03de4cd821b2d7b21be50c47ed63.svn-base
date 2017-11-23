@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="editApp">
+    <head>
+        <meta charset="utf-8">
+        <title>货源大厅</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>
+        <link rel="stylesheet" type="text/css" href="css/supply_hall.css"/>
+        <link rel="stylesheet" type="text/css" href="css/center_news.css"/>
+    </head>
+    <body style="background-color:#f6f6f6;">
+		<div class="con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="index.htm">
+						<img src="img/c_logo.png" height="45" width="155">
+					</a>
+				</div>
+				<ul class="nav clearfix">
+					<li>
+						<a href="index.htm">首页</a>
+					</li>
+					<li>
+						<a href="supply_hall.htm">我的货源</a>
+					</li>
+					<li>
+						<a href="my_order.htm">我的订单</a>
+					</li>
+				</ul>
+				<div class="search_w" ng-controller="getUnreadMessageCount">
+					<a href="center_news.htm">
+						<span ng-class="{'notice': true,'has_notice': flag}"></span>
+					</a>
+					<span class="user">
+						<a href="center_basicinfo.htm" class="current"></a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="order_tit order_list_w">
+			<div class="order_top clearfix wrap">
+				<div class="order_top_l">
+					<ul class="clearfix tab_tit">
+						<li>
+							<a href="center_basicinfo.htm">我的账户</a>
+						</li>
+						<!-- <li>
+							<a href="center_pay_schedule.htm">财务-申请付款表</a>
+						</li> -->
+						<li>
+							<a href="driver_list.htm">司机及车辆信息</a>
+						</li>
+						<li>
+							<a href="running_route.htm">常跑线路</a>
+						</li>
+						<li class="current">
+							<a href="center_news.htm">消息通知</a>
+						</li>
+					</ul>
+				</div>
+				<div class="order_top_l order_top_r clearfix">
+					<ul class="clearfix tab_tit">
+						<!-- <li>
+							<a href="javascript:;">设置</a>
+						</li>
+						<li>
+							<a href="javascript:;">规则</a>
+						</li>
+						<li>
+							<a href="javascript:;">帮助</a>
+						</li>
+						<li>
+							<a href="javascript:;">退出</a>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="news_content wrap">
+			<ul class="news_list" ng-controller="getMessageList">
+				<li ng-repeat="new in news" ng-class="{'active': new.isRead !='01','depart_news':new.category=='04','cert_success':new.category=='02','cert_failure':new.category=='03','reg_success':new.category=='01'}">
+					<p class="tit">
+						<em ng-bind="new.categoryCn"></em>
+						<span ng-bind="new.createdTime"></span>
+					</p>
+					<p class="news_con" ng-bind="new.content"></p>
+					<a ng-if="new.quotedInfo.status=='03'" ng-href="order_detail_perfectinfo.htm?quotedId={{new.sourceId}}&id={{new.quotedInfo.sourceId}}&type=1&statusCn=got&status=03" class="go_detail">查看</a>
+					<a ng-if="new.quotedInfo.status=='05'" ng-href="order_detail_transitinfo.htm?quotedId={{new.sourceId}}&id={{new.quotedInfo.sourceId}}&type=1&status=05" class="go_detail">查看</a>
+					<a ng-if="new.quotedInfo.status=='04'" ng-href="order_detail.htm?quotedId={{new.sourceId}}&id={{new.quotedInfo.sourceId}}&type=1" class="go_detail">查看</a>
+				</li>
+				<!-- <li class="depart_news active">
+					<p class="tit">发车提醒
+						<span>2016-08-31  12：12</span>
+					</p>
+					<p class="news_con">您的广州至成都线路货源 2016-09-01 12：30 即将发车，广东省广州市白云区新华路123号</br>
+					编号：1234567，凭编号至货场线控处认证；客服热线 400-000-0000
+					</p>
+					<a href="#" class="go_detail">查看</a>
+				</li>
+				<li class="cert_success active">
+					<p class="tit">认证成功
+						<span>2016-08-31  12：12</span>
+					</p>
+					<p class="news_con">恭喜您！认证成功，您可以参与竞标啦，以及处理后续的运输任务</p>
+				</li>
+				<li class="cert_failure">
+					<p class="tit">认证失败
+						<span>2016-08-31  12：12</span>
+					</p>
+					<p class="news_con">抱歉！认证失败，请到手机App端个人中心修改信息</br>
+					我们会尽快审核，审核通过后，您即可以参与竞标，以及处理后续的运输任务
+					</p>
+				</li>
+				<li class="reg_success">
+					<p class="tit">注册成功 
+						<span>2016-08-31  12：12</span>
+					</p>
+					<p class="news_con">恭喜您，注册成功，继续完善信息，您即可以参与竞标，以及处理后续的运输任务</p>
+				</li> -->
+			</ul>
+			<div class="news_page wrap clearfix">
+	            <div id="kkpager" class="skin-tb"></div>
+	            <div id="eventLog"></div>
+			</div>
+		</div>
+		<div class="con_foot">
+			<div class="wrap clearfix foot_w">
+				<p>
+					<span class="copyright">条款 - 隐私权         ©2016 guangzhouzhihong</span>
+					<span class="tel">
+						<i>400-888-0906</i>
+						</br>
+						<i class="time">周一至周日  8:00-22:00</i>
+					</span>                                                 
+				</p>
+			</div>
+		</div>
+    </body>
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <!-- <script type="text/javascript" src="js/jquery.pagination-1.2.7.js"></script> -->
+    <script type="text/javascript" src="js/pagination.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/angular-resource.min.js"></script>
+	<script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/store.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/global_config.js"></script>	
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/services.js"></script>
+	<script type="text/javascript" src="js/filters.js"></script>
+	<script type="text/javascript" src="js/directives.js"></script>
+	<script type="text/javascript" src="js/controller.js"></script>
+</html> 

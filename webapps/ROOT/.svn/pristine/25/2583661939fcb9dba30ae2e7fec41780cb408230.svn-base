@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <title>编辑司机车辆信息</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/person_info.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dialog.css"/>
+    </head>
+    <body style="background-color:#fbfbfb;">
+		<div class="con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="index.htm">
+						<img src="img/c_logo.png" height="32" width="184">
+					</a>
+				</div>
+				<ul class="nav clearfix">
+					<li>
+						<a href="index.htm">首页</a>
+					</li>
+					<li>
+						<a href="supply_hall.htm">货源大厅</a>
+					</li>
+					<li>
+						<a href="my_order.htm">我的订单</a>
+					</li>
+				</ul>
+				<div class="search_w">
+					<span class="notice"></span>
+					<span class="user">
+						<a href="center_basicinfo.htm"></a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="content_w">
+			<div class="wrap clearfix" ng-controller="editInfoController">
+				<div class="con_l">
+					<div class="tit">个人中心</div>
+					<ul class="menu">
+						<li>
+							<a href="center_basicinfo.htm">我的资料</a>
+						</li>
+						<li>
+							<a href="driver_list.htm" class="active">司机车辆信息</a>
+						</li>
+						<li style="margin-bottom:10px;">
+							<a href="running_route.htm">常跑线路</a>
+						</li>
+						<li>
+							<span class="line"></span>
+						</li>
+						<li style="margin-top:15px;">
+							<a href="#">设置</a>
+						</li>
+						<li>
+							<a href="#">帮助</a>
+						</li>
+					</ul>
+					<span class="exit">退出</span>
+				</div>
+				<div class="con_r">
+					<div class="driver_tab edit_driver_tab" id="editDriverTab">
+						<ul class="clearfix tab_tit">
+							<li class="car_tab_title current"><a href="javascript:;"><strong>车辆信息</strong></a></li>
+							<span class="add_driver">
+								<strong>
+									<i>+</i>添加司机
+								</strong>
+							</span>
+						    <span class="save save_btn">
+						    	<a href="#">保存</a>
+						    </span>
+						</ul>
+						<div class="tab_con" id="info_tab">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="con_foot">
+			<div class="wrap">
+				<p>
+					条款 - 隐私权
+					<span>©2016 guangzhouzhihong</span>                                                 
+				</p>
+			</div>
+		</div>
+    </body>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/store.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/global_config.js"></script>	
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/IdCardNoUtil.js"></script>
+    <script type="text/javascript" src="js/YSJImage.js"></script>
+    <script type="text/javascript" src="js/YSJDriver.js"></script>
+    <script type="text/javascript" src="js/YSJCar.js"></script>
+    <script type="text/javascript">
+	    $(function(){
+	    	var vehicleInfoId = global.QueryString.vehicleInfoId;
+	    	
+	    	var opt = {}
+	    	if(vehicleInfoId){
+	    		opt.vehicleInfoId = vehicleInfoId;
+	    	}
+	    	var car = new YSJCar(opt);
+	    	$('.save_btn').click(function(){
+	    		car.doSave();
+	    	})
+	    	
+	    	global.coffee({
+				"click":{
+					".exit" :function(){
+						if(confirm("确认退出？")){
+							global.Logout();
+						}
+					}
+				}
+			})
+	    })
+    </script>
+</html>

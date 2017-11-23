@@ -1,0 +1,103 @@
+var UserCenter = function(options){
+	this.opt = $.extend({}, options);
+	this.readonly = this.opt.readonly;
+	this.imageList = [];
+	var _this = this;
+	
+	this.init = function(options){
+		var _this = this;
+		$.get(global.server+'/api/agent/query',function(msg){
+			if (msg && msg.status && msg.status.statusCode == global.status.success) {
+                var data = msg.data;
+                var user = global.getUser();
+                var fullData = $.extend({},user,data);
+                var statusCn = null;
+                switch(data.status){
+	                case"01":
+	                	statusCn='待审核';
+	                	break;
+	                case"02":
+	                	statusCn='未通过';
+	                	break;
+	                case "00":
+	                	statusCn='通过';
+	                	break;
+                }
+                fullData.statusCn = statusCn;
+                _this.fillData(fullData);
+            }
+		});
+	};
+	
+	this.uploadHead = function(data){
+		global.changeHead(data.imageId);
+	}
+	
+	this.fillData = function(data){
+		var _this = this;
+		
+		if (typeof CBSImage === "function") {
+			$('.user_head').each(function(i, j){
+				var self = $(j);
+				var column = self.data('column');
+				var image = new CBSImage({
+            		view: self,
+            		category: column,
+            		imageId:data.userHead,
+            		onSelect:function(){
+            			var url = '/api/account/userhead';
+            			var result = image.postToServer(url);
+            			_this.uploadHead(result);
+            		}
+                });
+			});
+		}
+		
+		if(_this.opt.readonly){
+			$('.text-column').each(function(i, j){
+				var self = $(j);
+				var column = self.data('column');
+				self.text(data[column]);
+			});
+			
+			$('.pic-column').each(function(i, j){
+				var self = $(j);
+				var column = self.data('column');
+				var imageId = data[column];
+				if(imageId){
+					self.find('img').attr('src',global.imgsrc(imageId,{}));
+				} else {
+					self.find('img').attr('src','img/photo.png');
+				}
+			});
+		} else {
+			$('.text-column').each(function(i, j){
+				var self = $(j);
+				var column = self.data('column');
+				self.text(data[column]);
+			});
+			$('.text-column').each(function(i, j){
+				var self = $(j);
+				var column = self.data('column');
+				self.val(data[column]);
+			});
+			if (typeof YSJImage === "function") {
+				$('.pic-column').each(function(i, j){
+					var self = $(j);
+					var column = self.data('column');
+					var imageId = data[column];
+					var image = new YSJImage({
+                		view: self,
+                		category: column,
+                		require:"个人免冠照，请确保身份证四角完整，文字清晰可辨认",
+                   		exClass :"exClass",
+                		imageId:imageId
+                    });
+                	_this.imageList.push(image);
+				});
+			}
+		}
+	}
+	
+	this.init(options);
+};

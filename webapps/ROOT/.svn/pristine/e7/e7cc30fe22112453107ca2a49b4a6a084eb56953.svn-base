@@ -1,0 +1,78 @@
+var YSJDriverInfo = function(options){
+	this.opt = $.extend({}, options);
+	
+	this.container = this.opt.append;
+	
+	this.el = $('<div class="tab"> \
+			<div class="driver_w clearfix dri_w"> \
+			<div class="driver_w_l"> \
+				<dl> \
+					<dd> \
+						<strong>姓名</strong><span data-column="realName" class="text-column"></span> \
+					</dd> \
+					<dd> \
+						<strong>身份证号</strong><span data-column="idno" class="text-column"></span> \
+					</dd> \
+					<dd> \
+						<strong>手机号</strong><span data-column="telphone" class="text-column"></span> \
+					</dd> \
+				</dl> \
+			</div> \
+			<div class="driver_w_r"> \
+				<ul class="clearfix"> \
+					<li> \
+						<p class="pic_w" data-column="idFImageRefId"> \
+							<img class="add-btn picture" src="img/photo.png"> \
+						</p> \
+						<p class="txt"><strong>身份证正面照片</strong></p> \
+					</li> \
+					<li> \
+						<p class="pic_w" data-column="idBImageRefId"> \
+							<img class="add-btn picture" src="img/photo.png"> \
+						</p> \
+						<p class="txt"><strong>身份证反面照片</strong></p> \
+					</li> \
+					<li> \
+						<p class="pic_w" data-column="drivingFImageRefId"> \
+							<img class="add-btn picture" src="img/photo.png"> \
+						</p> \
+						<p class="txt"><strong>驾驶证照片</strong></p> \
+					</li> \
+					<li> \
+						<p class="pic_w" data-column="qualifiImageRefId"> \
+							<img class="add-btn picture" src="img/photo.png"> \
+						</p> \
+						<p class="txt"><strong>从业资格照片</strong></p> \
+					</li> \
+				</ul> \
+			</div> \
+		</div> \
+	</div>');
+	
+	this.init = function(options){
+		var _this = this;
+		_this.container.append(_this.el);
+		var data = _this.opt.data;
+		_this.fillData(data);
+	}
+	
+	this.fillData = function(data){
+		var _this = this;
+		_this.el.find('.text-column').each(function(i, j){
+			var self = $(j);
+			var _p = self.data('column');
+			self.text(data[_p]);
+		});
+		_this.el.find('.pic_w').each(function(i, j){
+			var _p = $(this).data('column');
+			var imageId = data[_p];
+			if(imageId){
+				$(this).find('.picture').attr('src',global.imgsrc(imageId,{}));
+			}
+		});
+	}
+	
+	this.init(options);
+};
+
+

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="editApp">
+	<head>
+		<meta charset="utf-8">
+		<title>运势界首页</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="css/dialog.css"/> 
+	</head>
+	<body style="overflow-x:hidden">
+    	<headtop></headtop>
+    	<div class="banner_w">
+    		<div class="banner_bg">
+    			<div class="picScroll-left">
+					<div class="bd">
+						<ul class="picList">
+							<li>
+								<div class="pic"><a href="#"><img src="img/bannner_1.png" height="324" width="210"/></a></div>
+							</li>
+							<li>
+								<div class="pic"><a href="#"><img src="img/banner2.png" height="324" width="210"/></a></div>
+							</li>
+							<li>
+								<div class="pic"><a href="#"><img src="img/banner3.png" height="323" width="210"/></a></div>
+							</li>
+						</ul>
+					</div>
+				</div>
+    		</div>
+    	</div>
+    	<div class="about_w">
+    		<div class="about clearfix">
+				<div class="about_l"></div>
+				<div class="about_r">
+					<div class="tit">关于运势界</div>
+					<p>运势界是广州志鸿物流有限公司为了解决运输过程中的配货难、运输效率低、交付质量差等问题推出的一款移动互联网产品。</p>
+					<p>运势界通过整合众多优质运力和物流供应商资源，应用车联网、云计算和移动互联网技术，采用线上、线下（O2O）相结合的方式打通从招投标、合同签署、订单管理、交易结算、电子回单等流程，建立覆盖全国的整车物流交易和甩挂运输网络。</p>
+					<p>运势界依托志鸿物流现有业务体系、线下网络、信息化系统和品牌优势等，面向中国大型快递、快运、电商及商贸企业提供优质高效的公路整车运输解决方案。</p>
+				</div>
+			</div>	
+    	</div>
+		<div class="agent_serve">
+			<div class="agent">
+				<div class="tit">我们为经纪人提供</div>
+				<ul class="clearfix">
+					<li>
+						<span>随心接货</span>
+						<span>移动应用、网站、400 电话、微信</span>
+					</li>
+					<li>
+						<span>安心运输</span>
+						<span>严格认证车辆及司机，全程透明的运输过程管理</span>
+					</li>
+					<li>
+						<span>放心结算</span>
+						<span>账户余额、财付通、银联等多种结算方式</span>
+					</li>
+					<li>
+						<span>贴心服务</span>
+						<span>整车货物保险，24小时客服团队在线服务</span>
+					</li>
+				</ul>
+			</div>
+		</div>	
+		<div class="agent_serve driver_serve">
+			<div class="agent">
+				<div class="tit">我们为司机提供</div>
+				<ul class="clearfix">
+					<li>
+						<span>手机认证</span>
+						<span>按平台要求，拍照上传证件完成快速认证</span>
+					</li>
+					<li>
+						<span>公平竞标</span>
+						<span>开放货源、透明机制、公平规则</span>
+					</li>
+					<li>
+						<span>优质货源</span>
+						<span>服务的客户包括中国邮政、顺丰、韵达、圆通、</br>申通、中通、百世、德邦、唯品会和京东等</span>
+					</li>
+					<li>
+						<span>及时结算</span>
+						<span>发车即付款，系统按付款节点即时结算</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="con_foot mt0 index_foot">
+		    <div class="wrap clearfix foot_w">
+		        <p>
+		        	<span class="about_us">
+		        		<a href="javascript:;">关于我们</a>　　　　
+		        		<a href="javascript:;">联系我们</a>
+		        	</span>
+		            <span class="copyright">条款 - 隐私权　　　　©2016 guangzhouzhihong　　　　粤ICP备05123318号-2</span>
+		            <span class="tel">
+		                <i>400-888-0906</i>
+		                </br>
+		                <i class="time">周一至周日<em>24小时x7</em></i>
+		            </span>                                                 
+		        </p>
+		    </div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/vendor/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.SuperSlide.2.1.1.js"></script>
+	<script type="text/javascript" src="js/vendor/toTop.min.js"></script>
+    <script type="text/javascript" src="js/vendor/angular.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-resource.min.js"></script>
+    <script type="text/javascript" src="js/vendor/store.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/public/global_config.js"></script>	
+	<script type="text/javascript" src="js/public/global.js"></script>
+	<script type="text/javascript" src="js/services/services.js"></script>
+	<script type="text/javascript" src="js/filters/filters.js"></script>
+	<script type="text/javascript" src="js/directives/directives.js"></script>
+	<script type="text/javascript" src="js/controllers/controller.js"></script>
+</html>
+<script type="text/javascript">
+	jQuery(".picScroll-left").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"leftLoop",autoPlay:true});
+</script>

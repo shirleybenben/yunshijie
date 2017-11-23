@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="editApp">
+    <head>
+        <meta charset="utf-8">
+        <title>我的订单</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>      
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui-extends.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.multiselect.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.multiselect.filter.css"/>     
+    </head>
+    <body style="background-color:#fbfbfb;">
+		<div class="con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="index.htm">
+						<img src="img/c_logo.png" height="32" width="184">
+					</a>
+				</div>
+				<ul class="nav clearfix">
+					<li>
+						<a href="index.htm">首页</a>
+					</li>
+					<li>
+						<a href="supply_hall.htm">货源大厅</a>
+					</li>
+					<li class="current">
+						<a href="my_order.htm">我的订单</a>
+					</li>
+				</ul>
+				<div class="search_w">
+					<span class="notice"></span>
+					<span class="user">
+						<a href="center_basicinfo.htm"></a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="order_tit">
+			<div class="wrap">
+				<h1>我的订单</h1>
+			</div>
+		</div>
+		<div class="order_list_w wrap">
+			<div class="order_top clearfix">
+				<div class="order_top_l">
+					<ul class="clearfix tab_tit">
+						<li class="current" data-check="0"><a href="javascript:;" class="check"><strong>全部</strong></a></li>
+						<li data-check="1"><a href="javascript:;"><strong>待完善</strong></a></li>
+						<li data-check="2"><a href="javascript:;" class="map"><strong>待到达</strong></a></li>
+						<li data-check="3"><a href="javascript:;" class="delete"><strong>待结算</strong></a></li>
+					</ul>
+				</div>
+				<div class="order_top_r clearfix">
+					<input id="queryContent" type="text" placeholder="货源编号/出发地/目的地"/>
+					<button id="searchlist">搜索</button>
+				</div>
+			</div>
+			<ol class="order_list wrap">
+			</ol>
+			<!-- 无数据时调用 -->
+			<!-- <div class="list_no_data">
+				<span class="icon"></span>
+				<span class="txt">暂无数据</span>
+			</div> -->
+		</div>
+		<div class="list_page clearfix wrap">
+			<div class="page_w">
+				<div class="handle clearfix">
+					<div class="handle-page clearfix">
+						<span class="handle_num">第<i class="page-num">1</i>页，共10页</span>
+						<div class="han-page">
+							<button class="handle-pre"></button>
+							<button class="handle-next"></button>
+						</div>
+						<div class="select_w">
+							<select name="" id="" class="pageSelect">
+								<option value="" selected>第1页</option>
+								<option value="">第2页</option>
+							</select>
+						</div>
+					</div>					
+				</div>
+			</div>
+		</div>
+		<div class="recommend wrap">
+			<div class="groom">
+				<a onclick="window.location.reload();" class="recommend_supply">推荐货源</a>
+				<a onclick="window.location.reload();">
+					<span class="arrow">更多</span>
+				</a>
+			</div>
+			<ul class="recommend_list clearfix" ng-controller="getRecommendSource" >
+				<li ng-repeat="item in items | limitNum:4">
+					<a href="supply_detail.htm?id={{item.sourceId}}" class="flow_w">
+						<div class="flow">
+							<div class="flow_bar clearfix">
+								<span class="city" ng-bind="item.startCodeCCn | filter "></span>
+								<span class="car_bg"></span>
+								<span class="city" ng-bind="item.endCodeCCn | filter "></span>
+							</div>
+							<dl class="detail clearfix">
+								<dt>提货时间</dt>
+								<dd class="w172" ng-bind="item.arriveCustomerTime"></dd>
+								<dt>提货地点</dt>
+								<dd ng-bind="item.senderAreaList | addsource" class="w172"></dd>
+								<dt class="w90">需求车长</dt>
+								<dd class="w96">货物吨位</dd>
+								<dd class="w75">货物体积</dd>
+								<dt class="font18 w90">{{item.needLength}}米</dt>
+								<dd class="font18 w96">{{item.goodsWeight}}吨</dd>
+								<dd class="font18 w75">{{item.goodsVolumne}}方</dd>
+								<dt>需求车型</dt>
+								<dd class="w172" ng-bind="item.needType"></dd>
+								<dt>货物类型</dt>
+								<dd class="w172" ng-bind="item.goodsName"></dd>
+							</dl>
+							<div class="name">广东志鸿物流有限公司</div>
+							<div class="count clearfix">
+								<span class="mans">已应标<i ng-bind="item.quoteNum"></i>人</span>
+								<span class="line"></span>
+								<span class="days" ng-bind="item.ageTime | timeFilter"></span>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<!-- 无数据时调用 -->
+			<!-- <div class="no-data">
+				<span class="txt">暂无数据</span>
+			</div> -->
+		</div>
+		<div class="con_foot">
+			<div class="wrap">
+				<p>
+					条款 - 隐私权
+					<span>©2016 guangzhouzhihong</span>                                                 
+				</p>
+			</div>
+		</div>
+    </body>	
+    
+
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/store.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/jquery.md5.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.multiselect.js"></script>
+	<script type="text/javascript" src="js/jquery.multiselect.filter.js"></script>
+	<script type="text/javascript" src="js/datepicker.min.js"></script>
+	<script type="text/javascript" src="js/global_config.js"></script>	
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/YSJTable.js"></script>
+	<script type="text/javascript" src="js/YSJSourceRowL.js"></script>
+	<!-- <script type="text/javascript" src="js/YSJSupplyHall.js"></script> -->
+	<script type="text/javascript" src="js/my_order.js"></script>
+	<script type="text/javascript" src="js/controller.js"></script>
+</html> 

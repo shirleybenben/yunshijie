@@ -1,0 +1,46 @@
+/*
+* @Author: Administrator
+* @Date:   2016-07-05 10:48:47
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-07-13 11:46:07
+*/
+/* 分页 */
+.handle{width:100%;}
+.handle-data{float:left;}
+.handle-data a,.handle-data button{display:block;height:28px;line-height:28px;border:1px solid #dcdcdc;border-radius:2px;float:left;margin-left:8px;}
+.handle-data button{height:30px;line-height:30px;}
+.handle-data .handle-add{background:#eee url(/img/handle_jia.png) no-repeat center;width:70px;margin-left:0;}
+.handle-delete{background:#eee url(/img/handle_jian.png) no-repeat center;width:70px;}
+.handle-export{padding:0 10px;vertical-align:8px;font-size:14px;color:#414141;font-weight:bold;}
+.handle-page{float:right;}
+.handle-page span,.handle-page .han-page,.handle-page select{display:block;font-size:14px;color:#414141;float:left;margin-right:8px;}
+.handle-page .select_w{float:left;}
+.handle-page select{margin-top:4px;outline:none;}
+.handle-page .page-num,.handle-page .page-total{font-style:normal;}
+.handle-pre,.handle-next{width:34px;height:30px;}
+.handle-next{border:1px solid #dedede;border-top-right-radius:2px;border-bottom-right-radius:2px;margin-left:-8px;}
+.handle-pre{border-top-left-radius:2px;border-bottom-left-radius:2px;border:1px solid #dedede;border-right:none;}
+.handle-pre{background:#eee url(../img/handle_pre.png) no-repeat center;}
+.handle-pre:hover{background-color:#eee;}
+.handle-next{background:#eee url(../img/handle_next.png) no-repeat center;}
+.handle-next:hover{background-color:#eee;}
+.handle-content table{border-collapse:collapse;width:100%;font-size:14px;color:#414141;}
+.handle-content tr{width:100%;border-top:1px solid #dedede;}
+.handle-content tr:nth-child(2n){background:#fff;}
+.handle-content tr:nth-child(2n+1){background:#f6f6f6;}
+.handle-content tr:last-child{border-bottom:1px solid #dedede;}
+.handle-content td{height:41px;line-height:41px;}
+.con_r .r_tit .r_title span.handle_num{font-size:14px;line-height:30px;float:left;}
+.con_r .r_tit .r_title span.handle_num i{color:#414141;}
+.con_r .r_tit .r_title .han-page{float:left;}
+.con_r .r_tit .r_title .select_w{float:left;}
+.handle-page .han-page button{outline:none;}
+/* 分页下拉 */
+.handle-page .selectDark{width:71px;height:27px;}
+.con_r .r_tit .r_title .handle-page span.passiveSelect{font-size:14px;color:#414141;}
+.handle-page .selectDark ul{width:70px;top:28px!important;}
+.handle-page .selectDark .selected{padding-left:9px;width:100%;}
+.handle-page .selectDark li span{padding-left:9px;}
+.handle-page .selectDark .passiveSelect{background:url(../img/handle_s.png) no-repeat 56px center;width:100%;height:27px;line-height:27px;}
+.con_r .r_tit .r_title .handle-page span{font-size:14px;background-image:none;}
+.con_r .r_tit .handle-page .selectDark li span:hover{color:#f25a0b;}

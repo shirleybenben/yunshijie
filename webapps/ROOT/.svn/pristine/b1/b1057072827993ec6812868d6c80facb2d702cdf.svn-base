@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/info.css"/>
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/info_agent.css"/>
+    </head>
+    <body style="background-color:#fbfbfb;">
+		<div class="con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="#">
+						<img src="img/c_logo.png" height="32" width="184">
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="content_w">
+			<div class="wrap con_i con_dr con_a">
+				<div class="c_tit">
+					经纪人
+				</div>
+				<div class="cars_con clearfix">
+					<div class="cars_con_l">
+						<p id="uploadIdCardFace">
+							<img src="img/add_img.png">
+						</p>
+						<p id="uploadIdCardBack">
+							<img src="img/cards_f.png">
+						</p>
+					</div>
+					<form id="commentForm">
+					<div class="cars_con_r">
+						<p>
+							<label>姓名</label>
+							<input type="text" id="user_name" name="user_name"/>
+						</p>
+						<p>
+							<label>身份证</label>
+							<input type="text" id="id_card" name="id_card"/>
+						</p>
+						<p>
+							<label>公司全称</label>
+							<input type="text" id="company_name" name="company_name"/>
+						</p>
+						<div class="agent_w">
+							<p>
+								<label>统一社会信息代码</label>
+								<input type="text" id="social_code" name="social_code"/>
+							</p>
+							<p>
+								<label>公司注册</label>
+								<input type="text" id="company_code" name="company_code"/>
+							</p>
+							<span class="huo"></span>
+						</div>
+						<p>
+							<label>营业执照注册号</label>
+							<input type="text" id="biz_id" name="biz_id" />
+						</p>
+						<p>
+							<label>组织机构代码证号</label>
+							<input type="text" id="org_id" name="org_id"/>
+						</p>
+						<p>
+							<label>税务登记证税字</label>
+							<input type="text" id="tax_id" name="tax_id"/>
+						</p>
+						<button class="cars_btn">保存</button>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="con_foot">
+			<div class="wrap">
+				<p>
+					条款 - 隐私权
+					<span>©2016 guangzhouzhihong</span>                                                 
+				</p>
+			</div>
+		</div>
+		<div class="dialog_w" style="display:none;">
+	  		<div class="upload_c clearfix">
+	  			<div class="clearfix">
+	  				<div class="upload_c_l">
+		  				<img src="img/shili.png">
+		  			</div>
+		  			<div class="upload_c_l upload_c_r">
+		  				<img id="imgUpload" src="img/upload_bg.png" style="display:block;" onclick="inputUploadFile.click();">
+						<input type="file" id="inputUploadFile" class="hide"/>
+		  				<!-- 加载进度 -->
+		  				<div id="divLoading" class="load-container load8" style="display:none;">
+							<div class="loader">Loading...</div>
+						</div>
+						<span></span>
+		  			</div>
+	  			</div>
+	  			<p>上传要求：个人免冠照，请确保身份证四角完整，文字清晰可辨认</p>
+	  		</div>
+		</div>
+    </body>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/datepicker.min.js"></script>	
+    <script type="text/javascript" src="js/jquery.styleSelect.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/info.js"></script>
+	<script type="text/javascript" src="js/global_config.js"></script>	
+	<script type="text/javascript" src="js/global.js"></script>	
+	<script type="text/javascript" src="js/info_agent.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js/messages_zh.js"></script>
+	
+    <script type="text/javascript">
+		$(document).ready(function(){
+			$(".mySelect").styleSelect({styleClass: "selectDark"});
+		});
+	</script>
+</html>

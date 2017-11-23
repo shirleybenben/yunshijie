@@ -1,0 +1,26 @@
+/*
+* @Author: Administrator
+* @Date:   2016-07-11 14:24:50
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-08-26 14:42:49
+*/
+.order_list_w .order_top_l ul li{width:98px;}
+.order_filter{width:100%;height:83px;background-color:#fff;margin-top:20px;box-shadow:0px 1px 1px #ccc;}
+ol.order_list{margin-top:0px;}
+ul.filter_w{padding:25px 0 0 45px;-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;}
+ul.filter_w li{float:left;margin-right:25px;}
+ul.filter_w li span.pubdate{width:162px;height:28px;border:1px solid #dcdcdc;color:#505050;padding-left:14px;-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;display:block;line-height:28px;cursor:pointer;padding-right:12px;background:#eee url(../img/select_time.png) no-repeat 147px center;}
+ul.filter_w li .class_2,ul.filter_w li .class_3,ul.filter_w li .needLength,ul.filter_w li .needType{width:162px;height:25px;border:1px solid #dcdcdc;outline:none;margin-top:2px;background-color:#eee;}
+ul.filter_w li .needLength,ul.filter_w li .needType{width:83px;}
+ul.filter_w li.back_source{padding:7px 0 0 15px;}
+ul.filter_w li label input.returned{margin-right:10px;width:14px;height:14px;cursor:pointer;}
+ol.order_list li{position:relative;}
+ol.order_list li .quoted_price{width:84px;height:29px;line-height:29px;text-align:center;font-size:14px;color:#a2a2a3;background-color:#eee;border-radius:3px;position:absolute;top:65px;right:417px;outline:none;}
+.order_list_w .order_top_l ul li{width:164px;padding:0 3px;}
+.order_list_w .order_top_m{float:left;padding:0 44px;height:53px;line-height:53px;}
+.order_list_w .order_top_m a{color:#525252;font-size:16px;text-decoration:none;}
+.order_list_w .order_top_m a:hover{color:#f25a0b;}

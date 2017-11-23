@@ -1,0 +1,144 @@
+/*
+* @Author: Administrator
+* @Date:   2016-07-05 09:04:49
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-09-26 14:59:20
+*/
+/* 信息录入对话框 */
+.content_w .con_a .c_tit{padding-left:38px;background:url(../img/agent_bg.png) no-repeat 10px 10px;}
+.content_w .con_a p.txt_a{font-size:14px;color:#999;line-height:29px;line-height:29px;text-align:center;border:none;width:226px;}
+.content_w .con_a .agent_w{position:relative;}
+.content_w .con_a .agent_w .huo{display:block;width:23px;height:66px;background:url(../img/huo.png) no-repeat center;position:absolute;top:10px;left:-28px;}
+
+.dialog_w{width:530px;height:364px;background-color:#fff;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10003;border-radius:4px;}
+.dialog_w .upload_c{width:730px;margin:98px auto 0;}
+.dialog_w .upload_c .upload_c_l{float:left;width:339px;height:253px;border:1px solid #dfd9db;border-radius:5px;padding:12px 14px;-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;text-align:center;position:relative;}
+.dialog_w .upload_c .upload_c_r{float:right;cursor:pointer;position:relative;}
+.dialog_w .upload_c .upload_c_l img{width:92%;max-height:229px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
+.dialog_w .upload_c .upload_c_r span{display:block;width:86px;height:86px;background:url(../img/upload_b.png) no-repeat center;position:absolute;top:204px;left:279px;}
+.dialog_w .upload_c p{font-size:14px;color:#999;line-height:38px;margin-top:10px;text-align:center;margin-bottom:125px;}
+.dialog_w+.mask{width:100%;height:100%;left:0;top:0;right:0;bottom:0;background-color:rgba(0,0,0,.4);z-index:10002;position:fixed;}
+.dialog_w span.close{display:block;width:14px;height:14px;position:absolute;top:18px;right:15px;background:url(../img/dio_close.png) no-repeat center;cursor:pointer;}
+/* 加载中 */
+.load-container{height:100%;overflow:hidden;-moz-box-sizing:border-box;box-sizing:border-box;}
+.loader{-webkit-transform:translateZ(0);-moz-transform:translateZ(0);-ms-transform:translateZ(0);-o-transform:translateZ(0);transform:translateZ(0);}
+.load-container .loader{margin:3.5em auto;font-size:10px;position:relative;text-indent:-9999em;border-top:1.4em solid #fddb3b;border-right:1.4em solid #fddb3b;border-bottom:1.4em solid #5d6d7e;border-left:1.4em solid #5d6d7e;-webkit-animation:load-container 1.3s infinite linear;animation:load-container 1.3s infinite linear;}
+.load-container .loader,.load-container .loader:after{border-radius:50%;width:10em;height:10em;}
+@-webkit-keyframes load-container{
+	0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);}
+}
+@keyframes load-container{
+	0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);}
+}
+/* 注册完成对话框 */
+.dialog_done .star{margin-top:49px;}
+.dialog_done .star img{width:80px;height:80px;margin:0 auto;display:block;}
+.dialog_done .txt{text-align:center;margin-top:30px;}
+.dialog_done .txt_we{margin-top:15px;}
+.dialog_done .txt_dr a{font-size:18px;color:#f25a0b;}
+.dialog_done .txt .txt_d{font-size:36px;color:#484848;}
+.dialog_done .txt .txt_w{font-size:24px;color:#616161;}
+.dialog_done .txt_p{font-size:16px;color:#7d7d7d;line-height:23px;}
+.dialog_done .txt_a{text-align:right;margin:58px 90px 46px 0;}
+.dialog_done .txt_a a{font-size:14px;color:#737373;padding-left:32px;background:url(../img/home_bg.png) no-repeat left center;display:inline-block;height:30px;line-height:30px;}
+.dialog_done .txt_a a:hover{text-decoration:underline;color:#f25a0b;}
+.dialog_done .txt_dr{font-size:14px;color:#7d7d7d;}
+
+/* 司机页面注册完成对话框 */
+.dialog_done .txt_do{font-size:14px;color:#7d7d7d;}
+.dialog_done .txt_dri a{font-size:14px;}
+.dialog_done .txt_c a{padding-left:48px;font-size:18px;color:#f25a0b;background:url(../img/info.png) no-repeat left center;}
+
+/* 角色选择对话框 */
+.role_dialog{width:717px;height:445px;}
+.role_dialog .role_icon{width:95px;height:96px;background:url(../img/role_tit.png) no-repeat center;margin:50px auto 0;}
+.role_dialog .role_txt{font-size:36px;color:#484848;text-align:center;margin-top:15px;}
+.role_dialog button{display:block;width:140px;height:41px;background-color:#f25a0b;text-align:center;line-height:41px;color:#fff;font-size:18px;border-radius:3px;border:1px solid #ce4701;margin:40px auto 0;outline:none;}
+.role_dialog button:hover{background-color:#e14d00;}
+.role_dialog button.disabled{background-color:#eee;border:1px solid #dcdcdc;color:#727272;}
+
+/* 报价成功对话框 */
+.price_done{width:433px;height:240px;}
+.price_done .txt{margin-top:23px;text-align:center;padding-left:13px;}
+.price_done span.close{top:16px;right:16px;}
+.price_done .star{margin-top:60px;}
+.price_done .txt .txt_d{font-size:18px;color:#333;}
+
+/* 报价失败对话框 */
+.price_fail .star{margin-top:53px;}
+.price_fail .txt{margin-top:20px;}
+.price_fail .star img{width:66px;height:80px;}
+.price_fail .txt.font14{margin-top:7px;padding-left:10px;}
+.price_fail .txt.font14 .txt_d{font-size:14px;color:#999;}
+
+/* 关闭报价对话框 */
+.close_price{width:432px;height:270px;}
+.close_price.sign_out{width:258px;height:160px;}
+.close_price .star{margin-top:43px;}
+.close_price.sign_out .star{margin-top:40px;}
+.close_price .txt{margin-top:14px;}
+.close_price.sign_out .txt{margin-top:20px;}
+.close_price .txt .txt_d{font-size:18px;color:#333;}
+.close_price .txt .txt_w{font-size:14px;color:#999;}
+.close_price .txt_we{border-bottom:1px solid #e8e8e8;padding-bottom:34px;margin-top:0px;}
+.close_price .star img{width:78px;height:83px;}
+.close_price.sign_out .star img{width:44px;height:44px;}
+.close_price .resure{width:248px;margin:20px auto 0;}
+.close_price .resure .sure{float:left;width:90px;height:30px;line-height:30px;text-align:center;font-size:16px;color:#999;background-color:#fbfbfb;border:1px solid #d2d2d2;border-radius:3px;background-color:#fff;-o-transition:background .5s;-ms-transition:background .5s;-moz-transition:background .5s;-webkit-transition:background .5s;}
+.close_price .resure .sure:hover{background-color:#f2f3f9;-o-transition:background .5s;-ms-transition:background .5s;-moz-transition:background .5s;-webkit-transition:background .5s;}
+.close_price .resure .cancel{float:right;width:90px;height:30px;line-height:30px;text-align:center;font-size:16px;color:#fff;background-color:#ff6037;border:1px solid #ff6037;border-radius:3px;-o-transition:background .5s;-ms-transition:background .5s;-moz-transition:background .5s;-webkit-transition:background .5s;}
+.close_price .resure .cancel:hover{background-color:#ff4814;-o-transition:background .5s;-ms-transition:background .5s;-moz-transition:background .5s;-webkit-transition:background .5s;}
+
+/* 毁约对话框 */
+.break_promise .close_price{height:298px;}
+.break_promise .close_price .star{margin-top:29px;}
+.break_promise .close_price .txt{font-size:18px;color:#333;}
+.break_promise .close_price .txt .txt_w{font-size:14px;color:#999;line-height:24px;}
+.break_promise .close_price .txt_we{margin-top:9px;padding-bottom:40px;}
+
+/* 编辑备注信息对对话框 */
+.dialog_w .tit{height:46px;line-height:46px;padding-left:50px;vertical-align:middle;border-bottom:1px solid #e8e8e8;background:url(../img/edit_bg.png) no-repeat 24px center;font-size:16px;color:#333;}
+.dialog_w .con{padding:47px 0 0 50px;}
+.dialog_w .con dl dt{float:left;width:54px;font-size:14px;color:#666;height:18px;}
+.dialog_w .con dl dd{float:left;font-size:14px;color:#666;}
+.dialog_w .con dl:nth-child(1){margin-bottom:28px;}
+.dialog_w .con dl dd textarea{width:398px;height:78px;border:1px solid #d2d2d2;resize:none;outline:none;margin-top:3px;}
+.dialog_w .con dl dd.font12{font-size:12px;color:#999;}
+.dialog_w .con dl:nth-child(3){margin:15px 0 30px 0;}
+.dialog_w .con dl dd button{width:92px;height:32px;color:#fff;line-height:32px;text-align:center;font-size:14px;background-color:#ff6037;border-radius:5px;}
+.hide_dialog{display: none;}
+
+/* 选择车辆及司机确认框 */
+.confirm_car p.tit{margin:0 20px;font-size:12px;color:#666;height:46px;line-height:46px;background:none;padding-left:0px;border-bottom:1px solid #e8e8e8;}
+.confirm_car .car_info{padding:23px 0 26px;margin:0 20px;}
+.confirm_car .car_l{float: left;width:48px;height:48px;background:url(../img/car_pic.png) no-repeat center;border-radius:6px;}
+.confirm_car .car_r{float: left;margin-left:37px;}
+.confirm_car .line{width:100%;height:1px;background-color:#e8e8e8;}
+.confirm_car .car_r p{font-size:14px;color:#999;}
+.confirm_car .car_r p:nth-child(1){font-size:18px;color:#333;margin-bottom:8px;}
+.confirm_car .car_r p:nth-child(2){margin-bottom:30px;}
+.confirm_car .car_r p:nth-child(2) em:nth-child(2){margin-left:15px;}
+.confirm_car .car_r p:nth-child(3){font-size:16px;color:#333;}
+.confirm_car .car_r p:nth-child(3) em:nth-child(2){margin-left:52px;}
+
+/* 删除常跑线路确认框 */
+.delete_route .route{padding:71px 0 62px 50px;margin:0 auto;}
+.delete_route .route_l{float: left;font-size:18px;color:#333;padding-right:24px;}
+.delete_route .route_m{float: left;width:188px;height:15px;background:url(../img/distance_bg.png) no-repeat center;margin:5px 28px 0 0;}
+.wrong_txt{color: #ff6037;font-size: 16px;margin-left: 20px;}
+.spspan{display: inline-block; vertical-align: middle;}
+.hide{display: none;}
+.miscolor{float: none !important;color: #fff !important; background-color: #ff6037 !important;}
+.misposition{text-align: center;}
+
+/* 图片放大预览框 */
+.big_img{width:842px;height:595px;}
+.big_img .tit{background-image:none;padding-left:24px;height:60px;line-height:60px;font-size:18px;color:#666;}
+.big_img .img_w{padding:24px;width:794px;height:485px;text-align:center;}
+.big_img .img_w img{-webkit-background-size: cover;
+background-size: cover;width:794px;height:100%;}
+.big_img span.close{top:23px;}

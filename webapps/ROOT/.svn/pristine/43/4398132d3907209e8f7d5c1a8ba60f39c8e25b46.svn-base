@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="editApp">
+    <head>
+        <meta charset="utf-8">
+        <title>货源大厅</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>
+        <link rel="stylesheet" type="text/css" href="css/supply_hall.css"/>
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui-extends.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.multiselect.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.multiselect.filter.css"/>
+		<link rel="stylesheet" type="text/css" href="css/select.css"/>   
+		<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.css"/>   
+    </head>
+    <body style="background-color:#f6f6f6;">
+		<div class="con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="index.htm">
+						<img src="img/c_logo.png" height="45" width="155">
+					</a>
+				</div>
+				<ul class="nav clearfix">
+					<li>
+						<a href="index.htm">首页</a>
+					</li>
+					<li class="current">
+						<a href="supply_hall.htm">我的货源</a>
+					</li>
+					<li>
+						<a href="my_order.htm">我的订单</a>
+					</li>
+				</ul>
+				<div class="search_w">
+					<a href="center_news.htm">
+						<span class="notice"></span>
+					 	<!-- 有消息加入类名has_notice -->
+					</a>
+					<span class="user">
+						<a href="center_basicinfo.htm"></a>
+					</span>
+				</div>
+			</div>
+		</div>
+  <div class="order_list_w content_w wrap"> 
+   <div class="order_filter clearfix"> 
+    <span class="select">筛选：</span> 
+    <ul class="filter_w clearfix"> 
+     <li> <span class="pubdate">发布时间</span> 
+      <!-- 最早时间货源排前面加类名check_up,最新货源加类名check_down --> </li> 
+     <li> 
+      <div class="select_w"> 
+       <div class="div_select"> 
+        <div class="text">
+         出发地
+        </div> 
+        <span class="select_dropdown triangle-all"></span> 
+       </div> 
+       <div class="ol_w" style="display: none;"> 
+        <div class="select_ol mCustomScrollbar _mCS_1 mCS_no_scrollbar">
+         <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: 240px;" tabindex="0">
+          <div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr"> 
+           <ol class="class_2" ref="">
+            <li value="110100">北京市</li>
+           </ol> 
+          </div>
+          <div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;">
+           <div class="mCSB_draggerContainer">
+            <div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; top: 0px;">
+             <div class="mCSB_dragger_bar" style="line-height: 30px;"></div>
+            </div>
+            <div class="mCSB_draggerRail"></div>
+           </div>
+          </div>
+         </div>
+        </div> 
+       </div> 
+      </div> </li> 
+     <li> 
+      <div class="select_w"> 
+       <div class="div_select clearfix"> 
+        <div class="text">
+         目的地
+        </div> 
+        <span class="select_dropdown triangle-all"></span> 
+       </div> 
+       <div class="ol_w hide" style="display: none;"> 
+        <div class="select_ol mCustomScrollbar _mCS_2 mCS_no_scrollbar">
+         <div id="mCSB_2" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" tabindex="0" style="max-height: 240px;">
+          <div id="mCSB_2_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr"> 
+           <ol class="class_3" ref="">
+            <li value="120100">天津市</li>
+           </ol> 
+          </div>
+          <div id="mCSB_2_scrollbar_vertical" class="mCSB_scrollTools mCSB_2_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;">
+           <div class="mCSB_draggerContainer">
+            <div id="mCSB_2_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; top: 0px;">
+             <div class="mCSB_dragger_bar" style="line-height: 30px;"></div>
+            </div>
+            <div class="mCSB_draggerRail"></div>
+           </div>
+          </div>
+         </div>
+        </div> 
+       </div> 
+      </div> </li> 
+     <li> 
+      <div class="select_w"> 
+       <div class="div_select"> 
+        <div class="text car_length">
+         车长
+        </div> 
+        <span class="select_dropdown triangle-all"></span> 
+       </div> 
+       <div class="ol_w hide" style="display: none;"> 
+        <div class="select_ol mCustomScrollbar _mCS_3 mCS_no_scrollbar">
+         <div id="mCSB_3" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" tabindex="0" style="max-height: 240px;">
+          <div id="mCSB_3_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr"> 
+           <ol class="needLength"> 
+            <li value="">全部</li> 
+            <li value="4.2">4.2M</li> 
+            <li value="5">5M</li> 
+            <li value="5.2">5.2M</li> 
+            <li value="5.8">5.8M</li> 
+            <li value="6.2">6.2M</li> 
+            <li value="6.8">6.8M</li> 
+            <li value="7.2">7.2M</li> 
+            <li value="7.6">7.6M</li> 
+            <li value="8.5">8.5M</li> 
+            <li value="9.6">9.6M</li> 
+            <li value="12.5">12.5M</li> 
+            <li value="13">13M</li> 
+            <li value="13.5">13.5M</li> 
+            <li value="15">15M</li> 
+            <li value="16.5">16.5M</li> 
+            <li value="17.5">17.5M</li> 
+            <li value="18.5">18.5M</li> 
+            <li value="21">21M</li> 
+            <li value="22">22M</li> 
+            <li value="23">23M</li> 
+           </ol> 
+          </div>
+          <div id="mCSB_3_scrollbar_vertical" class="mCSB_scrollTools mCSB_3_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;">
+           <div class="mCSB_draggerContainer">
+            <div id="mCSB_3_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; top: 0px;">
+             <div class="mCSB_dragger_bar" style="line-height: 30px;"></div>
+            </div>
+            <div class="mCSB_draggerRail"></div>
+           </div>
+          </div>
+         </div>
+        </div> 
+       </div> 
+      </div> </li> 
+     <li> 
+      <div class="select_w"> 
+       <div class="div_select"> 
+        <div class="text car_length">
+         车型
+        </div> 
+        <span class="select_dropdown triangle-all"></span> 
+       </div> 
+       <div class="ol_w" style="display: none;"> 
+        <div class="select_ol mCustomScrollbar _mCS_4 mCS_no_scrollbar">
+         <div id="mCSB_4" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" tabindex="0" style="max-height: 240px;">
+          <div id="mCSB_4_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr"> 
+           <ol class="needType"> 
+            <li value="">全部</li> 
+            <li value="中栏车">中栏车</li> 
+            <li value="低栏车">低栏车</li> 
+            <li value="冷藏车">冷藏车</li> 
+            <li value="危险品车">危险品车</li> 
+            <li value="厢式车">厢式车</li> 
+            <li value="平板车">平板车</li> 
+            <li value="自卸货车">自卸货车</li> 
+            <li value="集装箱">集装箱</li> 
+            <li value="高低板车">高低板车</li> 
+            <li value="高栏车">高栏车</li> 
+            <li value="其它车型">其它车型</li> 
+           </ol> 
+          </div>
+          <div id="mCSB_4_scrollbar_vertical" class="mCSB_scrollTools mCSB_4_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;">
+           <div class="mCSB_draggerContainer">
+            <div id="mCSB_4_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; top: 0px;">
+             <div class="mCSB_dragger_bar" style="line-height: 30px;"></div>
+            </div>
+            <div class="mCSB_draggerRail"></div>
+           </div>
+          </div>
+         </div>
+        </div> 
+       </div> 
+      </div> </li> 
+     <li class="back_source"> <label for="backSource" class="clearfix"> <span class="unchecked"></span> 
+       <!-- 选中加入类名checked --> <span>回程货源</span> </label> </li> 
+    </ul> 
+   </div> 
+   <ol class="order_list wrap">
+    <li> 
+     <div class="list_top clearfix"> 
+      <div class="list_top_l"> 
+       <span class="city">北京</span> 
+       <span class="route_bg"></span> 
+       <span class="city">天津</span> 
+      </div> 
+      <div class="list_top_r">
+       提货时间　　2016-08-26 09:17
+      </div> 
+      <div class="list_con_r"> 
+       <p class="num">已应标<span>2</span>人</p> 
+       <p class="end">206天后结束</p> 
+      </div> 
+     </div> 
+     <div class="list_con clearfix"> 
+      <div class="list_con_l"> 
+       <p class="vehicle_l w97"> <span>需求车长</span> <span class="txt font18">6.8米</span> </p> 
+       <p class="vehicle_l w97"> <span>车型</span> <span class="txt font18">中栏车</span> </p> 
+       <p class="vehicle_l w97"> <span>货物重量</span> <span class="txt font18">0.0吨</span> </p> 
+       <p class="vehicle_l w97"> <span>体积</span> <span class="txt font18">44.0方</span> </p> 
+       <p class="vehicle_l w97"> <span>类型</span> <span class="txt font18">封口费</span> </p> 
+      </div> 
+      <a class="goto_detail" href="supply_detail.htm?id=c89a2357-1205-4fa3-85cf-2117a20e3121" target="_blank">查看详情</a> 
+     </div> 
+     <div class="list_con_m clearfix"> 
+      <p class="name">广东志鸿物流有限公司</p> 
+      <p class="addr">提货地点：<span>广东 广州市 花都区 </span></p> 
+     </div> <button class="quoted_price"></button> </li>
+    <li> 
+     <div class="list_top clearfix"> 
+      <div class="list_top_l"> 
+       <span class="city">北京</span> 
+       <span class="route_bg"></span> 
+       <span class="city">天津</span> 
+      </div> 
+      <div class="list_top_r">
+       提货时间　　2016-08-24 09:16
+      </div> 
+      <div class="list_con_r"> 
+       <p class="num">已应标<span>1</span>人</p> 
+       <p class="end">205天后结束</p> 
+      </div> 
+     </div> 
+     <div class="list_con clearfix"> 
+      <div class="list_con_l"> 
+       <p class="vehicle_l w97"> <span>需求车长</span> <span class="txt font18">6.8米</span> </p> 
+       <p class="vehicle_l w97"> <span>车型</span> <span class="txt font18">低栏车</span> </p> 
+       <p class="vehicle_l w97"> <span>货物重量</span> <span class="txt font18">0.0吨</span> </p> 
+       <p class="vehicle_l w97"> <span>体积</span> <span class="txt font18">44.0方</span> </p> 
+       <p class="vehicle_l w97"> <span>类型</span> <span class="txt font18">获得该地</span> </p> 
+      </div> 
+      <a class="goto_detail" href="supply_detail.htm?id=e7ac884c-9ae3-4bcc-b0eb-18c7b6cf4258" target="_blank">查看详情</a> 
+     </div> 
+     <div class="list_con_m clearfix"> 
+      <p class="name">广东志鸿物流有限公司</p> 
+      <p class="addr">提货地点：<span>广东 广州市 花都区 </span></p> 
+     </div> </li>
+   </ol> 
+   <!-- 无数据时调用 --> 
+   <!-- <div class="list_no_data">
+				<span class="icon"></span>
+				<span class="txt">暂无数据</span>
+			</div> --> 
+   <div class="list_page clearfix wrap"> 
+    <div class="page_w"> 
+     <div class="handle clearfix"> 
+      <div class="handle-page clearfix skin-tb">
+       <span class="pagination-start"><span>上一页</span></span>
+       <span class="pagination-curr">1</span>
+       <span class="pagination-end"><span>下一页</span></span>共&nbsp;1&nbsp;页，到第
+       <input class="selectPart" type="number" value="1" />页
+       <button class="pagination-select">确定</button>
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div>
+		</div>
+		<div class="recommend wrap">
+			<div class="groom groom_w">
+				<a class="recommend_supply">推荐回程货源</a>
+				<a href="supply_hall.htm">
+					<span class="arrow">查看更多</span>
+				</a>
+			</div>
+			<ul class="recommend_list clearfix" ng-controller="getRecommendSource" >
+				<li ng-repeat="item in items | limitNum:4" ng-show="len >'0'">
+					<a href="supply_detail.htm?id={{item.sourceId}}" class="flow_w">
+						<div class="flow">
+							<div class="flow_bar clearfix">
+								<span class="city start" ng-bind="item.startCodeCCn | filter "></span>
+								<span class="car_bg"></span>
+								<span class="city end" ng-bind="item.endCodeCCn | filter "></span>
+							</div>
+							<dl class="detail clearfix">
+								<dt>提货时间</dt>
+								<dd class="w172" ng-bind="item.arriveCustomerTime"></dd>
+								<dt>需求车长</dt>
+								<dd class="w172"><em ng-bind="item.needLength"></em>米</dd>
+								<dt>需求车型</dt>
+								<dd class="w172" ng-bind="item.needType"></dd>
+								<dt>货物重量</dt>
+								<dd class="w172"><em ng-bind="item.goodsWeight"></em>吨</dd>
+								<dt>货物类型</dt>
+								<dd class="w172" ng-bind="item.goodsName"></dd>
+								<button class="quoted_price" ng-show="item.hasQuote == '1'"></button>
+							</dl>
+							<div class="count clearfix">
+								<span class="mans">已应标&nbsp;<i ng-bind="item.quoteNum"></i>&nbsp;人</span>
+								<span class="days" ng-bind="item.ageTime | timeFilter"></span>
+								<!-- 天数开始样式加入类名start -->
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="no-data" ng-show="len =='0'">
+					<span class="txt">暂无数据</span>
+				</li>
+			</ul>
+			<!-- 无数据时调用 -->
+			<!-- <div class="no-data">
+				
+			</div> -->
+		</div>
+		<div class="con_foot">
+			<div class="wrap clearfix foot_w">
+				<p>
+					<span class="copyright">条款 - 隐私权         ©2016 guangzhouzhihong</span>
+					<span class="tel">
+						<i>400-888-0906</i>
+						</br>
+						<i class="time">周一至周日  8:00-22:00</i>
+					</span>                                                 
+				</p>
+			</div>
+		</div>
+    </body>
+    <!-- <script data-baseurl="./" data-main="js/main.js" src="js/require.min.js" id="main"></script> -->
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/angular-resource.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/store.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/jquery.md5.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.multiselect.js"></script>
+	<script type="text/javascript" src="js/jquery.multiselect.filter.js"></script>
+	<script type="text/javascript" src="js/datepicker.min.js"></script>
+	<script type="text/javascript" src="js/global_config.js"></script>	
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/countrySelect.js"></script>
+	<script type="text/javascript" src="js/pagination.js"></script>
+	<script type="text/javascript" src="js/YSJTable.js"></script>
+	<script type="text/javascript" src="js/YSJSourceRowL.js"></script>
+	<script type="text/javascript" src="js/YSJSupplyHall.js"></script>
+	<script type="text/javascript" src="js/services.js"></script>
+	<script type="text/javascript" src="js/filters.js"></script>
+	<script type="text/javascript" src="js/controller.js"></script>
+</html> 

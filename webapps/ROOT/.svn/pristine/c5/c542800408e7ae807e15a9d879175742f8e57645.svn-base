@@ -1,0 +1,25 @@
+<!-- <div class="line_detail quote_price clearfix" ng-controller="addQuote" ng-if="source.status =='02' || source.status =='03' || source.status =='04' || source.status=='05' || info.status=='02'" ng-cloak>
+	<div class="price_l">
+		<p class="price">我的报价
+			<input type="text" name="doller" class="doller" ng-model="price" placeholder="¥12000.00" ng-blur="changeForm()" ng-show="source.status != '02' && source.status != '04' && source.status != '05' || info.status=='02'"/>
+			<span ng-show="source.status == '02' ||source.status == '04' || source.status == '03' || source.status == '05'" class="doller" ng-bind="showPrice"></span>
+		</p>
+		<p class="remark clearfix">
+			<span class="remark_l">备注</span>
+			<span class="remark_r">
+				<textarea ng-show="source.status != '02' && source.status != '04' && source.status != '05' || info.status=='02'"></textarea>
+				<span ng-show="source.status == '02' ||source.status == '04' || source.status == '03' || source.status == '05'" ng-bind="info.remark"></span>
+			</span>
+		</p>
+		<p class="clearfix" ng-show="source.status != '02' && source.status != '04' && source.status != '05' || info.status=='02'">
+			<span class="blank"></span>
+			<button class="priceBtn" ng-click="addQuote()">报价应标</button>
+		</p>
+	</div>
+	<div class="price_r" ng-click="showGiveUp()" ng-show="source.status == '01' || source.status =='02' || source.status == '03'">
+		<span class="close_price close_p giveUp" style="display: none">关闭报价</span>
+	</div>
+	<div class="price_r" ng-click="showGiveUp()" ng-show="source.status == '04'">
+		<span class="close_price close_p giveUp" style="display: none">毁约</span>
+	</div>
+</div> -->

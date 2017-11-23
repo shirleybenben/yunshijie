@@ -1,0 +1,80 @@
+var YSJSupplyHall = function(){
+	
+	this.table = new YSJTable({
+		page : $('.handle-page'),
+		content : $('.order_list'),
+		url : '/api/source/query',
+		method  : 'get',
+		pageNumber : 0,
+		pageSize : 10,
+		rowRender : function(index, row){
+			return new YSJSourceRowL(row);
+		},
+		onBeforeLoad : function(param){
+			return param.lineId != null;
+		}
+	});
+	
+	
+	this.init = function(){
+		var _this = this;
+		_this.getLines();
+	};
+	
+
+	this.getLines = function(){
+		var _this = this;
+		$.ajax({
+			type: "get",
+			url: global.server + '/api/line/getLineList',
+			success: function (msg) {
+				if (msg && msg.status && msg.status.statusCode == global.status.success) {
+                    var data = msg.data;
+                    _this.fillLineData(data);
+                }
+			}
+		});
+	};
+	
+	
+	this.fillLineData = function(data){
+		var _this = this;
+		var container = $('.tab_tit');
+		container.empty();
+		$.each(data, function(i, j){
+			var el = $('<li><a href="javascript:;"><strong>'+j.departureCodeCn+'——'+j.destinationCodeCn+'</strong></a></li>');
+			el.hover(function(){
+				el.siblings('li').removeClass('current');
+				el.addClass('current');
+			},function(){
+				
+			});
+			el.click(function(){
+				var lineId = el.attr('ref');
+				var param = {};
+				param.lineId = lineId;
+				_this.loadData(param);
+			});
+			el.attr('ref',j.lineInfoId);
+			container.append(el);
+		});
+		if(data.length >=5){
+			$('.order_top_m').remove();
+		}
+	};
+	
+	
+	this.loadData = function(param){
+		var _this = this;
+		var table = _this.table;
+		table.load(param);
+	}
+	
+	
+	this.init();
+}
+
+
+$(function(){
+	new YSJSupplyHall();
+});

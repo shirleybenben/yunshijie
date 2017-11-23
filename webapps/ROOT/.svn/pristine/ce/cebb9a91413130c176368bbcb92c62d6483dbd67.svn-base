@@ -1,0 +1,30 @@
+﻿/* 自定义下拉列表 */
+.text{float:left;padding-right:12px;font-size:14px;}
+.div_select{cursor:pointer;}
+.text.car_length{text-indent:1em;}
+.select_w{width:77px;z-index:999;position:relative;}
+.select_dropdown{background:url(../img/select_down.png) no-repeat center;display:block;width:14px;height:8px;float:left;padding-top:15px;}
+.select_ol{top:29px; left:-72px;position:absolute;width:158px;border:1px solid #e8e8e8;border-radius:4px;background-color:#fff;border-bottom:none;height:242px;overflow:hidden;}
+.ol_w.hide{display:none;}
+.select_ol li{height:40px;line-height:40px;padding-left:15px;-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;border-bottom:1px solid #e8e8e8;}
+.select_ol li.selected,.select_ol li:hover{cursor:pointer;background-color:#f6f6f6;}
+.select_ol li:hover{-o-transition:background .5s;-ms-transition:background .5s;-moz-transition:background .5s;-webkit-transition:background .5s;}
+.ol_w:before{content:"";display:block;width:0px;height:0px;border:9px solid #e8e8e8;position:absolute;top:15px;right:8px;border-top:transparent 9px solid;border-left:transparent 9px solid;border-right:transparent 9px solid;}
+.ol_w:after{content:"";display:block;width:0px;height:0px;border:9px solid #fff;position:absolute;top:16px;right:8px;border-top:transparent 9px solid;border-left:transparent 9px solid;border-right:transparent 9px solid;}
+
+/* 志鸿对账单下拉列表 */
+.select_l{border:1px solid #d2d2d2;border-radius:3px;position:relative;}
+.select_t{height:30px;text-align:center;font-size:14px;color:#333;background-color:#fff;line-height:30px;padding:0 24px;cursor:pointer;}
+.select_t span{float:left;}
+.select_t span.txt{margin-right:8px; width: 56px;}
+.select_t .select_dropdown{padding-top:21px;}
+.select_c{position:absolute;top:31px;left:-1px;width:100px;background-color:#fff;}
+.select_list.select_l{border-radius:3px;}
+.select_list .select_c ol li{height:30px;line-height:30px;padding-left:24px;border-bottom:1px solid #d2d2d2;cursor:pointer;font-size:14px;color:#333;border-left:1px solid #d2d2d2;border-right:1px solid #d2d2d2;}
+.select_list .select_c ol li:hover{background-color:#f2f3f9;}
+.select_list .select_c ol li:last-child{border-radius:0 0 3px 3px;}
+.select_list .select_c{z-index:9999;}
+.select_c.w128{width:128px;}
+.scroll{height: 155px;overflow: auto;}

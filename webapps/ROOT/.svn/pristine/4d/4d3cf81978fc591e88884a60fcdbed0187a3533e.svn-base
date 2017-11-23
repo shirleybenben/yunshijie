@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="editApp">
+    <head>
+        <meta charset="utf-8">
+        <title>完善信息</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/order_detail.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dialog.css"/>
+    </head>
+    <body style="background-color:#fbfbfb;">
+		<div class="con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="index.htm">
+						<img src="img/c_logo.png" height="32" width="184">
+					</a>
+				</div>
+				<ul class="nav clearfix">
+					<li>
+						<a href="index.htm">首页</a>
+					</li>
+					<li>
+						<a href="supply_hall.htm">货源大厅</a>
+					</li>
+					<li>
+						<a href="my_order.htm">我的订单</a>
+					</li>
+				</ul>
+				<div class="search_w">
+					<span class="notice"></span>
+					<span class="user">
+						<a href="center_basicinfo.htm"></a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="container wrap clearfix">
+			<div class="container_l">
+				<div class="groom">
+					<a href="#" class="recommend_supply">推荐回程货源</a>
+					<span class="arrow"></span>
+				</div>
+				<ul ng-controller="getRecommendSource">
+					<li ng-repeat="item in items | limitNum:2">
+						<a href="supply_detail.htm?id={{item.sourceId}}" class="flow_w">
+							<div class="flow">
+								<div class="flow_bar clearfix">
+									<span class="city" ng-bind="item.startCodeCCn | filter "></span>
+									<span class="car_bg"></span>
+									<span class="city" ng-bind="item.endCodeCCn | filter "></span>
+								</div>
+								<dl class="detail clearfix">
+									<dt>提货时间</dt>
+									<dd ng-bind="item.arriveCustomerTime"></dd>
+									<dt>提货地点</dt>
+									<dd ng-bind="item.senderAreaList | addsource"></dd>
+									<dt>需求车长</dt>
+									<dd class="w96">货物吨位</dd>
+									<dd>货物体积</dd>
+									<dt class="font18">{{item.needLength}}米</dt>
+									<dd class="font18 w96">{{item.goodsWeight}}吨</dd>
+									<dd class="font18">{{item.goodsVolumne}}方</dd>
+									<dt>需求车型</dt>
+									<dd class="w160" ng-bind="item.needType"></dd>
+									<dt>货物类型</dt>
+									<dd ng-bind="item.goodsName"></dd>
+								</dl>
+								<div class="name">广东志鸿物流有限公司</div>
+								<div class="count clearfix">
+									<span class="mans">已应标<i ng-bind="item.quoteNum"></i>人</span>
+									<span class="line"></span>
+									<span class="days" ng-bind="item.ageTime | timeFilter"></span>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="container_r">
+				<div class="line_detail">
+					<div class="tit"></div>
+					<div class="content clearfix">
+						<div class="content_l">
+							<p class="clearfix">
+								<span class="city">广州</span>
+								<span class="route_start"></span>
+								<span class="font14">经停</span>
+								<span class="font18">苏州</span>
+								<span class="route_end"></span>
+								<span class="city">上海</span>
+							</p>
+							<p class="time">
+								<span>提货时间&nbsp;&nbsp;&nbsp;&nbsp;2012/12/12 12:00</span>
+								<span class="arrive_time">到达时间&nbsp;&nbsp;&nbsp;&nbsp;2012/12/12 12:00</span>
+							</p>
+							<div class="car_detail clearfix">
+								<p class="detail_l">
+									<span>需求车型：</span>
+									<span class="m5">需求车长：</span>
+								</p>
+								<p class="detail_l w82">
+									<span>高栏</span>
+									<span class="m5">9.6米</span>
+								</p>
+								<p class="detail_l w110">
+									<span>货物吨位</span>
+									<span class="font18 m5">8吨</span>
+								</p>
+								<p class="detail_l w105">
+									<span>货物体积</span>
+									<span class="font18 m5">5方</span>
+								</p>
+								<p class="detail_l w110">
+									<span>货物类型</span>
+									<span class="font18 m5">电子配件</span>
+								</p>
+							</div>
+							<p class="addr_detail">
+								<span class="name">广东志鸿物流有限公司</span>
+							 	<span class="address">提货地点:广东省 广州市</span>
+							</p>
+						</div>
+						<div class="content_r">
+							<p class="font14">已应标<i class="font18">26</i>人</p>
+							<p class="font18">2天结束</p>
+						</div>
+						<div class="tel">
+							<span class="consult">咨询电话</span>
+							<span class="num">400 5623 2345</span>
+						</div>
+					</div>
+				</div>
+				<div class="line_detail quote_price clearfix select_car_w">
+					<dl class="select_car clearfix">
+						<dt>使用车辆</dt>
+						<dd class="brands carBrand">
+						</dd>
+						<dd class="add">
+							<a href="edit_driver_info.htm">添加</a>
+						</dd>
+						<dt>使用驾驶员</dt>
+						<dd class="brands nameBrand">
+						</dd>
+						<dt></dt>
+						<dd class="txt clearfix">
+							<button class="saveCarInfo" disabled="disabled">完善信息</button>
+							<p class="lstyle">新增车辆或驾驶员需要审核，请提前添加，避免耽误发车。</p>
+						</dd>
+					</dl>
+					<!-- 无数据时调用 -->
+					<!-- <dl class="select_car">
+						<span class="icon"></span>
+						<span class="no_data">暂无数据</span>
+					</dl> -->
+					<div class="price_l">
+						<p class="price">我的报价
+							<span class="doller">$12000.00</span>
+						</p>
+						<p class="remark clearfix">
+							<span class="remark_l">备注：</span>
+							<span class="remark_r">四大水电费及扩大及福利卡的跟价格了恐惧感四大水电费及扩大及福利卡的跟价格了恐惧感四大水电费及扩大及福利卡的跟价格了恐惧感四大水电费及扩大及福利卡的跟价格了恐惧。</span>
+						</p>
+					</div>
+
+					<div class="price_r">
+						<span class="close_price close_p giveUp" style="display: none">关闭报价</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="con_foot">
+			<div class="wrap">
+				<p>
+					条款 - 隐私权
+					<span>©2016 guangzhouzhihong</span>                                                 
+				</p>
+			</div>
+		</div>
+		<!-- 完善信息成功对话框 -->
+		<div class="dialog_wrap wscg" style="display:none;">
+    		<div class="dialog_done dialog_w price_done">
+		  		<p class="star">
+		  			<img src="img/star.png">
+		  		</p>
+		  		<p class="txt">
+		  			<span class="txt_d">完善成功！</span></br>
+		  		</p>
+			</div>
+			<div class="mask"></div>
+    	</div>
+		<!-- 关闭报价对话框 -->
+		<div class="dialog_wrap hyDialog" style="display:none">
+    		<div class="dialog_done dialog_w close_price">
+		  		<p class="star">
+		  			<img src="img/close_price_bg.png"/>
+		  		</p>
+		  		<p class="txt">
+		  			<span class="txt_d">毁约</span></br>
+		  		</p>
+		  		<p class="txt txt_we">
+		  			<span class="txt_w">请慎重确认<br/>毁约将减少您的信誉度和处罚200元</span> 
+		  		</p>
+		  		<p class="resure clearfix">
+		  			<button class="sure">确认</button>
+		  			<button class="cancel">取消</button>
+		  		</p>
+		  		<span class="close"></span>
+			</div>
+			<div class="mask"></div>
+    	</div>
+    </body>	
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/store.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/global_config.js"></script>	
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/moment.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/angular-resource.min.js"></script>
+	<script type="text/javascript" src="js/services.js"></script>
+	<script type="text/javascript" src="js/filters.js"></script>
+	<script type="text/javascript" src="js/controller.js"></script>
+	<script type="text/javascript" src="js/supply_detail.js"></script>
+</html> 

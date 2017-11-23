@@ -1,0 +1,19 @@
+<div class="dialog_wrap ordinaryDialog" style="display:none" ng-controller="closeQuotedInfo">
+	<div class="dialog_done dialog_w close_price">
+  		<p class="star">
+  			<img src="img/close_price_bg.png"/>
+  		</p>
+  		<p class="txt">
+  			<span class="txt_d">关闭报价</span></br>
+  		</p>
+  		<p class="txt txt_we">
+  			<span class="txt_w">请慎重确认<br/>关闭本次报价将不能再次竞争此货源</span> 
+  		</p>
+  		<p class="resure clearfix">
+  			<button class="sure" ng-click="giveUpPrice()">确认</button>
+  			<button class="cancel" ng-click="cancel()">取消</button>
+  		</p>
+  		<span class="close" ng-click="cancel()"></span>
+	</div>
+	<div class="mask"></div>
+</div>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="editApp">
+	<head>
+		<meta charset="utf-8">
+		<title>运势界首页</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	</head>
+	<body>
+		<!-- top -->
+		<div class="con_header index_con_header">
+			<div class="wrap clearfix">
+				<div class="logo">
+					<a href="index.htm">
+						<img src="img/c_logo.png" height="32" width="184">
+					</a>
+				</div>
+				<ul class="nav clearfix">
+					<li class="current">
+						<a href="index.htm">首页</a>
+					</li>
+					<li>
+						<a href="supply_hall.htm">货源大厅</a>
+					</li>
+					<li>
+						<a href="my_order.htm">我的订单</a>
+					</li>
+				</ul>
+				<!-- <div class="search_w">
+					<span class="notice"></span>
+					<span class="user">
+						<a href="center_basicinfo.htm"></a>
+					</span>
+				</div> -->
+
+				<div class="search_w" ng-controller="getUnreadMessageCount">
+					<a href="center_news.htm">
+						<span ng-class="{'notice': true,'has_notice': flag}"></span>
+					</a>
+					<span class="user">
+						<a href="center_basicinfo.htm" class="current"></a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<!-- banner -->
+		<div class="bannerBg">
+			<ul class="banner">
+				<li style="display:block;">
+					<a href="javascript:;"></a>
+				</li>
+				<li>
+					<a href="javascript:;"></a>
+				</li>
+			</ul>
+			<div class="leftBtn"></div>
+			<div class="rightBtn"></div>
+			<ul class="dianBg">
+				<li class="current"></li>
+				<li></li>
+			</ul>
+		</div>
+		<!-- notice -->
+		<div class="noticeBg">
+			<div class="notice wrap clearfix">
+				<div class="pics pics_ball">
+					<img src="img/notice_ball.png">
+				</div>
+				<span>今天新增货源<i class="sourceCnt">1222</i>条</span>
+				<div class="pics pics_hot clearfix">
+					<span class="pic_l">
+						<img src="img/head_bg.png"/>
+					</span>
+					<span class="pic_l">
+						<img src="img/head_bg.png"/>
+					</span>
+					<span class="pic_l">
+						<img src="img/head_bg.png"/>
+					</span>
+				</div>
+				<span>超过<i class="qutoedCnt">1222</i>位经纪人和司机成功签单，全部来自真实的运输需求！</span>
+			</div>
+		</div>
+		<!-- depart place -->
+		<div class="departBg">
+			<input type="hidden" class="hideLineId" data-id="">
+			<div class="wrap">
+				<h2></h2>
+				<div class="depart_list clearfix">
+					<!-- <ul class="depart">
+						无数据时调用
+						<li>
+							<span class="no_data">暂无数据</span>
+						</li>
+					</ul> -->
+				</div>
+			</div>
+		</div>
+		<!-- Latest supply -->
+		<div class="departBg supplyBg" id="supplyBg">
+			<div class="wrap">
+				<h2>
+					<a href="supply_hall.htm"></a>
+				</h2>
+				<div class="middle_line"></div>
+				<ul class="newSource">
+				</ul>
+			</div>
+		</div>
+		<!-- running route -->
+		<div class="departBg routeBg">
+			<div class="wrap">
+				<h2>
+					<a href="running_route.htm"></a>
+				</h2>
+				<ol class="clearfix">
+					<li class="clearfix add oftengoadd">
+						<a href="running_route.htm">进行添加</a>
+					</li>
+				</ol>
+			</div>
+		</div>
+		<!-- footer -->
+		<div class="indexFoot">
+			<div class="wrap">你可以试用<a href="#">Android版</a>移动应用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;条款&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@2016 guangzhouzhihong
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/angular-resource.min.js"></script>
+    <script type="text/javascript" src="js/store.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/global_config.js"></script>	
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/ajaxAction.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/services.js"></script>
+	<script type="text/javascript" src="js/filters.js"></script>
+	<script type="text/javascript" src="js/directives.js"></script>
+	<script type="text/javascript" src="js/controller.js"></script>
+</html>

@@ -1,0 +1,19 @@
+<div class="order_tit order_list_w">
+	<div class="order_top clearfix wrap">
+		<div class="breadcrumb" ng-if="info.status && info.status!='03' && info.status!='05' && info.status!='09' && info.status !='10'">
+			<a href="my_order.htm">我的订单 </a> > 查看详情
+		</div>
+		<div class="breadcrumb" ng-if="info.status=='03'">
+			<a href="my_order.htm">我的订单 </a> > 待完善 > 查看详情
+		</div>
+		<div class="breadcrumb" ng-if="info.status =='05' || info.status =='10'">
+			<a href="my_order.htm">我的订单 </a> > 在途 > 查看详情
+		</div>
+		<div class="breadcrumb" ng-if="info.status=='09'">
+			<a href="my_order.htm">我的订单 </a> > 已完成 > 查看详情
+		</div>
+		<div class="breadcrumb ng-cloak" ng-if="info.status==null">
+			<a href="my_order.htm">我的订单 </a> > 在途 > 查看详情 > 查看地图
+		</div>
+	</div>
+</div>

@@ -1,0 +1,233 @@
+/*
+* @Author: Administrator
+* @Date:   2016-06-06 17:36:40
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-06-22 17:27:35
+*/
+$(function(){
+
+	var driverLicensePicId = "";
+	var bizLicensePicId = "";
+	var carPicId = "";
+
+	initPage();
+
+	function initPage()
+	{
+		$("#car_no").val($.cookie("car_no"));
+		$("#license_date").val($.cookie("license_date"));
+		$("#car_max_load").val($.cookie("car_max_load"));
+		$("#biz_license_date").val($.cookie("biz_license_date"));
+		$("#car_band").val($.cookie("car_band"));
+		$("#car_length").val($.cookie("car_length"));
+		$("#car_register_date").val($.cookie("car_register_date"));
+		$("#register_cer_no").val($.cookie("register_cer_no"));
+		$("#cer_no").val($.cookie("cer_no"));
+		$("#assure_date").val($.cookie("assure_date"));
+		$("#assure_name").val($.cookie("assure_name"));
+		$("#biz_assure_name").val($.cookie("biz_assure_name"));
+
+		$("#imgDriverLicense")[0].src = "img/car.png";
+		$("#imgBizLicense")[0].src = "img/add_yyz.png";
+		$("#imgCarPic")[0].src = "img/cars.png";
+
+		var w = $("#imgDriverLicense")[0].width;
+		var h = $("#imgDriverLicense")[0].height;
+		driverLicensePicId = $.cookie("driverLicensePicId");
+		bizLicensePicId = $.cookie("bizLicensePicId");
+		carPicId = $.cookie("carPicId");
+
+		console.log("driver id="+driverLicensePicId);
+
+		if (typeof(driverLicensePicId)!="undefined")
+		{
+			$("#imgDriverLicense")[0].src = global.imageServer + driverLicensePicId;
+			$("#imgDriverLicense")[0].width = w;
+			$("#imgDriverLicense")[0].height = h;
+		}
+
+		if(typeof(bizLicensePicId) != "undefined")
+		{
+			$("#imgBizLicense")[0].src = global.imageServer + bizLicensePicId;
+			$("#imgBizLicense")[0].width = w;
+			$("#imgBizLicense")[0].height = h;
+		}
+
+		if(typeof(carPicId) != "undefined")
+		{
+			$("#imgCarPic")[0].src = global.imageServer + carPicId;
+			$("#imgCarPic")[0].width = w;
+			$("#imgCarPic")[0].height = h;
+		}
+	}
+
+	function uploadImage(file, onSuccess)
+	{
+		var interfaceUrl = global.server + '/api/driver/imageUpload';
+        console.log("file="+file);
+
+		var formdata = new FormData();
+		formdata.append("image", file);
+		formdata.append("Authorization", $.cookie("accountId") + ":" + $.cookie("token"));
+		$.ajax({
+			url: interfaceUrl,
+			type: 'POST',
+			data: formdata,
+			cache: false,
+			async: false,
+			contentType: false,
+			processData: false,
+			success: function(msg) {
+				if (msg && msg.status && msg.status.statusCode == global.status.success) {
+					onSuccess(global.imageServer + msg.data.iamgeId, msg.data.iamgeId);
+				} else {
+					console.log('upload occur error' + msg.status.errorMsg);
+				}
+			}
+		});
+	}
+
+	$("#inputDriverLicense").change(function (e) {
+		var file = e.target.files;
+		console.log(file.item(0));
+		if(file){
+			var reader = new FileReader();
+			reader.onload = function () {
+				var w = $("#imgDriverLicense")[0].width;
+				var h = $("#imgDriverLicense")[0].height;
+
+				console.log("width :" + w + ", height:" + h);
+				uploadImage(file.item(0), function(e, i){
+					console.log("upload image:" + file.item(0).name + " successful");
+					$("#imgDriverLicense")[0].src = e;
+					$("#imgDriverLicense")[0].width =  w;
+					$("#imgDriverLicense")[0].height = h;
+					driverLicensePicId = i;
+				})
+			}
+
+			reader.readAsDataURL(file.item(0));
+		}
+	})
+
+	$("#inputBizLicense").change(function (e) {
+		var file = e.target.files;
+		console.log(file.item(0).name);
+		if(file){
+			var reader = new FileReader();
+			reader.onload = function () {
+				var w = $("#imgBizLicense")[0].width;
+				var h = $("#imgBizLicense")[0].height;
+
+				console.log("width :" + w + ", height:" + h);
+				uploadImage(file.item(0), function(e, i){
+					console.log("upload image:" + file.item(0).name + " successful");
+					$("#imgBizLicense")[0].src = e;
+					$("#imgBizLicense")[0].width =  w;
+					$("#imgBizLicense")[0].height = h;
+					bizLicensePicId = i;
+				})
+			}
+
+			reader.readAsDataURL(file.item(0));
+		}
+	})
+
+	$("#inputCarPic").change(function (e) {
+		var file = e.target.files;
+		console.log(file.item(0).name);
+		if(file){
+			var reader = new FileReader();
+			reader.onload = function () {
+				var w = $("#imgCarPic")[0].width;
+				var h = $("#imgCarPic")[0].height;
+
+				console.log("width :" + w + ", height:" + h);
+				uploadImage(file.item(0), function(e, i){
+					console.log("upload image:" + file.item(0).name + " successful");
+					$("#imgCarPic")[0].src = e;
+					$("#imgCarPic")[0].width =  w;
+					$("#imgCarPic")[0].height = h;
+					carPicId = i;
+				})
+			}
+
+			reader.readAsDataURL(file.item(0));
+		}
+	})
+	
+	$("#btnSave").click(function(){
+		$("#commentForm").validate({
+			debug:true, //只验证，不提交
+			rules:{
+				car_no:"required",
+				license_date:"required",
+				car_max_load:"required",
+				biz_license_date:"required",
+				car_band:"required",
+				car_register_date:"required",
+				register_cer_no:"required",
+				cer_no:"required",
+				assure_date:"required",
+				assure_name:"required",
+				biz_assure_name:"required"
+			},
+			messages:{
+				car_no:"车牌号不能为空",
+				license_date:"行驶证有效期不能为空",
+				car_max_load:"荷载重量不能为空",
+				biz_license_date:"营运证发证日期不能为空",
+				car_band:"车辆品牌不能为空",
+				car_register_date:"车辆登记日期不能为空",
+				register_cer_no:"注册号不能为空",
+				cer_no:"证件号不能为空",
+				assure_date:"保险有效期不能为空",
+				assure_name:"强制险公司不能为空",
+				biz_assure_name:"商业险公司名称不能为空"
+			},
+			errorPlacement:function(error, element){
+				error.appendTo(element.parent());
+			},
+			submitHandler:function(){
+				//验证三张照片是否已经传了
+				if(driverLicensePicId == "")
+				{
+					alert("请上传行驶证照片");
+				}
+				else if(bizLicensePicId == "")
+				{
+					alert("请上传营运证照片");
+				}
+				else if(carPicId == "")
+				{
+					alert("请上传车辆照片");
+				}
+				else
+				{
+					//保存所有的数据到下一页
+					$.cookie("driverLicensePicId", driverLicensePicId);
+					$.cookie("bizLicensePicId", bizLicensePicId);
+					$.cookie("carPicId", carPicId);
+
+					$.cookie("car_no", $("#car_no").val());
+					$.cookie("license_date", $("#license_date").val());
+					$.cookie("car_max_load", $("#car_max_load").val());
+					$.cookie("biz_license_date", $("#biz_license_date").val());
+					$.cookie("car_band", $("#car_band").val());
+					$.cookie("car_length", window.value0),
+					$.cookie("car_register_date", $("#car_register_date").val());
+					$.cookie("register_cer_no", $("#register_cer_no").val());
+					$.cookie("cer_no", $("#cer_no").val());
+					$.cookie("assure_date", $("#assure_date").val());
+					$.cookie("assure_name", $("#assure_name").val());
+					$.cookie("biz_assure_name", $("#biz_assure_name").val());
+
+					//跳转到下一页
+					window.location = "info_driver.htm";
+				}
+			},
+			success:function(){}
+		});
+	})
+})
+

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="editApp">
+    <head>
+        <meta charset="utf-8">
+        <title>个人中心</title>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+        <link rel="stylesheet" type="text/css" href="css/my_order.css"/>
+        <link rel="stylesheet" type="text/css" href="css/supply_hall.css"/>
+        <link rel="stylesheet" type="text/css" href="css/center_news.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dialog.css"/>
+        <link rel="stylesheet" type="text/css" href="css/select.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.css"/> 
+    </head>
+    <body>
+    	<headtop></headtop>
+		<div class="order_tit order_list_w">
+			<div class="order_top clearfix wrap">
+				<div class="order_top_l">
+					<ul class="clearfix tab_tit">
+						<li>
+							<a href="center_basicinfo.htm">我的账户</a>
+						</li>
+						<!-- <li>
+							<a href="center_pay_schedule.htm">财务-申请付款表</a>
+						</li> -->
+						<li>
+							<a href="driver_list.htm">车辆及司机信息</a>
+						</li>
+						<li class="current">
+							<a href="running_route.htm">常跑线路</a>
+						</li>
+					</ul>
+				</div>
+				<div class="order_top_l order_top_r clearfix">
+					<ul class="clearfix tab_tit">
+						<!-- <li>
+							<a href="javascript:;">设置</a>
+						</li>
+						<li>
+							<a href="javascript:;">规则</a>
+						</li>
+						<li>
+							<a href="javascript:;">帮助</a>
+						</li>
+						<li>
+							<a href="javascript:;" class="exit">退出</a>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="route_w wrap" ng-controller="getCity">
+			<div class="add_route">
+				<div class="tit">
+					<span class="font18">添加常跑线路</span>
+					<span>添加常跑线路可看货源详情</span>
+				</div>
+				<div class="con clearfix">
+					<div class="con_l">
+						<div class="con_l_l">
+							<span class="begin">出发</span>
+							<div class="select_wrap">
+								<div class="select_l select_list" ng-click="showSelect(0,$event)">
+									<div class="select_t">
+									    <span class="txt startC">选择省份</span>
+									    <span class="select_dropdown"></span>
+									</div>
+									<div class="select_c w128 hide">
+										<div class="scroll">
+											<ol>
+											    <li ng-repeat="city in cities" attr-val="{{city.regionCode}}" ng-bind="city.regionName" ng-click="selected(city.regionName,city.regionCode)"></li>
+											</ol>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="con_l_m"></div>
+						<div class="con_l_r con_l_l">
+							<span class="begin">到达</span> 
+							<div class="select_wrap">
+								<div class="select_l select_list" ng-click="showSelect(1,$event)">
+									<div class="select_t">
+									    <span class="txt endC">选择省份</span>
+									    <span class="select_dropdown"></span>
+									</div>
+									<div class="select_c w128 hide">
+										<div class="scroll">
+											<ol>
+											    <li ng-repeat="city in cities" attr-val="{{city.regionCode}}" ng-bind="city.regionName" ng-click="selected(city.regionName,city.regionCode)"></li>
+											</ol>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="con_r">
+						<button ng-click="addOrLine()">添加</button>
+						<span>可添加 5 条常跑线路</span>
+					</div>
+				</div>
+			</div>
+			<div class="add_route added">
+				<div class="tit">
+					<span class="font18">已添加线路</span>
+				</div>
+				<div class="con">
+					<ul class="addedLine clearfix">
+						<li ng-repeat="list in Lines" ref="{{list.lineInfoId}}">
+							<span class="place" ng-bind="list.departureCodeCn"></span>
+							<span class="line"></span>
+							<span class="palce" ng-bind="list.destinationCodeCn"></span>
+							<span class="close" ng-click="deleteLine($index)"></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="con_foot">
+			<div class="wrap clearfix foot_w">
+				<p>
+					<span class="copyright">条款 - 隐私权         ©2016 guangzhouzhihong</span>
+					<span class="tel">
+						<i>400-888-0906</i>
+						</br>
+						<i class="time">周一至周日  8:00-22:00</i>
+					</span>                                                 
+				</p>
+			</div>
+		</div>
+    </body>
+    <script type="text/javascript" src="js/vendor/jquery-2.1.1.min.js"></script> 
+    <script type="text/javascript" src="js/vendor/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="js/vendor/angular.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-resource.min.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/public/global_config.js"></script>
+	<script type="text/javascript" src="js/public/global.js"></script>
+	<script type="text/javascript" src="js/services/services.js"></script>
+	<script type="text/javascript" src="js/filters/filters.js"></script>
+	<script type="text/javascript" src="js/directives/directives.js"></script>
+	<script type="text/javascript" src="js/controllers/controller.js"></script>
+</html>
